@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MdToolbar } from '@angular2-material/toolbar';
 import { MdIconRegistry, MdIcon } from '@angular2-material/icon';
 
@@ -10,12 +10,30 @@ import { MdIconRegistry, MdIcon } from '@angular2-material/icon';
   viewProviders: [MdIconRegistry],
   directives: [MdToolbar, MdIcon]
 })
-export class InvestSystemsOrgAppComponent {
+export class InvestSystemsOrgAppComponent implements OnInit {
+  title: String = 'Invest Systems';
+  toolbarColor: String = 'primary';
+  
   constructor(mdIconRegistry: MdIconRegistry) {
     mdIconRegistry
         .addSvgIcon('thumb-up', '/assets/icons/thumbup-icon.svg')
         .addSvgIconSetInNamespace('core', '/assets/icons/core-icon-set.svg')
         .registerFontClassAlias('fontawesome', 'fa');
   }
-  title = 'Invest Systems';
+  
+  ngOnInit() {
+    window.addEventListener('online', this.updateOnlineOfflineIndicator);
+    window.addEventListener('offline', this.updateOnlineOfflineIndicator);
+    this.updateOnlineOfflineIndicator()
+  }
+  
+  updateOnlineOfflineIndicator = () => { 
+    if (navigator.onLine) {
+        console.log('Online');
+        this.toolbarColor = 'primary';
+    } else {
+        console.log('Offline');
+        this.toolbarColor = 'default';
+    }
+  }
 }
