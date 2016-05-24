@@ -1,7 +1,7 @@
 {
   "name": "Invest Systems",
   "short_name": "Invest Systems",
-  "start_url": "./",
+  "start_url": "index.html",
   "display": "standalone",
   "theme_color": "#445500",
   "background_color": "#22241C",

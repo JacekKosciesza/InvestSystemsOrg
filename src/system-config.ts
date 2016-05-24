@@ -22,6 +22,11 @@ const packages: any = {
       format: 'cjs',
       defaultExtension: 'js',
       main: 'icon.js'
+    },
+    '@angular2-material/sidenav': {
+      format: 'cjs',
+      defaultExtension: 'js',
+      main: 'sidenav.js'
     }
 };
 

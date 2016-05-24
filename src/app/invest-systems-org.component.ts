@@ -1,25 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { MdToolbar } from '@angular2-material/toolbar';
-import { MdIconRegistry, MdIcon } from '@angular2-material/icon';
+import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
+import { RuleOneComponent } from './rule-one.component'
 
 @Component({
   moduleId: module.id,
   selector: 'invest-systems-org-app',
   templateUrl: 'invest-systems-org.component.html',
   styleUrls: ['invest-systems-org.component.css'],
-  viewProviders: [MdIconRegistry],
-  directives: [MdToolbar, MdIcon]
+  directives: [MD_SIDENAV_DIRECTIVES, MdToolbar, RuleOneComponent]
 })
 export class InvestSystemsOrgAppComponent implements OnInit {
   title: String = 'Invest Systems';
   toolbarColor: String = 'primary';
-  
-  constructor(mdIconRegistry: MdIconRegistry) {
-    mdIconRegistry
-        .addSvgIcon('thumb-up', '/assets/icons/thumbup-icon.svg')
-        .addSvgIconSetInNamespace('core', '/assets/icons/core-icon-set.svg')
-        .registerFontClassAlias('fontawesome', 'fa');
-  }
   
   ngOnInit() {
     window.addEventListener('online', this.updateOnlineOfflineIndicator);
