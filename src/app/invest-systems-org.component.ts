@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MdToolbar } from '@angular2-material/toolbar';
+
 import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
+import { MdToolbar } from '@angular2-material/toolbar';
+import { MdButton } from '@angular2-material/button';
+
 import { RuleOneComponent } from './rule-one.component'
 
 @Component({
@@ -8,7 +11,7 @@ import { RuleOneComponent } from './rule-one.component'
   selector: 'invest-systems-org-app',
   templateUrl: 'invest-systems-org.component.html',
   styleUrls: ['invest-systems-org.component.css'],
-  directives: [MD_SIDENAV_DIRECTIVES, MdToolbar, RuleOneComponent]
+  directives: [MD_SIDENAV_DIRECTIVES, MdToolbar, MdButton, RuleOneComponent]
 })
 export class InvestSystemsOrgAppComponent implements OnInit {
   title: String = 'Invest Systems';
