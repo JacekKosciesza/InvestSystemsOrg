@@ -32,6 +32,11 @@ const packages: any = {
       format: 'cjs',
       defaultExtension: 'js',
       main: 'button.js'
+    },
+    '@angular2-material/card': {
+      format: 'cjs',
+      defaultExtension: 'js',
+      main: 'card.js'
     }
 };
 
