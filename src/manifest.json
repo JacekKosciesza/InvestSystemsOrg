@@ -1,10 +1,7 @@
 {
   "name": "Invest Systems",
   "short_name": "Invest Systems",
-  "start_url": "index.html",
-  "display": "standalone",
-  "theme_color": "#445500",
-  "background_color": "#22241C",
+  
   "icons": [{
     "src": "images/touch/invest-systems-org-48x48.png",
     "sizes": "48x48",
@@ -33,5 +30,9 @@
     "src": "images/touch/invest-systems-org-512x512.png",
     "sizes": "256x256",
     "type": "image/png"
-  }]
+  }],
+  "start_url": "/?homescreen=1",
+  "display": "standalone",
+  "theme_color": "#445500",
+  "background_color": "#22241C"
 }
