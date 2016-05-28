@@ -1,4 +1,4 @@
-importScripts('/serviceworker-cache-polyfill.js');
+importScripts('/service-worker-cache-polyfill.js');
 
 self.addEventListener('install', e => {
     e.waitUntil(
@@ -20,8 +20,18 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
     console.log(event.request.url);
     event.respondWith(
-        caches.match(event.request).then(response => {
-            return response || fetch(event.request);
+        caches.match(event.request)
+        .then(response => response || fetch(event.request))
+        .catch(() => {
+            if (event.request.mode == 'navigate') {
+                return caches.match('/offline.html');
+            }
         })
     );
+});
+
+// TODO: background sync
+self.addEventListener('sync', event => {
+   if (event.tag == 'todo') {
+   };
 });
