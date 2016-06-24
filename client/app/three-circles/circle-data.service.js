@@ -11,6 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/mergeMap');
+//import 'rxjs/add/operator/flatMap';
+require('rxjs/add/operator/filter');
 var meaning_circle_type_1 = require('./meaning-circle-type');
 var CircleDataService = (function () {
     function CircleDataService(http) {
@@ -28,6 +32,14 @@ var CircleDataService = (function () {
             return data;
         })
             .catch(this.handleError);
+    };
+    CircleDataService.prototype.suggest = function (term, type) {
+        return this.http.get(this.areasUrl)
+            .map(function (r) { return r.json().data // get payload, so array of areas
+            .map(function (x) { return x.name; }) // array of names
+            .filter(function (x) { return x.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1; }); } // names that contains term (as substring)
+         // names that contains term (as substring)
+        );
     };
     CircleDataService.prototype.getArea = function (id) {
         return this.getAreas()

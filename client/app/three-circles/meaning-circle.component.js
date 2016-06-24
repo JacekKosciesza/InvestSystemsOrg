@@ -9,13 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Subject_1 = require('rxjs/Subject');
+require('rxjs/add/operator/debounceTime');
+require('rxjs/add/operator/distinctUntilChanged');
+require('rxjs/add/operator/switchMap');
+require('rxjs/add/operator/retry');
 var meaning_circle_type_1 = require('./meaning-circle-type');
 var meaning_circle_subtype_1 = require('./meaning-circle-subtype');
 var meaning_area_view_1 = require('./meaning-area-view');
 var circle_data_service_1 = require('./circle-data.service');
 var MeaningCircleComponent = (function () {
     function MeaningCircleComponent(circleDataService) {
+        var _this = this;
         this.circleDataService = circleDataService;
+        this.suggestionsStream = new Subject_1.Subject();
+        this.suggestions = this.suggestionsStream
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .switchMap(function (term) { return _this.circleDataService.suggest(term).retry(3); });
     }
     MeaningCircleComponent.prototype.add = function (name) {
         if (name) {
@@ -28,13 +39,16 @@ var MeaningCircleComponent = (function () {
             this.areas.splice(index, 1);
         }
     };
+    MeaningCircleComponent.prototype.suggest = function (term) {
+        this.suggestionsStream.next(term);
+    };
     MeaningCircleComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.circleDataService.getAreas(this.type)
             .then(function (heroes) { return _this.areas = heroes.map(function (a) { return new meaning_area_view_1.MeaningAreaView(a); }); });
     };
     MeaningCircleComponent.prototype.ngOnChanges = function (changes) {
-        console.log('ngOnChanges');
+        //console.log('ngOnChanges');
     };
     __decorate([
         core_1.Input(), 

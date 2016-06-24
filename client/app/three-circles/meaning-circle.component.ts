@@ -1,5 +1,12 @@
 import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/retry';
+
 import { MeaningCircleType } from './meaning-circle-type'
 import { MeaningCircleSubtype } from './meaning-circle-subtype'
 import { MeaningAreaView } from './meaning-area-view'
@@ -14,6 +21,7 @@ import { CircleDataService } from './circle-data.service'
 export class MeaningCircleComponent implements OnInit, OnChanges {
     @Input() type: MeaningCircleType;
     areas: MeaningAreaView[];
+    private suggestionsStream = new Subject<string>();
 
     add(name: string) {
         if (name) {
@@ -28,6 +36,15 @@ export class MeaningCircleComponent implements OnInit, OnChanges {
         }
     }
 
+    suggest(term: string) {
+        this.suggestionsStream.next(term);
+    }
+
+    suggestions: Observable<string[]> = this.suggestionsStream
+        .debounceTime(300)
+        .distinctUntilChanged()
+        .switchMap((term: string) => this.circleDataService.suggest(term).retry(3));
+
     constructor(private circleDataService: CircleDataService) { }
 
     ngOnInit() {
@@ -36,6 +53,6 @@ export class MeaningCircleComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-        console.log('ngOnChanges');
+        //console.log('ngOnChanges');
     }
 }

@@ -1,13 +1,19 @@
-<ng-content select="h2"></ng-content>
-type={{type}}
-<ul>
-    <li *ngFor="let area of areas">
-        <div *ngIf="!area.isEdited">
-            {{area.name}} <button (click)="area.isEdited = true">🖉</button> <button (click)="delete(area);">🗑</button>
-        </div>
-        <div *ngIf="area.isEdited">
-            <input type="text" value="{{area.name}}"> <button (click)="area.isEdited = false">💾</button> <button (click)="delete(area);">🗑</button>
-        </div>
-    </li>
-</ul>
-<input type="text" placeholder="Enter area" #newArea> <button (click)="add(newArea.value); newArea.value=''">+</button>
+<!--<div class="wrapper">-->
+    <ng-content select="h2"></ng-content>
+    <!--type={{type}}-->
+    <ul>
+        <li *ngFor="let area of areas">
+            <div *ngIf="!area.isEdited">
+                {{area.name}} <button (click)="area.isEdited = true">🖉</button> <button (click)="delete(area)">🗑</button>
+            </div>
+            <div *ngIf="area.isEdited">
+                <input type="text" value="{{area.name}}"> <button (click)="area.isEdited = false">💾</button> <button (click)="delete(area)">🗑</button>
+
+            </div>
+        </li>
+    </ul>
+    <input type="text" placeholder="Enter area" #area #term (keyup)="suggest(area.value)"> <button (click)="add(area.value); area.value=''">+</button>
+    <ul>
+        <li *ngFor="let suggestion of suggestions | async">{{suggestion}}</li>
+    </ul>
+<!--</div>-->
