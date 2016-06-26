@@ -22,6 +22,7 @@ var MeaningCircleComponent = (function () {
     function MeaningCircleComponent(circleDataService) {
         var _this = this;
         this.circleDataService = circleDataService;
+        this.addArea = new core_1.EventEmitter();
         this.suggestionsStream = new Subject_1.Subject();
         this.suggestions = this.suggestionsStream
             .debounceTime(300)
@@ -30,7 +31,9 @@ var MeaningCircleComponent = (function () {
     }
     MeaningCircleComponent.prototype.add = function (name) {
         if (name) {
-            this.circleDataService.save({ id: 0, name: name, type: this.type, subtype: meaning_circle_subtype_1.MeaningCircleSubtype.None });
+            var area = { id: 0, name: name, type: this.type, subtype: meaning_circle_subtype_1.MeaningCircleSubtype.None, isEdited: false };
+            this.addArea.emit(area);
+            this.circleDataService.save(area);
         }
     };
     MeaningCircleComponent.prototype.delete = function (area) {
@@ -54,6 +57,10 @@ var MeaningCircleComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Number)
     ], MeaningCircleComponent.prototype, "type", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], MeaningCircleComponent.prototype, "addArea", void 0);
     MeaningCircleComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
+import { Component, Input, EventEmitter, OnInit, OnChanges, Output,SimpleChange } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -20,12 +20,15 @@ import { CircleDataService } from './circle-data.service'
 })
 export class MeaningCircleComponent implements OnInit, OnChanges {
     @Input() type: MeaningCircleType;
+    @Output() addArea = new EventEmitter<MeaningAreaView>();
     areas: MeaningAreaView[];
     private suggestionsStream = new Subject<string>();
 
     add(name: string) {
         if (name) {
-            this.circleDataService.save({id: 0, name: name, type: this.type, subtype: MeaningCircleSubtype.None});
+            var area = {id: 0, name: name, type: this.type, subtype: MeaningCircleSubtype.None, isEdited: false}
+            this.addArea.emit(area)
+            this.circleDataService.save(area);
         }
     }
 

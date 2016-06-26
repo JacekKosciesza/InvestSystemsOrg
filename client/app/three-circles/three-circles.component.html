@@ -1,6 +1,6 @@
 <h1>Three Circles</h1>
 <section id="circle-wrapper">
-    <meaning-circle type="Passion" class="circle1 transparent_class">
+    <meaning-circle type="Passion" class="circle1 transparent_class" (addArea)="onAddArea($event)">
         <h2>What do I love to do? <small>Passion</small></h2>
     </meaning-circle>
     <meaning-circle type="Talent" class="circle2 transparent_class">
@@ -9,4 +9,7 @@
     <meaning-circle type="Money" class="circle3 transparent_class">
         <h2>Where do I earn/spend money? <small>Money</small></h2>
     </meaning-circle>
+    <ul>
+        <li *ngFor="let area of areas" @flyInOut="'in'">{{area.name}}</li>
+    </ul>
 </section>

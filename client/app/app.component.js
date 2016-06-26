@@ -14,8 +14,14 @@ var hero_service_1 = require('./hero.service');
 // Rule One
 var rule_one_notes_component_1 = require('./notes/rule-one-notes.component');
 var three_circles_component_1 = require('./three-circles/three-circles.component');
+// @ngrx/store
+var store_1 = require('@ngrx/store');
+var area_reducer_1 = require('./three-circles/area.reducer');
 var AppComponent = (function () {
     function AppComponent() {
+        // constructor(
+        //     private store : Store<any>
+        // ){}
         this.title = 'InvestSystems.org';
     }
     AppComponent = __decorate([
@@ -26,7 +32,8 @@ var AppComponent = (function () {
             directives: [router_deprecated_1.ROUTER_DIRECTIVES],
             providers: [
                 router_deprecated_1.ROUTER_PROVIDERS,
-                hero_service_1.HeroService
+                hero_service_1.HeroService,
+                store_1.provideStore({ areas: area_reducer_1.areasReducer })
             ]
         }),
         router_deprecated_1.RouteConfig([
