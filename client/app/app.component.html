@@ -1,0 +1,10 @@
+<md-toolbar [color]="toolbarColor">
+    <img src="assets/touch/invest-systems-org-48x48.png" width="48" height="48" alt="Invest Systems Logo" />
+    <span>{{title}}</span>
+</md-toolbar>
+<nav>
+    <a [routerLink]="['Dashboard']">Dashboard</a>
+    <a [routerLink]="['Notes']">Notes</a>
+    <a [routerLink]="['ThreeCircles']">Three Circles</a>
+</nav>
+<router-outlet></router-outlet>

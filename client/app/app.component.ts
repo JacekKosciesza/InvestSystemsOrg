@@ -3,10 +3,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 
 import { MdToolbar } from '@angular2-material/toolbar';
 
-import { HeroService }     from './hero.service';
-import { DashboardComponent } from './dashboard.component'
-import { HeroesComponent } from './heroes.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { DashboardComponent } from './+dashboard/dashboard.component'
 
 // Rule One
 import { RuleOneNotes } from './notes/rule-one-notes.component'
@@ -17,33 +14,27 @@ import { Store, provideStore } from '@ngrx/store';
 import { areasReducer } from './three-circles/area.reducer'
 
 @Component({
+    moduleId: module.id,
     selector: 'invest-systems-org',
-    template: `
-    <md-toolbar [color]="toolbarColor">
-      <img src="assets/touch/invest-systems-org-48x48.png" width="48" height="48" alt="Invest Systems Logo" />
-      <span>{{title}}</span>
-    </md-toolbar>
-    <h1>{{title}}</h1>
-    <nav>
-        <a [routerLink]="['Notes']">Notes</a>
-        <a [routerLink]="['ThreeCircles']">Three Circles</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `,
-    styleUrls: ['app/app.component.css'],
+    templateUrl: 'app.component.html',
+    styleUrls: ['app.component.css'],
     directives: [ROUTER_DIRECTIVES, MdToolbar],
     providers: [
         ROUTER_PROVIDERS,
-        HeroService,
         provideStore({ areas: areasReducer }),
     ]
 })
 @RouteConfig([
     {
+        path: '/',
+        name: 'Dashboard',
+        component: DashboardComponent,
+        useAsDefault: true
+    },
+    {
         path: '/notes',
         name: 'Notes',
         component: RuleOneNotes,
-        useAsDefault: true
     },
     {
         path: '/three-circles',

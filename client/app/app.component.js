@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var toolbar_1 = require('@angular2-material/toolbar');
-var hero_service_1 = require('./hero.service');
+var dashboard_component_1 = require('./+dashboard/dashboard.component');
 // Rule One
 var rule_one_notes_component_1 = require('./notes/rule-one-notes.component');
 var three_circles_component_1 = require('./three-circles/three-circles.component');
@@ -44,22 +44,27 @@ var AppComponent = (function () {
     };
     AppComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'invest-systems-org',
-            template: "\n    <md-toolbar [color]=\"toolbarColor\">\n      <img src=\"assets/touch/invest-systems-org-48x48.png\" width=\"48\" height=\"48\" alt=\"Invest Systems Logo\" />\n      <span>{{title}}</span>\n    </md-toolbar>\n    <h1>{{title}}</h1>\n    <nav>\n        <a [routerLink]=\"['Notes']\">Notes</a>\n        <a [routerLink]=\"['ThreeCircles']\">Three Circles</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
-            styleUrls: ['app/app.component.css'],
+            templateUrl: 'app.component.html',
+            styleUrls: ['app.component.css'],
             directives: [router_deprecated_1.ROUTER_DIRECTIVES, toolbar_1.MdToolbar],
             providers: [
                 router_deprecated_1.ROUTER_PROVIDERS,
-                hero_service_1.HeroService,
                 store_1.provideStore({ areas: area_reducer_1.areasReducer }),
             ]
         }),
         router_deprecated_1.RouteConfig([
             {
+                path: '/',
+                name: 'Dashboard',
+                component: dashboard_component_1.DashboardComponent,
+                useAsDefault: true
+            },
+            {
                 path: '/notes',
                 name: 'Notes',
                 component: rule_one_notes_component_1.RuleOneNotes,
-                useAsDefault: true
             },
             {
                 path: '/three-circles',
