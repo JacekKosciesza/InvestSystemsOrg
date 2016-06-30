@@ -9,22 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
 var meaning_circle_component_1 = require('./meaning-circle.component');
 var circle_data_service_1 = require('./circle-data.service');
 var store_1 = require('@ngrx/store');
 var area_reducer_1 = require('./area.reducer');
 var ThreeCirclesComponent = (function () {
-    function ThreeCirclesComponent(store) {
+    function ThreeCirclesComponent(titleService, store) {
         var _this = this;
+        this.titleService = titleService;
         this.store = store;
         store
             .select(function (state) { return state.areas; })
             .subscribe(function (areas) {
-            debugger;
             _this.areas = areas;
         });
     }
-    ThreeCirclesComponent.prototype.ngOnInit = function () { };
+    ThreeCirclesComponent.prototype.ngOnInit = function () {
+        this.setTitle('Three Circles | Rule #1');
+    };
+    ThreeCirclesComponent.prototype.setTitle = function (newTitle) {
+        this.titleService.setTitle(newTitle);
+    };
     ThreeCirclesComponent.prototype.onAddArea = function (area) {
         console.log(area);
         this.store.dispatch({ type: area_reducer_1.ADD_AREA, payload: area });
@@ -56,7 +62,7 @@ var ThreeCirclesComponent = (function () {
                 ])
             ]
         }), 
-        __metadata('design:paramtypes', [store_1.Store])
+        __metadata('design:paramtypes', [platform_browser_1.Title, store_1.Store])
     ], ThreeCirclesComponent);
     return ThreeCirclesComponent;
 }());

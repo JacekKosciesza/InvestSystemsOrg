@@ -1,4 +1,5 @@
 import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
+import { Title }     from '@angular/platform-browser';
 
 import { MeaningCircleComponent } from './meaning-circle.component';
 import { CircleDataService } from './circle-data.service'
@@ -37,17 +38,23 @@ export class ThreeCirclesComponent implements OnInit {
     public areas;
 
     constructor(
+        private titleService: Title,
         private store: Store<any>
     ) {
         store
             .select(state => state.areas)
             .subscribe(areas => {
-                debugger;
                 this.areas = areas;
             });
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.setTitle('Three Circles | Rule #1');
+    }
+
+    public setTitle(newTitle: string) {
+        this.titleService.setTitle(newTitle);
+    }
 
     onAddArea(area) {
         console.log(area);

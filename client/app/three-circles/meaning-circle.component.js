@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
 var Subject_1 = require('rxjs/Subject');
 require('rxjs/add/operator/debounceTime');
 require('rxjs/add/operator/distinctUntilChanged');
@@ -27,7 +28,11 @@ var MeaningCircleComponent = (function () {
         this.suggestions = this.suggestionsStream
             .debounceTime(300)
             .distinctUntilChanged()
-            .switchMap(function (term) { return _this.circleDataService.suggest(term).retry(3); });
+            .switchMap(function (term) { return _this.circleDataService.suggest(term).retry(3); })
+            .catch(function (error) {
+            console.log(error); // don't do this, show the user a nice message
+            return Observable_1.Observable.of([]); // now we eat it, but only if the message has been communicated to the user
+        });
     }
     MeaningCircleComponent.prototype.add = function (name) {
         if (name) {

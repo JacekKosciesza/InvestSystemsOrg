@@ -9,26 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var RuleOneNotes = (function () {
-    function RuleOneNotes(titleService) {
-        this.titleService = titleService;
+//import { AngularFire, FirebaseListObservable } from 'angularfire2';
+var MyApp = (function () {
+    function MyApp() {
     }
-    RuleOneNotes.prototype.ngOnInit = function () {
-        this.setTitle('Notes | Rule #1');
-    };
-    RuleOneNotes.prototype.setTitle = function (newTitle) {
-        this.titleService.setTitle(newTitle);
-    };
-    RuleOneNotes = __decorate([
+    MyApp = __decorate([
         core_1.Component({
-            moduleId: module.id,
-            selector: 'rule-one-notes.component',
-            templateUrl: 'rule-one-notes.component.html',
+            selector: 'companies-list',
+            template: "\n  <ul>\n    <li *ngFor=\"let item of items | async\">\n      {{ item.name }}\n    </li>\n  </ul>\n  "
         }), 
-        __metadata('design:paramtypes', [platform_browser_1.Title])
-    ], RuleOneNotes);
-    return RuleOneNotes;
+        __metadata('design:paramtypes', [])
+    ], MyApp);
+    return MyApp;
 }());
-exports.RuleOneNotes = RuleOneNotes;
-//# sourceMappingURL=rule-one-notes.component.js.map
+exports.MyApp = MyApp;
+//# sourceMappingURL=companies-list.component.js.map

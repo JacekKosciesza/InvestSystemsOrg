@@ -46,7 +46,11 @@ export class MeaningCircleComponent implements OnInit, OnChanges {
     suggestions: Observable<string[]> = this.suggestionsStream
         .debounceTime(300)
         .distinctUntilChanged()
-        .switchMap((term: string) => this.circleDataService.suggest(term).retry(3));
+        .switchMap((term: string) => this.circleDataService.suggest(term).retry(3))
+        .catch(error => {
+            console.log(error); // don't do this, show the user a nice message
+            return Observable.of([]); // now we eat it, but only if the message has been communicated to the user
+        });
 
     constructor(private circleDataService: CircleDataService) { }
 

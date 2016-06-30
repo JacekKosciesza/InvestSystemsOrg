@@ -1,12 +1,13 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 
+import 'rxjs/Rx'; // get everything from Rx
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+// import 'rxjs/add/operator/toPromise';
+// import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/mergeMap';
 //import 'rxjs/add/operator/flatMap';
-import 'rxjs/add/operator/filter';
+// import 'rxjs/add/operator/filter';
 
 import { MeaningArea } from './meaning-area'
 import { MeaningCircleType } from './meaning-circle-type'
@@ -28,15 +29,16 @@ export class CircleDataService {
                  }
                  return data;
                 })
-               .catch(this.handleError);
+               .catch(this.handleErrorPromise);
   }
 
   suggest(term: string, type?: MeaningCircleType) : Observable<string[]> {
     return this.http.get(this.areasUrl)
-            .map(r => (<MeaningArea[]> r.json().data) // get payload, so array of areas
+            .map((response: Response) => (<MeaningArea[]> response.json().data) // get payload, so array of areas
                         .map(x => x.name) // array of names
                         .filter(x => x.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1) // names that contains term (as substring)
-            );
+                        
+            ).catch(this.handleErrorObservable);
   }
 
   getArea(id: number) {
@@ -60,7 +62,7 @@ export class CircleDataService {
     return this.http
                .delete(url, headers)
                .toPromise()
-               .catch(this.handleError);
+               .catch(this.handleErrorPromise);
   }
 
   // Add new Area
@@ -72,7 +74,7 @@ export class CircleDataService {
                .post(this.areasUrl, JSON.stringify(area), {headers: headers})
                .toPromise()
                .then(res => res.json().data)
-               .catch(this.handleError);
+               .catch(this.handleErrorPromise);
   }
 
   // Update existing Area
@@ -86,11 +88,16 @@ export class CircleDataService {
                .put(url, JSON.stringify(area), {headers: headers})
                .toPromise()
                .then(() => area)
-               .catch(this.handleError);
+               .catch(this.handleErrorPromise);
   }
 
-  private handleError(error: any) {
-    console.error('An error occurred', error);
+  private handleErrorPromise(error: any) {
+    console.error('An error occurred', error); // customize it
     return Promise.reject(error.message || error);
+  }
+
+   private handleErrorObservable(error: any) {
+    console.error('An error occurred', error); // customize it
+    return Observable.throw(error); // our opportunity to customize this error
   }
 }

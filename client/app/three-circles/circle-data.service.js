@@ -10,11 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/mergeMap');
-//import 'rxjs/add/operator/flatMap';
-require('rxjs/add/operator/filter');
+require('rxjs/Rx'); // get everything from Rx
+var Observable_1 = require('rxjs/Observable');
 var meaning_circle_type_1 = require('./meaning-circle-type');
 var CircleDataService = (function () {
     function CircleDataService(http) {
@@ -31,15 +28,15 @@ var CircleDataService = (function () {
             }
             return data;
         })
-            .catch(this.handleError);
+            .catch(this.handleErrorPromise);
     };
     CircleDataService.prototype.suggest = function (term, type) {
         return this.http.get(this.areasUrl)
-            .map(function (r) { return r.json().data // get payload, so array of areas
+            .map(function (response) { return response.json().data // get payload, so array of areas
             .map(function (x) { return x.name; }) // array of names
             .filter(function (x) { return x.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1; }); } // names that contains term (as substring)
          // names that contains term (as substring)
-        );
+        ).catch(this.handleErrorObservable);
     };
     CircleDataService.prototype.getArea = function (id) {
         return this.getAreas()
@@ -58,7 +55,7 @@ var CircleDataService = (function () {
         return this.http
             .delete(url, headers)
             .toPromise()
-            .catch(this.handleError);
+            .catch(this.handleErrorPromise);
     };
     // Add new Area
     CircleDataService.prototype.post = function (area) {
@@ -68,7 +65,7 @@ var CircleDataService = (function () {
             .post(this.areasUrl, JSON.stringify(area), { headers: headers })
             .toPromise()
             .then(function (res) { return res.json().data; })
-            .catch(this.handleError);
+            .catch(this.handleErrorPromise);
     };
     // Update existing Area
     CircleDataService.prototype.put = function (area) {
@@ -79,11 +76,15 @@ var CircleDataService = (function () {
             .put(url, JSON.stringify(area), { headers: headers })
             .toPromise()
             .then(function () { return area; })
-            .catch(this.handleError);
+            .catch(this.handleErrorPromise);
     };
-    CircleDataService.prototype.handleError = function (error) {
-        console.error('An error occurred', error);
+    CircleDataService.prototype.handleErrorPromise = function (error) {
+        console.error('An error occurred', error); // customize it
         return Promise.reject(error.message || error);
+    };
+    CircleDataService.prototype.handleErrorObservable = function (error) {
+        console.error('An error occurred', error); // customize it
+        return Observable_1.Observable.throw(error); // our opportunity to customize this error
     };
     CircleDataService = __decorate([
         core_1.Injectable(), 
