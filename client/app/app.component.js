@@ -13,6 +13,7 @@ var router_deprecated_1 = require('@angular/router-deprecated');
 var toolbar_1 = require('@angular2-material/toolbar');
 var dashboard_component_1 = require('./+dashboard/dashboard.component');
 var companies_component_1 = require('./+companies/companies.component');
+var stocks_component_1 = require('./+stocks/stocks.component');
 // Rule One
 var rule_one_notes_component_1 = require('./notes/rule-one-notes.component');
 var three_circles_component_1 = require('./three-circles/three-circles.component');
@@ -66,6 +67,11 @@ var AppComponent = (function () {
                 path: '/companies/...',
                 name: 'Companies',
                 component: companies_component_1.CompaniesComponent,
+            },
+            {
+                path: '/stock-exchanges/...',
+                name: 'Stocks',
+                component: stocks_component_1.StocksComponent,
             },
             {
                 path: '/notes',

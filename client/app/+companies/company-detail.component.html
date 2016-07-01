@@ -1,2 +1,59 @@
-<h1>{{company.fullName}}</h1>
+<table>
+    <tbody>
+        <tr>
+            <th>Name:</th>
+            <td>{{company.name}}</td>
+        </tr>
+        <tr>
+            <th>Abbreviation:</th>
+            <td>{{company.abbreviation}}</td>
+        </tr>
+        <tr>
+            <th>Full Name:</th>
+            <td>{{company.fullName}}</td>
+        </tr>
+        <tr>
+            <th>Address:</th>
+            <td>{{company.address}}</td>
+        </tr>
+        <tr>
+            <th>State:</th>
+            <td>{{company.state}}</td>
+        </tr>
+        <tr>
+            <th>CEO:</th>
+            <td>{{company.ceo}}</td>
+        </tr>
+
+        <tr>
+            <th>Phone:</th>
+            <td>{{company.phone}}</td>
+        </tr>
+        <tr>
+            <th>Fax:</th>
+            <td>{{company.fax}}</td>
+        </tr>
+        <tr>
+            <th>Website:</th>
+            <td><a href="http://{{company.website}}" rel="nofollow">{{company.website}}</a></td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td><a href="mailto:{{company.email}}">{{company.email}}</a></td>
+        </tr>
+
+        <tr>
+            <th>IPO year:</th>
+            <td>{{company.ipoYear}}</td> <!--TODO: format year, month with momentsj?-->
+        </tr>
+        <tr>
+            <th>Actions count:</th>
+            <td>{{company.actionsCount}}</td>
+        </tr>
+        <tr>
+            <th>Market value:</th>
+            <td>{{company.marketValue}}</td>
+        </tr>
+    </tbody>
+</table>
 <img src="/assets/companies/{{company.name}}.png" alt="{{company.name}}" />

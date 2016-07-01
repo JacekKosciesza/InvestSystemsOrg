@@ -11,31 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_deprecated_1 = require('@angular/router-deprecated');
-var companies_service_1 = require('./companies.service');
-var CompaniesListComponent = (function () {
-    function CompaniesListComponent(companiesService, router, titleService) {
+var stock_service_1 = require('./stock.service');
+var StockDetailComponent = (function () {
+    function StockDetailComponent(companiesService, routeParams, titleService) {
         this.companiesService = companiesService;
-        this.router = router;
+        this.routeParams = routeParams;
         this.titleService = titleService;
     }
-    CompaniesListComponent.prototype.ngOnInit = function () {
-        this.companies = this.companiesService.getCompanies();
-        this.titleService.setTitle('Companies');
+    StockDetailComponent.prototype.ngOnInit = function () {
+        if (this.routeParams.get('id') !== null) {
+            var symbol = this.routeParams.get('id');
+            this.stock = this.companiesService.getCompany(symbol);
+            this.titleService.setTitle(this.stock.name);
+        }
     };
-    CompaniesListComponent.prototype.gotoDetail = function (company) {
-        var link = ['CompaniesDetail', { symbol: company.abbreviation }];
-        this.router.navigate(link);
-    };
-    CompaniesListComponent = __decorate([
+    StockDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'companies-list',
-            templateUrl: 'companies-list.component.html',
-            styleUrls: ['companies-list.component.css']
+            selector: 'stock-detail',
+            templateUrl: 'stock-detail.component.html',
+            styleUrls: ['stock-detail.component.css']
         }), 
-        __metadata('design:paramtypes', [companies_service_1.CompaniesService, router_deprecated_1.Router, platform_browser_1.Title])
-    ], CompaniesListComponent);
-    return CompaniesListComponent;
+        __metadata('design:paramtypes', [stock_service_1.StockService, router_deprecated_1.RouteParams, platform_browser_1.Title])
+    ], StockDetailComponent);
+    return StockDetailComponent;
 }());
-exports.CompaniesListComponent = CompaniesListComponent;
-//# sourceMappingURL=companies-list.component.js.map
+exports.StockDetailComponent = StockDetailComponent;
+//# sourceMappingURL=stock-detail.component.js.map

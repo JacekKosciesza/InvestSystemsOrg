@@ -11,6 +11,6 @@ export interface Company {
     email: string;
 
     ipoYear: string;
-    actionsCount: number;
+    actionsCount: number; // TODO: rename: shares count?
     marketValue: number;
 }

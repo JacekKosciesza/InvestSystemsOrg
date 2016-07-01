@@ -5,6 +5,7 @@ import { MdToolbar } from '@angular2-material/toolbar';
 
 import { DashboardComponent } from './+dashboard/dashboard.component'
 import { CompaniesComponent } from './+companies/companies.component'
+import { StocksComponent } from './+stocks/stocks.component'
 
 // Rule One
 import { RuleOneNotes } from './notes/rule-one-notes.component'
@@ -36,6 +37,11 @@ import { areasReducer } from './three-circles/area.reducer'
         path: '/companies/...',
         name: 'Companies',
         component: CompaniesComponent,
+    },
+    {
+        path: '/stock-exchanges/...',
+        name: 'Stocks',
+        component: StocksComponent,
     },
     {
         path: '/notes',
