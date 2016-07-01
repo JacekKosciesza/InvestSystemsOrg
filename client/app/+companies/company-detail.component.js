@@ -11,28 +11,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var companies_service_1 = require('./companies.service');
-var CompaniesListComponent = (function () {
-    function CompaniesListComponent(companiesService, router) {
+var CompanyDetailComponent = (function () {
+    function CompanyDetailComponent(companiesService, routeParams) {
         this.companiesService = companiesService;
-        this.router = router;
+        this.routeParams = routeParams;
     }
-    CompaniesListComponent.prototype.ngOnInit = function () {
-        this.companies = this.companiesService.getCompanies();
+    CompanyDetailComponent.prototype.ngOnInit = function () {
+        if (this.routeParams.get('symbol') !== null) {
+            var symbol = this.routeParams.get('symbol');
+            this.company = this.companiesService.getCompany(symbol);
+        }
     };
-    CompaniesListComponent.prototype.gotoDetail = function (company) {
-        var link = ['CompaniesDetail', { symbol: company.abbreviation }];
-        this.router.navigate(link);
-    };
-    CompaniesListComponent = __decorate([
+    CompanyDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'companies-list',
-            templateUrl: 'companies-list.component.html',
-            styleUrls: ['companies-list.component.css']
+            selector: 'company-detail',
+            templateUrl: 'company-detail.component.html',
+            styleUrls: ['company-detail.component.css']
         }), 
-        __metadata('design:paramtypes', [companies_service_1.CompaniesService, router_deprecated_1.Router])
-    ], CompaniesListComponent);
-    return CompaniesListComponent;
+        __metadata('design:paramtypes', [companies_service_1.CompaniesService, router_deprecated_1.RouteParams])
+    ], CompanyDetailComponent);
+    return CompanyDetailComponent;
 }());
-exports.CompaniesListComponent = CompaniesListComponent;
-//# sourceMappingURL=companies-list.component.js.map
+exports.CompanyDetailComponent = CompanyDetailComponent;
+//# sourceMappingURL=company-detail.component.js.map

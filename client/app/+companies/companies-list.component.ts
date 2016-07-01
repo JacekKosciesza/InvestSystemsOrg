@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
-//import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router-deprecated';
+
+import { Company } from './company';
+import { CompaniesService } from './companies.service';
 
 @Component({
+    moduleId: module.id,
     selector: 'companies-list',
-    template: `
-  <ul>
-    <li *ngFor="let item of items | async">
-      {{ item.name }}
-    </li>
-  </ul>
-  `
+    templateUrl: 'companies-list.component.html',
+    styleUrls: ['companies-list.component.css']
 })
-export class MyApp {
-    // items: FirebaseListObservable<any[]>;
-    // constructor(af: AngularFire) {
-    //     this.items = af.database.list('/items');
-    // }
+export class CompaniesListComponent implements OnInit {
+    companies: Company[];
+
+    constructor(private companiesService: CompaniesService, private router: Router) { }
+
+    ngOnInit() {
+        this.companies = this.companiesService.getCompanies();
+    }
+
+    gotoDetail(company: Company) {
+        let link = ['CompaniesDetail', {symbol:company.abbreviation}];
+        this.router.navigate(link);
+    }
 }

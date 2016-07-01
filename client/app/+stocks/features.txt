@@ -1,0 +1,1 @@
+Map of the world (Google Charts) with pins where stocks are e.g. GPW (Warsaw), NYSE (New York)

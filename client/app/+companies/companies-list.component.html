@@ -1,0 +1,7 @@
+<h1>Companies List</h1>
+
+<ul>
+    <li *ngFor="let company of companies">
+        <a (click)="gotoDetail(company)">{{company.name}} ({{company.abbreviation}})</a>
+    </li>
+</ul>

@@ -4,6 +4,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 import { MdToolbar } from '@angular2-material/toolbar';
 
 import { DashboardComponent } from './+dashboard/dashboard.component'
+import { CompaniesComponent } from './+companies/companies.component'
 
 // Rule One
 import { RuleOneNotes } from './notes/rule-one-notes.component'
@@ -30,6 +31,11 @@ import { areasReducer } from './three-circles/area.reducer'
         name: 'Dashboard',
         component: DashboardComponent,
         useAsDefault: true
+    },
+    {
+        path: '/companies/...',
+        name: 'Companies',
+        component: CompaniesComponent,
     },
     {
         path: '/notes',
