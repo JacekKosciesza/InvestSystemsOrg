@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
+var angularfire2_1 = require('angularfire2');
 var toolbar_1 = require('@angular2-material/toolbar');
 var dashboard_component_1 = require('./+dashboard/dashboard.component');
 var companies_component_1 = require('./+companies/companies.component');
@@ -21,8 +22,9 @@ var three_circles_component_1 = require('./three-circles/three-circles.component
 var store_1 = require('@ngrx/store');
 var area_reducer_1 = require('./three-circles/area.reducer');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(af) {
         var _this = this;
+        this.af = af;
         // constructor(
         //     private store : Store<any>
         // ){}
@@ -43,6 +45,9 @@ var AppComponent = (function () {
         window.addEventListener('online', this.updateOnlineOfflineIndicator);
         window.addEventListener('offline', this.updateOnlineOfflineIndicator);
         this.updateOnlineOfflineIndicator();
+    };
+    AppComponent.prototype.login = function () {
+        this.af.auth.login();
     };
     AppComponent = __decorate([
         core_1.Component({
@@ -84,7 +89,7 @@ var AppComponent = (function () {
                 component: three_circles_component_1.ThreeCirclesComponent
             },
         ]), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [angularfire2_1.AngularFire])
     ], AppComponent);
     return AppComponent;
 }());

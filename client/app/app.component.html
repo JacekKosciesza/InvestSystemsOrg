@@ -1,15 +1,15 @@
 <md-toolbar [color]="toolbarColor">
     <img src="assets/touch/invest-systems-org-48x48.png" width="48" height="48" alt="Invest Systems Logo" />
     <span>{{title}}</span>
+    <div> {{ (af.auth | async)?.uid }} </div>
+    <button (click)="login()">Login</button>
 </md-toolbar>
 <nav>
     <a [routerLink]="['Dashboard']">Dashboard</a>
     <a [routerLink]="['Companies']">Companies</a>
     <a [routerLink]="['Stocks']">Stocks</a>
-    <a [routerLink]="['Companies']">Rule #1</a>
-    {
-        <a [routerLink]="['Notes']">Notes</a>
-        <a [routerLink]="['ThreeCircles']">Three Circles</a>
-    }
+    <a [routerLink]="['Companies']">Rule #1</a> {
+    <a [routerLink]="['Notes']">Notes</a>
+    <a [routerLink]="['ThreeCircles']">Three Circles</a> }
 </nav>
 <router-outlet></router-outlet>

@@ -18,6 +18,10 @@ platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
         databaseURL: "https://investsystemsorg.firebaseio.com",
         storageBucket: "investsystemsorg.appspot.com",
     }),
+    angularfire2_1.firebaseAuthConfig({
+        provider: angularfire2_1.AuthProviders.Google,
+        method: angularfire2_1.AuthMethods.Redirect
+    }),
     { provide: http_1.XHRBackend, useClass: angular2_in_memory_web_api_1.InMemoryBackendService },
     { provide: angular2_in_memory_web_api_1.SEED_DATA, useClass: in_memory_circle_data_service_1.InMemoryDataService },
     platform_browser_1.Title

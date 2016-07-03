@@ -1,6 +1,8 @@
 import { Component }       from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
+import { AngularFire } from 'angularfire2';
+
 import { MdToolbar } from '@angular2-material/toolbar';
 
 import { DashboardComponent } from './+dashboard/dashboard.component'
@@ -55,6 +57,7 @@ import { areasReducer } from './three-circles/area.reducer'
     },
 ])
 export class AppComponent {
+    constructor(private af: AngularFire) { }
     // constructor(
     //     private store : Store<any>
     // ){}
@@ -67,6 +70,10 @@ export class AppComponent {
         window.addEventListener('online', this.updateOnlineOfflineIndicator);
         window.addEventListener('offline', this.updateOnlineOfflineIndicator);
         this.updateOnlineOfflineIndicator()
+    }
+
+    login() {
+        this.af.auth.login();
     }
 
     updateOnlineOfflineIndicator = () => {
