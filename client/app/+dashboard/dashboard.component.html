@@ -1,7 +1,7 @@
 <h1>Dashboard</h1>
 
-<ul *ngFor="let item of items | async">
+<ul *ngFor="let company of companies | async">
   <li class="text">
-    {{item.$value}}
+    {{company.name}}
   </li>
 </ul>

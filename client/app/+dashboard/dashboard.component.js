@@ -15,7 +15,7 @@ var DashboardComponent = (function () {
         this.af = af;
     }
     DashboardComponent.prototype.ngOnInit = function () {
-        this.items = this.af.database.list('items');
+        this.companies = this.af.database.list('companies');
     };
     DashboardComponent = __decorate([
         core_1.Component({
