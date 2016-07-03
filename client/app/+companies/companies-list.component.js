@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_deprecated_1 = require('@angular/router-deprecated');
+var card_1 = require('@angular2-material/card');
 var companies_service_1 = require('./companies.service');
 var CompaniesListComponent = (function () {
     function CompaniesListComponent(companiesService, router, titleService) {
@@ -31,7 +32,8 @@ var CompaniesListComponent = (function () {
             moduleId: module.id,
             selector: 'companies-list',
             templateUrl: 'companies-list.component.html',
-            styleUrls: ['companies-list.component.css']
+            styleUrls: ['companies-list.component.css'],
+            directives: [card_1.MD_CARD_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [companies_service_1.CompaniesService, router_deprecated_1.Router, platform_browser_1.Title])
     ], CompaniesListComponent);

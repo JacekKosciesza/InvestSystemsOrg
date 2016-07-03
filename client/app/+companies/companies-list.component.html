@@ -1,7 +1,9 @@
 <h1>Companies List</h1>
 
-<ul>
-    <li *ngFor="let company of companies">
-        <a (click)="gotoDetail(company)">{{company.name}} ({{company.abbreviation}})</a>
-    </li>
-</ul>
+<md-card *ngFor="let company of companies" (click)="gotoDetail(company)">
+    <md-card-title-group>
+        <img md-card-sm-image src="/assets/companies/{{company.name}}.png">
+        <md-card-title>{{company.name}}</md-card-title>
+        <md-card-subtitle>{{company.abbreviation}}</md-card-subtitle>
+    </md-card-title-group>
+</md-card>

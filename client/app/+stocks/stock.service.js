@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var StockService = (function () {
     function StockService() {
-        // https://en.wikipedia.org/wiki/Stock_exchange
         this.stocks = [
+            // https://en.wikipedia.org/wiki/Stock_exchange
             {
                 "id": "Nasdaq",
                 "name": "Nasdaq",
@@ -112,6 +112,182 @@ var StockService = (function () {
                 "id": "BM_F_Bovespa",
                 "name": "BM&F Bovespa",
                 "website": "http://www.bmfbovespa.com.br/",
+            },
+            // https://en.wikipedia.org/wiki/List_of_European_stock_exchanges
+            {
+                "id": "TSE",
+                "name": "Tirana Stock Exchange",
+                "website": "http://www.tse.com.al/",
+            },
+            {
+                "id": "NASDAQ_OMX_Armenia",
+                "name": "NASDAQ OMX Armenia",
+                "website": "http://www.nasdaqomx.am/",
+            },
+            {
+                "id": "Wiener_Borse",
+                "name": "Wiener Börse",
+                "website": "http://www.wienerborse.at/",
+            },
+            {
+                "id": "BSE",
+                "name": "Baku Stock Exchange",
+                "website": "http://www.bfb.az/",
+            },
+            {
+                "id": "BCSE",
+                "name": "Belarusian Currency and Stock Exchange",
+                "website": "http://www.bcse.by/",
+            },
+            {
+                "id": "SASE",
+                "name": "Sarajevo Stock Exchange",
+                "website": "http://www.sase.ba/",
+            },
+            {
+                "id": "BLSE",
+                "name": "Banja Luka Stock Exchange",
+                "website": "http://www.blberza.com/",
+            },
+            {
+                "id": "BSE_Sofia",
+                "name": "Bulgarian Stock Exchange – Sofia",
+                "website": "http://www.bse-sofia.bg/",
+            },
+            {
+                "id": "CISE",
+                "name": "Channel Islands Securities Exchange",
+                "website": "http://www.thecise.com/",
+            },
+            {
+                "id": "ZSE",
+                "name": "Zagreb Stock Exchange",
+                "website": "http://www.zse.hr/",
+            },
+            {
+                "id": "CSE",
+                "name": "Cyprus Stock Exchange",
+                "website": "http://www.cse.com.cy/",
+            },
+            {
+                "id": "PSE",
+                "name": "Prague Stock Exchange",
+                "website": "http://www.pse.cz/",
+            },
+            {
+                "id": "CSE",
+                "name": "Copenhagen Stock Exchange",
+                "website": "http://www.nasdaqomxnordic.com/",
+            },
+            {
+                "id": "GXG_Markets",
+                "name": "GXG Markets",
+                "website": "http://www.gxgmarkets.com/",
+            },
+            {
+                "id": "NASDAQ_OMX_Tallinn_Stock_Exchange",
+                "name": "NASDAQ OMX Tallinn Stock Exchange",
+                "website": "http://www.ee.omxgroup.com/",
+            },
+            {
+                "id": "Faroese_Securities_Market",
+                "name": "Faroese Securities Market",
+                "website": "http://www.vmf.fo",
+            },
+            {
+                "id": "NASDAQ_OMX_Helsinki",
+                "name": "NASDAQ OMX Helsinki",
+                "website": "http://www.omxgroup.com/nordicexchange",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
+            },
+            {
+                "id": "TODO",
+                "name": "TODO",
+                "website": "TODO",
             },
         ];
     }

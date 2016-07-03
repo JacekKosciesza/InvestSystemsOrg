@@ -13,4 +13,6 @@ export interface Company {
     ipoYear: string;
     actionsCount: number; // TODO: rename: shares count?
     marketValue: number;
+
+    //competitors: Company[];
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
 import { Router } from '@angular/router-deprecated';
 
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
+
 import { Company } from './company';
 import { CompaniesService } from './companies.service';
 
@@ -9,7 +11,8 @@ import { CompaniesService } from './companies.service';
     moduleId: module.id,
     selector: 'companies-list',
     templateUrl: 'companies-list.component.html',
-    styleUrls: ['companies-list.component.css']
+    styleUrls: ['companies-list.component.css'],
+    directives: [MD_CARD_DIRECTIVES]
 })
 export class CompaniesListComponent implements OnInit {
     companies: Company[];

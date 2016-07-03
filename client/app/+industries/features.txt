@@ -1,0 +1,9 @@
+Basic Industries		Finance
+Capital Goods		Healthcare
+Consumer Durables		Miscellaneous
+Consumer Non-Durables		Public Utilities
+Consumer Services		Technology
+Energy		Transportation
+
+
+Read more: http://www.nasdaq.com/screening/industries.aspx#ixzz4DA8TMsS2
