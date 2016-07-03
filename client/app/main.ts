@@ -1,6 +1,8 @@
 // Imports for loading & configuring the in-memory web api
 import { XHRBackend, HTTP_PROVIDERS } from '@angular/http';
 
+import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
+
 import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
 import { InMemoryDataService } from './three-circles/in-memory-circle-data.service';
 
@@ -13,6 +15,14 @@ import { AppComponent }   from './app.component';
 
 bootstrap(AppComponent, [
     HTTP_PROVIDERS,
+    FIREBASE_PROVIDERS,
+    // Initialize Firebase app  
+    defaultFirebase({
+        apiKey: "AIzaSyBxTIFIwi_rWHM3oeAtXSEi1nrEUvvlqu8",
+        authDomain: "investsystemsorg.firebaseapp.com",
+        databaseURL: "https://investsystemsorg.firebaseio.com",
+        storageBucket: "investsystemsorg.appspot.com",
+    }),
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
     { provide: SEED_DATA, useClass: InMemoryDataService },      // in-mem server data
     Title
@@ -22,4 +32,4 @@ bootstrap(AppComponent, [
         console.warn('Angular was not able to bootstrap your application.');
         console.error(error);
     }
-);
+    );

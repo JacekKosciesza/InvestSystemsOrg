@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+
 @Component({
     moduleId: module.id,
     selector: 'invsys-dashboard',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-    constructor() { }
+    items: FirebaseListObservable<any[]>;
 
-    ngOnInit() { }
+    constructor(private af: AngularFire) { }
+
+    ngOnInit() {
+        this.items = this.af.database.list('items');
+    }
 }
