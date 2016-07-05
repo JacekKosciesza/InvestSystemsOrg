@@ -9,22 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var angularfire2_1 = require('angularfire2');
-var CompaniesService = (function () {
-    function CompaniesService(af) {
-        this.af = af;
+var CompanyEditComponent = (function () {
+    function CompanyEditComponent() {
     }
-    CompaniesService.prototype.getCompanies = function () {
-        return this.af.database.list('companies');
-    };
-    CompaniesService.prototype.getCompany = function (symbol) {
-        return this.af.database.object("companies/" + symbol);
-    };
-    CompaniesService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [angularfire2_1.AngularFire])
-    ], CompaniesService);
-    return CompaniesService;
+    CompanyEditComponent.prototype.ngOnInit = function () { };
+    CompanyEditComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'company-edit',
+            templateUrl: 'company-edit.component.html',
+            styleUrls: ['company-edit.component.css']
+        }), 
+        __metadata('design:paramtypes', [])
+    ], CompanyEditComponent);
+    return CompanyEditComponent;
 }());
-exports.CompaniesService = CompaniesService;
-//# sourceMappingURL=companies.service.js.map
+exports.CompanyEditComponent = CompanyEditComponent;
+//# sourceMappingURL=company-edit.component.js.map

@@ -22,7 +22,6 @@ var CompanyDetailComponent = (function () {
         if (this.routeParams.get('symbol') !== null) {
             var symbol = this.routeParams.get('symbol');
             this.company = this.companiesService.getCompany(symbol);
-            this.titleService.setTitle(this.company.fullName);
         }
     };
     CompanyDetailComponent = __decorate([

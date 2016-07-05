@@ -15,9 +15,10 @@ var DashboardComponent = (function () {
         this.af = af;
     }
     DashboardComponent.prototype.ngOnInit = function () {
-        this.companies = this.af.database.list('companies');
+        this.companies = this.af.database.list('companies', { query: { orderByChild: 'order' } });
     };
     DashboardComponent = __decorate([
+        // TODO: move to shared?
         core_1.Component({
             moduleId: module.id,
             selector: 'invsys-dashboard',

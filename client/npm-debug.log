@@ -1,0 +1,123 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\Jacek_Kosciesza\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@3.9.6
+3 info using node@v6.2.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly fetchNamedPackageData @angular2-material/button-toggle
+20 silly mapToRegistry name @angular2-material/button-toggle
+21 silly mapToRegistry scope (from package name) @angular2-material
+22 verbose mapToRegistry no registry URL found in name for scope @angular2-material
+23 silly mapToRegistry using default registry
+24 silly mapToRegistry registry https://registry.npmjs.org/
+25 silly mapToRegistry data Result {
+25 silly mapToRegistry   raw: '@angular2-material/button-toggle',
+25 silly mapToRegistry   scope: '@angular2-material',
+25 silly mapToRegistry   name: '@angular2-material/button-toggle',
+25 silly mapToRegistry   rawSpec: '',
+25 silly mapToRegistry   spec: 'latest',
+25 silly mapToRegistry   type: 'tag' }
+26 silly mapToRegistry uri https://registry.npmjs.org/@angular2-material%2fbutton-toggle
+27 verbose request uri https://registry.npmjs.org/@angular2-material%2fbutton-toggle
+28 verbose request no auth needed
+29 info attempt registry request try #1 at 3:39:11 PM
+30 verbose request id 0311bd6a7823a474
+31 http request GET https://registry.npmjs.org/@angular2-material%2fbutton-toggle
+32 http 404 https://registry.npmjs.org/@angular2-material%2fbutton-toggle
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=0',
+33 verbose headers   'content-length': '21',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Tue, 05 Jul 2016 13:39:12 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   age: '0',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-fra1237-FRA',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1467725952.366626,VS0,VE358' }
+34 silly get cb [ 404,
+34 silly get   { 'content-type': 'application/json',
+34 silly get     'cache-control': 'max-age=0',
+34 silly get     'content-length': '21',
+34 silly get     'accept-ranges': 'bytes',
+34 silly get     date: 'Tue, 05 Jul 2016 13:39:12 GMT',
+34 silly get     via: '1.1 varnish',
+34 silly get     age: '0',
+34 silly get     connection: 'keep-alive',
+34 silly get     'x-served-by': 'cache-fra1237-FRA',
+34 silly get     'x-cache': 'MISS',
+34 silly get     'x-cache-hits': '0',
+34 silly get     'x-timer': 'S1467725952.366626,VS0,VE358' } ]
+35 silly fetchPackageMetaData Error: Not found : @angular2-material/button-toggle
+35 silly fetchPackageMetaData     at makeError (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+35 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+35 silly fetchPackageMetaData     at Request._callback (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+35 silly fetchPackageMetaData     at Request.self.callback (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:200:22)
+35 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+35 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
+35 silly fetchPackageMetaData     at Request.<anonymous> (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:1067:10)
+35 silly fetchPackageMetaData     at emitOne (events.js:101:20)
+35 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
+35 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:988:12)
+35 silly fetchPackageMetaData  error for @angular2-material/button-toggle@^2.0.0-alpha.5-2 { Error: Not found : @angular2-material/button-toggle
+35 silly fetchPackageMetaData     at makeError (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+35 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+35 silly fetchPackageMetaData     at Request._callback (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+35 silly fetchPackageMetaData     at Request.self.callback (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:200:22)
+35 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+35 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
+35 silly fetchPackageMetaData     at Request.<anonymous> (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:1067:10)
+35 silly fetchPackageMetaData     at emitOne (events.js:101:20)
+35 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
+35 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:988:12)
+35 silly fetchPackageMetaData   pkgid: '@angular2-material/button-toggle',
+35 silly fetchPackageMetaData   statusCode: 404,
+35 silly fetchPackageMetaData   code: 'E404' }
+36 silly rollbackFailedOptional Starting
+37 silly rollbackFailedOptional Finishing
+38 silly runTopLevelLifecycles Starting
+39 silly runTopLevelLifecycles Finishing
+40 silly install printInstalled
+41 verbose stack Error: Not found : @angular2-material/button-toggle
+41 verbose stack     at makeError (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+41 verbose stack     at CachingRegistryClient.<anonymous> (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+41 verbose stack     at Request._callback (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+41 verbose stack     at Request.self.callback (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:200:22)
+41 verbose stack     at emitTwo (events.js:106:13)
+41 verbose stack     at Request.emit (events.js:191:7)
+41 verbose stack     at Request.<anonymous> (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:1067:10)
+41 verbose stack     at emitOne (events.js:101:20)
+41 verbose stack     at Request.emit (events.js:188:7)
+41 verbose stack     at IncomingMessage.<anonymous> (C:\Users\Jacek_Kosciesza\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:988:12)
+42 verbose statusCode 404
+43 verbose pkgid @angular2-material/button-toggle
+44 verbose cwd c:\Git\InvestSystemsOrg\client
+45 error Windows_NT 10.0.10586
+46 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\Jacek_Kosciesza\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "install"
+47 error node v6.2.0
+48 error npm  v3.9.6
+49 error code E404
+50 error 404 Not found : @angular2-material/button-toggle
+51 error 404
+52 error 404 '@angular2-material/button-toggle' is not in the npm registry.
+53 error 404 You should bug the author to publish it (or use the name yourself!)
+54 error 404 It was specified as a dependency of 'investsystems.org'
+55 error 404 Note that you can also install from a
+56 error 404 tarball, folder, http url, or git url.
+57 verbose exit [ 1, true ]

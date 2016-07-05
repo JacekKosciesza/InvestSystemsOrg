@@ -4,6 +4,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 import { AngularFire } from 'angularfire2';
 
 import { MdToolbar } from '@angular2-material/toolbar';
+import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 
 import { DashboardComponent } from './+dashboard/dashboard.component'
 import { CompaniesComponent } from './+companies/companies.component'
@@ -22,7 +23,7 @@ import { areasReducer } from './three-circles/area.reducer'
     selector: 'invest-systems-org',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
-    directives: [ROUTER_DIRECTIVES, MdToolbar],
+    directives: [ROUTER_DIRECTIVES, MdToolbar, MD_BUTTON_DIRECTIVES],
     providers: [
         ROUTER_PROVIDERS,
         provideStore({ areas: areasReducer }),

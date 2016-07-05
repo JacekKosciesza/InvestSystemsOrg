@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var angularfire2_1 = require('angularfire2');
 var toolbar_1 = require('@angular2-material/toolbar');
+var button_1 = require('@angular2-material/button');
 var dashboard_component_1 = require('./+dashboard/dashboard.component');
 var companies_component_1 = require('./+companies/companies.component');
 var stocks_component_1 = require('./+stocks/stocks.component');
@@ -55,7 +56,7 @@ var AppComponent = (function () {
             selector: 'invest-systems-org',
             templateUrl: 'app.component.html',
             styleUrls: ['app.component.css'],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES, toolbar_1.MdToolbar],
+            directives: [router_deprecated_1.ROUTER_DIRECTIVES, toolbar_1.MdToolbar, button_1.MD_BUTTON_DIRECTIVES],
             providers: [
                 router_deprecated_1.ROUTER_PROVIDERS,
                 store_1.provideStore({ areas: area_reducer_1.areasReducer }),

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
 import { Router } from '@angular/router-deprecated';
 
+import { FirebaseListObservable } from 'angularfire2';
+
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 
 import { Company } from './company';
@@ -15,7 +17,7 @@ import { CompaniesService } from './companies.service';
     directives: [MD_CARD_DIRECTIVES]
 })
 export class CompaniesListComponent implements OnInit {
-    companies: Company[];
+    companies: FirebaseListObservable<Company[]>;
 
     constructor(private companiesService: CompaniesService, private router: Router, private titleService: Title) { }
 
@@ -25,7 +27,7 @@ export class CompaniesListComponent implements OnInit {
     }
 
     gotoDetail(company: Company) {
-        let link = ['CompaniesDetail', { symbol: company.abbreviation }];
+        let link = ['CompaniesDetail', { symbol: company.$key }];
         this.router.navigate(link);
     }
 }

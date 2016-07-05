@@ -1,6 +1,6 @@
 <h1>Companies List</h1>
 
-<md-card *ngFor="let company of companies" (click)="gotoDetail(company)">
+<md-card *ngFor="let company of companies | async" (click)="gotoDetail(company)">
     <md-card-title-group>
         <img md-card-sm-image src="/assets/companies/{{company.name}}.png">
         <md-card-title>{{company.name}}</md-card-title>

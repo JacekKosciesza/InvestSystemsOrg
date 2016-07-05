@@ -2,58 +2,58 @@
     <tbody>
         <tr>
             <th>Name:</th>
-            <td>{{company.name}}</td>
+            <td>{{(company | async)?.name}}</td>
         </tr>
         <tr>
             <th>Abbreviation:</th>
-            <td>{{company.abbreviation}}</td>
+            <td>{{(company | async)?.abbreviation}}</td>
         </tr>
         <tr>
             <th>Full Name:</th>
-            <td>{{company.fullName}}</td>
+            <td>{{(company | async)?.fullName}}</td>
         </tr>
         <tr>
             <th>Address:</th>
-            <td>{{company.address}}</td>
+            <td>{{(company | async)?.address}}</td>
         </tr>
         <tr>
             <th>State:</th>
-            <td>{{company.state}}</td>
+            <td>{{(company | async)?.state}}</td>
         </tr>
         <tr>
             <th>CEO:</th>
-            <td>{{company.ceo}}</td>
+            <td>{{(company | async)?.ceo}}</td>
         </tr>
 
         <tr>
             <th>Phone:</th>
-            <td>{{company.phone}}</td>
+            <td>{{(company | async)?.phone}}</td>
         </tr>
         <tr>
             <th>Fax:</th>
-            <td>{{company.fax}}</td>
+            <td>{{(company | async)?.fax}}</td>
         </tr>
         <tr>
             <th>Website:</th>
-            <td><a href="http://{{company.website}}" rel="nofollow">{{company.website}}</a></td>
+            <td><a href="http://{{(company | async)?.website}}" rel="nofollow">{{(company | async)?.website}}</a></td>
         </tr>
         <tr>
             <th>Email:</th>
-            <td><a href="mailto:{{company.email}}">{{company.email}}</a></td>
+            <td><a href="mailto:{{(company | async)?.email}}">{{(company | async)?.email}}</a></td>
         </tr>
 
         <tr>
             <th>IPO year:</th>
-            <td>{{company.ipoYear}}</td> <!--TODO: format year, month with momentsj?-->
+            <td>{{(company | async)?.ipoYear}}</td> <!--TODO: format year, month with momentsj?-->
         </tr>
         <tr>
             <th>Actions count:</th>
-            <td>{{company.actionsCount}}</td>
+            <td>{{(company | async)?.actionsCount}}</td>
         </tr>
         <tr>
             <th>Market value:</th>
-            <td>{{company.marketValue}}</td>
+            <td>{{(company | async)?.marketValue}}</td>
         </tr>
     </tbody>
 </table>
-<img src="/assets/companies/{{company.name}}.png" alt="{{company.name}}" />
+<img src="/assets/companies/{{(company | async)?.name}}.png" alt="{{(company | async)?.name}}" />

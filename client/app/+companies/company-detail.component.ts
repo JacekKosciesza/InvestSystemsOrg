@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
 import { RouteParams } from '@angular/router-deprecated';
 
+import { FirebaseObjectObservable } from 'angularfire2';
+
+
 import { Company } from './company';
 import { CompaniesService } from './companies.service';
 
@@ -12,7 +15,7 @@ import { CompaniesService } from './companies.service';
     styleUrls: ['company-detail.component.css']
 })
 export class CompanyDetailComponent implements OnInit {
-    company: Company;
+    company: FirebaseObjectObservable<Company>;
 
     constructor(private companiesService: CompaniesService, private routeParams: RouteParams, private titleService: Title) { }
 
@@ -20,7 +23,7 @@ export class CompanyDetailComponent implements OnInit {
         if (this.routeParams.get('symbol') !== null) {
             let symbol = this.routeParams.get('symbol');
             this.company = this.companiesService.getCompany(symbol);
-            this.titleService.setTitle(this.company.fullName);
+            //this.titleService.setTitle(this.company.fullName);
         }
     }
 }

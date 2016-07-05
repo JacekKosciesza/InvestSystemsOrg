@@ -12,7 +12,9 @@ var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var companies_service_1 = require('./companies.service');
 var companies_list_component_1 = require('./companies-list.component');
+var company_create_component_1 = require('./company-create.component');
 var company_detail_component_1 = require('./company-detail.component');
+var company_edit_component_1 = require('./company-edit.component');
 var CompaniesComponent = (function () {
     function CompaniesComponent() {
     }
@@ -35,10 +37,20 @@ var CompaniesComponent = (function () {
                 useAsDefault: true
             },
             {
+                path: '/create',
+                name: 'CompaniesCreate',
+                component: company_create_component_1.CompanyCreateComponent
+            },
+            {
                 path: '/:symbol',
                 name: 'CompaniesDetail',
                 component: company_detail_component_1.CompanyDetailComponent,
             },
+            {
+                path: '/:symbol/edit',
+                name: 'CompaniesEdit',
+                component: company_edit_component_1.CompanyEditComponent,
+            }
         ]), 
         __metadata('design:paramtypes', [])
     ], CompaniesComponent);

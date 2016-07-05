@@ -3,7 +3,9 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 
 import { CompaniesService } from './companies.service'
 import { CompaniesListComponent } from './companies-list.component'
+import { CompanyCreateComponent } from './company-create.component'
 import { CompanyDetailComponent } from './company-detail.component'
+import { CompanyEditComponent } from './company-edit.component'
 
 @Component({
   moduleId: module.id,
@@ -21,10 +23,20 @@ import { CompanyDetailComponent } from './company-detail.component'
         useAsDefault: true
     },
     {
+        path: '/create',
+        name: 'CompaniesCreate',
+        component: CompanyCreateComponent
+    },
+    {
         path: '/:symbol',
         name: 'CompaniesDetail',
         component: CompanyDetailComponent,
     },
+    {
+        path: '/:symbol/edit',
+        name: 'CompaniesEdit',
+        component: CompanyEditComponent,
+    }
 ])
 export class CompaniesComponent implements OnInit {
 

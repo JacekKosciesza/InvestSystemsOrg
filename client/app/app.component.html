@@ -1,8 +1,13 @@
 <md-toolbar [color]="toolbarColor">
     <img src="assets/touch/invest-systems-org-48x48.png" width="48" height="48" alt="Invest Systems Logo" />
     <span>{{title}}</span>
-    <div> {{ (af.auth | async)?.uid }} </div>
-    <button (click)="login()">Login</button>
+    
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+
+    <!--http://www.clearlyinnovative.com/integrating-firebase-with-angularfire2-into-angular2-ionic2-part-2-->
+    <img *ngIf="!(auth | async)" src="{{ (af.auth | async)?.auth?.photoURL }}" alt="{{ (af.auth | async)?.auth?.displayName }}" width="62" height="62">
+    <button md-raised-button *ngIf="auth | async" (click)="login()">Login</button>
 </md-toolbar>
 <nav>
     <a [routerLink]="['Dashboard']">Dashboard</a>
