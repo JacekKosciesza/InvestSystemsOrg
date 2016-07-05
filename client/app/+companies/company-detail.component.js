@@ -24,6 +24,15 @@ var CompanyDetailComponent = (function () {
             this.company = this.companiesService.getCompany(symbol);
         }
     };
+    CompanyDetailComponent.prototype.save = function (newName) {
+        this.company.set({ name: newName });
+    };
+    CompanyDetailComponent.prototype.update = function (newSize) {
+        this.company.update({ size: newSize });
+    };
+    CompanyDetailComponent.prototype.delete = function () {
+        this.company.remove();
+    };
     CompanyDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

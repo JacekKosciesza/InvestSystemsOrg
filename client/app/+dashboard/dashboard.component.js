@@ -15,7 +15,9 @@ var DashboardComponent = (function () {
         this.af = af;
     }
     DashboardComponent.prototype.ngOnInit = function () {
-        this.companies = this.af.database.list('companies', { query: { orderByChild: 'order' } });
+        this.companies = this.af.database.list('companies', { query: {
+                orderByChild: 'order',
+            } });
     };
     DashboardComponent = __decorate([
         // TODO: move to shared?

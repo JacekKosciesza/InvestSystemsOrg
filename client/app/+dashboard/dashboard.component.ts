@@ -16,6 +16,12 @@ export class DashboardComponent implements OnInit {
     constructor(private af: AngularFire) { }
 
     ngOnInit() {
-        this.companies = this.af.database.list('companies', { query: { orderByChild: 'order' } }) as FirebaseListObservable<Company[]>
+        this.companies = this.af.database.list('companies', { query: { 
+            orderByChild: 'order',
+            //equalTo: 'large',
+            //orderByKey: true,
+            //limitToFirst: 10,
+            //limitToLast: 100,
+        } }) as FirebaseListObservable<Company[]>
     }
 }

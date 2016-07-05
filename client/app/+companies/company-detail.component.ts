@@ -26,4 +26,14 @@ export class CompanyDetailComponent implements OnInit {
             //this.titleService.setTitle(this.company.fullName);
         }
     }
+
+    save(newName: string) {
+        this.company.set({ name: newName });
+    }
+    update(newSize: string) {
+        this.company.update({ size: newSize });
+    }
+    delete() {
+        this.company.remove();
+    }
 }
