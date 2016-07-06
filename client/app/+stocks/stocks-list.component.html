@@ -1,5 +1,12 @@
-<ol>
-    <li *ngFor="let stock of stocks">
-        <a (click)="gotoDetail(stock)">{{stock.name}}</a>
-    </li>
-</ol>
+<md-grid-list cols="4" gutterSize="1px" [style.background]="'lightblue'">
+    <md-grid-tile *ngFor="let stock of stocks | async" (click)="gotoDetail(stock)">
+        <header>
+            {{stock.name}}
+        </header>
+        <main>
+            <img src="/assets/stocks/{{stock.id}}.png" width="100%" height="100%">
+        </main>
+        <footer>
+        </footer>        
+    </md-grid-tile>
+</md-grid-list>

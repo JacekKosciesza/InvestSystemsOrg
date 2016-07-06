@@ -19,10 +19,9 @@ var StockDetailComponent = (function () {
         this.titleService = titleService;
     }
     StockDetailComponent.prototype.ngOnInit = function () {
-        var symbol = this.route.snapshot.params['symbol'];
-        if (symbol) {
-            this.stock = this.companiesService.getCompany(symbol);
-            this.titleService.setTitle(this.stock.name);
+        var id = this.route.snapshot.params['id'];
+        if (id) {
+            this.stock = this.companiesService.getCompany(id);
         }
     };
     StockDetailComponent = __decorate([

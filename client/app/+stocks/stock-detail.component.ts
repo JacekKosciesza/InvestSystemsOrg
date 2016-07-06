@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
+import { FirebaseObjectObservable } from 'angularfire2';
+
 import { StockExchange } from './stock-exchange';
 import { StockService } from './stock.service';
 
@@ -12,15 +14,15 @@ import { StockService } from './stock.service';
     styleUrls: ['stock-detail.component.css']
 })
 export class StockDetailComponent implements OnInit {
-    stock: StockExchange;
+    stock: FirebaseObjectObservable<StockExchange>;
 
     constructor(private companiesService: StockService, private route: ActivatedRoute, private titleService: Title) { }
 
     ngOnInit() {
-        let symbol = this.route.snapshot.params['symbol'];
-        if (symbol) {
-            this.stock = this.companiesService.getCompany(symbol);
-            this.titleService.setTitle(this.stock.name);
+        let id = this.route.snapshot.params['id'];
+        if (id) {
+            this.stock = this.companiesService.getCompany(id);
+            //this.titleService.setTitle(this.stock.name);
         }
     }
 }

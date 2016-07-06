@@ -27,6 +27,7 @@
         '@angular2-material/sidenav': { format: 'cjs', defaultExtension: 'js', main: 'sidenav.js' },
         '@angular2-material/button': { format: 'cjs', defaultExtension: 'js', main: 'button.js' },
         '@angular2-material/card': { format: 'cjs', defaultExtension: 'js', main: 'card.js' },
+        '@angular2-material/grid-list': { format: 'cjs', defaultExtension: 'js', main: 'grid-list.js' },
         'angularfire2': { defaultExtension: 'js', main: 'angularfire2.js' }
     };
     var ngPackageNames = [

@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
+var grid_list_1 = require('@angular2-material/grid-list');
+var card_1 = require('@angular2-material/card');
 var stock_service_1 = require('./stock.service');
 var StocksListComponent = (function () {
     function StocksListComponent(companiesService, router, titleService) {
@@ -23,7 +25,7 @@ var StocksListComponent = (function () {
         this.titleService.setTitle('Stock Exchanges');
     };
     StocksListComponent.prototype.gotoDetail = function (stock) {
-        var link = ['StockDetail', { id: stock.id }];
+        var link = ['/stock-exchanges', stock.id];
         this.router.navigate(link);
     };
     StocksListComponent = __decorate([
@@ -31,7 +33,8 @@ var StocksListComponent = (function () {
             moduleId: module.id,
             selector: 'stocks-list',
             templateUrl: 'stocks-list.component.html',
-            styleUrls: ['stocks-list.component.css']
+            styleUrls: ['stocks-list.component.css'],
+            directives: [grid_list_1.MD_GRID_LIST_DIRECTIVES, card_1.MD_CARD_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [stock_service_1.StockService, router_1.Router, platform_browser_1.Title])
     ], StocksListComponent);

@@ -2,11 +2,11 @@
     <tbody>
         <tr>
             <th>Name:</th>
-            <td>{{stock.name}}</td>
+            <td>{{(stock | async)?.name}}</td>
         </tr>
         <tr>
             <th>Website:</th>
-            <td><a href="{{stock.website}}" rel="nofollow">{{stock.website}}</a></td>
+            <td><a href="{{(stock | async)?.website}}" rel="nofollow">{{(stock | async)?.website}}</a></td>
         </tr>
     </tbody>
 </table>
