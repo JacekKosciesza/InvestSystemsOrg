@@ -9,12 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var companies_service_1 = require('./companies.service');
-var companies_list_component_1 = require('./companies-list.component');
-var company_create_component_1 = require('./company-create.component');
-var company_detail_component_1 = require('./company-detail.component');
-var company_edit_component_1 = require('./company-edit.component');
 var CompaniesComponent = (function () {
     function CompaniesComponent() {
     }
@@ -22,36 +18,10 @@ var CompaniesComponent = (function () {
     };
     CompaniesComponent = __decorate([
         core_1.Component({
-            moduleId: module.id,
-            selector: 'invsys-companies',
-            templateUrl: 'companies.component.html',
-            styleUrls: ['companies.component.css'],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES],
+            template: "\n    <h1>Companies</h1>\n    <router-outlet></router-outlet>\n  ",
+            directives: [router_1.ROUTER_DIRECTIVES],
             providers: [companies_service_1.CompaniesService]
-        }),
-        router_deprecated_1.RouteConfig([
-            {
-                path: '/',
-                name: 'CompaniesList',
-                component: companies_list_component_1.CompaniesListComponent,
-                useAsDefault: true
-            },
-            {
-                path: '/create',
-                name: 'CompaniesCreate',
-                component: company_create_component_1.CompanyCreateComponent
-            },
-            {
-                path: '/:symbol',
-                name: 'CompaniesDetail',
-                component: company_detail_component_1.CompanyDetailComponent,
-            },
-            {
-                path: '/:symbol/edit',
-                name: 'CompaniesEdit',
-                component: company_edit_component_1.CompanyEditComponent,
-            }
-        ]), 
+        }), 
         __metadata('design:paramtypes', [])
     ], CompaniesComponent);
     return CompaniesComponent;

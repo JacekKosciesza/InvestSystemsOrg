@@ -10,11 +10,11 @@
     <button md-raised-button *ngIf="auth | async" (click)="login()">Login</button>
 </md-toolbar>
 <nav>
-    <a [routerLink]="['Dashboard']">Dashboard</a>
-    <a [routerLink]="['Companies']">Companies</a>
-    <a [routerLink]="['Stocks']">Stocks</a>
-    <a [routerLink]="['Companies']">Rule #1</a> {
-    <a [routerLink]="['Notes']">Notes</a>
-    <a [routerLink]="['ThreeCircles']">Three Circles</a> }
+    <a [routerLink]="['/']" routerLinkActive="active">Dashboard</a>
+    <a [routerLink]="['/companies']">Companies</a>
+    <a [routerLink]="['/stock-exchanges']">Stocks</a>
+    <a [routerLink]="['/companies/']">Rule #1</a> {
+    <a [routerLink]="['/notes']">Notes</a>
+    <a [routerLink]="['/three-circles']">Three Circles</a> }
 </nav>
 <router-outlet></router-outlet>

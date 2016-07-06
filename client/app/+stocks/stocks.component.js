@@ -9,10 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var stock_service_1 = require('./stock.service');
-var stocks_list_component_1 = require('./stocks-list.component');
-var stock_detail_component_1 = require('./stock-detail.component');
 var StocksComponent = (function () {
     function StocksComponent() {
     }
@@ -24,22 +22,9 @@ var StocksComponent = (function () {
             selector: 'stock-exchanges',
             templateUrl: 'stocks.component.html',
             styleUrls: ['stocks.component.css'],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES],
+            directives: [router_1.ROUTER_DIRECTIVES],
             providers: [stock_service_1.StockService]
-        }),
-        router_deprecated_1.RouteConfig([
-            {
-                path: '/',
-                name: 'StocksList',
-                component: stocks_list_component_1.StocksListComponent,
-                useAsDefault: true
-            },
-            {
-                path: '/:id',
-                name: 'StockDetail',
-                component: stock_detail_component_1.StockDetailComponent,
-            },
-        ]), 
+        }), 
         __metadata('design:paramtypes', [])
     ], StocksComponent);
     return StocksComponent;

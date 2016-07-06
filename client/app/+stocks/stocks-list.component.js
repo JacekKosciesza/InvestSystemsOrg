@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var stock_service_1 = require('./stock.service');
 var StocksListComponent = (function () {
     function StocksListComponent(companiesService, router, titleService) {
@@ -33,7 +33,7 @@ var StocksListComponent = (function () {
             templateUrl: 'stocks-list.component.html',
             styleUrls: ['stocks-list.component.css']
         }), 
-        __metadata('design:paramtypes', [stock_service_1.StockService, router_deprecated_1.Router, platform_browser_1.Title])
+        __metadata('design:paramtypes', [stock_service_1.StockService, router_1.Router, platform_browser_1.Title])
     ], StocksListComponent);
     return StocksListComponent;
 }());

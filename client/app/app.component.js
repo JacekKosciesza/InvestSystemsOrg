@@ -9,16 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var angularfire2_1 = require('angularfire2');
 var toolbar_1 = require('@angular2-material/toolbar');
 var button_1 = require('@angular2-material/button');
-var dashboard_component_1 = require('./+dashboard/dashboard.component');
-var companies_component_1 = require('./+companies/companies.component');
-var stocks_component_1 = require('./+stocks/stocks.component');
-// Rule One
-var rule_one_notes_component_1 = require('./notes/rule-one-notes.component');
-var three_circles_component_1 = require('./three-circles/three-circles.component');
 // @ngrx/store
 var store_1 = require('@ngrx/store');
 var area_reducer_1 = require('./three-circles/area.reducer');
@@ -56,40 +50,12 @@ var AppComponent = (function () {
             selector: 'invest-systems-org',
             templateUrl: 'app.component.html',
             styleUrls: ['app.component.css'],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES, toolbar_1.MdToolbar, button_1.MD_BUTTON_DIRECTIVES],
+            directives: [router_1.ROUTER_DIRECTIVES, toolbar_1.MdToolbar, button_1.MD_BUTTON_DIRECTIVES],
             providers: [
-                router_deprecated_1.ROUTER_PROVIDERS,
+                ,
                 store_1.provideStore({ areas: area_reducer_1.areasReducer }),
             ]
-        }),
-        router_deprecated_1.RouteConfig([
-            {
-                path: '/',
-                name: 'Dashboard',
-                component: dashboard_component_1.DashboardComponent,
-                useAsDefault: true
-            },
-            {
-                path: '/companies/...',
-                name: 'Companies',
-                component: companies_component_1.CompaniesComponent,
-            },
-            {
-                path: '/stock-exchanges/...',
-                name: 'Stocks',
-                component: stocks_component_1.StocksComponent,
-            },
-            {
-                path: '/notes',
-                name: 'Notes',
-                component: rule_one_notes_component_1.RuleOneNotes,
-            },
-            {
-                path: '/three-circles',
-                name: 'ThreeCircles',
-                component: three_circles_component_1.ThreeCirclesComponent
-            },
-        ]), 
+        }), 
         __metadata('design:paramtypes', [angularfire2_1.AngularFire])
     ], AppComponent);
     return AppComponent;

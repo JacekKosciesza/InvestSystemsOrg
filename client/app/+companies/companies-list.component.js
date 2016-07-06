@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var card_1 = require('@angular2-material/card');
 var companies_service_1 = require('./companies.service');
 var CompaniesListComponent = (function () {
@@ -24,7 +24,7 @@ var CompaniesListComponent = (function () {
         this.titleService.setTitle('Companies');
     };
     CompaniesListComponent.prototype.gotoDetail = function (company) {
-        var link = ['CompaniesDetail', { symbol: company.$key }];
+        var link = ['/companies/:symbol', { symbol: company.$key }];
         this.router.navigate(link);
     };
     CompaniesListComponent = __decorate([
@@ -35,7 +35,7 @@ var CompaniesListComponent = (function () {
             styleUrls: ['companies-list.component.css'],
             directives: [card_1.MD_CARD_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [companies_service_1.CompaniesService, router_deprecated_1.Router, platform_browser_1.Title])
+        __metadata('design:paramtypes', [companies_service_1.CompaniesService, router_1.Router, platform_browser_1.Title])
     ], CompaniesListComponent);
     return CompaniesListComponent;
 }());

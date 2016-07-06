@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
-import { RouteParams } from '@angular/router-deprecated';
+import { ActivatedRoute } from '@angular/router';
 
 import { StockExchange } from './stock-exchange';
 import { StockService } from './stock.service';
@@ -14,11 +14,11 @@ import { StockService } from './stock.service';
 export class StockDetailComponent implements OnInit {
     stock: StockExchange;
 
-    constructor(private companiesService: StockService, private routeParams: RouteParams, private titleService: Title) { }
+    constructor(private companiesService: StockService, private route: ActivatedRoute, private titleService: Title) { }
 
     ngOnInit() {
-        if (this.routeParams.get('id') !== null) {
-            let symbol = this.routeParams.get('id');
+        let symbol = this.route.snapshot.params['symbol'];
+        if (symbol) {
             this.stock = this.companiesService.getCompany(symbol);
             this.titleService.setTitle(this.stock.name);
         }

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { StockService } from './stock.service'
-import { StocksListComponent } from './stocks-list.component'
-import { StockDetailComponent } from './stock-detail.component'
 
 @Component({
   moduleId: module.id,
@@ -13,19 +11,6 @@ import { StockDetailComponent } from './stock-detail.component'
   directives: [ROUTER_DIRECTIVES],
   providers: [StockService]
 })
-@RouteConfig([
-    {
-        path: '/',
-        name: 'StocksList',
-        component: StocksListComponent,
-        useAsDefault: true
-    },
-    {
-        path: '/:id',
-        name: 'StockDetail',
-        component: StockDetailComponent,
-    },
-])
 export class StocksComponent implements OnInit {
 
   constructor() { }

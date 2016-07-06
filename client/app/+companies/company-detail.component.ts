@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
-import { RouteParams } from '@angular/router-deprecated';
+import { ActivatedRoute } from '@angular/router';
 
 import { FirebaseObjectObservable } from 'angularfire2';
 
@@ -14,17 +14,23 @@ import { CompaniesService } from './companies.service';
     templateUrl: 'company-detail.component.html',
     styleUrls: ['company-detail.component.css']
 })
-export class CompanyDetailComponent implements OnInit {
+export class CompanyDetailComponent implements OnInit, OnDestroy {
     company: FirebaseObjectObservable<Company>;
+    private routeParams: any; // TODO: strongly type it
 
-    constructor(private companiesService: CompaniesService, private routeParams: RouteParams, private titleService: Title) { }
+    constructor(private companiesService: CompaniesService, private route: ActivatedRoute, private titleService: Title) { }
 
     ngOnInit() {
-        if (this.routeParams.get('symbol') !== null) {
-            let symbol = this.routeParams.get('symbol');
+        //let symbol = this.route.snapshot.params['symbol'];
+
+        this.routeParams = this.route.params.subscribe(params => {
+            let symbol = params['symbol'];
             this.company = this.companiesService.getCompany(symbol);
-            //this.titleService.setTitle(this.company.fullName);
-        }
+        });
+    }
+
+    ngOnDestroy() {
+        this.routeParams.unsubscribe();
     }
 
     save(newName: string) {

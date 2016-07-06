@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 
 import { FirebaseListObservable } from 'angularfire2';
 
@@ -27,7 +27,7 @@ export class CompaniesListComponent implements OnInit {
     }
 
     gotoDetail(company: Company) {
-        let link = ['CompaniesDetail', { symbol: company.$key }];
+        let link = ['/companies/:symbol', { symbol: company.$key }];
         this.router.navigate(link);
     }
 }

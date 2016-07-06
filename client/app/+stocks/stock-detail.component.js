@@ -10,17 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var stock_service_1 = require('./stock.service');
 var StockDetailComponent = (function () {
-    function StockDetailComponent(companiesService, routeParams, titleService) {
+    function StockDetailComponent(companiesService, route, titleService) {
         this.companiesService = companiesService;
-        this.routeParams = routeParams;
+        this.route = route;
         this.titleService = titleService;
     }
     StockDetailComponent.prototype.ngOnInit = function () {
-        if (this.routeParams.get('id') !== null) {
-            var symbol = this.routeParams.get('id');
+        var symbol = this.route.snapshot.params['symbol'];
+        if (symbol) {
             this.stock = this.companiesService.getCompany(symbol);
             this.titleService.setTitle(this.stock.name);
         }
@@ -32,7 +32,7 @@ var StockDetailComponent = (function () {
             templateUrl: 'stock-detail.component.html',
             styleUrls: ['stock-detail.component.css']
         }), 
-        __metadata('design:paramtypes', [stock_service_1.StockService, router_deprecated_1.RouteParams, platform_browser_1.Title])
+        __metadata('design:paramtypes', [stock_service_1.StockService, router_1.ActivatedRoute, platform_browser_1.Title])
     ], StockDetailComponent);
     return StockDetailComponent;
 }());

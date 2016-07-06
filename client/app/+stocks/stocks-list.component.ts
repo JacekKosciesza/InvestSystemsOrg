@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 
 import { StockExchange } from './stock-exchange';
 import { StockService } from './stock.service';
