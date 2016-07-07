@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { FirebaseListObservable } from 'angularfire2';
 

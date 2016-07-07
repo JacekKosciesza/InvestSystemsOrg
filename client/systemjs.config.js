@@ -28,12 +28,14 @@
         '@angular2-material/button': { format: 'cjs', defaultExtension: 'js', main: 'button.js' },
         '@angular2-material/card': { format: 'cjs', defaultExtension: 'js', main: 'card.js' },
         '@angular2-material/grid-list': { format: 'cjs', defaultExtension: 'js', main: 'grid-list.js' },
+        '@angular2-material/input': { format: 'cjs', defaultExtension: 'js', main: 'input.js' },
         'angularfire2': { defaultExtension: 'js', main: 'angularfire2.js' }
     };
     var ngPackageNames = [
         'common',
         'compiler',
         'core',
+        'forms',
         'http',
         'platform-browser',
         'platform-browser-dynamic',

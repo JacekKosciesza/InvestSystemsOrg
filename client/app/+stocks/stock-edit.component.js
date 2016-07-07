@@ -12,44 +12,37 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var button_1 = require('@angular2-material/button');
+var input_1 = require('@angular2-material/input');
 var stock_service_1 = require('./stock.service');
-var StockDetailComponent = (function () {
-    function StockDetailComponent(companiesService, route, router, titleService) {
+var StockEditComponent = (function () {
+    function StockEditComponent(companiesService, route, titleService) {
         this.companiesService = companiesService;
         this.route = route;
-        this.router = router;
         this.titleService = titleService;
     }
-    StockDetailComponent.prototype.ngOnInit = function () {
+    StockEditComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.routeParams = this.route.params.subscribe(function (params) {
             var id = params['id'];
             if (id) {
-                _this.stock = _this.companiesService.getCompany(id);
-                _this.stock.subscribe(function (stock) {
-                    _this.titleService.setTitle(stock.name);
+                _this.companiesService.getCompany(id).subscribe(function (stock) {
+                    _this.stock = stock;
+                    _this.titleService.setTitle(stock.name + " | Edit");
                 });
             }
         });
     };
-    StockDetailComponent.prototype.edit = function (stock) {
-        var _this = this;
-        stock.subscribe(function (stock) {
-            var link = ['/stock-exchanges', stock.id, 'edit']; // TODO: check if this is the right way to create link like that
-            _this.router.navigate(link);
-        });
-    };
-    StockDetailComponent = __decorate([
+    StockEditComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'stock-detail',
-            templateUrl: 'stock-detail.component.html',
-            styleUrls: ['stock-detail.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES, button_1.MD_BUTTON_DIRECTIVES]
+            selector: 'stock-edit',
+            templateUrl: 'stock-edit.component.html',
+            styleUrls: ['stock-edit.component.css'],
+            directives: [button_1.MD_BUTTON_DIRECTIVES, input_1.MD_INPUT_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [stock_service_1.StockService, router_1.ActivatedRoute, router_1.Router, platform_browser_1.Title])
-    ], StockDetailComponent);
-    return StockDetailComponent;
+        __metadata('design:paramtypes', [stock_service_1.StockService, router_1.ActivatedRoute, platform_browser_1.Title])
+    ], StockEditComponent);
+    return StockEditComponent;
 }());
-exports.StockDetailComponent = StockDetailComponent;
-//# sourceMappingURL=stock-detail.component.js.map
+exports.StockEditComponent = StockEditComponent;
+//# sourceMappingURL=stock-edit.component.js.map

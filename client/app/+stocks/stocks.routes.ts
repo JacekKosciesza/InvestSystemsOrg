@@ -2,7 +2,9 @@ import { RouterConfig } from '@angular/router';
 
 import { StocksComponent } from './stocks.component'
 import { StocksListComponent } from './stocks-list.component'
+import { StockCreateComponent } from './stock-create.component'
 import { StockDetailComponent } from './stock-detail.component'
+import { StockEditComponent } from './stock-edit.component'
 
 export const StocksRoutes: RouterConfig = [
     {
@@ -14,8 +16,16 @@ export const StocksRoutes: RouterConfig = [
                 component: StocksListComponent
             },
             {
+                path: 'create',
+                component: StockCreateComponent
+            },
+            {
                 path: ':id',
                 component: StockDetailComponent
+            },
+            {
+                path: ':id/edit',
+                component: StockEditComponent
             }
         ]
     }
