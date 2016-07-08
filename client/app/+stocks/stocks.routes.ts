@@ -1,5 +1,7 @@
 import { RouterConfig } from '@angular/router';
 
+import { AuthGuard } from '../auth.guard'
+
 import { StocksComponent } from './stocks.component'
 import { StocksListComponent } from './stocks-list.component'
 import { StockCreateComponent } from './stock-create.component'
@@ -17,7 +19,8 @@ export const StocksRoutes: RouterConfig = [
             },
             {
                 path: 'create',
-                component: StockCreateComponent
+                component: StockCreateComponent,
+                canActivate: [AuthGuard]
             },
             {
                 path: ':id',
@@ -25,7 +28,8 @@ export const StocksRoutes: RouterConfig = [
             },
             {
                 path: ':id/edit',
-                component: StockEditComponent
+                component: StockEditComponent,
+                canActivate: [AuthGuard]
             }
         ]
     }

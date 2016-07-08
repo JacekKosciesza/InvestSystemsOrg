@@ -1,3 +1,7 @@
-<h1>{{stock?.name}}</h1>
+<h1>{{stock.name}}</h1>
 
 <!--<md-input placeholder="Name" value="test"></md-input>-->
+<input type="text" #newName placeholder="Name" [(ngModel)]="stock.name" />
+
+<button md-raised-button (click)="cancel(stock)">Cancel</button>
+<button md-raised-button color="primary" (click)="save(newName.value)">💾 Save</button>

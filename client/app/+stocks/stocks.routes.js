@@ -1,4 +1,5 @@
 "use strict";
+var auth_guard_1 = require('../auth.guard');
 var stocks_component_1 = require('./stocks.component');
 var stocks_list_component_1 = require('./stocks-list.component');
 var stock_create_component_1 = require('./stock-create.component');
@@ -15,7 +16,8 @@ exports.StocksRoutes = [
             },
             {
                 path: 'create',
-                component: stock_create_component_1.StockCreateComponent
+                component: stock_create_component_1.StockCreateComponent,
+                canActivate: [auth_guard_1.AuthGuard]
             },
             {
                 path: ':id',
@@ -23,7 +25,8 @@ exports.StocksRoutes = [
             },
             {
                 path: ':id/edit',
-                component: stock_edit_component_1.StockEditComponent
+                component: stock_edit_component_1.StockEditComponent,
+                canActivate: [auth_guard_1.AuthGuard]
             }
         ]
     }

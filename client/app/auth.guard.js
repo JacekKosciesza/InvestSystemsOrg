@@ -9,25 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var angularfire2_1 = require('angularfire2');
-var StockService = (function () {
-    function StockService(af) {
+var AuthGuard = (function () {
+    function AuthGuard(af, router) {
         this.af = af;
+        this.router = router;
     }
-    StockService.prototype.getStockExchanges = function () {
-        return this.af.database.list('stock-exchanges');
+    AuthGuard.prototype.canActivate = function () {
+        // debugger;
+        // if (this.af.auth) { return true; }
+        // this.router.navigate(['/login']);
+        // return false;
+        return true;
     };
-    StockService.prototype.getStockExchange = function (symbol) {
-        return this.af.database.object("stock-exchanges/" + symbol);
-    };
-    StockService.prototype.updategetStockExchange = function (stockFirebaesObject, update) {
-        stockFirebaesObject.update(update);
-    };
-    StockService = __decorate([
+    AuthGuard = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [angularfire2_1.AngularFire])
-    ], StockService);
-    return StockService;
+        __metadata('design:paramtypes', [angularfire2_1.AngularFire, router_1.Router])
+    ], AuthGuard);
+    return AuthGuard;
 }());
-exports.StockService = StockService;
-//# sourceMappingURL=stock.service.js.map
+exports.AuthGuard = AuthGuard;
+//# sourceMappingURL=auth.guard.js.map

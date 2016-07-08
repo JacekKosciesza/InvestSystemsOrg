@@ -13,24 +13,32 @@ var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var button_1 = require('@angular2-material/button');
 var input_1 = require('@angular2-material/input');
+var stock_exchange_1 = require('./stock-exchange');
 var stock_service_1 = require('./stock.service');
 var StockEditComponent = (function () {
-    function StockEditComponent(companiesService, route, titleService) {
-        this.companiesService = companiesService;
+    function StockEditComponent(stockService, route, titleService) {
+        this.stockService = stockService;
         this.route = route;
         this.titleService = titleService;
+        this.stock = new stock_exchange_1.StockExchange();
     }
     StockEditComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.routeParams = this.route.params.subscribe(function (params) {
             var id = params['id'];
             if (id) {
-                _this.companiesService.getCompany(id).subscribe(function (stock) {
+                _this.stockFirebaesObject = _this.stockService.getStockExchange(id);
+                _this.stockFirebaesObject.subscribe(function (stock) {
                     _this.stock = stock;
                     _this.titleService.setTitle(stock.name + " | Edit");
                 });
             }
         });
+    };
+    StockEditComponent.prototype.cancel = function () {
+    };
+    StockEditComponent.prototype.save = function (newName) {
+        this.stockService.updategetStockExchange(this.stockFirebaesObject, { name: newName });
     };
     StockEditComponent = __decorate([
         core_1.Component({

@@ -1,4 +1,4 @@
-export interface StockExchange {
+export class StockExchange {
     id: string;
     name: string;
     //fullName: string;

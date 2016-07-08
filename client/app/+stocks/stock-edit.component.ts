@@ -15,23 +15,32 @@ import { StockService } from './stock.service';
     selector: 'stock-edit',
     templateUrl: 'stock-edit.component.html',
     styleUrls: ['stock-edit.component.css'],
-    directives: [MD_BUTTON_DIRECTIVES,MD_INPUT_DIRECTIVES]
+    directives: [MD_BUTTON_DIRECTIVES, MD_INPUT_DIRECTIVES]
 })
 export class StockEditComponent implements OnInit {
-    stock: StockExchange;
+    stockFirebaesObject: FirebaseObjectObservable<StockExchange>;
+    stock: StockExchange = new StockExchange();
     private routeParams: any;
 
-    constructor(private companiesService: StockService, private route: ActivatedRoute, private titleService: Title) { }
+    constructor(private stockService: StockService, private route: ActivatedRoute, private titleService: Title) { }
 
     ngOnInit() {
         this.routeParams = this.route.params.subscribe(params => {
             let id = params['id'];
             if (id) {
-                this.companiesService.getCompany(id).subscribe((stock: StockExchange) => {
+                this.stockFirebaesObject = this.stockService.getStockExchange(id);
+                this.stockFirebaesObject.subscribe((stock: StockExchange) => {
                     this.stock = stock;
                     this.titleService.setTitle(`${stock.name} | Edit`)
                 })
             }
         });
+    }
+
+    cancel() {
+    }
+
+    save(newName: string) {
+        this.stockService.updategetStockExchange(this.stockFirebaesObject, {name: newName});
     }
 }

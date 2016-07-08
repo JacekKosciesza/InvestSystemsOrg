@@ -1,6 +1,7 @@
 // Imports for loading & configuring the in-memory web api
 import { XHRBackend, HTTP_PROVIDERS } from '@angular/http';
 
+import { AuthGuard } from './auth.guard'
 
 import { FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -31,7 +32,8 @@ bootstrap(AppComponent, [
     }),
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
     { provide: SEED_DATA, useClass: InMemoryDataService },      // in-mem server data
-    Title
+    Title,
+    AuthGuard
 ]).then(
     () => window.console.info('Angular finished bootstrapping your application!'),
     (error) => {

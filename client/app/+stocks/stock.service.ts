@@ -8,11 +8,15 @@ import { StockExchange } from './stock-exchange';
 export class StockService {
     constructor(private af: AngularFire) { }
 
-    getCompanies(): FirebaseListObservable<StockExchange[]> {
+    getStockExchanges(): FirebaseListObservable<StockExchange[]> {
         return this.af.database.list('stock-exchanges') as FirebaseListObservable<StockExchange[]>;
     }
 
-    getCompany(symbol: string): FirebaseObjectObservable<StockExchange> {
+    getStockExchange(symbol: string): FirebaseObjectObservable<StockExchange> {
         return this.af.database.object(`stock-exchanges/${symbol}`) as FirebaseObjectObservable<StockExchange>;
+    }
+
+    updategetStockExchange(stockFirebaesObject: FirebaseObjectObservable<StockExchange>, update: any) {
+        stockFirebaesObject.update(update);
     }
 }
