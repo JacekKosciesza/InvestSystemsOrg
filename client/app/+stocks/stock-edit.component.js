@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var button_1 = require('@angular2-material/button');
 var input_1 = require('@angular2-material/input');
+var icon_1 = require('@angular2-material/icon/icon');
 var stock_exchange_1 = require('./stock-exchange');
 var stock_service_1 = require('./stock.service');
 var StockEditComponent = (function () {
@@ -46,7 +47,7 @@ var StockEditComponent = (function () {
             selector: 'stock-edit',
             templateUrl: 'stock-edit.component.html',
             styleUrls: ['stock-edit.component.css'],
-            directives: [button_1.MD_BUTTON_DIRECTIVES, input_1.MD_INPUT_DIRECTIVES]
+            directives: [button_1.MD_BUTTON_DIRECTIVES, input_1.MD_INPUT_DIRECTIVES, icon_1.MdIcon]
         }), 
         __metadata('design:paramtypes', [stock_service_1.StockService, router_1.ActivatedRoute, platform_browser_1.Title])
     ], StockEditComponent);

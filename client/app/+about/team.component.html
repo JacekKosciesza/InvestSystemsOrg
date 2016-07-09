@@ -1,0 +1,9 @@
+<h1>Team</h1>
+
+<md-card *ngFor="let member of team | async">
+    <md-card-title-group>
+        <!--<img md-card-sm-image src="/assets/companies/{{company.name}}.png">-->
+        <md-card-title>{{member.name}}</md-card-title>
+        <md-card-subtitle>{{member.position}}</md-card-subtitle>
+    </md-card-title-group>
+</md-card>

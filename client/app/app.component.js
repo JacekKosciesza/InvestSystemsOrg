@@ -13,6 +13,7 @@ var router_1 = require('@angular/router');
 var angularfire2_1 = require('angularfire2');
 var toolbar_1 = require('@angular2-material/toolbar');
 var button_1 = require('@angular2-material/button');
+var icon_1 = require('@angular2-material/icon/icon');
 // @ngrx/store
 var store_1 = require('@ngrx/store');
 var area_reducer_1 = require('./three-circles/area.reducer');
@@ -50,7 +51,7 @@ var AppComponent = (function () {
             selector: 'invest-systems-org',
             templateUrl: 'app.component.html',
             styleUrls: ['app.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES, toolbar_1.MdToolbar, button_1.MD_BUTTON_DIRECTIVES],
+            directives: [router_1.ROUTER_DIRECTIVES, toolbar_1.MdToolbar, button_1.MD_BUTTON_DIRECTIVES, icon_1.MdIcon],
             providers: [
                 ,
                 store_1.provideStore({ areas: area_reducer_1.areasReducer }),

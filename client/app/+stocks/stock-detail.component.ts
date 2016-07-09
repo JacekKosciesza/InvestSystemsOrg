@@ -3,6 +3,7 @@ import { Title }     from '@angular/platform-browser';
 import { Router, ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
+import {MdIcon} from '@angular2-material/icon/icon';
 
 import { FirebaseObjectObservable } from 'angularfire2';
 
@@ -14,20 +15,20 @@ import { StockService } from './stock.service';
     selector: 'stock-detail',
     templateUrl: 'stock-detail.component.html',
     styleUrls: ['stock-detail.component.css'],
-    directives: [ROUTER_DIRECTIVES, MD_BUTTON_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, MD_BUTTON_DIRECTIVES, MdIcon]
 
 })
 export class StockDetailComponent implements OnInit {
     stock: FirebaseObjectObservable<StockExchange>;
     private routeParams: any; // TODO: strongly type it
 
-    constructor(private companiesService: StockService, private route: ActivatedRoute, private router: Router, private titleService: Title) { }
+    constructor(private stockService: StockService, private route: ActivatedRoute, private router: Router, private titleService: Title) { }
 
     ngOnInit() {
         this.routeParams = this.route.params.subscribe(params => {
             let id = params['id'];
             if (id) {
-                this.stock = this.companiesService.getCompany(id);
+                this.stock = this.stockService.getStockExchange(id);
                 this.stock.subscribe((stock: StockExchange) => {
                     this.titleService.setTitle(stock.name)
                 });

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+import {MdIcon} from '@angular2-material/icon/icon';
 
 import { FirebaseObjectObservable } from 'angularfire2';
 
@@ -15,7 +16,7 @@ import { StockService } from './stock.service';
     selector: 'stock-edit',
     templateUrl: 'stock-edit.component.html',
     styleUrls: ['stock-edit.component.css'],
-    directives: [MD_BUTTON_DIRECTIVES, MD_INPUT_DIRECTIVES]
+    directives: [MD_BUTTON_DIRECTIVES, MD_INPUT_DIRECTIVES, MdIcon]
 })
 export class StockEditComponent implements OnInit {
     stockFirebaesObject: FirebaseObjectObservable<StockExchange>;

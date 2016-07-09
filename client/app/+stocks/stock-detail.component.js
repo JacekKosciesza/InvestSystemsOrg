@@ -12,10 +12,11 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var button_1 = require('@angular2-material/button');
+var icon_1 = require('@angular2-material/icon/icon');
 var stock_service_1 = require('./stock.service');
 var StockDetailComponent = (function () {
-    function StockDetailComponent(companiesService, route, router, titleService) {
-        this.companiesService = companiesService;
+    function StockDetailComponent(stockService, route, router, titleService) {
+        this.stockService = stockService;
         this.route = route;
         this.router = router;
         this.titleService = titleService;
@@ -25,7 +26,7 @@ var StockDetailComponent = (function () {
         this.routeParams = this.route.params.subscribe(function (params) {
             var id = params['id'];
             if (id) {
-                _this.stock = _this.companiesService.getCompany(id);
+                _this.stock = _this.stockService.getStockExchange(id);
                 _this.stock.subscribe(function (stock) {
                     _this.titleService.setTitle(stock.name);
                 });
@@ -45,7 +46,7 @@ var StockDetailComponent = (function () {
             selector: 'stock-detail',
             templateUrl: 'stock-detail.component.html',
             styleUrls: ['stock-detail.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES, button_1.MD_BUTTON_DIRECTIVES]
+            directives: [router_1.ROUTER_DIRECTIVES, button_1.MD_BUTTON_DIRECTIVES, icon_1.MdIcon]
         }), 
         __metadata('design:paramtypes', [stock_service_1.StockService, router_1.ActivatedRoute, router_1.Router, platform_browser_1.Title])
     ], StockDetailComponent);

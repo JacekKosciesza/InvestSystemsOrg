@@ -4,4 +4,7 @@
 <input type="text" #newName placeholder="Name" [(ngModel)]="stock.name" />
 
 <button md-raised-button (click)="cancel(stock)">Cancel</button>
-<button md-raised-button color="primary" (click)="save(newName.value)">💾 Save</button>
+<button md-raised-button color="primary" (click)="save(newName.value)">
+    <md-icon class="md-24">save</md-icon>
+    Save
+</button>

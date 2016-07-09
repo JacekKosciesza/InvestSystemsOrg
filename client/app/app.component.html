@@ -5,6 +5,7 @@
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
 
+    <md-icon class="md-24">settings</md-icon>
     <!--http://www.clearlyinnovative.com/integrating-firebase-with-angularfire2-into-angular2-ionic2-part-2-->
     <img *ngIf="!(auth | async)" src="{{ (af.auth | async)?.auth?.photoURL }}" alt="{{ (af.auth | async)?.auth?.displayName }}" width="62" height="62">
     <button md-raised-button *ngIf="auth | async" (click)="login()">Login</button>
@@ -16,5 +17,6 @@
     <a [routerLink]="['/companies/']">Rule #1</a> {
     <a [routerLink]="['/notes']">Notes</a>
     <a [routerLink]="['/three-circles']">Three Circles</a> }
+    <a [routerLink]="['/about/team']">About (Team)</a>
 </nav>
 <router-outlet></router-outlet>
