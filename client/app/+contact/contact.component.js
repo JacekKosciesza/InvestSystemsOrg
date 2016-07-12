@@ -23,6 +23,7 @@ var ContactComponent = (function () {
         this.message = new message_1.Message();
     }
     ContactComponent.prototype.ngOnInit = function () {
+        this.messages = this.af.database.list('/contact/messages');
         this.newMessage();
     };
     ContactComponent.prototype.newMessage = function () {
@@ -35,7 +36,10 @@ var ContactComponent = (function () {
             setTimeout(function () { return _this.active = true; }, 0);
         });
     };
-    ContactComponent.prototype.onSubmit = function () { this.submitted = true; };
+    ContactComponent.prototype.onSubmit = function () {
+        this.submitted = true;
+        this.messages.push(this.message);
+    };
     Object.defineProperty(ContactComponent.prototype, "diagnostic", {
         // TODO: Remove this when we're done
         get: function () { return JSON.stringify(this.message); },

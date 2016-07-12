@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { AngularFire } from 'angularfire2';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
@@ -21,11 +21,13 @@ export class ContactComponent implements OnInit {
     message: Message;
     active = true;
     submitted = false;
+    messages: FirebaseListObservable<Message[]>;
     constructor(private af: AngularFire) {
         this.message = new Message();
     }
 
     ngOnInit() {
+        this.messages = this.af.database.list('/contact/messages') as FirebaseListObservable<Message[]>;
         this.newMessage();
     }
 
@@ -39,7 +41,10 @@ export class ContactComponent implements OnInit {
         });
     }
 
-    onSubmit() { this.submitted = true; }
+    onSubmit() {
+        this.submitted = true;
+        this.messages.push(this.message);
+    }
 
     // TODO: Remove this when we're done
     get diagnostic() { return JSON.stringify(this.message); }
