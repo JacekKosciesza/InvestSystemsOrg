@@ -1,0 +1,41 @@
+<h1>Contact</h1>
+
+<md-card>
+    <md-card-title-group>
+        <md-card-title>Contact Form</md-card-title>
+
+    </md-card-title-group>
+    <!--{{active}}-->
+    <div [hidden]="submitted">
+        <form *ngIf="active" (ngSubmit)="onSubmit()" #messageForm="ngForm">
+            <input type="hidden" value="{{message.id}}">
+            <div>
+                <label for="subject">Subject</label>
+                <input type="text" [(ngModel)]="message.subject" name="subject" id="subject" required #subject="ngModel" #spy>
+                <!--{{spy.className}}-->
+                <div [hidden]="subject.valid || subject.pristine">Subject is required</div>
+            </div>
+            <div>
+                <label for="body">Message</label>
+                <textarea cols="30" rows="10" [(ngModel)]="message.body" name="body" id="body" required #body="ngModel"></textarea>
+                <div [hidden]="body.valid || body.pristine">Message is required</div>
+            </div>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" [(ngModel)]="message.name" name="name" id="name" required #name="ngModel">
+                <div [hidden]="name.valid || name.pristine">Name is required</div>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="text" [(ngModel)]="message.email" name="email" id="email" required #email="ngModel">
+                <div [hidden]="email.valid || email.pristine">Email is required</div>
+            </div>
+            <button type="button" (click)="newMessage()">New Message</button>
+            <button type="submit" [disabled]="!messageForm.form.valid">Send</button>
+        </form>
+        <!--{{diagnostic}}-->
+    </div>
+    <div [hidden]="!submitted">
+        Thanks for sending message!
+    </div>
+</md-card>

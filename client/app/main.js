@@ -3,6 +3,7 @@
 var http_1 = require('@angular/http');
 var icon_registry_1 = require('@angular2-material/icon/icon-registry');
 var auth_guard_1 = require('./auth.guard');
+var forms_1 = require('@angular/forms');
 var angularfire2_1 = require('angularfire2');
 var angular2_in_memory_web_api_1 = require('angular2-in-memory-web-api');
 var in_memory_circle_data_service_1 = require('./three-circles/in-memory-circle-data.service');
@@ -30,7 +31,9 @@ platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     { provide: angular2_in_memory_web_api_1.SEED_DATA, useClass: in_memory_circle_data_service_1.InMemoryDataService },
     platform_browser_1.Title,
     auth_guard_1.AuthGuard,
-    icon_registry_1.MdIconRegistry
+    icon_registry_1.MdIconRegistry,
+    forms_1.disableDeprecatedForms(),
+    forms_1.provideForms()
 ]).then(function () { return window.console.info('Angular finished bootstrapping your application!'); }, function (error) {
     console.warn('Angular was not able to bootstrap your application.');
     console.error(error);

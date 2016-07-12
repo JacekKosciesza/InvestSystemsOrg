@@ -6,6 +6,7 @@ var stocks_routes_1 = require('./+stocks/stocks.routes');
 var rule_one_notes_component_1 = require('./notes/rule-one-notes.component');
 var three_circles_component_1 = require('./three-circles/three-circles.component');
 var team_component_1 = require('./+about/team.component');
+var contact_component_1 = require('./+contact/contact.component');
 exports.AppRoutes = [
     {
         path: '',
@@ -23,6 +24,10 @@ exports.AppRoutes = [
     {
         path: 'about/team',
         component: team_component_1.TeamComponent
+    },
+    {
+        path: 'contact',
+        component: contact_component_1.ContactComponent
     },
 ]);
 exports.APP_ROUTER_PROVIDER = router_1.provideRouter(exports.AppRoutes);

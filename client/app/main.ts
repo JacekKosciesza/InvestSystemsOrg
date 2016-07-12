@@ -3,6 +3,9 @@ import { XHRBackend, HTTP_PROVIDERS } from '@angular/http';
 import {MdIconRegistry} from '@angular2-material/icon/icon-registry';
 import { AuthGuard } from './auth.guard'
 
+
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
+
 import { FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
@@ -34,7 +37,9 @@ bootstrap(AppComponent, [
     { provide: SEED_DATA, useClass: InMemoryDataService },      // in-mem server data
     Title,
     AuthGuard,
-    MdIconRegistry
+    MdIconRegistry,
+    disableDeprecatedForms(),
+    provideForms()
 ]).then(
     () => window.console.info('Angular finished bootstrapping your application!'),
     (error) => {

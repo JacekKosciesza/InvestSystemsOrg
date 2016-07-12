@@ -24,7 +24,7 @@ var CompaniesListComponent = (function () {
         this.titleService.setTitle('Companies');
     };
     CompaniesListComponent.prototype.gotoDetail = function (company) {
-        var link = ['/companies/:symbol', { symbol: company.$key }];
+        var link = ['/companies/', company.$key];
         this.router.navigate(link);
     };
     CompaniesListComponent = __decorate([

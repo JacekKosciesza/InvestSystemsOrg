@@ -6,6 +6,7 @@ import { StocksRoutes } from './+stocks/stocks.routes'
 import { RuleOneNotes } from './notes/rule-one-notes.component'
 import { ThreeCirclesComponent } from './three-circles/three-circles.component'
 import { TeamComponent } from './+about/team.component'
+import { ContactComponent } from './+contact/contact.component'
 
 export const AppRoutes: RouterConfig = [
     {
@@ -25,6 +26,10 @@ export const AppRoutes: RouterConfig = [
     {
         path: 'about/team',
         component: TeamComponent
+    },
+    {
+        path: 'contact',
+        component: ContactComponent
     },
 ];
 

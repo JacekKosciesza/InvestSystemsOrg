@@ -27,7 +27,7 @@ export class CompaniesListComponent implements OnInit {
     }
 
     gotoDetail(company: Company) {
-        let link = ['/companies/:symbol', { symbol: company.$key }];
+        let link = ['/companies/', company.$key];
         this.router.navigate(link);
     }
 }
