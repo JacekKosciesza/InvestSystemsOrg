@@ -16,7 +16,8 @@ var YahooFinanceComponent = (function () {
     }
     YahooFinanceComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.yfs.HelloYQL().then(function (result) { return _this.result = result; });
+        this.yfs.Current("MENT").then(function (result) { return _this.current = result; });
+        this.yfs.Historical("MENT").then(function (result) { return _this.historical = result; });
     };
     YahooFinanceComponent = __decorate([
         core_1.Component({

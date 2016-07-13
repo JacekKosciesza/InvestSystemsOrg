@@ -10,10 +10,12 @@ import { YahooFinanceService } from './yahoo-finance.service'
     providers: [YahooFinanceService]
 })
 export class YahooFinanceComponent implements OnInit {
-    result: any;
+    current: any;
+    historical: any;
     constructor(private yfs: YahooFinanceService) { }
 
     ngOnInit() {
-        this.yfs.HelloYQL().then(result => this.result = result)
+        this.yfs.Current("MENT").then(result => this.current = result)
+        this.yfs.Historical("MENT").then(result => this.historical = result)
     }
 }

@@ -13,13 +13,20 @@ var http_1 = require('@angular/http');
 var YahooFinanceService = (function () {
     function YahooFinanceService(http) {
         this.http = http;
+        this.BASE_URL = 'http://query.yahooapis.com/v1/public/yql?q=';
+        this.YQL_IMPORT = "env 'store://datatables.org/alltableswithkeys';";
+        this.YQL_EXTRA = '&format=json';
     }
-    YahooFinanceService.prototype.HelloYQL = function () {
-        var BASE_URL = 'http://query.yahooapis.com/v1/public/yql?q=';
-        var yql_import = "env 'store://datatables.org/alltableswithkeys';";
-        var yql_query = 'select * from yahoo.finance.quote where symbol in ("YHOO","GOOG","MSFT")';
-        var yql_extra = '&format=json';
-        var query_str_final = "" + BASE_URL + yql_import + yql_query + yql_extra;
+    YahooFinanceService.prototype.Current = function (symbol) {
+        var yql_query = "select * from yahoo.finance.quote where symbol = \"" + symbol + "\"";
+        return this.Get(yql_query);
+    };
+    YahooFinanceService.prototype.Historical = function (symbol) {
+        var yql_query = "select * from yahoo.finance.historicaldata where symbol = \"" + symbol + "\" and startDate = \"2015-07-13\" and endDate = \"2016-07-13\"";
+        return this.Get(yql_query);
+    };
+    YahooFinanceService.prototype.Get = function (yql_query) {
+        var query_str_final = "" + this.BASE_URL + this.YQL_IMPORT + yql_query + this.YQL_EXTRA;
         return this.http.get(query_str_final)
             .toPromise()
             .then(function (response) { return response.json(); });
