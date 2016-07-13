@@ -7,6 +7,7 @@ import { RuleOneNotes } from './notes/rule-one-notes.component'
 import { ThreeCirclesComponent } from './three-circles/three-circles.component'
 import { TeamComponent } from './+about/team.component'
 import { ContactComponent } from './+contact/contact.component'
+import { BrokersComponent } from './+brokers/brokers.component'
 
 export const AppRoutes: RouterConfig = [
     {
@@ -30,6 +31,10 @@ export const AppRoutes: RouterConfig = [
     {
         path: 'contact',
         component: ContactComponent
+    },
+    {
+        path: 'brokers',
+        component: BrokersComponent
     },
 ];
 

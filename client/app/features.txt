@@ -1,0 +1,2 @@
+Using the Web Speech API with AngularJS [PluralSight]
+Microsoft Bot Framework (https://dev.botframework.com/)
