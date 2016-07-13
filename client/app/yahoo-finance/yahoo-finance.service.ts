@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Headers, Http } from '@angular/http';
 
+import { Quote } from './quote'
+
 @Injectable()
 export class YahooFinanceService {
     BASE_URL = 'http://query.yahooapis.com/v1/public/yql?q='
@@ -24,6 +26,6 @@ export class YahooFinanceService {
         var query_str_final = `${this.BASE_URL}${this.YQL_IMPORT}${yql_query}${this.YQL_EXTRA}`;
         return this.http.get(query_str_final)
             .toPromise()
-            .then(response => response.json());
+            .then(response => response.json().query.results.quote);
     }
 }

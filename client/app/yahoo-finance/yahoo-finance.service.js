@@ -29,7 +29,7 @@ var YahooFinanceService = (function () {
         var query_str_final = "" + this.BASE_URL + this.YQL_IMPORT + yql_query + this.YQL_EXTRA;
         return this.http.get(query_str_final)
             .toPromise()
-            .then(function (response) { return response.json(); });
+            .then(function (response) { return response.json().query.results.quote; });
     };
     YahooFinanceService = __decorate([
         core_1.Injectable(), 
