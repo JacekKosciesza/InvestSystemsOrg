@@ -8,6 +8,7 @@ var three_circles_component_1 = require('./three-circles/three-circles.component
 var team_component_1 = require('./+about/team.component');
 var contact_component_1 = require('./+contact/contact.component');
 var brokers_component_1 = require('./+brokers/brokers.component');
+var yahoo_finance_component_1 = require('./yahoo-finance/yahoo-finance.component');
 exports.AppRoutes = [
     {
         path: '',
@@ -33,6 +34,10 @@ exports.AppRoutes = [
     {
         path: 'brokers',
         component: brokers_component_1.BrokersComponent
+    },
+    {
+        path: 'yahoo-finance',
+        component: yahoo_finance_component_1.YahooFinanceComponent
     },
 ]);
 exports.APP_ROUTER_PROVIDER = router_1.provideRouter(exports.AppRoutes);

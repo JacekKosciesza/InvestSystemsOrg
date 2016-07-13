@@ -8,6 +8,7 @@ import { ThreeCirclesComponent } from './three-circles/three-circles.component'
 import { TeamComponent } from './+about/team.component'
 import { ContactComponent } from './+contact/contact.component'
 import { BrokersComponent } from './+brokers/brokers.component'
+import { YahooFinanceComponent } from './yahoo-finance/yahoo-finance.component'
 
 export const AppRoutes: RouterConfig = [
     {
@@ -35,6 +36,10 @@ export const AppRoutes: RouterConfig = [
     {
         path: 'brokers',
         component: BrokersComponent
+    },
+    {
+        path: 'yahoo-finance',
+        component: YahooFinanceComponent
     },
 ];
 

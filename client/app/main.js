@@ -5,8 +5,6 @@ var icon_registry_1 = require('@angular2-material/icon/icon-registry');
 var auth_guard_1 = require('./auth.guard');
 var forms_1 = require('@angular/forms');
 var angularfire2_1 = require('angularfire2');
-var angular2_in_memory_web_api_1 = require('angular2-in-memory-web-api');
-var in_memory_circle_data_service_1 = require('./three-circles/in-memory-circle-data.service');
 // The usual bootstrapping imports
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 var platform_browser_1 = require('@angular/platform-browser');
@@ -27,8 +25,8 @@ platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
         provider: angularfire2_1.AuthProviders.Google,
         method: angularfire2_1.AuthMethods.Redirect
     }),
-    { provide: http_1.XHRBackend, useClass: angular2_in_memory_web_api_1.InMemoryBackendService },
-    { provide: angular2_in_memory_web_api_1.SEED_DATA, useClass: in_memory_circle_data_service_1.InMemoryDataService },
+    // { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
+    // { provide: SEED_DATA, useClass: InMemoryDataService },      // in-mem server data
     platform_browser_1.Title,
     auth_guard_1.AuthGuard,
     icon_registry_1.MdIconRegistry,

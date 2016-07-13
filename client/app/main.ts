@@ -33,8 +33,8 @@ bootstrap(AppComponent, [
         provider: AuthProviders.Google,
         method: AuthMethods.Redirect
     }),
-    { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
-    { provide: SEED_DATA, useClass: InMemoryDataService },      // in-mem server data
+    // { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
+    // { provide: SEED_DATA, useClass: InMemoryDataService },      // in-mem server data
     Title,
     AuthGuard,
     MdIconRegistry,
