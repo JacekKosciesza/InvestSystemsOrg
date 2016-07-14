@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var moment = require('moment');
 var yahoo_finance_service_1 = require('./yahoo-finance.service');
+var stock_prices_chart_component_1 = require('../charts/stock-prices-chart.component');
+var stock_price_1 = require('../charts/stock-price');
 var YahooFinanceComponent = (function () {
     function YahooFinanceComponent(yfs) {
         this.yfs = yfs;
@@ -20,32 +22,13 @@ var YahooFinanceComponent = (function () {
     YahooFinanceComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.yfs.Current("MENT").then(function (result) { return _this.current = result; });
-        google.charts.load('current', { 'packages': ['line'] });
-        google.charts.setOnLoadCallback(this.getHistorical.bind(this));
+        this.getHistorical();
     };
     YahooFinanceComponent.prototype.getHistorical = function () {
         var _this = this;
-        //debugger;
         this.yfs.Historical("MENT", new Date(this.startDate), new Date(this.endDate)).then(function (result) {
-            _this.historical = result.map(function (r) { return [new Date(r.Date), parseFloat(r.Close)]; });
-            _this.drawChart();
+            _this.historical = result.map(function (r) { return new stock_price_1.StockPrice(new Date(r.Date), parseFloat(r.Close)); });
         });
-    };
-    YahooFinanceComponent.prototype.drawChart = function () {
-        var data = new google.visualization.DataTable();
-        data.addColumn('date', 'Date');
-        data.addColumn('number', 'Price');
-        data.addRows(this.historical);
-        var options = {
-            chart: {
-                title: 'Historical Mentor Graphics Corporation data',
-                subtitle: 'MENT'
-            },
-            //width: 900,
-            height: 500
-        };
-        var chart = new google.charts.Line(document.getElementById('chart'));
-        chart.draw(data, options);
     };
     YahooFinanceComponent = __decorate([
         core_1.Component({
@@ -53,7 +36,8 @@ var YahooFinanceComponent = (function () {
             selector: 'yahoo-finance',
             templateUrl: 'yahoo-finance.component.html',
             styleUrls: ['yahoo-finance.component.css'],
-            providers: [yahoo_finance_service_1.YahooFinanceService]
+            providers: [yahoo_finance_service_1.YahooFinanceService],
+            directives: [stock_prices_chart_component_1.StockPricesChartComponent]
         }), 
         __metadata('design:paramtypes', [yahoo_finance_service_1.YahooFinanceService])
     ], YahooFinanceComponent);
