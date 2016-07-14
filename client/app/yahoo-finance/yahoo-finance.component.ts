@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import * as moment from 'moment';
+
 import { YahooFinanceService } from './yahoo-finance.service'
 
 declare var google: any;
@@ -12,17 +14,26 @@ declare var google: any;
     providers: [YahooFinanceService]
 })
 export class YahooFinanceComponent implements OnInit {
+    startDate: string;
+    endDate: string;
     current: any;
     historical: any;
-    constructor(private yfs: YahooFinanceService) { }
+    constructor(private yfs: YahooFinanceService) {
+        this.startDate = moment().subtract(1, 'years').format('YYYY-MM-DD');
+        this.endDate = moment().format('YYYY-MM-DD');
+    }
 
     ngOnInit() {
         this.yfs.Current("MENT").then(result => this.current = result)
-        this.yfs.Historical("MENT").then(result => {
-            //debugger;
-            this.historical = result.map(r => { return [new Date(r.Date), parseFloat(r.Close)]});
-            google.charts.load('current', {'packages':['line']});
-            google.charts.setOnLoadCallback(this.drawChart.bind(this));
+        google.charts.load('current', { 'packages': ['line'] });
+        google.charts.setOnLoadCallback(this.getHistorical.bind(this));
+    }
+
+    getHistorical() {
+        //debugger;
+        this.yfs.Historical("MENT", new Date(this.startDate), new Date(this.endDate)).then(result => {
+            this.historical = result.map(r => { return [new Date(r.Date), parseFloat(r.Close)] });
+            this.drawChart();
         });
     }
 
@@ -31,19 +42,14 @@ export class YahooFinanceComponent implements OnInit {
         data.addColumn('date', 'Date');
         data.addColumn('number', 'Price');
 
-        data.addRows(this.historical 
-        // [
-        //     [new Date(2016, 7, 12), 21.84],
-        //     [new Date(2016, 7, 11), 21.59],
-        // ]
-        );
+        data.addRows(this.historical);
 
         var options = {
             chart: {
                 title: 'Historical Mentor Graphics Corporation data',
                 subtitle: 'MENT'
             },
-            width: 900,
+            //width: 900,
             height: 500
         };
 

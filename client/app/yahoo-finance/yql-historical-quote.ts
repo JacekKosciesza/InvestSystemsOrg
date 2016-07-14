@@ -1,4 +1,4 @@
-export class Quote {
+export class YQLHistoricalQuote {
     Symbol: string;
     Date: string;
     Open: string;

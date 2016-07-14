@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-
 import { Headers, Http } from '@angular/http';
 
-import { Quote } from './quote'
+import * as moment from 'moment';
+
+import { YQLHistoricalQuote } from './yql-historical-quote'
 
 @Injectable()
 export class YahooFinanceService {
@@ -17,8 +18,11 @@ export class YahooFinanceService {
         return this.Get(yql_query);
     }
 
-    Historical(symbol: string) {
-        var yql_query = `select * from yahoo.finance.historicaldata where symbol = "${symbol}" and startDate = "2015-07-13" and endDate = "2016-07-13"`;
+    Historical(symbol: string, startDate: Date, endDate: Date) {
+        //debugger;
+        var start = moment(startDate).format('YYYY-MM-DD');
+        var end  = moment(endDate).format('YYYY-MM-DD');
+        var yql_query = `select * from yahoo.finance.historicaldata where symbol = "${symbol}" and startDate = "${start}" and endDate = "${end}"`;
         return this.Get(yql_query);
     }
 

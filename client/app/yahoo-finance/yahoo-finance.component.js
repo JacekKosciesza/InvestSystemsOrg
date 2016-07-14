@@ -9,19 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var moment = require('moment');
 var yahoo_finance_service_1 = require('./yahoo-finance.service');
 var YahooFinanceComponent = (function () {
     function YahooFinanceComponent(yfs) {
         this.yfs = yfs;
+        this.startDate = moment().subtract(1, 'years').format('YYYY-MM-DD');
+        this.endDate = moment().format('YYYY-MM-DD');
     }
     YahooFinanceComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.yfs.Current("MENT").then(function (result) { return _this.current = result; });
-        this.yfs.Historical("MENT").then(function (result) {
-            //debugger;
+        google.charts.load('current', { 'packages': ['line'] });
+        google.charts.setOnLoadCallback(this.getHistorical.bind(this));
+    };
+    YahooFinanceComponent.prototype.getHistorical = function () {
+        var _this = this;
+        //debugger;
+        this.yfs.Historical("MENT", new Date(this.startDate), new Date(this.endDate)).then(function (result) {
             _this.historical = result.map(function (r) { return [new Date(r.Date), parseFloat(r.Close)]; });
-            google.charts.load('current', { 'packages': ['line'] });
-            google.charts.setOnLoadCallback(_this.drawChart.bind(_this));
+            _this.drawChart();
         });
     };
     YahooFinanceComponent.prototype.drawChart = function () {
@@ -34,7 +41,7 @@ var YahooFinanceComponent = (function () {
                 title: 'Historical Mentor Graphics Corporation data',
                 subtitle: 'MENT'
             },
-            width: 900,
+            //width: 900,
             height: 500
         };
         var chart = new google.charts.Line(document.getElementById('chart'));

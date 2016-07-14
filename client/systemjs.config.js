@@ -12,7 +12,8 @@
         '@ngrx': 'node_modules/@ngrx',
         '@angular2-material': 'node_modules/@angular2-material',
         'firebase': 'node_modules/firebase/firebase.js',
-        'angularfire2': 'node_modules/angularfire2'
+        'angularfire2': 'node_modules/angularfire2',
+        'moment': 'node_modules/moment'
     };
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
@@ -29,7 +30,8 @@
         '@angular2-material/card': { format: 'cjs', defaultExtension: 'js', main: 'card.js' },
         '@angular2-material/grid-list': { format: 'cjs', defaultExtension: 'js', main: 'grid-list.js' },
         '@angular2-material/input': { format: 'cjs', defaultExtension: 'js', main: 'input.js' },
-        'angularfire2': { defaultExtension: 'js', main: 'angularfire2.js' }
+        'angularfire2': { defaultExtension: 'js', main: 'angularfire2.js' },
+        'moment': { defaultExtension: 'js', main: 'moment.js' }
     };
     var ngPackageNames = [
         'common',

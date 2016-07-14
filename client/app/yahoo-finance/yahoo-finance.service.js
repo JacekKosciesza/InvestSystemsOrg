@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var moment = require('moment');
 var YahooFinanceService = (function () {
     function YahooFinanceService(http) {
         this.http = http;
@@ -21,8 +22,11 @@ var YahooFinanceService = (function () {
         var yql_query = "select * from yahoo.finance.quote where symbol = \"" + symbol + "\"";
         return this.Get(yql_query);
     };
-    YahooFinanceService.prototype.Historical = function (symbol) {
-        var yql_query = "select * from yahoo.finance.historicaldata where symbol = \"" + symbol + "\" and startDate = \"2015-07-13\" and endDate = \"2016-07-13\"";
+    YahooFinanceService.prototype.Historical = function (symbol, startDate, endDate) {
+        //debugger;
+        var start = moment(startDate).format('YYYY-MM-DD');
+        var end = moment(endDate).format('YYYY-MM-DD');
+        var yql_query = "select * from yahoo.finance.historicaldata where symbol = \"" + symbol + "\" and startDate = \"" + start + "\" and endDate = \"" + end + "\"";
         return this.Get(yql_query);
     };
     YahooFinanceService.prototype.Get = function (yql_query) {
