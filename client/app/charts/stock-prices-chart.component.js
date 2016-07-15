@@ -18,7 +18,6 @@ var StockPricesChartComponent = (function () {
         google.charts.setOnLoadCallback(this.prepareDataAndDrawChart.bind(this));
     };
     StockPricesChartComponent.prototype.ngOnChanges = function (changes) {
-        debugger;
         if (changes['stockPrices'].currentValue) {
             this.prepareDataAndDrawChart();
         }

@@ -23,7 +23,6 @@ export class StockPricesChartComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-        debugger;
         if (changes['stockPrices'].currentValue) {
             this.prepareDataAndDrawChart();
         }

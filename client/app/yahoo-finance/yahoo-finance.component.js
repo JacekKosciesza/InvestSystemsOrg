@@ -13,16 +13,18 @@ var moment = require('moment');
 var yahoo_finance_service_1 = require('./yahoo-finance.service');
 var stock_prices_chart_component_1 = require('../charts/stock-prices-chart.component');
 var stock_price_1 = require('../charts/stock-price');
+var mcda_1 = require('../technical-indicators/mcda');
 var YahooFinanceComponent = (function () {
-    function YahooFinanceComponent(yfs) {
+    function YahooFinanceComponent(yfs, macdService) {
         this.yfs = yfs;
+        this.macdService = macdService;
         this.startDate = moment().subtract(1, 'years').format('YYYY-MM-DD');
         this.endDate = moment().format('YYYY-MM-DD');
     }
     YahooFinanceComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.yfs.Current("MENT").then(function (result) { return _this.current = result; });
-        this.getHistorical();
+        //this.yfs.Current("MENT").then(result => this.current = result)
+        //this.getHistorical();
+        this.macd = this.macdService.calculate(mcda_1.MCDA_TEST_DATA);
     };
     YahooFinanceComponent.prototype.getHistorical = function () {
         var _this = this;
@@ -36,10 +38,10 @@ var YahooFinanceComponent = (function () {
             selector: 'yahoo-finance',
             templateUrl: 'yahoo-finance.component.html',
             styleUrls: ['yahoo-finance.component.css'],
-            providers: [yahoo_finance_service_1.YahooFinanceService],
+            providers: [yahoo_finance_service_1.YahooFinanceService, mcda_1.MACD],
             directives: [stock_prices_chart_component_1.StockPricesChartComponent]
         }), 
-        __metadata('design:paramtypes', [yahoo_finance_service_1.YahooFinanceService])
+        __metadata('design:paramtypes', [yahoo_finance_service_1.YahooFinanceService, mcda_1.MACD])
     ], YahooFinanceComponent);
     return YahooFinanceComponent;
 }());

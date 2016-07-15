@@ -6,6 +6,8 @@ import { YahooFinanceService } from './yahoo-finance.service'
 import { StockPricesChartComponent } from '../charts/stock-prices-chart.component'
 import { StockPrice } from '../charts/stock-price'
 
+import { MACD, MCDA_TEST_DATA } from '../technical-indicators/mcda'
+
 declare var google: any;
 
 @Component({
@@ -13,7 +15,7 @@ declare var google: any;
     selector: 'yahoo-finance',
     templateUrl: 'yahoo-finance.component.html',
     styleUrls: ['yahoo-finance.component.css'],
-    providers: [YahooFinanceService],
+    providers: [YahooFinanceService, MACD],
     directives: [StockPricesChartComponent]
 })
 export class YahooFinanceComponent implements OnInit {
@@ -21,14 +23,16 @@ export class YahooFinanceComponent implements OnInit {
     endDate: string;
     current: any;
     historical: StockPrice[];
-    constructor(private yfs: YahooFinanceService) {
+    macd: any;
+    constructor(private yfs: YahooFinanceService, private macdService: MACD) {
         this.startDate = moment().subtract(1, 'years').format('YYYY-MM-DD');
         this.endDate = moment().format('YYYY-MM-DD');
     }
 
     ngOnInit() {
-        this.yfs.Current("MENT").then(result => this.current = result)
-        this.getHistorical();
+        //this.yfs.Current("MENT").then(result => this.current = result)
+        //this.getHistorical();
+        this.macd =  this.macdService.calculate(MCDA_TEST_DATA);
     }
 
     getHistorical() {

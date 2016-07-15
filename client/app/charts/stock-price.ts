@@ -1,5 +1,5 @@
 export class StockPrice {
-    constructor(private date: Date, private price: number) { }
+    constructor(public date: Date, public price: number) { }
 
     public toRow() {
         return [this.date, this.price];

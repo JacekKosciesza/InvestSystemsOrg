@@ -2,8 +2,8 @@
 
 <md-card *ngFor="let company of companies | async" (click)="gotoDetail(company)">
     <md-card-title-group>
-        <img md-card-sm-image src="/assets/companies/{{company.name}}.png">
+        <img md-card-sm-image src="/assets/companies/{{company.tickerSymbol}}.png">
         <md-card-title>{{company.name}}</md-card-title>
-        <md-card-subtitle>{{company.abbreviation}}</md-card-subtitle>
+        <md-card-subtitle>{{company.tickerSymbol}}</md-card-subtitle>
     </md-card-title-group>
 </md-card>
