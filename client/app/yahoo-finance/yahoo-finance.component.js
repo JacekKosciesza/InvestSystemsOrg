@@ -12,8 +12,9 @@ var core_1 = require('@angular/core');
 var moment = require('moment');
 var yahoo_finance_service_1 = require('./yahoo-finance.service');
 var stock_prices_chart_component_1 = require('../charts/stock-prices-chart.component');
+var macd_signal_chart_component_1 = require('../charts/macd-signal-chart.component');
 var stock_price_1 = require('../charts/stock-price');
-var mcda_1 = require('../technical-indicators/mcda');
+var macd_service_1 = require('../technical-indicators/macd.service');
 var YahooFinanceComponent = (function () {
     function YahooFinanceComponent(yfs, macdService) {
         this.yfs = yfs;
@@ -23,13 +24,14 @@ var YahooFinanceComponent = (function () {
     }
     YahooFinanceComponent.prototype.ngOnInit = function () {
         //this.yfs.Current("MENT").then(result => this.current = result)
-        //this.getHistorical();
-        this.macd = this.macdService.calculate(mcda_1.MCDA_TEST_DATA);
+        this.getHistorical();
+        //this.macd =  this.macdService.calculate(MCDA_TEST_DATA);
     };
     YahooFinanceComponent.prototype.getHistorical = function () {
         var _this = this;
         this.yfs.Historical("MENT", new Date(this.startDate), new Date(this.endDate)).then(function (result) {
             _this.historical = result.map(function (r) { return new stock_price_1.StockPrice(new Date(r.Date), parseFloat(r.Close)); });
+            _this.macd = _this.macdService.calculate(_this.historical);
         });
     };
     YahooFinanceComponent = __decorate([
@@ -38,10 +40,10 @@ var YahooFinanceComponent = (function () {
             selector: 'yahoo-finance',
             templateUrl: 'yahoo-finance.component.html',
             styleUrls: ['yahoo-finance.component.css'],
-            providers: [yahoo_finance_service_1.YahooFinanceService, mcda_1.MACD],
-            directives: [stock_prices_chart_component_1.StockPricesChartComponent]
+            providers: [yahoo_finance_service_1.YahooFinanceService, macd_service_1.MACDService],
+            directives: [stock_prices_chart_component_1.StockPricesChartComponent, macd_signal_chart_component_1.MacdSignalChartComponent]
         }), 
-        __metadata('design:paramtypes', [yahoo_finance_service_1.YahooFinanceService, mcda_1.MACD])
+        __metadata('design:paramtypes', [yahoo_finance_service_1.YahooFinanceService, macd_service_1.MACDService])
     ], YahooFinanceComponent);
     return YahooFinanceComponent;
 }());

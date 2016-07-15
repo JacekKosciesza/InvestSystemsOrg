@@ -1,73 +1,5 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var stock_price_1 = require('../charts/stock-price');
-var MACDEntry = (function (_super) {
-    __extends(MACDEntry, _super);
-    function MACDEntry(date, price) {
-        _super.call(this, date, price);
-        this.priceSum = 0;
-        this.macdSum = 0;
-    }
-    return MACDEntry;
-}(stock_price_1.StockPrice));
-exports.MACDEntry = MACDEntry;
-var MACD = (function () {
-    function MACD() {
-        this.PARAM_1 = 12;
-        this.PARAM_2 = 26;
-        this.PARAM_3 = 9;
-    }
-    MACD.prototype.calculate = function (stockPrices) {
-        var _this = this;
-        var mcdaEntries = [];
-        debugger;
-        var entries = stockPrices.map(function (sp) { return new MACDEntry(sp.date, sp.price); });
-        entries.reduce(function (previousValue, currentValue, currentIndex) {
-            var index = currentIndex + 1;
-            currentValue.priceSum = previousValue.priceSum + currentValue.price;
-            currentValue.priceAverage = currentValue.priceSum / index;
-            // 12 Day EMA
-            if (index === _this.PARAM_1) {
-                currentValue.ema12day = currentValue.priceAverage;
-            }
-            else if (index > _this.PARAM_1) {
-                currentValue.ema12day = currentValue.price * (2 / (_this.PARAM_1 + 1)) + previousValue.ema12day * (1 - 2 / (_this.PARAM_1 + 1));
-            }
-            // 26 Day EMA
-            if (index === _this.PARAM_2) {
-                currentValue.ema26day = currentValue.priceAverage;
-            }
-            else if (index > _this.PARAM_2) {
-                currentValue.ema26day = currentValue.price * (2 / (_this.PARAM_2 + 1)) + previousValue.ema26day * (1 - 2 / (_this.PARAM_2 + 1));
-            }
-            // MCDA
-            if (index >= _this.PARAM_2) {
-                currentValue.macd = currentValue.ema12day - currentValue.ema26day;
-                currentValue.macdSum = previousValue.macdSum + currentValue.macd;
-                currentValue.macdAverage = currentValue.macdSum / (index - _this.PARAM_2 + 1);
-            }
-            // Signal
-            if (index === (_this.PARAM_2 + _this.PARAM_3 - 1)) {
-                currentValue.signal = currentValue.macdAverage;
-            }
-            else if (index > (_this.PARAM_2 + _this.PARAM_3 - 1)) {
-                currentValue.signal = currentValue.macd * (2 / (_this.PARAM_3 + 1)) + previousValue.signal * (1 - 2 / (_this.PARAM_3 + 1));
-            }
-            // Histogram
-            if (index >= (_this.PARAM_2 + _this.PARAM_3 - 1)) {
-                currentValue.histogram = currentValue.macd - currentValue.signal;
-            }
-            return currentValue;
-        }, new MACDEntry(new Date(1900, 1, 1), 0));
-        return entries;
-    };
-    return MACD;
-}());
-exports.MACD = MACD;
 exports.MCDA_TEST_DATA = [
     new stock_price_1.StockPrice(new Date('2/19/2013'), 459.99),
     new stock_price_1.StockPrice(new Date('2/20/2013'), 448.85),
@@ -136,4 +68,4 @@ exports.MCDA_TEST_DATA = [
     new stock_price_1.StockPrice(new Date('5/21/2013'), 439.66),
     new stock_price_1.StockPrice(new Date('5/22/2013'), 441.35)
 ];
-//# sourceMappingURL=mcda.js.map
+//# sourceMappingURL=macd-test-data.js.map
