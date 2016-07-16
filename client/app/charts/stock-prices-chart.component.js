@@ -9,13 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var charts_service_1 = require('./charts.service');
 var StockPricesChartComponent = (function () {
-    function StockPricesChartComponent() {
+    function StockPricesChartComponent(chartsService) {
+        this.chartsService = chartsService;
         this.stockPrices = [];
     }
     StockPricesChartComponent.prototype.ngOnInit = function () {
-        google.charts.load('current', { 'packages': ['line'] });
-        google.charts.setOnLoadCallback(this.prepareDataAndDrawChart.bind(this));
+        var _this = this;
+        this.chartsService.load();
+        this.chartsService.chartsLoaded$.subscribe(function (loaded) {
+            _this.chartsLoaded = loaded;
+        });
     };
     StockPricesChartComponent.prototype.ngOnChanges = function (changes) {
         if (changes['stockPrices'].currentValue) {
@@ -31,17 +36,17 @@ var StockPricesChartComponent = (function () {
     StockPricesChartComponent.prototype.drawChart = function (rows) {
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Date');
-        data.addColumn('number', 'Price');
+        data.addColumn('number', 'Close price');
         data.addRows(rows);
         var options = {
             chart: {
-                title: 'Mentor Graphics Corporation',
-                subtitle: 'MENT'
+                title: 'Mentor Graphics Corporation (MENT)',
+                subtitle: 'Historical close prices'
             },
             //width: 900,
             height: 500
         };
-        var chart = new google.charts.Line(document.getElementById('chart'));
+        var chart = new google.charts.Line(document.getElementById('stock-prices-chart')); // TODO: some unique identifier?
         chart.draw(data, options);
     };
     __decorate([
@@ -52,10 +57,9 @@ var StockPricesChartComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'stock-prices-chart',
-            templateUrl: 'stock-prices-chart.component.html',
-            styleUrls: ['stock-prices-chart.component.css']
+            template: "<div id=\"stock-prices-chart\"></div>"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [charts_service_1.ChartsService])
     ], StockPricesChartComponent);
     return StockPricesChartComponent;
 }());

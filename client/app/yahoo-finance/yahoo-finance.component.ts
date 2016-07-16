@@ -47,8 +47,9 @@ export class YahooFinanceComponent implements OnInit {
 
     getHistorical() {
         this.yfs.Historical("MENT", new Date(this.startDate), new Date(this.endDate)).then(result => {
-            // this.historical = result.map(r => new StockPrice(new Date(r.Date), parseFloat(r.Close)));
-            // this.macd =  this.macdService.calculate(this.historical);
+            this.historical = result.map(r => new StockPrice(new Date(r.Date), parseFloat(r.Close)));
+            this.macd =  this.macdService.calculate(this.historical);
+            
             let ohlcData = result.map(r => new OHLC(new Date(r.Date), parseFloat(r.Open), parseFloat(r.High), parseFloat(r.Low), parseFloat(r.Close)));
             this.stochastic =  this.stochasticService.calculate(ohlcData);
         });

@@ -14,6 +14,7 @@ var yahoo_finance_service_1 = require('./yahoo-finance.service');
 var stock_prices_chart_component_1 = require('../charts/stock-prices-chart.component');
 var macd_signal_chart_component_1 = require('../charts/macd-signal-chart.component');
 var stochastic_oscillator_chart_component_1 = require('../charts/stochastic-oscillator-chart.component');
+var stock_price_1 = require('../charts/stock-price');
 var macd_service_1 = require('../technical-indicators/macd.service');
 var stochastic_service_1 = require('../technical-indicators/stochastic.service');
 var ohlc_1 = require('../technical-indicators/ohlc');
@@ -34,8 +35,8 @@ var YahooFinanceComponent = (function () {
     YahooFinanceComponent.prototype.getHistorical = function () {
         var _this = this;
         this.yfs.Historical("MENT", new Date(this.startDate), new Date(this.endDate)).then(function (result) {
-            // this.historical = result.map(r => new StockPrice(new Date(r.Date), parseFloat(r.Close)));
-            // this.macd =  this.macdService.calculate(this.historical);
+            _this.historical = result.map(function (r) { return new stock_price_1.StockPrice(new Date(r.Date), parseFloat(r.Close)); });
+            _this.macd = _this.macdService.calculate(_this.historical);
             var ohlcData = result.map(function (r) { return new ohlc_1.OHLC(new Date(r.Date), parseFloat(r.Open), parseFloat(r.High), parseFloat(r.Low), parseFloat(r.Close)); });
             _this.stochastic = _this.stochasticService.calculate(ohlcData);
         });

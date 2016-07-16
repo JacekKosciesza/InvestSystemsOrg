@@ -9,14 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var charts_service_1 = require('./charts.service');
 var MacdSignalChartComponent = (function () {
-    function MacdSignalChartComponent() {
+    function MacdSignalChartComponent(chartsService) {
+        this.chartsService = chartsService;
         this.chartsLoaded = false;
         this.macd = [];
     }
     MacdSignalChartComponent.prototype.ngOnInit = function () {
-        google.charts.load('current', { 'packages': ['line'] });
-        google.charts.setOnLoadCallback(this.onChartsLoaded.bind(this));
+        var _this = this;
+        this.chartsService.load();
+        this.chartsService.chartsLoaded$.subscribe(function (loaded) {
+            _this.chartsLoaded = loaded;
+        });
+        // google.charts.load('current', { 'packages': ['line'] });
+        // google.charts.setOnLoadCallback(this.onChartsLoaded.bind(this));
     };
     MacdSignalChartComponent.prototype.ngOnChanges = function (changes) {
         if (changes['macd'].currentValue) {
@@ -47,7 +54,7 @@ var MacdSignalChartComponent = (function () {
             //width: 900,
             height: 500
         };
-        var chart = new google.charts.Line(document.getElementById('chart'));
+        var chart = new google.charts.Line(document.getElementById('macd-signal-chart')); // TODO: some unique identifier?
         chart.draw(data, options);
     };
     __decorate([
@@ -58,9 +65,9 @@ var MacdSignalChartComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'macd-signal-chart',
-            template: "<div id=\"chart\"></div>",
+            template: "<div id=\"macd-signal-chart\"></div>"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [charts_service_1.ChartsService])
     ], MacdSignalChartComponent);
     return MacdSignalChartComponent;
 }());

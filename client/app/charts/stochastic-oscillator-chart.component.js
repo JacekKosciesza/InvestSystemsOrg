@@ -9,14 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var charts_service_1 = require('./charts.service');
 var StochasticOscillatorChartComponent = (function () {
-    function StochasticOscillatorChartComponent() {
+    function StochasticOscillatorChartComponent(chartsService) {
+        this.chartsService = chartsService;
         this.chartsLoaded = false;
         this.stochastic = [];
     }
     StochasticOscillatorChartComponent.prototype.ngOnInit = function () {
-        google.charts.load('current', { 'packages': ['line'] });
-        google.charts.setOnLoadCallback(this.onChartsLoaded.bind(this));
+        var _this = this;
+        this.chartsService.load();
+        this.chartsService.chartsLoaded$.subscribe(function (loaded) {
+            _this.chartsLoaded = loaded;
+        });
+        // google.charts.load('current', { 'packages': ['line'] });
+        // google.charts.setOnLoadCallback(this.onChartsLoaded.bind(this));
     };
     StochasticOscillatorChartComponent.prototype.ngOnChanges = function (changes) {
         if (changes['stochastic'].currentValue) {
@@ -48,7 +55,7 @@ var StochasticOscillatorChartComponent = (function () {
             //width: 900,
             height: 500
         };
-        var chart = new google.charts.Line(document.getElementById('chart'));
+        var chart = new google.charts.Line(document.getElementById('stochastic-oscillator-chart')); // TODO: some unique identifier?
         chart.draw(data, options);
     };
     __decorate([
@@ -59,9 +66,9 @@ var StochasticOscillatorChartComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'stochastic-oscillator-chart',
-            template: "<div id=\"chart\"></div>",
+            template: "<div id=\"stochastic-oscillator-chart\"></div>",
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [charts_service_1.ChartsService])
     ], StochasticOscillatorChartComponent);
     return StochasticOscillatorChartComponent;
 }());

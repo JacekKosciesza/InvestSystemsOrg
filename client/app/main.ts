@@ -18,6 +18,8 @@ import { Title } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import { APP_ROUTER_PROVIDER } from './app.routes';
 
+import { ChartsService } from './charts/charts.service'
+
 bootstrap(AppComponent, [
     APP_ROUTER_PROVIDER,
     HTTP_PROVIDERS,
@@ -39,7 +41,8 @@ bootstrap(AppComponent, [
     AuthGuard,
     MdIconRegistry,
     disableDeprecatedForms(),
-    provideForms()
+    provideForms(),
+    ChartsService
 ]).then(
     () => window.console.info('Angular finished bootstrapping your application!'),
     (error) => {
