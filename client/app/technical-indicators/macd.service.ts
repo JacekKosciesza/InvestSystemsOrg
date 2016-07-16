@@ -1,13 +1,12 @@
 import { StockPrice } from '../charts/stock-price'
 import { MACD } from './macd'
 
-
+// // http://investexcel.net/how-to-calculate-macd-in-excel/
 export class MACDService {
     PARAM_1: number = 12;
     PARAM_2: number = 26;
     PARAM_3: number = 9;
     calculate(stockPrices: StockPrice[]) : MACD[] {
-        let mcdaEntries: MACD[] = [];
         //debugger;
         let entries = stockPrices.map(sp => new MACD(sp.date, sp.price));
         entries.reduce((previousValue, currentValue, currentIndex) => {

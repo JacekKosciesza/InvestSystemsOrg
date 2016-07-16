@@ -1,5 +1,6 @@
 "use strict";
 var stock_price_1 = require('../charts/stock-price');
+// http://investexcel.net/wp-content/uploads/2013/08/MACD-Tutorial1.zip
 exports.MCDA_TEST_DATA = [
     new stock_price_1.StockPrice(new Date('2/19/2013'), 459.99),
     new stock_price_1.StockPrice(new Date('2/20/2013'), 448.85),

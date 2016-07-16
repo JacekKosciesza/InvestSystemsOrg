@@ -1,5 +1,6 @@
 "use strict";
 var macd_1 = require('./macd');
+// // http://investexcel.net/how-to-calculate-macd-in-excel/
 var MACDService = (function () {
     function MACDService() {
         this.PARAM_1 = 12;
@@ -8,7 +9,6 @@ var MACDService = (function () {
     }
     MACDService.prototype.calculate = function (stockPrices) {
         var _this = this;
-        var mcdaEntries = [];
         //debugger;
         var entries = stockPrices.map(function (sp) { return new macd_1.MACD(sp.date, sp.price); });
         entries.reduce(function (previousValue, currentValue, currentIndex) {
