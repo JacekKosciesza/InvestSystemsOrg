@@ -10,64 +10,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var charts_service_1 = require('./charts.service');
-var MacdSignalChartComponent = (function () {
-    function MacdSignalChartComponent(chartsService) {
+var EmaPriceChartComponent = (function () {
+    function EmaPriceChartComponent(chartsService) {
         this.chartsService = chartsService;
         this.chartsLoaded = false;
-        this.macd = [];
+        this.ema = [];
     }
-    MacdSignalChartComponent.prototype.ngOnInit = function () {
+    EmaPriceChartComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.chartsService.load();
         this.chartsService.chartsLoaded$.subscribe(function (loaded) {
             _this.chartsLoaded = loaded;
+            _this.prepareDataAndDrawChart();
         });
     };
-    MacdSignalChartComponent.prototype.ngOnChanges = function (changes) {
-        if (changes['macd'].currentValue) {
+    EmaPriceChartComponent.prototype.ngOnChanges = function (changes) {
+        if (changes['ema'].currentValue) {
             this.prepareDataAndDrawChart();
         }
     };
-    MacdSignalChartComponent.prototype.onChartsLoaded = function () {
+    EmaPriceChartComponent.prototype.onChartsLoaded = function () {
         this.chartsLoaded = true;
         this.prepareDataAndDrawChart();
     };
-    MacdSignalChartComponent.prototype.prepareDataAndDrawChart = function () {
-        if (this.chartsLoaded && this.macd && this.macd.length) {
-            var rows = this.macd.filter(function (sp) { return (sp.macd != null && typeof sp.macd !== 'undefined') || (sp.signal != null && typeof sp.signal !== 'undefined'); }).map(function (sp) { return sp.toRow(); });
+    EmaPriceChartComponent.prototype.prepareDataAndDrawChart = function () {
+        if (this.chartsLoaded && this.ema && this.ema.length) {
+            var rows = this.ema.filter(function (sp) { return (sp.ema != null && typeof sp.ema !== 'undefined'); }).map(function (sp) { return sp.toRow(); });
             this.drawChart(rows);
         }
     };
-    MacdSignalChartComponent.prototype.drawChart = function (rows) {
+    EmaPriceChartComponent.prototype.drawChart = function (rows) {
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Date');
-        data.addColumn('number', 'MACD');
-        data.addColumn('number', 'Signal');
+        data.addColumn('number', 'Close Price');
+        data.addColumn('number', 'EMA');
         data.addRows(rows);
         var options = {
             chart: {
                 title: 'Mentor Graphics Corporation (MENT)',
-                subtitle: 'MACD & Signal'
+                subtitle: 'EMA & Close Price'
             },
             //width: 900,
             height: 500
         };
-        var chart = new google.charts.Line(document.getElementById('macd-signal-chart')); // TODO: some unique identifier?
+        var chart = new google.charts.Line(document.getElementById('ema-price-chart')); // TODO: some unique identifier?
         chart.draw(data, options);
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
-    ], MacdSignalChartComponent.prototype, "macd", void 0);
-    MacdSignalChartComponent = __decorate([
+    ], EmaPriceChartComponent.prototype, "ema", void 0);
+    EmaPriceChartComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'macd-signal-chart',
-            template: "<div id=\"macd-signal-chart\"></div>"
+            selector: 'ema-price-chart',
+            template: "<div id=\"ema-price-chart\"></div>"
         }), 
         __metadata('design:paramtypes', [charts_service_1.ChartsService])
-    ], MacdSignalChartComponent);
-    return MacdSignalChartComponent;
+    ], EmaPriceChartComponent);
+    return EmaPriceChartComponent;
 }());
-exports.MacdSignalChartComponent = MacdSignalChartComponent;
-//# sourceMappingURL=macd-signal-chart.component.js.map
+exports.EmaPriceChartComponent = EmaPriceChartComponent;
+//# sourceMappingURL=ema-price-chart.component.js.map

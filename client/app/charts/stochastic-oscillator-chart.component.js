@@ -22,8 +22,6 @@ var StochasticOscillatorChartComponent = (function () {
         this.chartsService.chartsLoaded$.subscribe(function (loaded) {
             _this.chartsLoaded = loaded;
         });
-        // google.charts.load('current', { 'packages': ['line'] });
-        // google.charts.setOnLoadCallback(this.onChartsLoaded.bind(this));
     };
     StochasticOscillatorChartComponent.prototype.ngOnChanges = function (changes) {
         if (changes['stochastic'].currentValue) {

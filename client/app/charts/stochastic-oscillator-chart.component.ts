@@ -23,8 +23,6 @@ export class StochasticOscillatorChartComponent implements OnInit, OnChanges {
         this.chartsService.chartsLoaded$.subscribe(loaded => {
             this.chartsLoaded = loaded;
         });
-        // google.charts.load('current', { 'packages': ['line'] });
-        // google.charts.setOnLoadCallback(this.onChartsLoaded.bind(this));
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
