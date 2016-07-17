@@ -21,16 +21,13 @@ var StochasticOscillatorChartComponent = (function () {
         this.chartsService.load();
         this.chartsService.chartsLoaded$.subscribe(function (loaded) {
             _this.chartsLoaded = loaded;
+            _this.prepareDataAndDrawChart();
         });
     };
     StochasticOscillatorChartComponent.prototype.ngOnChanges = function (changes) {
         if (changes['stochastic'].currentValue) {
             this.prepareDataAndDrawChart();
         }
-    };
-    StochasticOscillatorChartComponent.prototype.onChartsLoaded = function () {
-        this.chartsLoaded = true;
-        this.prepareDataAndDrawChart();
     };
     StochasticOscillatorChartComponent.prototype.prepareDataAndDrawChart = function () {
         if (this.chartsLoaded && this.stochastic && this.stochastic.length) {

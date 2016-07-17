@@ -13,6 +13,7 @@ var charts_service_1 = require('./charts.service');
 var StockPricesChartComponent = (function () {
     function StockPricesChartComponent(chartsService) {
         this.chartsService = chartsService;
+        this.chartsLoaded = false;
         this.stockPrices = [];
     }
     StockPricesChartComponent.prototype.ngOnInit = function () {
@@ -20,6 +21,7 @@ var StockPricesChartComponent = (function () {
         this.chartsService.load();
         this.chartsService.chartsLoaded$.subscribe(function (loaded) {
             _this.chartsLoaded = loaded;
+            _this.prepareDataAndDrawChart();
         });
     };
     StockPricesChartComponent.prototype.ngOnChanges = function (changes) {
@@ -28,7 +30,7 @@ var StockPricesChartComponent = (function () {
         }
     };
     StockPricesChartComponent.prototype.prepareDataAndDrawChart = function () {
-        if (this.stockPrices && this.stockPrices.length) {
+        if (this.chartsLoaded && this.stockPrices && this.stockPrices.length) {
             var rows = this.stockPrices.map(function (sp) { return sp.toRow(); });
             this.drawChart(rows);
         }

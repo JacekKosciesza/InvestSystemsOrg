@@ -32,11 +32,6 @@ export class EmaPriceChartComponent implements OnInit, OnChanges {
         }
     }
 
-    onChartsLoaded() {
-        this.chartsLoaded = true;
-        this.prepareDataAndDrawChart();
-    }
-
     prepareDataAndDrawChart() {
         if (this.chartsLoaded && this.ema && this.ema.length) {
             let rows = this.ema.filter(sp => (sp.ema != null && typeof sp.ema !== 'undefined')).map(sp => sp.toRow());

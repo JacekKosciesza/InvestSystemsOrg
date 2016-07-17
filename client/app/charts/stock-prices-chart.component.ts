@@ -12,6 +12,7 @@ declare var google: any;
 })
 export class StockPricesChartComponent implements OnInit, OnChanges {
     @Input() stockPrices: StockPrice[];
+    chartsLoaded: boolean = false;
 
     constructor(private chartsService: ChartsService) {
         this.stockPrices = [];
@@ -21,6 +22,7 @@ export class StockPricesChartComponent implements OnInit, OnChanges {
         this.chartsService.load();
         this.chartsService.chartsLoaded$.subscribe(loaded => {
             this.chartsLoaded = loaded;
+            this.prepareDataAndDrawChart();
         });
     }
 
@@ -31,7 +33,7 @@ export class StockPricesChartComponent implements OnInit, OnChanges {
     }
 
     prepareDataAndDrawChart() {
-        if (this.stockPrices && this.stockPrices.length) {
+        if (this.chartsLoaded && this.stockPrices && this.stockPrices.length) {
             let rows = this.stockPrices.map(sp => sp.toRow());
             this.drawChart(rows);
         }

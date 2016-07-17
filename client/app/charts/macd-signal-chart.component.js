@@ -21,16 +21,13 @@ var MacdSignalChartComponent = (function () {
         this.chartsService.load();
         this.chartsService.chartsLoaded$.subscribe(function (loaded) {
             _this.chartsLoaded = loaded;
+            _this.prepareDataAndDrawChart();
         });
     };
     MacdSignalChartComponent.prototype.ngOnChanges = function (changes) {
         if (changes['macd'].currentValue) {
             this.prepareDataAndDrawChart();
         }
-    };
-    MacdSignalChartComponent.prototype.onChartsLoaded = function () {
-        this.chartsLoaded = true;
-        this.prepareDataAndDrawChart();
     };
     MacdSignalChartComponent.prototype.prepareDataAndDrawChart = function () {
         if (this.chartsLoaded && this.macd && this.macd.length) {

@@ -22,6 +22,7 @@ export class MacdSignalChartComponent implements OnInit, OnChanges {
         this.chartsService.load();
         this.chartsService.chartsLoaded$.subscribe(loaded => {
             this.chartsLoaded = loaded;
+            this.prepareDataAndDrawChart();
         });
     }
 
@@ -29,11 +30,6 @@ export class MacdSignalChartComponent implements OnInit, OnChanges {
         if (changes['macd'].currentValue) {
             this.prepareDataAndDrawChart();
         }
-    }
-
-    onChartsLoaded() {
-        this.chartsLoaded = true;
-        this.prepareDataAndDrawChart();
     }
 
     prepareDataAndDrawChart() {

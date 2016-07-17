@@ -29,10 +29,6 @@ var EmaPriceChartComponent = (function () {
             this.prepareDataAndDrawChart();
         }
     };
-    EmaPriceChartComponent.prototype.onChartsLoaded = function () {
-        this.chartsLoaded = true;
-        this.prepareDataAndDrawChart();
-    };
     EmaPriceChartComponent.prototype.prepareDataAndDrawChart = function () {
         if (this.chartsLoaded && this.ema && this.ema.length) {
             var rows = this.ema.filter(function (sp) { return (sp.ema != null && typeof sp.ema !== 'undefined'); }).map(function (sp) { return sp.toRow(); });
