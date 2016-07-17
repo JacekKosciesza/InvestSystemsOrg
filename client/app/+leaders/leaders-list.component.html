@@ -1,0 +1,5 @@
+<md-card *ngFor="let leader of leaders | async" (click)="gotoDetail(leader)">
+    <md-card-title-group>
+        <md-card-title>{{leader.name}}</md-card-title>
+    </md-card-title-group>
+</md-card>

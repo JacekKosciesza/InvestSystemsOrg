@@ -1,5 +1,5 @@
 export interface Company {
-    $key: string, // Firebase
+    $key: string; // Firebase
     name: string;
     abbreviation: string;
     fullName: string;
