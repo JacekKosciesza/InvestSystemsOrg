@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
+var angularfire2_1 = require('angularfire2');
 var card_1 = require('@angular2-material/card');
 var companies_service_1 = require('./companies.service');
 var CompaniesListComponent = (function () {
@@ -20,13 +21,19 @@ var CompaniesListComponent = (function () {
         this.titleService = titleService;
     }
     CompaniesListComponent.prototype.ngOnInit = function () {
-        this.companies = this.companiesService.getCompanies();
-        this.titleService.setTitle('Companies');
+        if (!this.companies) {
+            this.companies = this.companiesService.getCompanies();
+            this.titleService.setTitle('Companies');
+        }
     };
     CompaniesListComponent.prototype.gotoDetail = function (company) {
         var link = ['/companies/', company.$key];
         this.router.navigate(link);
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', angularfire2_1.FirebaseListObservable)
+    ], CompaniesListComponent.prototype, "companies", void 0);
     CompaniesListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

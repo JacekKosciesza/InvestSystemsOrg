@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Title }     from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -17,13 +17,15 @@ import { CompaniesService } from './companies.service';
     directives: [MD_CARD_DIRECTIVES]
 })
 export class CompaniesListComponent implements OnInit {
-    companies: FirebaseListObservable<Company[]>;
+    @Input() companies: FirebaseListObservable<Company[]>;
 
     constructor(private companiesService: CompaniesService, private router: Router, private titleService: Title) { }
 
     ngOnInit() {
-        this.companies = this.companiesService.getCompanies();
-        this.titleService.setTitle('Companies');
+        if (!this.companies) {
+            this.companies = this.companiesService.getCompanies();
+            this.titleService.setTitle('Companies');
+        }        
     }
 
     gotoDetail(company: Company) {

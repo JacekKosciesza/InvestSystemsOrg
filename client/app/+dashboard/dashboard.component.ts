@@ -1,27 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { CompaniesService } from '../+companies/companies.service';
+import { PortfolioComponent } from './portfolio.component'
+import { WatchListComponent } from './watch-list.component'
 
-import { Company } from '../+companies/company'; // TODO: move to shared?
 
 @Component({
     moduleId: module.id,
-    selector: 'invsys-dashboard',
     templateUrl: 'dashboard.component.html',
-    styleUrls: ['dashboard.component.css']
+    directives: [PortfolioComponent, WatchListComponent],
+    providers: [CompaniesService] // TODO: move it one level up?
 })
 export class DashboardComponent implements OnInit {
-    companies: FirebaseListObservable<any[]>;
-
-    constructor(private af: AngularFire) { }
-
-    ngOnInit() {
-        this.companies = this.af.database.list('companies', { query: { 
-            orderByChild: 'order',
-            //equalTo: 'large',
-            //orderByKey: true,
-            //limitToFirst: 10,
-            //limitToLast: 100,
-        } }) as FirebaseListObservable<Company[]>
-    }
 }

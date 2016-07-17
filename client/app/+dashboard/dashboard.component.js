@@ -9,25 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var angularfire2_1 = require('angularfire2');
+var companies_service_1 = require('../+companies/companies.service');
+var portfolio_component_1 = require('./portfolio.component');
+var watch_list_component_1 = require('./watch-list.component');
 var DashboardComponent = (function () {
-    function DashboardComponent(af) {
-        this.af = af;
+    function DashboardComponent() {
     }
-    DashboardComponent.prototype.ngOnInit = function () {
-        this.companies = this.af.database.list('companies', { query: {
-                orderByChild: 'order',
-            } });
-    };
     DashboardComponent = __decorate([
-        // TODO: move to shared?
         core_1.Component({
             moduleId: module.id,
-            selector: 'invsys-dashboard',
             templateUrl: 'dashboard.component.html',
-            styleUrls: ['dashboard.component.css']
+            directives: [portfolio_component_1.PortfolioComponent, watch_list_component_1.WatchListComponent],
+            providers: [companies_service_1.CompaniesService] // TODO: move it one level up?
         }), 
-        __metadata('design:paramtypes', [angularfire2_1.AngularFire])
+        __metadata('design:paramtypes', [])
     ], DashboardComponent);
     return DashboardComponent;
 }());
