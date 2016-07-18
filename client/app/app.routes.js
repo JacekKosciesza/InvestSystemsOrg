@@ -4,6 +4,7 @@ var dashboard_component_1 = require('./+dashboard/dashboard.component');
 var companies_routes_1 = require('./+companies/companies.routes');
 var stocks_routes_1 = require('./+stocks/stocks.routes');
 var leaders_routes_1 = require('./+leaders/leaders.routes');
+var sectors_routes_1 = require('./+sectors/sectors.routes');
 var rule_one_notes_component_1 = require('./notes/rule-one-notes.component');
 var three_circles_component_1 = require('./three-circles/three-circles.component');
 var team_component_1 = require('./+about/team.component');
@@ -15,7 +16,7 @@ exports.AppRoutes = [
         path: '',
         component: dashboard_component_1.DashboardComponent
     }
-].concat(companies_routes_1.CompaniesRoutes, stocks_routes_1.StocksRoutes, leaders_routes_1.LeadersRoutes, [
+].concat(companies_routes_1.CompaniesRoutes, stocks_routes_1.StocksRoutes, leaders_routes_1.LeadersRoutes, sectors_routes_1.SectorsRoutes, [
     {
         path: 'notes',
         component: rule_one_notes_component_1.RuleOneNotes
