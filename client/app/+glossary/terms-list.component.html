@@ -1,0 +1,6 @@
+<dl>
+    <template ngFor let-term [ngForOf]="terms | async">
+        <dt>{{term.label}}</dt>
+        <dd>{{term.definition}}</dd>
+    </template>    
+</dl>

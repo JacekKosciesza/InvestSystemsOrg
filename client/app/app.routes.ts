@@ -5,6 +5,7 @@ import { CompaniesRoutes } from './+companies/companies.routes'
 import { StocksRoutes } from './+stocks/stocks.routes'
 import { LeadersRoutes } from './+leaders/leaders.routes'
 import { SectorsRoutes } from './+sectors/sectors.routes'
+import { GlossaryRoutes } from './+glossary/glossary.routes'
 import { RuleOneNotes } from './notes/rule-one-notes.component'
 import { ThreeCirclesComponent } from './three-circles/three-circles.component'
 import { TeamComponent } from './+about/team.component'
@@ -21,6 +22,7 @@ export const AppRoutes: RouterConfig = [
     ...StocksRoutes,
     ...LeadersRoutes,
     ...SectorsRoutes,
+    ...GlossaryRoutes,
     {
         path: 'notes',
         component: RuleOneNotes

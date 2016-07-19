@@ -1,6 +1,8 @@
 "use strict";
 var Subsector = (function () {
-    function Subsector() {
+    function Subsector(name, industries) {
+        this.name = name;
+        this.industries = industries;
     }
     return Subsector;
 }());

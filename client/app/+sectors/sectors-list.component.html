@@ -1,13 +1,13 @@
 <ul>
-    <li *ngFor="let sector of sectors | async">
+    <li *ngFor="let sector of sectors">
         {{sector.name}}
         <ul *ngFor="let subsector of sector.subsectors">
             <li>
-                {{subsector.subsector.name}}
-                <ul *ngFor="let industry of subsector.subsector.industries">
-                    <li>{{industry.industry.name}}</li>
+                {{subsector.name}}
+                <ul *ngFor="let industry of subsector.industries">
+                    <li>{{industry.name}}</li>
                 </ul>
             </li>
-        </ul>
+        </ul>        
     </li>
 </ul>

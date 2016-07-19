@@ -1,1 +1,1 @@
-{"version":3,"file":"sector.js","sourceRoot":"","sources":["sector.ts"],"names":[],"mappings":";AAEA;IAAA;IAGA,CAAC;IAAD,aAAC;AAAD,CAAC,AAHD,IAGC;AAHY,cAAM,SAGlB,CAAA"}
+{"version":3,"file":"sector.js","sourceRoot":"","sources":["sector.ts"],"names":[],"mappings":";AAEA;IACI,gBAAY,IAAY,EAAE,UAAuB;QAC7C,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,UAAU,GAAG,UAAU,CAAC;IACjC,CAAC;IAIL,aAAC;AAAD,CAAC,AARD,IAQC;AARY,cAAM,SAQlB,CAAA"}

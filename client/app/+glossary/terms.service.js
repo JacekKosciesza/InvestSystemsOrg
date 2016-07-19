@@ -10,18 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var angularfire2_1 = require('angularfire2');
-var SectorsService = (function () {
-    function SectorsService(af) {
+var TermsService = (function () {
+    function TermsService(af) {
         this.af = af;
     }
-    SectorsService.prototype.getSectors = function () {
-        return this.af.database.list('sectors');
+    TermsService.prototype.getTerms = function () {
+        return this.af.database.list('glossary');
     };
-    SectorsService = __decorate([
+    TermsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [angularfire2_1.AngularFire])
-    ], SectorsService);
-    return SectorsService;
+    ], TermsService);
+    return TermsService;
 }());
-exports.SectorsService = SectorsService;
-//# sourceMappingURL=sectors.service.js.map
+exports.TermsService = TermsService;
+//# sourceMappingURL=terms.service.js.map

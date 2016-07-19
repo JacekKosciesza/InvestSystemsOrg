@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
-import { Sector } from './sector';
+import { Term } from './term';
 
 
 @Injectable()
-export class SectorsService {
+export class TermsService {
 
     constructor(private af: AngularFire) { }
 
-    getSectors(): FirebaseListObservable<Sector[]> {
-        return this.af.database.list('sectors') as FirebaseListObservable<Sector[]>;
+    getTerms(): FirebaseListObservable<Term[]> {
+        return this.af.database.list('glossary') as FirebaseListObservable<Term[]>;
     }
 }

@@ -1,6 +1,7 @@
 "use strict";
 var Industry = (function () {
-    function Industry() {
+    function Industry(name) {
+        this.name = name;
     }
     return Industry;
 }());

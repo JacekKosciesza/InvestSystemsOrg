@@ -1,0 +1,1 @@
+{"version":3,"file":"glossary.routes.js","sourceRoot":"","sources":["glossary.routes.ts"],"names":[],"mappings":";AAEA,mCAAkC,sBAAsB,CAAC,CAAA;AACzD,qCAAmC,wBAAwB,CAAC,CAAA;AAE/C,sBAAc,GAAiB;IACxC;QACI,IAAI,EAAE,UAAU;QAChB,SAAS,EAAE,sCAAiB;QAC5B,QAAQ,EAAE;YACN;gBACI,IAAI,EAAE,EAAE;gBACR,SAAS,EAAE,yCAAkB;aAChC;SACJ;KACJ;CACJ,CAAC"}
