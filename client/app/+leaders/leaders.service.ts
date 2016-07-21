@@ -2,19 +2,25 @@ import { Injectable } from '@angular/core';
 
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
+import { SpinnerService } from '../shared/spinner/spinner.service'
 import { Leader } from './leader';
 
 
 @Injectable()
 export class LeadersService {
 
-    constructor(private af: AngularFire) { }
+    constructor(private af: AngularFire, private spinnerService: SpinnerService) { }
 
-    getCompanies(): FirebaseListObservable<Leader[]> {
-        return this.af.database.list('leaders') as FirebaseListObservable<Leader[]>;
+    getLeaders() {
+        this.spinnerService.show()
+        // TODO: return this.af.database.list('leaders').finally(() => {this.spinnerService.hide();}); // why this does not work?
+        let observable = this.af.database.list('leaders');
+        observable.subscribe(() => {this.spinnerService.hide();});
+
+        return observable; 
     }
 
-    getCompany(symbol: string): FirebaseObjectObservable<Leader> {
+    getLeader(symbol: string): FirebaseObjectObservable<Leader> {
         return this.af.database.object(`leaders/${symbol}`) as FirebaseObjectObservable<Leader>;
     }
 }

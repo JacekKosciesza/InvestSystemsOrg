@@ -16,13 +16,13 @@ import { LeadersService } from './leaders.service';
     directives: [MD_CARD_DIRECTIVES]
 })
 export class LeadersListComponent implements OnInit {
-    @Input() leaders: FirebaseListObservable<Leader[]>;
+    @Input() leaders;
 
     constructor(private leadersService: LeadersService, private router: Router, private titleService: Title) { }
 
     ngOnInit() {
         if (!this.leaders) {
-            this.leaders = this.leadersService.getCompanies();
+            this.leaders = this.leadersService.getLeaders();
             this.titleService.setTitle('Leaders');
         }        
     }

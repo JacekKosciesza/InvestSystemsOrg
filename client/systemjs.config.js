@@ -30,6 +30,7 @@
         '@angular2-material/card': { format: 'cjs', defaultExtension: 'js', main: 'card.js' },
         '@angular2-material/grid-list': { format: 'cjs', defaultExtension: 'js', main: 'grid-list.js' },
         '@angular2-material/input': { format: 'cjs', defaultExtension: 'js', main: 'input.js' },
+        '@angular2-material/progress-circle': { format: 'cjs', defaultExtension: 'js', main: 'progress-circle.js' },
         'angularfire2': { defaultExtension: 'js', main: 'angularfire2.js' },
         'moment': { defaultExtension: 'js', main: 'moment.js' }
     };

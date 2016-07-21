@@ -7,7 +7,9 @@
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings"
+    "typings": "typings",
+    "protractor": "protractor",
+    "e2e": "npm run protractor protractor.config.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -28,6 +30,7 @@
     "@angular2-material/sidenav": "^2.0.0-alpha.6",
     "@angular2-material/toolbar": "^2.0.0-alpha.6",
     "@angular2-material/grid-list": "^2.0.0-alpha.6",
+    "@angular2-material/progress-circle": "^2.0.0-alpha.6",
     "@ngrx/core": "^1.0.1",
     "@ngrx/store": "^2.0.1",
     "angular2-in-memory-web-api": "0.0.12",
@@ -45,6 +48,7 @@
     "concurrently": "^2.0.0",
     "lite-server": "^2.2.0",
     "typescript": "^1.8.10",
-    "typings": "^1.0.4"
+    "typings": "^1.0.4",
+    "protractor": "^3.2.2"
   }
 }

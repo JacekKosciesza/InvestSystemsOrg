@@ -20,6 +20,8 @@ import { APP_ROUTER_PROVIDER } from './app.routes';
 
 import { ChartsService } from './charts/charts.service'
 
+import { SpinnerService } from './shared/spinner/spinner.service'
+
 bootstrap(AppComponent, [
     APP_ROUTER_PROVIDER,
     HTTP_PROVIDERS,
@@ -42,7 +44,8 @@ bootstrap(AppComponent, [
     MdIconRegistry,
     disableDeprecatedForms(),
     provideForms(),
-    ChartsService
+    ChartsService,
+    SpinnerService
 ]).then(
     () => window.console.info('Angular finished bootstrapping your application!'),
     (error) => {
