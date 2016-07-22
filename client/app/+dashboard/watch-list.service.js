@@ -11,27 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var angularfire2_1 = require('angularfire2');
 var spinner_service_1 = require('../shared/spinner/spinner.service');
-var LeadersService = (function () {
-    function LeadersService(af, spinnerService) {
+var WatchListService = (function () {
+    function WatchListService(af, spinnerService) {
         this.af = af;
         this.spinnerService = spinnerService;
     }
-    LeadersService.prototype.getLeaders = function () {
-        var _this = this;
-        this.spinnerService.show();
-        // TODO: return this.af.database.list('leaders').finally(() => {this.spinnerService.hide();}); // why this does not work?
-        var observable = this.af.database.list('leaders');
-        observable.subscribe(function () { _this.spinnerService.hide(); });
-        return observable;
+    WatchListService.prototype.getCompanies = function (user) {
+        return this.af.database.list("watch-list/" + user, {
+            query: {
+                orderByChild: 'order',
+            }
+        });
     };
-    LeadersService.prototype.getLeader = function (symbol) {
-        return this.af.database.object("leaders/" + symbol);
-    };
-    LeadersService = __decorate([
+    WatchListService = __decorate([
+        // TODO: move to shared?
         core_1.Injectable(), 
         __metadata('design:paramtypes', [angularfire2_1.AngularFire, spinner_service_1.SpinnerService])
-    ], LeadersService);
-    return LeadersService;
+    ], WatchListService);
+    return WatchListService;
 }());
-exports.LeadersService = LeadersService;
-//# sourceMappingURL=leaders.service.js.map
+exports.WatchListService = WatchListService;
+//# sourceMappingURL=watch-list.service.js.map

@@ -11,7 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var companies_service_1 = require('../+companies/companies.service');
 var portfolio_component_1 = require('./portfolio.component');
+var portfolio_service_1 = require('./portfolio.service');
 var watch_list_component_1 = require('./watch-list.component');
+var watch_list_service_1 = require('./watch-list.service');
 var DashboardComponent = (function () {
     function DashboardComponent() {
     }
@@ -20,7 +22,7 @@ var DashboardComponent = (function () {
             moduleId: module.id,
             templateUrl: 'dashboard.component.html',
             directives: [portfolio_component_1.PortfolioComponent, watch_list_component_1.WatchListComponent],
-            providers: [companies_service_1.CompaniesService] // TODO: move it one level up?
+            providers: [companies_service_1.CompaniesService, portfolio_service_1.PortfolioService, watch_list_service_1.WatchListService] // TODO: move CompaniesService level up?
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardComponent);

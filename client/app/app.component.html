@@ -1,29 +1,44 @@
-<md-toolbar [color]="toolbarColor">
-    <img src="assets/touch/invest-systems-org-48x48.png" width="48" height="48" alt="Invest Systems Logo" />
-    <span>{{title}}</span>
-    
-    <!-- This fills the remaining space of the current row -->
-    <span class="example-fill-remaining-space"></span>
+<md-sidenav-layout class="demo-sidenav-layout">
+    <md-sidenav #start mode="side">
+        Start Side Drawer
+        <br>
+        <button md-button (click)="start.close()">Close</button>
+        <br>
+        <button md-button (click)="start.mode = (start.mode == 'push' ? 'over' : (start.mode == 'over' ? 'side' : 'push'))">Toggle Mode</button>
+        <div>Mode: {{start.mode}}</div>
+        <br>
+    </md-sidenav>
+    <div class="sidenav-content">
+        <md-toolbar [color]="toolbarColor">
+            <md-icon class="demo-toolbar-icon" (click)="start.toggle()">menu</md-icon>
+            <img src="assets/touch/invest-systems-org-48x48.png" width="48" height="48" alt="Invest Systems Logo" />
+            <span>{{title}}</span>
 
-    <md-icon class="md-24">settings</md-icon>
-    <!--http://www.clearlyinnovative.com/integrating-firebase-with-angularfire2-into-angular2-ionic2-part-2-->
-    <img *ngIf="!(auth | async)" src="{{ (af.auth | async)?.auth?.photoURL }}" alt="{{ (af.auth | async)?.auth?.displayName }}" width="62" height="62">
-    <button md-raised-button *ngIf="auth | async" (click)="login()">Login</button>
-</md-toolbar>
-<nav>
-    <a [routerLink]="['/']" routerLinkActive="active">Dashboard</a>
-    <a [routerLink]="['/companies']">Companies</a>
-    <a [routerLink]="['/stock-exchanges']">Stocks</a>
-    <a [routerLink]="['/brokers']">Brokers</a>
-    <a [routerLink]="['/leaders/']">Leaders</a>
-    <a [routerLink]="['/sectors/']">Sectors</a>
-    <a [routerLink]="['/glossary/']">Glossary</a>
-    <a [routerLink]="['/companies/']">Rule #1</a> {
-    <a [routerLink]="['/notes']">Notes</a>
-    <a [routerLink]="['/three-circles']">Three Circles</a> }
-    <a [routerLink]="['/yahoo-finance']">Yahoo Finance</a>
-    <a [routerLink]="['/about/team']">Team</a>
-    <a [routerLink]="['/contact']">Contact</a>
-</nav>
-<router-outlet></router-outlet>
-<loading-spinner></loading-spinner>
+            <!-- This fills the remaining space of the current row -->
+            <span class="example-fill-remaining-space"></span>
+
+            <md-icon class="md-24">settings</md-icon>
+            <!--http://www.clearlyinnovative.com/integrating-firebase-with-angularfire2-into-angular2-ionic2-part-2-->
+            <img *ngIf="!(auth | async)" src="{{ (af.auth | async)?.auth?.photoURL }}" alt="{{ (af.auth | async)?.auth?.displayName }}"
+                width="62" height="62">
+            <button md-raised-button *ngIf="auth | async" (click)="login()">Login</button>
+        </md-toolbar>
+        <nav>
+            <a [routerLink]="['/']" routerLinkActive="active">Dashboard</a>
+            <a [routerLink]="['/companies']">Companies</a>
+            <a [routerLink]="['/stock-exchanges']">Stocks</a>
+            <a [routerLink]="['/brokers']">Brokers</a>
+            <a [routerLink]="['/leaders/']">Leaders</a>
+            <a [routerLink]="['/sectors/']">Sectors</a>
+            <a [routerLink]="['/glossary/']">Glossary</a>
+            <a [routerLink]="['/companies/']">Rule #1</a> {
+            <a [routerLink]="['/notes']">Notes</a>
+            <a [routerLink]="['/three-circles']">Three Circles</a> }
+            <a [routerLink]="['/yahoo-finance']">Yahoo Finance</a>
+            <a [routerLink]="['/about/team']">Team</a>
+            <a [routerLink]="['/contact']">Contact</a>
+        </nav>
+        <router-outlet></router-outlet>
+        <loading-spinner></loading-spinner>
+    </div>
+</md-sidenav-layout>

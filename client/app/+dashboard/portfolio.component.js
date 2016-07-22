@@ -9,17 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var angularfire2_1 = require('angularfire2');
+var portfolio_service_1 = require('./portfolio.service');
 var companies_list_component_1 = require('../+companies/companies-list.component');
 var PortfolioComponent = (function () {
-    function PortfolioComponent(af) {
-        this.af = af;
+    function PortfolioComponent(portfolioService) {
+        this.portfolioService = portfolioService;
         this.user = 'jacek-kosciesza'; // TOOD: get it from identidy service
     }
     PortfolioComponent.prototype.ngOnInit = function () {
-        this.companies = this.af.database.list("portfolio/" + this.user, { query: {
-                orderByChild: 'order',
-            } });
+        this.companies = this.portfolioService.getCompanies(this.user);
     };
     PortfolioComponent = __decorate([
         core_1.Component({
@@ -28,7 +26,7 @@ var PortfolioComponent = (function () {
             templateUrl: 'portfolio.component.html',
             directives: [companies_list_component_1.CompaniesListComponent]
         }), 
-        __metadata('design:paramtypes', [angularfire2_1.AngularFire])
+        __metadata('design:paramtypes', [portfolio_service_1.PortfolioService])
     ], PortfolioComponent);
     return PortfolioComponent;
 }());

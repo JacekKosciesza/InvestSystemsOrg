@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
+import { WatchListService } from './watch-list.service'
 import { Company } from '../+companies/company'; // TODO: move to shared?
 import { CompaniesListComponent } from '../+companies/companies-list.component'
 
@@ -14,11 +15,9 @@ import { CompaniesListComponent } from '../+companies/companies-list.component'
 export class WatchListComponent implements OnInit {
     companies: FirebaseListObservable<any[]>;
     user: string = 'jacek-kosciesza'; // TOOD: get it from identidy service
-    constructor(private af: AngularFire) { }
+    constructor(private watchListService: WatchListService) { }
 
     ngOnInit() {
-        this.companies = this.af.database.list(`watch-list/${this.user}`, { query: { 
-            orderByChild: 'order',
-        } }) as FirebaseListObservable<Company[]>
+        this.companies = this.watchListService.getCompanies(this.user);
     }
 }

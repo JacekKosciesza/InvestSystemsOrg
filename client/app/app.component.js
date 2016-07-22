@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var angularfire2_1 = require('angularfire2');
+var sidenav_1 = require('@angular2-material/sidenav');
 var toolbar_1 = require('@angular2-material/toolbar');
 var button_1 = require('@angular2-material/button');
 var icon_1 = require('@angular2-material/icon/icon');
@@ -52,7 +53,7 @@ var AppComponent = (function () {
             selector: 'invest-systems-org',
             templateUrl: 'app.component.html',
             styleUrls: ['app.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES, toolbar_1.MdToolbar, button_1.MD_BUTTON_DIRECTIVES, icon_1.MdIcon, spinner_component_1.SpinnerComponent],
+            directives: [sidenav_1.MD_SIDENAV_DIRECTIVES, router_1.ROUTER_DIRECTIVES, toolbar_1.MdToolbar, button_1.MD_BUTTON_DIRECTIVES, icon_1.MdIcon, spinner_component_1.SpinnerComponent],
             providers: [
                 ,
                 store_1.provideStore({ areas: area_reducer_1.areasReducer }),

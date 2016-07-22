@@ -3,6 +3,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { AngularFire } from 'angularfire2';
 
+import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
 import { MdToolbar } from '@angular2-material/toolbar';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import {MdIcon} from '@angular2-material/icon/icon';
@@ -18,7 +19,7 @@ import { areasReducer } from './three-circles/area.reducer'
     selector: 'invest-systems-org',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
-    directives: [ROUTER_DIRECTIVES, MdToolbar, MD_BUTTON_DIRECTIVES, MdIcon, SpinnerComponent],
+    directives: [MD_SIDENAV_DIRECTIVES, ROUTER_DIRECTIVES, MdToolbar, MD_BUTTON_DIRECTIVES, MdIcon, SpinnerComponent],
     providers: [
         ,
         provideStore({ areas: areasReducer }),
