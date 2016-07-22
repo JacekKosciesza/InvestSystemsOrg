@@ -10,21 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var angularfire2_1 = require('angularfire2');
+var config_1 = require('../shared/config');
 var spinner_service_1 = require('../shared/spinner/spinner.service');
+var watchListUrl = config_1.CONFIG.baseUrls.watchList;
 var WatchListService = (function () {
     function WatchListService(af, spinnerService) {
         this.af = af;
         this.spinnerService = spinnerService;
     }
     WatchListService.prototype.getCompanies = function (user) {
-        return this.af.database.list("watch-list/" + user, {
+        return this.af.database.list(watchListUrl + "/" + user, {
             query: {
                 orderByChild: 'order',
             }
         });
     };
     WatchListService = __decorate([
-        // TODO: move to shared?
         core_1.Injectable(), 
         __metadata('design:paramtypes', [angularfire2_1.AngularFire, spinner_service_1.SpinnerService])
     ], WatchListService);

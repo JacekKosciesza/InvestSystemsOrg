@@ -10,21 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var angularfire2_1 = require('angularfire2');
+var config_1 = require('../shared/config');
 var spinner_service_1 = require('../shared/spinner/spinner.service');
+var portfolioUrl = config_1.CONFIG.baseUrls.portfolio;
 var PortfolioService = (function () {
     function PortfolioService(af, spinnerService) {
         this.af = af;
         this.spinnerService = spinnerService;
     }
     PortfolioService.prototype.getCompanies = function (user) {
-        return this.af.database.list("portfolio/" + user, {
+        return this.af.database.list(portfolioUrl + "/" + user, {
             query: {
                 orderByChild: 'order',
             }
         });
     };
     PortfolioService = __decorate([
-        // TODO: move to shared?
         core_1.Injectable(), 
         __metadata('design:paramtypes', [angularfire2_1.AngularFire, spinner_service_1.SpinnerService])
     ], PortfolioService);
