@@ -13,7 +13,8 @@
         '@angular2-material': 'node_modules/@angular2-material',
         'firebase': 'node_modules/firebase/firebase.js',
         'angularfire2': 'node_modules/angularfire2',
-        'moment': 'node_modules/moment'
+        'moment': 'node_modules/moment',
+        'log4ts': 'node_modules/log4ts'
     };
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
@@ -32,7 +33,8 @@
         '@angular2-material/input': { format: 'cjs', defaultExtension: 'js', main: 'input.js' },
         '@angular2-material/progress-circle': { format: 'cjs', defaultExtension: 'js', main: 'progress-circle.js' },
         'angularfire2': { defaultExtension: 'js', main: 'angularfire2.js' },
-        'moment': { defaultExtension: 'js', main: 'moment.js' }
+        'moment': { defaultExtension: 'js', main: 'moment.js' },
+        'log4ts': { defaultExtension: 'js', main: 'log4ts.js' }
     };
     var ngPackageNames = [
         'common',

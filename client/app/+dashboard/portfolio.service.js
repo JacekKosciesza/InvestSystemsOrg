@@ -11,14 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var angularfire2_1 = require('angularfire2');
 var config_1 = require('../shared/config');
+var log_service_1 = require('../shared/log/log.service');
 var spinner_service_1 = require('../shared/spinner/spinner.service');
 var portfolioUrl = config_1.CONFIG.baseUrls.portfolio;
 var PortfolioService = (function () {
-    function PortfolioService(af, spinnerService) {
+    function PortfolioService(log, af, spinnerService) {
+        this.log = log;
         this.af = af;
         this.spinnerService = spinnerService;
     }
     PortfolioService.prototype.getCompanies = function (user) {
+        //this.log.init();
+        this.log.info('PortfolioService.getCompanies');
+        this.log.error('PortfolioService.getCompanies');
         return this.af.database.list(portfolioUrl + "/" + user, {
             query: {
                 orderByChild: 'order',
@@ -27,7 +32,7 @@ var PortfolioService = (function () {
     };
     PortfolioService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [angularfire2_1.AngularFire, spinner_service_1.SpinnerService])
+        __metadata('design:paramtypes', [log_service_1.LogService, angularfire2_1.AngularFire, spinner_service_1.SpinnerService])
     ], PortfolioService);
     return PortfolioService;
 }());

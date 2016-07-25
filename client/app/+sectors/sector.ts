@@ -6,6 +6,7 @@ export class Sector {
         this.subsectors = subsectors;
     }
 
+    $key: string;
     name: string;
     subsectors: Subsector[];
 }

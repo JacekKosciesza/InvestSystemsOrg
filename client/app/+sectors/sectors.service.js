@@ -10,12 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var angularfire2_1 = require('angularfire2');
+var config_1 = require('../shared/config');
+var sectorsUrl = config_1.CONFIG.baseUrls.sectors;
 var SectorsService = (function () {
     function SectorsService(af) {
         this.af = af;
     }
     SectorsService.prototype.getSectors = function () {
-        return this.af.database.list('sectors');
+        return this.af.database.list(sectorsUrl);
+    };
+    SectorsService.prototype.getSector = function (id) {
+        return this.af.database.object(sectorsUrl + "/" + id);
     };
     SectorsService = __decorate([
         core_1.Injectable(), 

@@ -1,6 +1,6 @@
 <ul>
     <li *ngFor="let sector of sectors">
-        {{sector.name}}
+        <!--<a [routerLink]="['sectors']"></a>-->{{sector.name}}
         <ul *ngFor="let subsector of sector.subsectors">
             <li>
                 {{subsector.name}}

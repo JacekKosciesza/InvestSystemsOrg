@@ -22,6 +22,8 @@ import { ChartsService } from './charts/charts.service'
 
 import { SpinnerService } from './shared/spinner/spinner.service'
 
+import { LogService } from './shared/log/log.service'
+
 bootstrap(AppComponent, [
     APP_ROUTER_PROVIDER,
     HTTP_PROVIDERS,
@@ -45,7 +47,8 @@ bootstrap(AppComponent, [
     disableDeprecatedForms(),
     provideForms(),
     ChartsService,
-    SpinnerService
+    SpinnerService,
+    LogService
 ]).then(
     () => window.console.info('Angular finished bootstrapping your application!'),
     (error) => {
