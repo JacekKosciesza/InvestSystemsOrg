@@ -23,6 +23,7 @@ import { ChartsService } from './charts/charts.service'
 import { SpinnerService } from './shared/spinner/spinner.service'
 
 import { LogService } from './shared/log/log.service'
+import { appConfig, DEFAULT_APP_CONFIG } from './shared/config/index' // TODO: check why barrel does not work?
 
 bootstrap(AppComponent, [
     APP_ROUTER_PROVIDER,
@@ -48,7 +49,8 @@ bootstrap(AppComponent, [
     provideForms(),
     ChartsService,
     SpinnerService,
-    LogService
+    LogService,
+    appConfig(DEFAULT_APP_CONFIG)
 ]).then(
     () => window.console.info('Angular finished bootstrapping your application!'),
     (error) => {

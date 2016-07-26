@@ -1,11 +1,9 @@
 "use strict";
-exports.CONFIG = {
+exports.DEFAULT_APP_CONFIG = {
     baseUrls: {
-        // dashboard
         portfolio: 'portfolio',
         watchList: 'watch-list',
-        // sectors/subsectors/industries
         sectors: 'sectors'
     }
 };
-//# sourceMappingURL=config.js.map
+//# sourceMappingURL=app-config.js.map

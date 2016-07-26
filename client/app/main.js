@@ -13,6 +13,7 @@ var app_routes_1 = require('./app.routes');
 var charts_service_1 = require('./charts/charts.service');
 var spinner_service_1 = require('./shared/spinner/spinner.service');
 var log_service_1 = require('./shared/log/log.service');
+var index_1 = require('./shared/config/index'); // TODO: check why barrel does not work?
 platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     app_routes_1.APP_ROUTER_PROVIDER,
     http_1.HTTP_PROVIDERS,
@@ -37,7 +38,8 @@ platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     forms_1.provideForms(),
     charts_service_1.ChartsService,
     spinner_service_1.SpinnerService,
-    log_service_1.LogService
+    log_service_1.LogService,
+    index_1.appConfig(index_1.DEFAULT_APP_CONFIG)
 ]).then(function () { return window.console.info('Angular finished bootstrapping your application!'); }, function (error) {
     console.warn('Angular was not able to bootstrap your application.');
     console.error(error);

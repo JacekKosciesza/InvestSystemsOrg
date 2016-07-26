@@ -1,20 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
-import { CONFIG } from '../shared/config';
+import { APP_CONFIG, AppConfig } from '../shared/config/index';
 import { SpinnerService } from '../shared/spinner/spinner.service'
 import { Company } from '../+companies/company'; // TODO: move to shared?
-
-let watchListUrl = CONFIG.baseUrls.watchList;
 
 @Injectable()
 export class WatchListService {
 
-    constructor(private af: AngularFire, private spinnerService: SpinnerService) { }
+    constructor(@Inject(APP_CONFIG) private config: AppConfig, private af: AngularFire, private spinnerService: SpinnerService) { }
 
     getCompanies(user: string) {
-        return this.af.database.list(`${watchListUrl}/${user}`, {
+        return this.af.database.list(`${this.config.baseUrls.watchList}/${user}`, {
             query: {
                 orderByChild: 'order',
             }

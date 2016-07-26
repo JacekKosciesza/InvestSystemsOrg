@@ -1,22 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
-import { CONFIG } from '../shared/config';
+import { APP_CONFIG, AppConfig } from '../shared/config/index';
 import { Sector } from './sector';
-
-let sectorsUrl = CONFIG.baseUrls.sectors;
 
 @Injectable()
 export class SectorsService {
 
-    constructor(private af: AngularFire) { }
+    constructor(@Inject(APP_CONFIG) private config: AppConfig,private af: AngularFire) { }
 
     getSectors(): FirebaseListObservable<Sector[]> {
-        return this.af.database.list(sectorsUrl) as FirebaseListObservable<Sector[]>;
+        return this.af.database.list(this.config.baseUrls.sectors) as FirebaseListObservable<Sector[]>;
     }
 
     getSector(id: string): FirebaseObjectObservable<Sector> {
-        return this.af.database.object(`${sectorsUrl}/${id}`) as FirebaseObjectObservable<Sector>;
+        return this.af.database.object(`${this.config.baseUrls.sectors}/${id}`) as FirebaseObjectObservable<Sector>;
     }
 }
