@@ -18,7 +18,7 @@ namespace InvSys.Companies.Core.Services
         public async Task<Company> AddCompany(Company company)
         {
             var addedCompany = _companiesRepository.Add(company);
-            if (await _companiesRepository.SaveAsync())
+            if (await _companiesRepository.SaveChangesAsync())
             {
                 return addedCompany;
             } else
@@ -30,7 +30,7 @@ namespace InvSys.Companies.Core.Services
         public async Task<bool> DeleteCompany(Guid id)
         {
             _companiesRepository.Delete(id);
-            return await _companiesRepository.SaveAsync();
+            return await _companiesRepository.SaveChangesAsync();
         }
 
         public async Task<ICollection<Company>> GetCompanies()
@@ -46,7 +46,7 @@ namespace InvSys.Companies.Core.Services
         public async Task<Company> UpdateCompany(Company company)
         {
             _companiesRepository.Update(company);
-            if (await _companiesRepository.SaveAsync())
+            if (await _companiesRepository.SaveChangesAsync())
             {
                 return company;
             }

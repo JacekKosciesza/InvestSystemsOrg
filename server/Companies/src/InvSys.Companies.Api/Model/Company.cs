@@ -16,7 +16,7 @@ namespace InvSys.Companies.Api.Model
         [StringLength(100, MinimumLength = 2)]
         public string Name { get; set; }
         [Required]
-        [StringLength(2000, MinimumLength = 20)]
+        [StringLength(3000, MinimumLength = 20)]
         public string Description { get; set; }
     }
 }

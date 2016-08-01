@@ -1,17 +1,8 @@
-﻿using System.Collections.Generic;
-using InvSys.Companies.Core.Model;
+﻿using InvSys.Companies.Core.Model;
 using System;
-using System.Threading.Tasks;
+using InvSys.Shared.Core.State;
 
 namespace InvSys.Companies.Core.State
 {
-    public interface ICompaniesRepository
-    {
-        Task<List<Company>> GetAll();
-        Task<Company> Get(Guid id);
-        Company Add(Company company);
-        void Update(Company company);
-        void Delete(Guid id);
-        Task<bool> SaveAsync();
-    }
+    public interface ICompaniesRepository : IBaseRepository<Company, Guid> { }
 }

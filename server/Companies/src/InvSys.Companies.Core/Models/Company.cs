@@ -1,8 +1,9 @@
-﻿using System;
+﻿using InvSys.Shared.Core.State;
+using System;
 
 namespace InvSys.Companies.Core.Model
 {
-    public class Company
+    public class Company : IEntity<Guid>
     {
         public Guid Id { get; set; }
         public string Symbol { get; set; }
