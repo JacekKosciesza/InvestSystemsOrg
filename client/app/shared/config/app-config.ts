@@ -1,4 +1,3 @@
-
 export let DEFAULT_APP_CONFIG: AppConfig = {
   baseUrls: {
     portfolio: 'portfolio',
