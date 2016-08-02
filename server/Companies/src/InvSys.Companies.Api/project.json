@@ -16,7 +16,8 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "InvSys.Companies.Core": "1.0.0-*",
     "InvSys.Companies.State": "1.0.0-*",
-    "AutoMapper": "5.0.2"
+    "AutoMapper": "5.0.2",
+    "System.Linq": "4.1.0"
   },
 
   "tools": {

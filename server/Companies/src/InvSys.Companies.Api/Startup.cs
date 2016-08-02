@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using InvSys.Companies.Api.Model;
 using InvSys.Companies.Core.Services;
 using InvSys.Companies.Core.State;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace InvSys.Companies.Api
 {
@@ -26,7 +28,13 @@ namespace InvSys.Companies.Api
 
             _mapperConfiguration = new MapperConfiguration(config =>
             {
-                config.CreateMap<Core.Model.Company, Company>().ReverseMap();
+                config.CreateMap<Company, Core.Model.Company>()
+                    .ForMember(d => d.Translations, opt => opt.MapFrom(s => 
+                        new List<Core.Model.CompanyTranslation> { new Core.Model.CompanyTranslation { Culture = s.Culture ?? "en-US", Description = s.Description }
+                    }));
+                config.CreateMap<Core.Model.Company, Company>()
+                    .ForMember(d => d.Description, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == "en-US").Description)) // TODO: make 'en-US' a parameter
+                    .ForMember(d => d.Culture, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == "en-US").Culture)); // TODO: make 'en-US' a parameter
                 config.AllowNullCollections = true;
             });
         }

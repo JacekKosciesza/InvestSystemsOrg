@@ -46,7 +46,13 @@ namespace InvSys.Companies.Api.Controllers
             try
             {
                 var company = await _companiesService.GetCompany(id);
-                return Ok(_mapper.Map<Company>(company));
+                if (company != null)
+                {
+                    return Ok(_mapper.Map<Company>(company));
+                } else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
@@ -66,7 +72,7 @@ namespace InvSys.Companies.Api.Controllers
                 {
                     var location = $"api/companies/{createdCompany.Id}";
                     _logger.LogDebug($"Company created: {location}");
-                    return Created(location, createdCompany);
+                    return Created(location, _mapper.Map<Company>(createdCompany));
                 } else
                 {
                     return BadRequest("Failed to save state");
@@ -88,7 +94,7 @@ namespace InvSys.Companies.Api.Controllers
                 if (updatedCompany != null)
                 {
                     _logger.LogDebug($"Company updated: {updatedCompany.Id}");
-                    return Ok(updatedCompany);
+                    return Ok(_mapper.Map<Company>(updatedCompany));
                 } else
                 {
                     return BadRequest("Failed to save state");

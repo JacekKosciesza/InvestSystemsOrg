@@ -17,14 +17,14 @@ namespace InvSys.Shared.State.EntityFramework.Repositories
             _dbContext = dbContext;
         }
 
-        public Task<List<TEntity>> GetAll()
+        public virtual Task<List<TEntity>> GetAll()
         {
             return _dbContext.Set<TEntity>().ToListAsync();
         }
 
         public virtual Task<TEntity> Get(TKey id)
         {
-            return _dbContext.Set<TEntity>().FirstAsync(c => c.Id.Equals(id));
+            return _dbContext.Set<TEntity>().SingleOrDefaultAsync(c => c.Id.Equals(id));
         }
 
         public virtual TEntity Add(TEntity entity)
