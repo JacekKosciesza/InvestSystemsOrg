@@ -48,6 +48,7 @@ namespace InvSys.Companies.Api
 
             services.AddSingleton(Configuration);
             services.AddMvc();
+            services.AddSwaggerGen();
             services.AddDbContext<CompaniesContext>();
             services.AddTransient<CompaniesContextSeedData>();
             services.AddScoped<ICompaniesService, CompaniesService>();
@@ -61,8 +62,9 @@ namespace InvSys.Companies.Api
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUi();
 
             seeder.EnsureSeedData().Wait();
         }
