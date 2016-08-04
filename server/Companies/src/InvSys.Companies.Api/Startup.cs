@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using Swashbuckle.Swagger.Model;
 
 namespace InvSys.Companies.Api
 {
@@ -48,7 +49,25 @@ namespace InvSys.Companies.Api
 
             services.AddSingleton(Configuration);
             services.AddMvc();
-            services.AddSwaggerGen();
+
+            // Swagger
+            services.AddSwaggerGen(c =>
+                 c.SingleApiVersion(new Info
+                 {
+                     Version = "v1",
+                     Title = "Companies API",
+                     Description = "Companies API for InvestSystems.org",
+                     TermsOfService = "Use at your own risk",
+                 })
+            );
+            //if (_hostingEnv.IsDevelopment())
+            //{
+            //    services.ConfigureSwaggerGen(c =>
+            //    {
+            //        c.IncludeXmlComments(GetXmlCommentsPath());
+            //    });
+            //}
+
             services.AddDbContext<CompaniesContext>();
             services.AddTransient<CompaniesContextSeedData>();
             services.AddScoped<ICompaniesService, CompaniesService>();
@@ -63,7 +82,12 @@ namespace InvSys.Companies.Api
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             app.UseMvc();
-            app.UseSwagger();
+
+            // Swagger
+            app.UseSwagger((httpRequest, swaggerDoc) =>
+            {
+                swaggerDoc.Host = httpRequest.Host.Value;
+            });
             app.UseSwaggerUi();
 
             seeder.EnsureSeedData().Wait();

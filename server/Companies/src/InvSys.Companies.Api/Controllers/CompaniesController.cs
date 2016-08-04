@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
 using InvSys.Companies.Api.Model;
+using Swashbuckle.SwaggerGen.Annotations;
 
 namespace InvSys.Companies.Api.Controllers
 {
@@ -24,6 +25,11 @@ namespace InvSys.Companies.Api.Controllers
 
         // GET api/companies
         [HttpGet]
+        [SwaggerOperation("get-companies")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<Company>))]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get all companies")]
+        [Produces("application/json", Type = typeof(ICollection<Company>))]
         public async Task<IActionResult> Get()
         {
             _logger.LogInformation("Getting all companies");
@@ -40,6 +46,12 @@ namespace InvSys.Companies.Api.Controllers
 
         // GET api/companies/38d05660-8ea1-4b12-a14d-10d916c07e9c
         [HttpGet("{id:guid}")]
+        [SwaggerOperation("get-company")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Company))]
+        [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Company not found")]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get company")]
+        [Produces("application/json", Type = typeof(Company))]
         public async Task<IActionResult> Get(Guid id)
         {
             _logger.LogInformation($"Getting company by Id = {id}");
@@ -63,6 +75,12 @@ namespace InvSys.Companies.Api.Controllers
 
         // POST api/companies
         [HttpPost]
+        [SwaggerOperation("create-company")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.Created, Type = typeof(Company))]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Invalid arguments")]
+        [Consumes("application/json")]
+        [Produces("application/json", Type = typeof(Company))]
         public async Task<IActionResult> Post([FromBody]Company company)
         {
             if (ModelState.IsValid)
@@ -86,8 +104,19 @@ namespace InvSys.Companies.Api.Controllers
 
         // PUT api/companies/38d05660-8ea1-4b12-a14d-10d916c07e9c
         [HttpPut("{id:guid}")]
+        [SwaggerOperation("update-company")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Company))]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Invalid arguments")]
+        [Consumes("application/json")]
+        [Produces("application/json", Type = typeof(Company))]
         public async Task<IActionResult> Put(Guid id, [FromBody]Company company)
         {
+            if (company.Id != id)
+            {
+                return BadRequest("Invalid company id");
+            }
+
             if (ModelState.IsValid)
             {
                 var updatedCompany = await _companiesService.UpdateCompany(_mapper.Map<Core.Model.Company>(company));
@@ -109,6 +138,10 @@ namespace InvSys.Companies.Api.Controllers
 
         // DELETE api/companies/38d05660-8ea1-4b12-a14d-10d916c07e9c
         [HttpDelete("{id:guid}")]
+        [SwaggerOperation("delete-company")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.NoContent)]
+        [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Company not found")]
         public async Task<IActionResult> Delete(Guid id)
         {
             if (await _companiesService.DeleteCompany(id))
