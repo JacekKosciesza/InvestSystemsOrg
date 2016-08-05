@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 using AutoMapper;
 using InvSys.Companies.Api.Model;
 using Swashbuckle.SwaggerGen.Annotations;
+using Microsoft.Extensions.Localization;
+using System.Globalization;
 
 namespace InvSys.Companies.Api.Controllers
 {
@@ -16,11 +18,14 @@ namespace InvSys.Companies.Api.Controllers
         private readonly ICompaniesService _companiesService;
         private readonly ILogger<CompaniesController> _logger;
         private readonly IMapper _mapper;
-        public CompaniesController(ICompaniesService companiesService, ILogger<CompaniesController> logger, IMapper mapper)
+        private readonly IStringLocalizer<CompaniesController> _localizer;
+
+        public CompaniesController(ICompaniesService companiesService, ILogger<CompaniesController> logger, IMapper mapper, IStringLocalizer<CompaniesController> localizer)
         {
             _companiesService = companiesService;
             _logger = logger;
             _mapper = mapper;
+            _localizer = localizer;
         }
 
         // GET api/companies
@@ -39,7 +44,7 @@ namespace InvSys.Companies.Api.Controllers
                 return Ok(_mapper.Map<ICollection<Company>>(companies));
             } catch (Exception ex)
             {
-                _logger.LogError($"Failed to get all companies", ex);
+                _logger.LogError($"{_localizer["Failed to get all companies"]}", ex);
                 return BadRequest();
             }
         }

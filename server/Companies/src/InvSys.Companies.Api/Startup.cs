@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Swashbuckle.Swagger.Model;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace InvSys.Companies.Api
 {
@@ -31,11 +33,11 @@ namespace InvSys.Companies.Api
             {
                 config.CreateMap<Company, Core.Model.Company>()
                     .ForMember(d => d.Translations, opt => opt.MapFrom(s => 
-                        new List<Core.Model.CompanyTranslation> { new Core.Model.CompanyTranslation { Culture = s.Culture ?? "en-US", Description = s.Description }
+                        new List<Core.Model.CompanyTranslation> { new Core.Model.CompanyTranslation { Culture = s.Culture ?? CultureInfo.CurrentCulture.Name, Description = s.Description }
                     }));
                 config.CreateMap<Core.Model.Company, Company>()
-                    .ForMember(d => d.Description, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == "en-US").Description)) // TODO: make 'en-US' a parameter
-                    .ForMember(d => d.Culture, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == "en-US").Culture)); // TODO: make 'en-US' a parameter
+                    .ForMember(d => d.Description, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Description)) // TODO: make 'en-US' a parameter
+                    .ForMember(d => d.Culture, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Culture)); // TODO: make 'en-US' a parameter
                 config.AllowNullCollections = true;
             });
         }
@@ -47,8 +49,11 @@ namespace InvSys.Companies.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             services.AddSingleton(Configuration);
-            services.AddMvc();
+            services.AddMvc()
+                .AddDataAnnotationsLocalization();
 
             // Swagger
             services.AddSwaggerGen(c =>
@@ -78,6 +83,16 @@ namespace InvSys.Companies.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, CompaniesContextSeedData seeder)
         {
+
+            var supportedCultures = Configuration["Globalization:SupportedCultures"].Split(';').Select(c => new CultureInfo(c)).ToList();
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(Configuration["Globalization:DefaultCulture"]),
+                // Formatting numbers, dates, etc.
+                SupportedCultures = supportedCultures,
+                // UI strings that we have localized.
+                SupportedUICultures = supportedCultures
+            });
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
