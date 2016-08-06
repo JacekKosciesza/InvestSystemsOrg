@@ -39,7 +39,6 @@
     }
   },
 
-  // dfdf
   "buildOptions": {
     "emitEntryPoint": true
   }
