@@ -76,3 +76,4 @@ _[Ss]cripts
 *.dot[Cc]over
 # Extra
 project.lock.json
+.vscode/

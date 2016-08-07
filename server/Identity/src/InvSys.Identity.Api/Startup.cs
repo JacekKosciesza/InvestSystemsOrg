@@ -11,6 +11,10 @@ using InvSys.Identity.State.EntityFramework;
 using InvSys.Identity.State.EntityFramework.Seed;
 using InvSys.Identity.Core.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Swashbuckle.Swagger.Model;
+using InvSys.Identity.Core.Services;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 namespace InvSys.Identity.Api
 {
@@ -32,23 +36,62 @@ namespace InvSys.Identity.Api
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc()
+                .AddDataAnnotationsLocalization();
             services.AddIdentity<User, IdentityRole>(config =>
             {
                 config.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<IdentityContext>();
+
+
+            // Swagger
+            services.AddSwaggerGen(c =>
+                 c.SingleApiVersion(new Info
+                 {
+                     Version = "v1",
+                     Title = "Identity API",
+                     Description = "Identity API for InvestSystems.org",
+                     TermsOfService = "Use at your own risk",
+                 })
+            );
+            //if (_hostingEnv.IsDevelopment())
+            //{
+            //    services.ConfigureSwaggerGen(c =>
+            //    {
+            //        c.IncludeXmlComments(GetXmlCommentsPath());
+            //    });
+            //}
+
             services.AddDbContext<IdentityContext>();
             services.AddTransient<IdentityContextSeedData>();
-            services.AddTransient<IdentityContextSeedData>();
+            services.AddScoped<IUsersService, UsersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IdentityContextSeedData seeder)
         {
+            var supportedCultures = Configuration["Globalization:SupportedCultures"].Split(';').Select(c => new CultureInfo(c.Trim())).ToList();
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(Configuration["Globalization:DefaultCulture"]),
+                // Formatting numbers, dates, etc.
+                SupportedCultures = supportedCultures,
+                // UI strings that we have localized.
+                SupportedUICultures = supportedCultures
+            });
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
             app.UseMvc();
+
+            // Swagger
+            app.UseSwagger((httpRequest, swaggerDoc) =>
+            {
+                swaggerDoc.Host = httpRequest.Host.Value;
+            });
+            app.UseSwaggerUi();
+
             seeder.EnsureSeedData().Wait();
         }
     }
