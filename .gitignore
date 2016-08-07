@@ -7,3 +7,4 @@ typings/
 # other
 .tmp
 build
+.vscode/
