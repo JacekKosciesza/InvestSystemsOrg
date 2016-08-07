@@ -1,4 +1,4 @@
-﻿using InvSys.Companies.Tests.Integration.Proxy.Models;
+﻿using InvSys.Companies.Api.Client.Proxy.Models;
 using System;
 
 namespace InvSys.Companies.Tests.Integration
