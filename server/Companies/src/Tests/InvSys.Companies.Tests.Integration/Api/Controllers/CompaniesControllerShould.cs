@@ -6,13 +6,13 @@ using Xunit;
 
 namespace InvSys.Companies.Tests.Integration.Api.Controllers
 {
-    public class CompaniesController
+    public class CompaniesControllerShould
     {
         ICompaniesAPI client;
         IConfigurationRoot _configuration;
 
 
-        public CompaniesController()
+        public CompaniesControllerShould()
         {
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("testsettings.json", optional: true, reloadOnChange: true)
@@ -22,7 +22,7 @@ namespace InvSys.Companies.Tests.Integration.Api.Controllers
         }
 
         [Fact]
-        public async void CanGetAllCompanies()
+        public async void ReturnAnyCompany()
         {
             // Given
             var newCompany = new CompanyBuilder().Build();
@@ -37,7 +37,7 @@ namespace InvSys.Companies.Tests.Integration.Api.Controllers
         }
 
         [Fact]
-        public async void CanGetCompanyById()
+        public async void ReturnCompanyGivenExisitngId()
         {
             // Given
             var newCompany = new CompanyBuilder().Build();
@@ -52,7 +52,7 @@ namespace InvSys.Companies.Tests.Integration.Api.Controllers
         }
 
         [Fact]
-        public async void CanCreateCompany()
+        public async void ReturnCreatedCompany()
         {
             // When
             var newCompany = new CompanyBuilder().Build();
@@ -64,7 +64,7 @@ namespace InvSys.Companies.Tests.Integration.Api.Controllers
         }
 
         [Fact]
-        public async void CanUpdateCompany()
+        public async void ReturnUpdatedCompany()
         {
             // Given
             var newCompany = new CompanyBuilder().Build();
@@ -81,7 +81,7 @@ namespace InvSys.Companies.Tests.Integration.Api.Controllers
         }
 
         [Fact]
-        public async void CanDeleteCompany()
+        public async void DeleteExistingCompany()
         {
             // Given
             var newCompany = new CompanyBuilder().Build();
