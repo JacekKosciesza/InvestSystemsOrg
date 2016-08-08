@@ -1,5 +1,6 @@
 ﻿using InvSys.Companies.Core.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Configuration;
 
@@ -36,12 +37,21 @@ namespace InvSys.Companies.State.EntityFramework
 
         private static void ConfigureCompany(EntityTypeBuilder<Company> builder)
         {
-            builder.HasMany(c => c.Translations).WithOne(t => t.Company).HasForeignKey(t => t.CompanyId);
+            builder.HasMany(c => c.Translations).WithOne(t => t.Company).HasForeignKey(t => t.CompanyId)
+                .IsRequired().OnDelete(DeleteBehavior.Cascade);
+            builder.HasAlternateKey(c => c.Symbol);
+            builder.HasIndex(c => c.Symbol).IsUnique();
+            builder.Property(c => c.Timestamp).ValueGeneratedOnAddOrUpdate().IsConcurrencyToken();
+            builder.Property(c => c.Symbol).IsRequired().HasMaxLength(100);
+            builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
         }
 
         private static void ConfigureCompanyTranslation(EntityTypeBuilder<CompanyTranslation> builder)
         {
+            builder.ToTable("CompanyTranslations");
             builder.HasKey(t => new { t.CompanyId, t.Culture });
+            builder.Property(c => c.Timestamp).ValueGeneratedOnAddOrUpdate().IsConcurrencyToken();
+            builder.Property(c => c.Description).IsRequired().HasMaxLength(3000);
         }
     }
 }

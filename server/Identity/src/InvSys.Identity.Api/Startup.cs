@@ -15,6 +15,7 @@ using Swashbuckle.Swagger.Model;
 using InvSys.Identity.Core.Services;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 
 namespace InvSys.Identity.Api
 {
@@ -62,7 +63,8 @@ namespace InvSys.Identity.Api
             //    });
             //}
 
-            services.AddDbContext<IdentityContext>();
+            var connection = Configuration["ConnectionStrings:IdentityContextConnection"];
+            services.AddDbContext<IdentityContext>(options => options.UseSqlServer(connection));
             services.AddTransient<IdentityContextSeedData>();
             services.AddScoped<IUsersService, UsersService>();
         }
