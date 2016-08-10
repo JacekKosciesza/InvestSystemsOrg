@@ -1,4 +1,5 @@
 ﻿using InvSys.Companies.Api.Client.Proxy;
+using InvSys.Companies.Tests.Shared.Builders.Api.Client;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;

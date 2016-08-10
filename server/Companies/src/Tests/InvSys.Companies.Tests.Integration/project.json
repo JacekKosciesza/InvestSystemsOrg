@@ -6,7 +6,7 @@
     "dotnet-test-xunit": "2.2.0-preview2-build1029",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
-    "InvSys.Companies.Api.Client": {
+    "InvSys.Companies.Tests.Shared": {
       "target": "project"
     }
   },

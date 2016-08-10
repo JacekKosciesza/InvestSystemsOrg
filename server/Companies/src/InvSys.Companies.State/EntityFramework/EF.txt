@@ -2,3 +2,5 @@
 dotnet ef database update
 dotnet ef migrations add Translations -o .\EntityFramework\Migrations
 dotnet ef database update
+dotnet ef migrations add EFConfiguration -o .\EntityFramework\Migrations
+dotnet ef database update
