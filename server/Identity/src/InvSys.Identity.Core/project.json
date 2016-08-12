@@ -3,7 +3,8 @@
 
   "dependencies": {
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
-    "NETStandard.Library": "1.6.0"
+    "NETStandard.Library": "1.6.0",
+    "OpenIddict": "1.0.0-alpha2-0408"
   },
 
   "frameworks": {

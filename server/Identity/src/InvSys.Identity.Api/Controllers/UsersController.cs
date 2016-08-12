@@ -1,5 +1,6 @@
 ﻿using InvSys.Identity.Core.Models;
 using InvSys.Identity.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace InvSys.Identity.Api.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
 
     public class UsersController : Controller

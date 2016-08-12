@@ -2,14 +2,17 @@
 using InvSys.Identity.Core.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using OpenIddict;
 
 namespace InvSys.Identity.State.EntityFramework
 {
-    public class IdentityContext : IdentityDbContext<User>
+    public class IdentityContext : OpenIddictDbContext // IdentityDbContext<User>
     {
         private readonly IConfigurationRoot _config;
 
         public IdentityContext() { }
+
+        public DbSet<User> ApplicationUsers {get; set;}
 
         public IdentityContext(IConfigurationRoot config, DbContextOptions options)
             : base(options)

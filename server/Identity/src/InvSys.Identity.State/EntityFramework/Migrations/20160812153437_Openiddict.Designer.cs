@@ -8,9 +8,10 @@ using InvSys.Identity.State.EntityFramework;
 namespace InvSys.Identity.State.EntityFramework.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    partial class IdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20160812153437_Openiddict")]
+    partial class Openiddict
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")

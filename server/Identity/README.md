@@ -20,3 +20,5 @@
 * [Introduction to OAuth2, OpenID Connect and JSON Web Tokens (JWT), \[PluralSight\]](https://www.pluralsight.com/courses/oauth2-json-web-tokens-openid-connect-introduction)
 * [OAuth2 and OpenID Connect Strategies for Angular and ASP.NET, \[PluralSight\]](https://www.pluralsight.com/courses/oauth2-openid-connect-angular-aspdotnet)
 * [Service Fabric Documentation](https://azure.microsoft.com/en-us/documentation/services/service-fabric/)
+* [Authorizing your .NET Core MVC6 API requests with OpenIddict and Identity](http://kerryritter.com/authorizing-your-net-core-mvc6-api-requests-with-openiddict-and-identity/)
+* [OpenIddict](https://github.com/openiddict/openiddict-core)

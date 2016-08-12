@@ -16,6 +16,7 @@ using InvSys.Identity.Core.Services;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.EntityFrameworkCore;
+using OpenIddict.Infrastructure;
 
 namespace InvSys.Identity.Api
 {
@@ -42,7 +43,23 @@ namespace InvSys.Identity.Api
             services.AddIdentity<User, IdentityRole>(config =>
             {
                 config.User.RequireUniqueEmail = true;
-            }).AddEntityFrameworkStores<IdentityContext>();
+            }).AddEntityFrameworkStores<IdentityContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddOpenIddict<User, IdentityContext>()
+                // Enable the token endpoint (required to use the password flow).
+                .EnableTokenEndpoint("/connect/token")
+
+                // Allow client applications to use the grant_type=password flow.
+                .AllowPasswordFlow()
+
+                // During development, you can disable the HTTPS requirement.
+                .DisableHttpsRequirement()
+
+                // Register a new ephemeral key, that is discarded when the application
+                // shuts down. Tokens signed using this key are automatically invalidated.
+                // This method should only be used during development.
+                .AddEphemeralSigningKey();
 
 
             // Swagger
@@ -84,6 +101,10 @@ namespace InvSys.Identity.Api
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseIdentity();
+            app.UseOAuthValidation();
+            app.UseOpenIddict();
 
             app.UseMvc();
 
