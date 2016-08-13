@@ -2,8 +2,8 @@
 
 ### Technologies
 
-* ASP.NET Core 1.0
+* ASP.NET Core
+* Entity Framework Core
 * Swashbuckle
-* Entity Framework Core 1.0
 * xUnit.net
 * Service Fabric

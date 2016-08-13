@@ -11,8 +11,8 @@ Social network & tools for non-professional investors.
 
 * Angular 2
 * Material Design for Angular 2
-* ASP.NET Core 1.0
+* ASP.NET Core
 * Swashbuckle
-* Entity Framework Core 1.0
+* Entity Framework Core
 * xUnit.net
 * Service Fabric

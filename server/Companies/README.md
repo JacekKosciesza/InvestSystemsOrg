@@ -2,10 +2,10 @@
 
 ### Technologies
 
-* ASP.NET Core 1.0
+* ASP.NET Core
+* Entity Framework Core
 * Swashbuckle
 * AutoRest
-* Entity Framework Core 1.0
 * AutoMapper
 * xUnit.net
 * Service Fabric

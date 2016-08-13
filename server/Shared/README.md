@@ -2,8 +2,8 @@
 
 ### Technologies
 
-* ASP.NET Core 1.0
-* Entity Framework Core 1.0
+* ASP.NET Core
+* Entity Framework Core
 
 ### Links
 * [ASP.NET Core Documentation](https://docs.asp.net/en/latest/)
