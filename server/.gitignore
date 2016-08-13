@@ -77,3 +77,4 @@ _[Ss]cripts
 # Extra
 project.lock.json
 .vscode/
+pkg/

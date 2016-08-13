@@ -25,6 +25,7 @@ namespace InvSys.Companies.State.EntityFramework
             base.OnConfiguring(optionsBuilder);
 
             optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Companies;Integrated Security=SSPI;integrated security=true;MultipleActiveResultSets=True;");
+            //optionsBuilder.UseSqlServer("Data Source=EPPLKATW0006\\SQLEXPRESS;Initial Catalog=Companies;User Id=sa;Password=TODO;MultipleActiveResultSets =True;");
             //optionsBuilder.UseSqlServer(_config["ConnectionStrings:CompaniesContextConnection"]);
         }
 

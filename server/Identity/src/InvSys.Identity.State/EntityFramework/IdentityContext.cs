@@ -25,6 +25,7 @@ namespace InvSys.Identity.State.EntityFramework
             base.OnConfiguring(optionsBuilder);
 
             optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Identity;Integrated Security=SSPI;integrated security=true;MultipleActiveResultSets=True;");
+            //optionsBuilder.UseSqlServer("Data Source=EPPLKATW0006\\SQLEXPRESS;Initial Catalog=Identity;User Id=sa;Password=TODO;MultipleActiveResultSets =True;");
             //optionsBuilder.UseSqlServer(_config["ConnectionStrings:IdentityContextConnection"]);
         }
     }

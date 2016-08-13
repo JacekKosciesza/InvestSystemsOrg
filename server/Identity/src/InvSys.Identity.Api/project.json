@@ -10,11 +10,14 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
-    "InvSys.Identity.Core": "1.0.0-*",
-    "InvSys.Identity.State": "1.0.0-*",
+    "Microsoft.ServiceFabric": "5.1.163",
+    "Microsoft.ServiceFabric.Data": "2.1.163",
+    "Microsoft.ServiceFabric.Services": "2.1.163",
     "Swashbuckle": "6.0.0-beta901",
     "OpenIddict": "1.0.0-alpha2-0408",
-    "AspNet.Security.OAuth.Validation": "1.0.0-alpha3-0181"
+    "AspNet.Security.OAuth.Validation": "1.0.0-alpha3-0181",
+    "InvSys.Identity.Core": "1.0.0-*",
+    "InvSys.Identity.State": "1.0.0-*"
   },
 
   "tools": {
