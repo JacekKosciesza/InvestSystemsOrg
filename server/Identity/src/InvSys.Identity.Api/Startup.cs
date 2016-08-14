@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using OpenIddict.Infrastructure;
+using OpenIddict;
+using CryptoHelper;
 
 namespace InvSys.Identity.Api
 {
@@ -47,21 +49,13 @@ namespace InvSys.Identity.Api
                 .AddDefaultTokenProviders();
 
             services.AddOpenIddict<User, IdentityContext>()
-                // Enable the token endpoint (required to use the password flow).
                 .EnableTokenEndpoint("/connect/token")
-
-                // Allow client applications to use the grant_type=password flow.
+                .EnableUserinfoEndpoint("/user/info")
+                .EnableIntrospectionEndpoint("/introspective")
                 .AllowPasswordFlow()
-
-                // During development, you can disable the HTTPS requirement.
                 .DisableHttpsRequirement()
-
-                // Register a new ephemeral key, that is discarded when the application
-                // shuts down. Tokens signed using this key are automatically invalidated.
-                // This method should only be used during development.
                 .AddEphemeralSigningKey();
-
-
+            
             // Swagger
             services.AddSwaggerGen(c =>
                  c.SingleApiVersion(new Info
@@ -115,6 +109,25 @@ namespace InvSys.Identity.Api
             });
             app.UseSwaggerUi();
 
+
+            using (var context = new IdentityContext())
+            {
+                context.Database.EnsureCreated();
+
+                if (!context.Applications.Any())
+                {
+                    context.Applications.Add(new OpenIddictApplication
+                    {
+                        ClientId = "resource_server",
+                        Id = "resource_server",
+                        DisplayName = "Main resource server",
+                        ClientSecret = Crypto.HashPassword("secret_secret_secret"),
+                        Type = OpenIddictConstants.ClientTypes.Confidential
+                    });
+
+                    context.SaveChanges();
+                }
+            }
             seeder.EnsureSeedData().Wait();
         }
     }

@@ -73,6 +73,13 @@ namespace InvSys.Companies.Api
             //    });
             //}
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy =>
+                    policy.RequireAssertion(context => context.User.HasClaim(
+                        c => (c.Type == "role" && c.Value == "Admin"))));
+            });
+
             services.AddDbContext<CompaniesContext>();
             services.AddTransient<CompaniesContextSeedData>();
             services.AddScoped<ICompaniesService, CompaniesService>();
@@ -96,6 +103,13 @@ namespace InvSys.Companies.Api
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            app.UseOAuthIntrospection(options => {
+                options.AutomaticAuthenticate = true;
+                options.AutomaticChallenge = true;
+                options.Authority = "http://localhost:5000/";
+                options.ClientId = "resource_server";
+                options.ClientSecret = "secret_secret_secret";
+            });
             app.UseMvc();
 
             // Swagger

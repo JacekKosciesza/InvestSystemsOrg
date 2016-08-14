@@ -9,9 +9,11 @@ using InvSys.Companies.Api.Model;
 using Swashbuckle.SwaggerGen.Annotations;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InvSys.Companies.Api.Controllers
 {
+    [Authorize(Policy = "Admin")]
     [Route("api/[controller]")]
     public class CompaniesController : Controller
     {

@@ -16,7 +16,8 @@
     "AutoMapper": "5.0.2",
     "Swashbuckle": "6.0.0-beta901",
     "InvSys.Companies.Core": "1.0.0-*",
-    "InvSys.Companies.State": "1.0.0-*"
+    "InvSys.Companies.State": "1.0.0-*",
+    "AspNet.Security.OAuth.Introspection": "1.0.0-alpha3-0181"
   },
 
   "tools": {
