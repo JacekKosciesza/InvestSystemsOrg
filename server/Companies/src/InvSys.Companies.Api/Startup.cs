@@ -15,6 +15,8 @@ using System.Collections.Generic;
 using Swashbuckle.Swagger.Model;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using InvSys.Shared.Api.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InvSys.Companies.Api
 {
@@ -73,12 +75,11 @@ namespace InvSys.Companies.Api
             //    });
             //}
 
+            // Custom policy-based authorization
             services.AddAuthorization(options =>
-            {
-                options.AddPolicy("Admin", policy =>
-                    policy.RequireAssertion(context => context.User.HasClaim(
-                        c => (c.Type == "role" && c.Value == "Admin"))));
-            });
+                options.AddPolicy("Admin", policy => policy.Requirements.Add(new RoleRequirement("Admin")))
+            );
+            services.AddSingleton<IAuthorizationHandler, RoleHandler>();
 
             services.AddDbContext<CompaniesContext>();
             services.AddTransient<CompaniesContextSeedData>();
