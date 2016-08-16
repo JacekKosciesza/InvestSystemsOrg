@@ -61,10 +61,10 @@ namespace InvSys.Companies.Api
             services.AddSwaggerGen(c =>
                  c.SingleApiVersion(new Info
                  {
-                     Version = "v1",
-                     Title = "Companies API",
-                     Description = "Companies API for InvestSystems.org",
-                     TermsOfService = "Use at your own risk",
+                     Version = Configuration["Swagger:Version"],
+                     Title = Configuration["Swagger:Title"],
+                     Description = Configuration["Swagger:Description"],
+                     TermsOfService = Configuration["Swagger:TermsOfService"]
                  })
             );
             //if (_hostingEnv.IsDevelopment())
@@ -107,9 +107,9 @@ namespace InvSys.Companies.Api
             app.UseOAuthIntrospection(options => {
                 options.AutomaticAuthenticate = true;
                 options.AutomaticChallenge = true;
-                options.Authority = "http://localhost:5000/";
-                options.ClientId = "resource_server";
-                options.ClientSecret = "secret_secret_secret";
+                options.Authority = Configuration["Authorization:OAuth:Introspection:Authority"];
+                options.ClientId = Configuration["Authorization:OAuth:Introspection:ClientId"];
+                options.ClientSecret = Configuration["Authorization:OAuth:Introspection:ClientSecret"];
             });
             app.UseMvc();
 

@@ -60,10 +60,10 @@ namespace InvSys.Identity.Api
             services.AddSwaggerGen(c =>
                  c.SingleApiVersion(new Info
                  {
-                     Version = "v1",
-                     Title = "Identity API",
-                     Description = "Identity API for InvestSystems.org",
-                     TermsOfService = "Use at your own risk",
+                     Version = Configuration["Swagger:Version"],
+                     Title = Configuration["Swagger:Title"],
+                     Description = Configuration["Swagger:Description"],
+                     TermsOfService = Configuration["Swagger:TermsOfService"]
                  })
             );
             //if (_hostingEnv.IsDevelopment())
