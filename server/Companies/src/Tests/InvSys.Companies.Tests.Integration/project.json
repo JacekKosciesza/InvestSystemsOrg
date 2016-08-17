@@ -8,7 +8,8 @@
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "InvSys.Companies.Tests.Shared": {
       "target": "project"
-    }
+    },
+    "InvSys.Shared.Tests": "1.0.0-*"
   },
   "frameworks": {
     "net452": {}
