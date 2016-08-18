@@ -1,0 +1,11 @@
+﻿{
+  "appDomain": "ifAvailable",
+  "diagnosticMessages": false,
+  "maxParallelThreads": 1,
+  "methodDisplay": "classAndMethod",
+  "parallelizeAssembly": false,
+  "parallelizeTestCollections": true,
+  "preEnumerateTheories": true,
+  "shadowCopy": true,
+  "additionalProperties": false
+}
