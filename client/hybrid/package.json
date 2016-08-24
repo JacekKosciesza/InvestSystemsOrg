@@ -28,15 +28,15 @@
     "tslint-ionic-rules": "0.0.4",
     "run-sequence": "1.1.5"
   },
+  "name": "investsystemsorg",
+  "description": "InvestSystemsOrg: An Ionic project",
   "cordovaPlugins": [
-    "cordova-plugin-whitelist",
-    "cordova-plugin-statusbar",
-    "cordova-plugin-console",
     "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
     "ionic-plugin-keyboard"
   ],
-  "cordovaPlatforms": [],
-  "name": "investsystemsorg",
-  "description": "InvestSystemsOrg: An Ionic project"
+  "cordovaPlatforms": []
 }
