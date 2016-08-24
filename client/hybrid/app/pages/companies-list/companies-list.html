@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Companies</ion-title>
+        <ion-buttons end>
+            <button (click)="signIn()">
+                <!--<ion-icon name="contact"></ion-icon>-->
+                Sign In
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar (ionInput)="getCompanies($event)"></ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let company of companies">
+            <ion-thumbnail item-left>
+                <img src="{{company.logo}}">
+            </ion-thumbnail>
+            <h2>{{company.name}}</h2>
+            <p>{{company.symbol}}</p>
+            <button (click)="itemTapped($event, company)" clear item-right>View</button>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
