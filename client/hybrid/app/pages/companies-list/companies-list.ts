@@ -2,9 +2,11 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import { CompanyDetailsPage } from '../company-details/company-details';
 import { SignInPage } from '../sign-in/sign-in'
+import {TranslatePipe} from 'ng2-translate/ng2-translate';
 
 @Component({
-    templateUrl: 'build/pages/companies-list/companies-list.html'
+    templateUrl: 'build/pages/companies-list/companies-list.html',
+    pipes: [TranslatePipe]
 })
 export class CompaniesListPage {
     selectedItem: any;
@@ -102,7 +104,7 @@ export class CompaniesListPage {
 
         setTimeout(() => {
             for (var i = 0; i < 30; i++) {
-                this.companies.push({name: `Company ${i}`});
+                this.companies.push({ name: `Company ${i}` });
             }
 
             console.log('Async operation has ended');

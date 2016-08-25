@@ -1,9 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
+import {Http} from '@angular/http';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import { DashboardPage } from './pages/dashboard/dashboard';
 import { CompaniesListPage } from './pages/companies-list/companies-list'
 //import { SignInPage } from './pages/sign-in/sign-in'
+import { TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 @Component({
   templateUrl: 'build/app.html'
@@ -13,20 +15,27 @@ class MyApp {
 
   // make HelloIonicPage the root (or first) page
   rootPage: any = DashboardPage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(
     public platform: Platform,
-    public menu: MenuController
+    public menu: MenuController,
+    translate: TranslateService
   ) {
     this.initializeApp();
 
-    // set our app's pages
-    this.pages = [
-      //{ title: 'Sign In', component: SignInPage },
-      { title: 'Dashboard', component: DashboardPage },
-      { title: 'Companies', component: CompaniesListPage }
-    ];
+    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setDefaultLang('en');
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    translate.use('pl');
+
+    translate.get(['Dashboard', 'Companies']).subscribe((t: string[]) => {
+      // set our app's pages
+      this.pages = [
+        { title: t['Dashboard'], component: DashboardPage },
+        { title: t['Companies'], component: CompaniesListPage }
+      ];
+    });
   }
 
   initializeApp() {
@@ -45,4 +54,11 @@ class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(MyApp, [
+  {
+    provide: TranslateLoader,
+    useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+    deps: [Http]
+  },
+  TranslateService
+]);
