@@ -15,6 +15,16 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Identity.Tests.Unit"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Identity.Tests.Integration", "src\Tests\InvSys.Identity.Tests.Integration\InvSys.Identity.Tests.Integration.xproj", "{3289F429-FDFF-41DE-A48C-2C5AED6D2750}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.Core", "..\Shared\src\InvSys.Shared.Core\InvSys.Shared.Core.xproj", "{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.State", "..\Shared\src\InvSys.Shared.State\InvSys.Shared.State.xproj", "{C5A41CCF-6887-4786-AA86-6D832387349F}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Identity.Api.Client", "src\InvSys.Identity.Api.Client\InvSys.Identity.Api.Client.xproj", "{CFA29625-CA6A-4A98-90FE-E96435726070}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.Tests", "..\Shared\src\InvSys.Shared.Tests\InvSys.Shared.Tests.xproj", "{529252BE-2602-46F1-A332-69ECABA2EE62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E1CB2697-051B-4421-AAA6-AAB2D329A873}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +51,22 @@ Global
 		{3289F429-FDFF-41DE-A48C-2C5AED6D2750}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3289F429-FDFF-41DE-A48C-2C5AED6D2750}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3289F429-FDFF-41DE-A48C-2C5AED6D2750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA29625-CA6A-4A98-90FE-E96435726070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA29625-CA6A-4A98-90FE-E96435726070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA29625-CA6A-4A98-90FE-E96435726070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA29625-CA6A-4A98-90FE-E96435726070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +74,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{741160E9-F433-4BC8-99C1-8F374A8397CF} = {52D08742-D4B4-4821-891B-D04E0E8048FA}
 		{3289F429-FDFF-41DE-A48C-2C5AED6D2750} = {52D08742-D4B4-4821-891B-D04E0E8048FA}
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109} = {E1CB2697-051B-4421-AAA6-AAB2D329A873}
+		{C5A41CCF-6887-4786-AA86-6D832387349F} = {E1CB2697-051B-4421-AAA6-AAB2D329A873}
+		{529252BE-2602-46F1-A332-69ECABA2EE62} = {E1CB2697-051B-4421-AAA6-AAB2D329A873}
 	EndGlobalSection
 EndGlobal

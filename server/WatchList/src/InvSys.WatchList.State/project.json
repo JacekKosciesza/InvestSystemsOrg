@@ -2,17 +2,15 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "InvSys.Identity.Core": "1.0.0-*",
+    "InvSys.WatchList.Core": "1.0.0-*",
     "InvSys.Shared.State": "1.0.0-*",
-    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
     "Microsoft.EntityFrameworkCore": "1.0.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
     "Microsoft.EntityFrameworkCore.Tools": {
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
-    "OpenIddict": "1.0.0-alpha2-0408"
+    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0"
   },
 
   "frameworks": {
@@ -29,8 +27,7 @@
     }
   },
 
-  "buildOptions": {
-    "emitEntryPoint": true
-  }
-
+  //"buildOptions": {
+  //  "emitEntryPoint": true
+  //}
 }

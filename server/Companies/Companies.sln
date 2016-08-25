@@ -3,13 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3AC0E46E-7AD0-4352-B03F-05764AE03F3C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6CD13630-466B-4AE2-8018-2E8052FEC0F4}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Companies.Api", "src\InvSys.Companies.Api\InvSys.Companies.Api.xproj", "{AE23E57B-55BA-4BDA-ABE0-4559A122D361}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6D262A0C-5D55-4BB5-B2ED-9FA206A6E21E}"
@@ -21,6 +14,20 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Companies.Tests.Unit", "src\Tests\InvSys.Companies.Tests.Unit\InvSys.Companies.Tests.Unit.xproj", "{1A18B37F-1FF8-4EF1-8CE9-BAB44C60623C}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Companies.Tests.Integration", "src\Tests\InvSys.Companies.Tests.Integration\InvSys.Companies.Tests.Integration.xproj", "{145E4613-848A-466B-A935-733B42497966}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.Core", "..\Shared\src\InvSys.Shared.Core\InvSys.Shared.Core.xproj", "{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.State", "..\Shared\src\InvSys.Shared.State\InvSys.Shared.State.xproj", "{C5A41CCF-6887-4786-AA86-6D832387349F}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.Api", "..\Shared\src\InvSys.Shared.Api\InvSys.Shared.Api.xproj", "{6164DF67-4B0F-42ED-BCA7-12B407FF954C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Companies.Api.Client", "src\InvSys.Companies.Api.Client\InvSys.Companies.Api.Client.xproj", "{56D2D2B2-EF3B-44BD-A532-6D67AAA1A9EF}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Companies.Tests.Shared", "src\Tests\InvSys.Companies.Tests.Shared\InvSys.Companies.Tests.Shared.xproj", "{DECE25E8-3054-4342-8231-DDB82DD310E3}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.Tests", "..\Shared\src\InvSys.Shared.Tests\InvSys.Shared.Tests.xproj", "{529252BE-2602-46F1-A332-69ECABA2EE62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{CA2ADC35-E952-4C7A-B3A1-3B7A261D3156}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,16 +55,41 @@ Global
 		{145E4613-848A-466B-A935-733B42497966}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{145E4613-848A-466B-A935-733B42497966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{145E4613-848A-466B-A935-733B42497966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D2D2B2-EF3B-44BD-A532-6D67AAA1A9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D2D2B2-EF3B-44BD-A532-6D67AAA1A9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D2D2B2-EF3B-44BD-A532-6D67AAA1A9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D2D2B2-EF3B-44BD-A532-6D67AAA1A9EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DECE25E8-3054-4342-8231-DDB82DD310E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DECE25E8-3054-4342-8231-DDB82DD310E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DECE25E8-3054-4342-8231-DDB82DD310E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DECE25E8-3054-4342-8231-DDB82DD310E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{AE23E57B-55BA-4BDA-ABE0-4559A122D361} = {3AC0E46E-7AD0-4352-B03F-05764AE03F3C}
-		{6D262A0C-5D55-4BB5-B2ED-9FA206A6E21E} = {3AC0E46E-7AD0-4352-B03F-05764AE03F3C}
-		{A3927FB2-5839-4D39-BE97-9C26F883F2A1} = {3AC0E46E-7AD0-4352-B03F-05764AE03F3C}
-		{A01C72C2-E780-49F0-A55D-9E81B304495E} = {3AC0E46E-7AD0-4352-B03F-05764AE03F3C}
 		{1A18B37F-1FF8-4EF1-8CE9-BAB44C60623C} = {6D262A0C-5D55-4BB5-B2ED-9FA206A6E21E}
 		{145E4613-848A-466B-A935-733B42497966} = {6D262A0C-5D55-4BB5-B2ED-9FA206A6E21E}
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109} = {CA2ADC35-E952-4C7A-B3A1-3B7A261D3156}
+		{C5A41CCF-6887-4786-AA86-6D832387349F} = {CA2ADC35-E952-4C7A-B3A1-3B7A261D3156}
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C} = {CA2ADC35-E952-4C7A-B3A1-3B7A261D3156}
+		{DECE25E8-3054-4342-8231-DDB82DD310E3} = {6D262A0C-5D55-4BB5-B2ED-9FA206A6E21E}
+		{529252BE-2602-46F1-A332-69ECABA2EE62} = {CA2ADC35-E952-4C7A-B3A1-3B7A261D3156}
 	EndGlobalSection
 EndGlobal
