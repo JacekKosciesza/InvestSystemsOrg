@@ -14,15 +14,68 @@
 </ion-header>
 
 <ion-content>
+    <h2>{{ 'Portfolio' | translate }}</h2>
     <ion-card>
-        <img src="img/MENT2.png" />
+        <ion-item>
+            <ion-thumbnail item-left>
+                <img src="img/MENT.png" />
+            </ion-thumbnail>
+            <h2>Mentor Graphics Corporation</h2>
+            <p>MENT</p>
+        </ion-item>
         <ion-card-content>
-            <ion-card-title>
-                Mentor Graphics Corporation
-            </ion-card-title>
-            <p>
-                MENT
-            </p>
+            <!--TODO-->
         </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <button primary clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>12 Likes</div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button primary clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>4 Comments</div>
+                </button>
+            </ion-col>
+            <ion-col center text-center>
+                <ion-note>
+                    11h ago
+                </ion-note>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <h2>{{ 'Watchlist' | translate }}</h2>
+    <ion-card>
+        <ion-item>
+            <ion-thumbnail item-left>
+                <img src="img/EPAM.png" />
+            </ion-thumbnail>
+            <h2>EPAM Systems Inc</h2>
+            <p>EPAM</p>
+        </ion-item>
+        <ion-card-content>
+            <!--TODO-->
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <button primary clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>34 Likes</div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button primary clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>2 Comments</div>
+                </button>
+            </ion-col>
+            <ion-col center text-center>
+                <ion-note>
+                    2 days ago
+                </ion-note>
+            </ion-col>
+        </ion-row>
     </ion-card>
 </ion-content>
