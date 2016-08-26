@@ -11,7 +11,21 @@ namespace InvSys.Shared.Api.Startup
     {
         public static IApplicationBuilder UseInvSys(this IApplicationBuilder app, IConfigurationRoot configuration, ILoggerFactory loggerFactory)
         {
-            var supportedCultures = configuration["Globalization:SupportedCultures"].Split(';').Select(c => new CultureInfo(c.Trim())).ToList();
+            app.UseInvSysLocalization(configuration);
+            app.UseInvSysLogger(configuration, loggerFactory);
+            app.UseInvSysOAuth(configuration);
+            app.UseMvc();
+            app.UseInvSysSwagger();
+
+            return app;
+        }
+
+        public static IApplicationBuilder UseInvSysLocalization(this IApplicationBuilder app, IConfigurationRoot configuration)
+        {
+            var supportedCultures =
+                configuration["Globalization:SupportedCultures"].Split(';')
+                    .Select(c => new CultureInfo(c.Trim()))
+                    .ToList();
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
                 DefaultRequestCulture = new RequestCulture(configuration["Globalization:DefaultCulture"]),
@@ -21,18 +35,33 @@ namespace InvSys.Shared.Api.Startup
                 SupportedUICultures = supportedCultures
             });
 
+            return app;
+        }
+
+        public static IApplicationBuilder UseInvSysLogger(this IApplicationBuilder app, IConfigurationRoot configuration, ILoggerFactory loggerFactory)
+        {
             loggerFactory.AddConsole(configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            app.UseOAuthIntrospection(options => {
+
+            return app;
+        }
+
+        public static IApplicationBuilder UseInvSysOAuth(this IApplicationBuilder app, IConfigurationRoot configuration)
+        {
+            app.UseOAuthIntrospection(options =>
+            {
                 options.AutomaticAuthenticate = true;
                 options.AutomaticChallenge = true;
                 options.Authority = configuration["Authorization:OAuth:Introspection:Authority"];
                 options.ClientId = configuration["Authorization:OAuth:Introspection:ClientId"];
                 options.ClientSecret = configuration["Authorization:OAuth:Introspection:ClientSecret"];
             });
-            app.UseMvc();
 
-            // Swagger
+            return app;
+        }
+
+        public static IApplicationBuilder UseInvSysSwagger(this IApplicationBuilder app)
+        {
             app.UseSwagger((httpRequest, swaggerDoc) =>
             {
                 swaggerDoc.Host = httpRequest.Host.Value;
