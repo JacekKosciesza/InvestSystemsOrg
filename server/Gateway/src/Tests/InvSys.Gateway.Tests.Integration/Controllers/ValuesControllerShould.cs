@@ -9,15 +9,14 @@ namespace InvSys.Gateway.Tests.Integration.Controllers
 {
     public class ValuesControllerShould
     {
-        private readonly TestServer _server;
         private readonly HttpClient _client;
 
         public ValuesControllerShould()
         {
             // Arrange
-            _server = new TestServer(new WebHostBuilder()
+            var server = new TestServer(new WebHostBuilder()
                 .UseStartup<Startup>());
-            _client = _server.CreateClient();
+            _client = server.CreateClient();
         }
 
         [Fact]

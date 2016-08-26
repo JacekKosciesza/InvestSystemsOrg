@@ -1,4 +1,5 @@
-﻿using InvSys.Shared.Api.Startup;
+﻿using InvSys.Gateway.Core.GraphQLTest;
+using InvSys.Shared.Api.Startup;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +29,8 @@ namespace InvSys.Gateway.Api
             services.AddInvSysConfiguration(Configuration);
             services.AddMvc().AddDataAnnotationsLocalization();
             services.AddInvSysAuthorization();
+
+            services.AddTransient<IStarWarsGraphQL, StarWarsGraphQL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
