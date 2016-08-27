@@ -1,0 +1,11 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "InvSys.Shared.Core": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "net452": {}
+  }
+}
