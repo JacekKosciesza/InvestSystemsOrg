@@ -4,7 +4,7 @@ Social network & tools for non-professional investors.
 
 ### Architecture
 
-![architecture](https://cloud.githubusercontent.com/assets/8171434/18026939/5e368734-6c56-11e6-8fca-5635ddfab447.png)
+![architecture](https://cloud.githubusercontent.com/assets/8171434/18027559/82be042c-6c67-11e6-83e5-2d7f8a8a54b3.png)
 
 
 ### Microservices
