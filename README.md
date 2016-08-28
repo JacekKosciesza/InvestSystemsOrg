@@ -9,12 +9,14 @@ Social network & tools for non-professional investors.
 
 ### Microservices
 
-* Companies
-* Gateway
-* Identity
-* Portfolio
-* RuleOne
-* Watchlist
+* Companies - list of stock market companies    
+* Email - email templates and service to send it
+* Gamification - points, badges and challanges for users
+* Gateway - GraphQL and WebSockets powered gateway for clients
+* Identity - OAuth/OpenID powered authorization, login/password authentication, list of users and roles
+* Portfolio - companies (stock shares) owned by the given user
+* RuleOne - Rule #1 analysis for companies
+* Watchlist - list of potential companies to buy
 
 
 ### Folder structure

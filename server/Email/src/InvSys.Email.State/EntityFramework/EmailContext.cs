@@ -24,9 +24,9 @@ namespace InvSys.Email.State.EntityFramework
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Templates;Integrated Security=SSPI;integrated security=true;MultipleActiveResultSets=True;");
-            //optionsBuilder.UseSqlServer("Data Source=EPPLKATW0006\\SQLEXPRESS;Initial Catalog=Templates;User Id=sa;Password=TODO;MultipleActiveResultSets =True;");
-            //optionsBuilder.UseSqlServer(_config["ConnectionStrings:TemplatesContextConnection"]);
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Email;Integrated Security=SSPI;integrated security=true;MultipleActiveResultSets=True;");
+            //optionsBuilder.UseSqlServer("Data Source=EPPLKATW0006\\SQLEXPRESS;Initial Catalog=Email;User Id=sa;Password=TODO;MultipleActiveResultSets =True;");
+            //optionsBuilder.UseSqlServer(_config["ConnectionStrings:EmailContextConnection"]);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

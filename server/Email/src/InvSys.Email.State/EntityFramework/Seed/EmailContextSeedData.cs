@@ -9,6 +9,7 @@ namespace InvSys.Email.State.EntityFramework.Seed
     public class EmailContextSeedData
     {
         private readonly EmailContext _dbContext;
+
         public EmailContextSeedData(EmailContext dbContext)
         {
             _dbContext = dbContext;

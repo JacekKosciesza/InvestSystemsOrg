@@ -39,8 +39,10 @@ namespace InvSys.Email.Api
                         new List<TemplateTranslation> { new TemplateTranslation { Culture = s.Culture ?? CultureInfo.CurrentCulture.Name, Description = s.Description }
                     }));
                 config.CreateMap<Core.Models.Template, Template>()
-                    .ForMember(d => d.Description, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Description)) // TODO: make 'en-US' a parameter
-                    .ForMember(d => d.Culture, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Culture)); // TODO: make 'en-US' a parameter
+                    .ForMember(d => d.Description, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Description))
+                    .ForMember(d => d.Culture, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Culture))
+                    .ForMember(d => d.Title, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Title))
+                    .ForMember(d => d.Body, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Body));
                 config.AllowNullCollections = true;
             });
         }
@@ -61,9 +63,11 @@ namespace InvSys.Email.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, EmailContextSeedData seeder)
         {
             app.UseInvSys(Configuration, loggerFactory);
+
+            seeder.EnsureSeedData().Wait();
         }
     }
 }

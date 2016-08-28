@@ -13,7 +13,7 @@ namespace InvSys.Email.State.EntityFramework.Repositories
     {
         private readonly EmailContext _emailContext;
 
-        public TemplatesRepository(EmailContext dbContext, EmailContext emailContext) : base(dbContext)
+        public TemplatesRepository(EmailContext emailContext) : base(emailContext)
         {
             _emailContext = emailContext;
         }
