@@ -27,7 +27,7 @@
     }
   },
 
-  //"buildOptions": {
-  //  "emitEntryPoint": true
-  //}
+  "buildOptions": {
+    "emitEntryPoint": true
+  }
 }
