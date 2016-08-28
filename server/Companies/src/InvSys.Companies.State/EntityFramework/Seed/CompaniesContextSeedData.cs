@@ -1,8 +1,8 @@
-﻿using InvSys.Companies.Core.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InvSys.Companies.Core.Models;
 
 namespace InvSys.Companies.State.EntityFramework.Seed
 {

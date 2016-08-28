@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using InvSys.Companies.Core.Model;
 using System;
 using System.Threading.Tasks;
+using InvSys.Companies.Core.Models;
 
 namespace InvSys.Companies.Core.Services
 {

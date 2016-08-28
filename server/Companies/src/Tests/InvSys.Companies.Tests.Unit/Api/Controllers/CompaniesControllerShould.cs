@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using InvSys.Companies.Core.Models;
 using Xunit;
 
 namespace InvSys.Companies.Tests.Unit.Api.Controllers
@@ -21,7 +22,7 @@ namespace InvSys.Companies.Tests.Unit.Api.Controllers
             companiesServiceMock.Setup(service => service.GetCompanies()).Returns(Task.FromResult(new Shared.Builders.Core.CompanyBuilder().CreateListOfSize(5).BuildList()));
             var loggerMock = new Mock<ILogger<CompaniesController>>();
             var mapperMock = new Mock<IMapper>();
-            mapperMock.Setup(mapper => mapper.Map<ICollection<Companies.Api.Model.Company>>(It.IsAny<ICollection<Core.Model.Company>>())).Returns(new Shared.Builders.Api.CompanyBuilder().CreateListOfSize(5).BuildList()).Verifiable();
+            mapperMock.Setup(mapper => mapper.Map<ICollection<Companies.Api.Model.Company>>(It.IsAny<ICollection<Company>>())).Returns(new Shared.Builders.Api.CompanyBuilder().CreateListOfSize(5).BuildList()).Verifiable();
             var localizerMock = new Mock<IStringLocalizer<CompaniesController>>();
             var companiesController = new CompaniesController(companiesServiceMock.Object, loggerMock.Object, mapperMock.Object, localizerMock.Object);
 

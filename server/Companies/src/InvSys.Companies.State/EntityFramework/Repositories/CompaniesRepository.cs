@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using InvSys.Companies.Core.Model;
 using InvSys.Companies.Core.State;
 using InvSys.Shared.State.EntityFramework.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using InvSys.Companies.Core.Models;
 
 namespace InvSys.Companies.State.EntityFramework.Repositories
 {
     public class CompaniesRepository : BaseRepository<Company, Guid>, ICompaniesRepository
     {
-        private CompaniesContext _companiesContext;
+        private readonly CompaniesContext _companiesContext;
         public CompaniesRepository(CompaniesContext dbContext)
             : base(dbContext)
         {

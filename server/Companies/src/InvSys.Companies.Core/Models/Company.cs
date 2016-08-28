@@ -1,9 +1,9 @@
-﻿using InvSys.Shared.Core.Model;
-using InvSys.Shared.Core.State;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using InvSys.Shared.Core.Model;
+using InvSys.Shared.Core.State;
 
-namespace InvSys.Companies.Core.Model
+namespace InvSys.Companies.Core.Models
 {
     public class Company : IEntity<Guid>
     {

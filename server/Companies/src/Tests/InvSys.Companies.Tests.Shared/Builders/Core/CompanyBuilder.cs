@@ -1,6 +1,6 @@
-﻿using InvSys.Companies.Core.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using InvSys.Companies.Core.Models;
 
 namespace InvSys.Companies.Tests.Shared.Builders.Core
 {

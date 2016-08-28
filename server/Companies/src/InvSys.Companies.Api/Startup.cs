@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using AutoMapper;
-using InvSys.Companies.Api.Model;
 using InvSys.Companies.Core.Services;
 using InvSys.Companies.Core.State;
 using InvSys.Companies.State.EntityFramework;
@@ -14,9 +13,11 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Swashbuckle.Swagger.Model;
 using System.Globalization;
+using InvSys.Companies.Core.Models;
 using Microsoft.AspNetCore.Localization;
 using InvSys.Shared.Api.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using Company = InvSys.Companies.Api.Model.Company;
 
 namespace InvSys.Companies.Api
 {
@@ -33,11 +34,11 @@ namespace InvSys.Companies.Api
 
             _mapperConfiguration = new MapperConfiguration(config =>
             {
-                config.CreateMap<Company, Core.Model.Company>()
+                config.CreateMap<Company, Core.Models.Company>()
                     .ForMember(d => d.Translations, opt => opt.MapFrom(s => 
-                        new List<Core.Model.CompanyTranslation> { new Core.Model.CompanyTranslation { Culture = s.Culture ?? CultureInfo.CurrentCulture.Name, Description = s.Description }
+                        new List<CompanyTranslation> { new CompanyTranslation { Culture = s.Culture ?? CultureInfo.CurrentCulture.Name, Description = s.Description }
                     }));
-                config.CreateMap<Core.Model.Company, Company>()
+                config.CreateMap<Core.Models.Company, Company>()
                     .ForMember(d => d.Description, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Description)) // TODO: make 'en-US' a parameter
                     .ForMember(d => d.Culture, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Culture)); // TODO: make 'en-US' a parameter
                 config.AllowNullCollections = true;

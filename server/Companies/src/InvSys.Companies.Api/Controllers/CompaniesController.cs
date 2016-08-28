@@ -9,6 +9,7 @@ using InvSys.Companies.Api.Model;
 using Swashbuckle.SwaggerGen.Annotations;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
+using InvSys.Shared.Core.Model;
 using Microsoft.AspNetCore.Authorization;
 
 namespace InvSys.Companies.Api.Controllers
@@ -30,8 +31,9 @@ namespace InvSys.Companies.Api.Controllers
             _localizer = localizer;
         }
 
-        // GET api/companies
+        // GET api/companies        
         [HttpGet]
+        [AllowAnonymous]
         [SwaggerOperation("get-companies")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<Company>))]
@@ -53,6 +55,7 @@ namespace InvSys.Companies.Api.Controllers
 
         // GET api/companies/38d05660-8ea1-4b12-a14d-10d916c07e9c
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         [SwaggerOperation("get-company")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Company))]
@@ -92,7 +95,7 @@ namespace InvSys.Companies.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var createdCompany = await _companiesService.AddCompany(_mapper.Map<Core.Model.Company>(company));
+                var createdCompany = await _companiesService.AddCompany(_mapper.Map<Core.Models.Company>(company));
                 if (createdCompany != null)
                 {
                     var location = $"api/companies/{createdCompany.Id}";
@@ -126,7 +129,7 @@ namespace InvSys.Companies.Api.Controllers
 
             if (ModelState.IsValid)
             {
-                var updatedCompany = await _companiesService.UpdateCompany(_mapper.Map<Core.Model.Company>(company));
+                var updatedCompany = await _companiesService.UpdateCompany(_mapper.Map<Core.Models.Company>(company));
                 if (updatedCompany != null)
                 {
                     _logger.LogDebug($"Company updated: {updatedCompany.Id}");

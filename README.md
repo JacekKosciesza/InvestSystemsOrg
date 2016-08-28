@@ -4,7 +4,7 @@ Social network & tools for non-professional investors.
 
 ### Architecture
 
-![architecture](https://cloud.githubusercontent.com/assets/8171434/18027559/82be042c-6c67-11e6-83e5-2d7f8a8a54b3.png)
+![architecture](https://cloud.githubusercontent.com/assets/8171434/18032948/3d4e003a-6d17-11e6-9d21-31ea6baeddfc.png)
 
 
 ### Microservices
@@ -25,6 +25,7 @@ Social network & tools for non-professional investors.
     ├── docs                        # Documentation
     ├── server
     │   ├── Companies               # Companies microservice
+    │   ├── Email                   # Email microservice
     │   ├── Gamification            # Gamification microservice
     │   ├── Gateway                 # Gateway microservice
     │   ├── Identity                # Identity microservice
