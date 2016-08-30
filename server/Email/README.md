@@ -1,5 +1,10 @@
 # Email
 
+### Setup
+To make it work (send emails) configuration of environment variables is necessary:
+* email__smtp__username
+* email__smtp__password
+
 ### Technologies
 
 * ASP.NET Core

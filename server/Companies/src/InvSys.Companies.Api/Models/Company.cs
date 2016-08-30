@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace InvSys.Companies.Api.Model
+namespace InvSys.Companies.Api.Models
 {
     public class Company
     {

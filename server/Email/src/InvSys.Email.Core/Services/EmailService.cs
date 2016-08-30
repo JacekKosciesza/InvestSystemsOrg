@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
-using InvSys.Email.Core.Models;
 using InvSys.Email.Core.State;
 
 namespace InvSys.Email.Core.Services
@@ -9,52 +10,26 @@ namespace InvSys.Email.Core.Services
     public class EmailService : IEmailService
     {
         private readonly ITemplatesRepository _templatesRepository;
+        private readonly ITemplateBuilder _templateBuilder;
+        private readonly IEmailSender _emailSender;
 
-        public EmailService(ITemplatesRepository templatesRepository)
+        public EmailService(ITemplatesRepository templatesRepository, ITemplateBuilder templateBuilder, IEmailSender emailSender)
         {
             _templatesRepository = templatesRepository;
+            _templateBuilder = templateBuilder;
+            _emailSender = emailSender;
         }
 
-        public async Task<ICollection<Template>> GetTemplates()
+        public async Task SendEmail(dynamic data)
         {
-            return await _templatesRepository.GetAll();
-        }
-
-        public async Task<Template> GetTemplate(Guid id)
-        {
-            return await _templatesRepository.Get(id);
-        }
-
-        public async Task<Template> AddTemplate(Template template)
-        {
-            var addedCompany = _templatesRepository.Add(template);
-            if (await _templatesRepository.SaveChangesAsync())
-            {
-                return addedCompany;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public async Task<Template> UpdateTemplate(Template template)
-        {
-            _templatesRepository.Update(template);
-            if (await _templatesRepository.SaveChangesAsync())
-            {
-                return template;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public async Task<bool> DeleteTemplate(Guid id)
-        {
-            _templatesRepository.Delete(id);
-            return await _templatesRepository.SaveChangesAsync();
+            var id = new Guid(data.templateId);
+            var template = await _templatesRepository.Get(id);
+            var translation = template.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name);
+            var body = translation.Body;
+            var title = translation.Title;
+            var message = _templateBuilder.BuildDynamically(body, data);
+            var to = data.to;
+            _emailSender.SendEmail(to, title, message);
         }
     }
 }

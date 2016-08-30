@@ -1,4 +1,4 @@
-﻿using InvSys.Companies.Api.Model;
+﻿using InvSys.Companies.Api.Models;
 using System;
 using System.Collections.Generic;
 

@@ -1,8 +1,12 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
-    "InvSys.Shared.Core": "1.0.0-*"
+    "InvSys.Shared.Core": "1.0.0-*",
+    "MailKit": "1.4.2.1",
+    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
+    "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+    "RazorEngine": "4.4.0-rc1"
   },
 
   "frameworks": {

@@ -5,7 +5,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
-using InvSys.Companies.Api.Model;
+using InvSys.Companies.Api.Models;
 using Swashbuckle.SwaggerGen.Annotations;
 using Microsoft.Extensions.Localization;
 using System.Globalization;

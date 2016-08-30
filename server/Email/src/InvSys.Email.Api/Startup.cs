@@ -36,7 +36,7 @@ namespace InvSys.Email.Api
             {
                 config.CreateMap<Template, Core.Models.Template>()
                     .ForMember(d => d.Translations, opt => opt.MapFrom(s =>
-                        new List<TemplateTranslation> { new TemplateTranslation { Culture = s.Culture ?? CultureInfo.CurrentCulture.Name, Description = s.Description }
+                        new List<TemplateTranslation> { new TemplateTranslation { Culture = s.Culture ?? CultureInfo.CurrentCulture.Name, Description = s.Description, Title = s.Title, Body = s.Body }
                     }));
                 config.CreateMap<Core.Models.Template, Template>()
                     .ForMember(d => d.Description, opt => opt.MapFrom(s => s.Translations.Single(t => t.Culture == CultureInfo.CurrentCulture.Name).Description))
@@ -57,8 +57,11 @@ namespace InvSys.Email.Api
 
             services.AddDbContext<EmailContext>();
             services.AddTransient<EmailContextSeedData>();
+            services.AddScoped<ITemplatesManager, TemplatesManager>();
+            services.AddScoped<ITemplateBuilder, TemplateBuilder>();
+            services.AddSingleton<ITemplatesRepository, TemplatesRepository>();
             services.AddScoped<IEmailService, EmailService>();
-            services.AddScoped<ITemplatesRepository, TemplatesRepository>();
+            services.AddScoped<IEmailSender, EmailSender>();
             services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 

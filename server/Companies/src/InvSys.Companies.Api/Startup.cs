@@ -11,13 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using Swashbuckle.Swagger.Model;
 using System.Globalization;
 using InvSys.Companies.Core.Models;
-using Microsoft.AspNetCore.Localization;
-using InvSys.Shared.Api.Authorization;
-using Microsoft.AspNetCore.Authorization;
-using Company = InvSys.Companies.Api.Model.Company;
+using Company = InvSys.Companies.Api.Models.Company;
+using InvSys.Shared.Api.Startup;
 
 namespace InvSys.Companies.Api
 {
@@ -51,36 +48,7 @@ namespace InvSys.Companies.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
-
-            services.AddSingleton(Configuration);
-            services.AddMvc()
-                .AddDataAnnotationsLocalization();
-
-            // Swagger
-            services.AddSwaggerGen(c =>
-                 c.SingleApiVersion(new Info
-                 {
-                     Version = Configuration["Swagger:Version"],
-                     Title = Configuration["Swagger:Title"],
-                     Description = Configuration["Swagger:Description"],
-                     TermsOfService = Configuration["Swagger:TermsOfService"]
-                 })
-            );
-            //if (_hostingEnv.IsDevelopment())
-            //{
-            //    services.ConfigureSwaggerGen(c =>
-            //    {
-            //        c.IncludeXmlComments(GetXmlCommentsPath());
-            //    });
-            //}
-
-            // Custom policy-based authorization
-            services.AddAuthorization(options =>
-                options.AddPolicy("Admin", policy => policy.Requirements.Add(new RoleRequirement("Admin")))
-            );
-            services.AddSingleton<IAuthorizationHandler, RoleHandler>();
+            services.AddInvSys(Configuration);
 
             services.AddDbContext<CompaniesContext>();
             services.AddTransient<CompaniesContextSeedData>();
@@ -93,33 +61,7 @@ namespace InvSys.Companies.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, CompaniesContextSeedData seeder)
         {
 
-            var supportedCultures = Configuration["Globalization:SupportedCultures"].Split(';').Select(c => new CultureInfo(c.Trim())).ToList();
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(Configuration["Globalization:DefaultCulture"]),
-                // Formatting numbers, dates, etc.
-                SupportedCultures = supportedCultures,
-                // UI strings that we have localized.
-                SupportedUICultures = supportedCultures
-            });
-
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-            app.UseOAuthIntrospection(options => {
-                options.AutomaticAuthenticate = true;
-                options.AutomaticChallenge = true;
-                options.Authority = Configuration["Authorization:OAuth:Introspection:Authority"];
-                options.ClientId = Configuration["Authorization:OAuth:Introspection:ClientId"];
-                options.ClientSecret = Configuration["Authorization:OAuth:Introspection:ClientSecret"];
-            });
-            app.UseMvc();
-
-            // Swagger
-            app.UseSwagger((httpRequest, swaggerDoc) =>
-            {
-                swaggerDoc.Host = httpRequest.Host.Value;
-            });
-            app.UseSwaggerUi();
+            app.UseInvSys(Configuration, loggerFactory);
 
             seeder.EnsureSeedData().Wait();
         }

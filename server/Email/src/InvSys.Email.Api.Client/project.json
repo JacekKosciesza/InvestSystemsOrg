@@ -1,0 +1,11 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Microsoft.Rest.ClientRuntime": "2.3.2"
+  },
+
+  "frameworks": {
+    "net452": {}
+  }
+}

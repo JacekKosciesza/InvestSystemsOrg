@@ -12,18 +12,18 @@ using System.Threading.Tasks;
 
 namespace InvSys.Email.Api.Controllers
 {
-    [Authorize(Policy = "Admin")]
+    //[Authorize(Policy = "Admin")]
     [Route("api/[controller]")]
     public class TemplatesController : Controller
     {
-        private readonly IEmailService _emailService;
+        private readonly ITemplatesManager _templatesManager;
         private readonly ILogger<TemplatesController> _logger;
         private readonly IMapper _mapper;
         private readonly IStringLocalizer<TemplatesController> _localizer;
 
-        public TemplatesController(IEmailService emailService, ILogger<TemplatesController> logger, IMapper mapper, IStringLocalizer<TemplatesController> localizer)
+        public TemplatesController(ITemplatesManager templatesManager, ILogger<TemplatesController> logger, IMapper mapper, IStringLocalizer<TemplatesController> localizer)
         {
-            _emailService = emailService;
+            _templatesManager = templatesManager;
             _logger = logger;
             _mapper = mapper;
             _localizer = localizer;
@@ -42,7 +42,7 @@ namespace InvSys.Email.Api.Controllers
             _logger.LogInformation("Getting all templates");
             try
             {
-                var templates = await _emailService.GetTemplates();
+                var templates = await _templatesManager.GetTemplates();
                 return Ok(_mapper.Map<ICollection<Template>>(templates));
             }
             catch (Exception ex)
@@ -66,7 +66,7 @@ namespace InvSys.Email.Api.Controllers
             _logger.LogInformation($"Getting template by Id = {id}");
             try
             {
-                var template = await _emailService.GetTemplate(id);
+                var template = await _templatesManager.GetTemplate(id);
                 if (template != null)
                 {
                     return Ok(_mapper.Map<Template>(template));
@@ -95,7 +95,7 @@ namespace InvSys.Email.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var createdTemplate = await _emailService.AddTemplate(_mapper.Map<Core.Models.Template>(template));
+                var createdTemplate = await _templatesManager.AddTemplate(_mapper.Map<Core.Models.Template>(template));
                 if (createdTemplate != null)
                 {
                     var location = $"api/templates/{createdTemplate.Id}";
@@ -131,7 +131,7 @@ namespace InvSys.Email.Api.Controllers
 
             if (ModelState.IsValid)
             {
-                var updatedTemplate = await _emailService.UpdateTemplate(_mapper.Map<Core.Models.Template>(template));
+                var updatedTemplate = await _templatesManager.UpdateTemplate(_mapper.Map<Core.Models.Template>(template));
                 if (updatedTemplate != null)
                 {
                     _logger.LogDebug($"Template updated: {updatedTemplate.Id}");
@@ -158,7 +158,7 @@ namespace InvSys.Email.Api.Controllers
         [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Template not found")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            if (await _emailService.DeleteTemplate(id))
+            if (await _templatesManager.DeleteTemplate(id))
             {
                 return NoContent();
             }

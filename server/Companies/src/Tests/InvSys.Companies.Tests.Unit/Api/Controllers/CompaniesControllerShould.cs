@@ -22,7 +22,7 @@ namespace InvSys.Companies.Tests.Unit.Api.Controllers
             companiesServiceMock.Setup(service => service.GetCompanies()).Returns(Task.FromResult(new Shared.Builders.Core.CompanyBuilder().CreateListOfSize(5).BuildList()));
             var loggerMock = new Mock<ILogger<CompaniesController>>();
             var mapperMock = new Mock<IMapper>();
-            mapperMock.Setup(mapper => mapper.Map<ICollection<Companies.Api.Model.Company>>(It.IsAny<ICollection<Company>>())).Returns(new Shared.Builders.Api.CompanyBuilder().CreateListOfSize(5).BuildList()).Verifiable();
+            mapperMock.Setup(mapper => mapper.Map<ICollection<Companies.Api.Models.Company>>(It.IsAny<ICollection<Company>>())).Returns(new Shared.Builders.Api.CompanyBuilder().CreateListOfSize(5).BuildList()).Verifiable();
             var localizerMock = new Mock<IStringLocalizer<CompaniesController>>();
             var companiesController = new CompaniesController(companiesServiceMock.Object, loggerMock.Object, mapperMock.Object, localizerMock.Object);
 
@@ -31,7 +31,7 @@ namespace InvSys.Companies.Tests.Unit.Api.Controllers
 
             // Then
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var companies = Assert.IsType<List<Companies.Api.Model.Company>>(okResult.Value);
+            var companies = Assert.IsType<List<Companies.Api.Models.Company>>(okResult.Value);
             mapperMock.Verify();
             Assert.Equal(5, companies.Count);
         }
