@@ -1,5 +1,24 @@
 # Portfolio
 
+### What is Portfolio
+
+Portfolio - list of companies (stock shares) owned by the given user
+
+Adds company to the user's portfolio - meaning that the user owns stock shares of the given company. Useful for both real trading as well as paper trading.
+Information that user owns this company opens possibility for some 'personalized' analysis e.g. notification that stock shares should be sold or that fundamental
+analysis indicates that company is not so great anymore.
+
+Portfolios
+* Id
+* User ID
+
+Purchases
+* Company symbol
+* Date of purchase
+* Number of stock shares
+* Currency
+* Price per share
+
 ### Technologies
 
 * ASP.NET Core

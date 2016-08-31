@@ -1,14 +1,12 @@
-# Email
+# Watchlist
 
-### Setup
-To make it work (send emails) configuration of environment variables is necessary:
-* email__smtp__username
-* email__smtp__password
+
+### What is Watchlist
+
+Watchlist - list of companies which the given user is considering to buy
 
 ### Technologies
 
-* RazorEngine
-* MailKit
 * ASP.NET Core
 * Entity Framework Core
 * Swashbuckle
