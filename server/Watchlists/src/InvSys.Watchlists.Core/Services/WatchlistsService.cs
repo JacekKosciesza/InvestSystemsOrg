@@ -9,10 +9,12 @@ namespace InvSys.Watchlists.Core.Services
     public class WatchlistsService : IWatchlistsService
     {
         private readonly IWatchlistsRepository _watchlistsRepository;
+        private readonly IItemsRepository _itemsRepository;
 
-        public WatchlistsService(IWatchlistsRepository watchlistsRepository)
+        public WatchlistsService(IWatchlistsRepository watchlistsRepository, IItemsRepository itemsRepository)
         {
             _watchlistsRepository = watchlistsRepository;
+            _itemsRepository = itemsRepository;
         }
 
         public async Task<Watchlist> AddWatchlist(Watchlist company)
@@ -34,14 +36,23 @@ namespace InvSys.Watchlists.Core.Services
             return await _watchlistsRepository.SaveChangesAsync();
         }
 
-        public Task<Item> AddItem(Guid watchlistId, Item item)
+        public async Task<Item> AddItem(Guid watchlistId, Item item)
         {
-            throw new NotImplementedException();
+            var addedItem = _itemsRepository.Add(item);
+            if (await _itemsRepository.SaveChangesAsync())
+            {
+                return addedItem;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public Task<bool> DeleteItem(Guid item)
+        public async Task<bool> DeleteItem(Guid id)
         {
-            throw new NotImplementedException();
+            _itemsRepository.Delete(id);
+            return await _itemsRepository.SaveChangesAsync();
         }
 
         public async Task<ICollection<Watchlist>> GetWatchlists()

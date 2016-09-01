@@ -38,15 +38,5 @@ namespace InvSys.Watchlists.State.EntityFramework.Repositories
             _watchlistsContext.Watchlists.Attach(watchlist);
             _watchlistsContext.Entry(watchlist).State = EntityState.Modified;
         }
-
-        public Task<Item> AddItem(Guid watchlistId, Item item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteItem(Guid item)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -61,6 +61,7 @@ namespace InvSys.Watchlists.Api
             services.AddTransient<WatchlistsContextSeedData>();
             services.AddScoped<IWatchlistsService, WatchlistsService>();
             services.AddScoped<IWatchlistsRepository, WatchlistsRepository>();
+            services.AddScoped<IItemsRepository, ItemsRepository>();
             services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 

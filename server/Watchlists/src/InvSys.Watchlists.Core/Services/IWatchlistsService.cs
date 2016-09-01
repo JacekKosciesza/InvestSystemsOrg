@@ -14,6 +14,6 @@ namespace InvSys.Watchlists.Core.Services
         Task<bool> DeleteWatchlist(Guid id);
 
         Task<Item> AddItem(Guid watchlistId, Item item);
-        Task<bool> DeleteItem(Guid item);
+        Task<bool> DeleteItem(Guid id);
     }
 }

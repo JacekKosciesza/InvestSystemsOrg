@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using InvSys.Watchlists.Api.Models;
@@ -14,7 +13,6 @@ using Swashbuckle.SwaggerGen.Annotations;
 namespace InvSys.Watchlists.Api.Controllers
 {
     //[Authorize(Policy = "Admin")]
-    //[Route("api/[controller]")]
     public class ItemsController : Controller
     {
         private readonly IWatchlistsService _watchlistsService;
@@ -31,7 +29,7 @@ namespace InvSys.Watchlists.Api.Controllers
             _localizer = localizer;
         }
 
-        // GET api/watchlists/38d05660-8ea1-4b12-a14d-10d916c07e9c/items       
+        // GET api/watchlists/38d05660-8ea1-4b12-a14d-10d916c07e9c/items
         [Route("api/watchlists/{watchlistId:guid}/items")]
         [HttpGet]
         [AllowAnonymous]
@@ -50,8 +48,61 @@ namespace InvSys.Watchlists.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"{_localizer["Failed to get all watchlists"]}", ex);
+                _logger.LogError($"{_localizer["Failed to get all items"]}", ex);
                 return BadRequest();
+            }
+        }
+
+        // POST api/watchlists/38d05660-8ea1-4b12-a14d-10d916c07e9c/items
+        [Route("api/watchlists/{watchlistId:guid}/items")]
+        [HttpPost]
+        [SwaggerOperation("create-item")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.Created, Type = typeof(Item))]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Invalid arguments")]
+        [Consumes("application/json")]
+        [Produces("application/json", Type = typeof(Item))]
+        public async Task<IActionResult> Post(Guid watchlistId, [FromBody] Item item)
+        {
+            if (ModelState.IsValid)
+            {
+                var mappedItem = _mapper.Map<Core.Models.Item>(item);
+                mappedItem.WatchlistId = watchlistId;
+                var createdItem = await _watchlistsService.AddItem(watchlistId, mappedItem);
+                if (createdItem != null)
+                {
+                    var location = $"api/watchlists/{watchlistId}/items/{createdItem.Id}";
+                    _logger.LogDebug($"Item created: {location}");
+                    return Created(location, _mapper.Map<Item>(createdItem));
+                }
+                else
+                {
+                    return BadRequest("Failed to save state");
+                }
+
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+
+        // DELETE api/watchlists/38d05660-8ea1-4b12-a14d-10d916c07e9c/items/41d05660-8ea1-4b12-a14d-10d916c07e87
+        [Route("api/watchlists/{watchlistId:guid}/items/{id:guid}")]
+        [HttpDelete("{id:guid}")]
+        [SwaggerOperation("delete-item")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.NoContent)]
+        [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Item not found")]
+        public async Task<IActionResult> Delete(Guid watchlistId, Guid id)
+        {
+            if (await _watchlistsService.DeleteItem(id))
+            {
+                return NoContent();
+            }
+            else
+            {
+                return NotFound();
             }
         }
     }
