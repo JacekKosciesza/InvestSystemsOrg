@@ -30,8 +30,8 @@ namespace InvSys.Watchlists.Api.Controllers
         }
 
         // GET api/watchlists/38d05660-8ea1-4b12-a14d-10d916c07e9c/items
-        [Route("api/watchlists/{watchlistId:guid}/items")]
         [HttpGet]
+        [Route("api/watchlists/{watchlistId:guid}/items")]        
         [AllowAnonymous]
         [SwaggerOperation("get-items")]
         [SwaggerResponseRemoveDefaults]
@@ -54,8 +54,8 @@ namespace InvSys.Watchlists.Api.Controllers
         }
 
         // POST api/watchlists/38d05660-8ea1-4b12-a14d-10d916c07e9c/items
-        [Route("api/watchlists/{watchlistId:guid}/items")]
         [HttpPost]
+        [Route("api/watchlists/{watchlistId:guid}/items")]        
         [SwaggerOperation("create-item")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.Created, Type = typeof(Item))]
@@ -88,8 +88,8 @@ namespace InvSys.Watchlists.Api.Controllers
         }
 
         // DELETE api/watchlists/38d05660-8ea1-4b12-a14d-10d916c07e9c/items/41d05660-8ea1-4b12-a14d-10d916c07e87
+        [HttpDelete()]
         [Route("api/watchlists/{watchlistId:guid}/items/{id:guid}")]
-        [HttpDelete("{id:guid}")]
         [SwaggerOperation("delete-item")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.NoContent)]
