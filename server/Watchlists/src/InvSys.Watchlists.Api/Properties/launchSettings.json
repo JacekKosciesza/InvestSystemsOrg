@@ -19,7 +19,7 @@
     "InvSys.Watchlists.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5002/api/values",
+      "launchUrl": "http://localhost:5004/api/watchlists",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
