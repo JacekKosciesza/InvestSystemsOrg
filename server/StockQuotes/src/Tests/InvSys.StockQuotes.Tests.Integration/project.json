@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "testRunner": "xunit",
   "dependencies": {
@@ -8,10 +8,11 @@
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "Microsoft.AspNetCore.TestHost": "1.0.0",
     "InvSys.Shared.Tests": "1.0.0-*",
-    "InvSys.StockQuotes.Api": "1.0.0-*"
+    "InvSys.StockQuotes.Api": "1.0.0-*",
+    "InvSys.StockQuotes.Yahoo": "1.0.0-*"
   },
   "frameworks": {
-    "net452": {}
+    "net461": {}
   },
   "buildOptions": {
     "copyToOutput": {

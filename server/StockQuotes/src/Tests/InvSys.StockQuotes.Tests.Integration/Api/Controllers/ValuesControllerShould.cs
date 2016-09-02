@@ -1,11 +1,11 @@
-﻿using InvSys.StockQuotes.Api;
+﻿using System.Net.Http;
+using System.Threading.Tasks;
+using InvSys.StockQuotes.Api;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Xunit;
 
-namespace InvSys.StockQuotes.Tests.Integration.Controllers
+namespace InvSys.StockQuotes.Tests.Integration.Api.Controllers
 {
     public class ValuesControllerShould
     {

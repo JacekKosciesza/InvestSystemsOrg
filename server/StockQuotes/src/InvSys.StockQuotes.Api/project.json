@@ -18,7 +18,8 @@
     "AspNet.Security.OAuth.Introspection": "1.0.0-alpha3-0181",
     "InvSys.Shared.Api": "1.0.0-*",
     "InvSys.StockQuotes.Core": "1.0.0-*",
-    "InvSys.StockQuotes.State": "1.0.0-*"
+    "InvSys.StockQuotes.State": "1.0.0-*",
+    "InvSys.StockQuotes.Yahoo": "1.0.0-*"
   },
 
   "tools": {
@@ -26,7 +27,7 @@
   },
 
   "frameworks": {
-    "net452": { }
+    "net461": {}
   },
 
   "buildOptions": {

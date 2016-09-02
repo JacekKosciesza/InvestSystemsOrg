@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "AutoMapper": "5.0.2",
+    "InvSys.StockQuotes.Core": "1.0.0-*",
+    "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+    "YahooFinance.NET": "3.0.0"
+  },
+
+  "frameworks": {
+    "net461": {}
+  }
+}

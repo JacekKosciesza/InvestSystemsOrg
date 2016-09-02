@@ -9,6 +9,7 @@ namespace InvSys.Shared.Core.State
         Task<List<TEntity>> GetAll();
         Task<TEntity> Get(TKey id);
         TEntity Add(TEntity entity);
+        void AddRange(IEnumerable<TEntity> entities);
         void Delete(TKey id);
         void Update(TEntity entity);
         Task<bool> SaveChangesAsync();

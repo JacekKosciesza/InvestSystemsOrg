@@ -14,7 +14,7 @@
   },
 
   "frameworks": {
-    "net452": {}
+    "net461": {}
   },
 
   "tools": {
@@ -27,7 +27,7 @@
     }
   },
 
-  //"buildOptions": {
-  //  "emitEntryPoint": true
-  //}
+  "buildOptions": {
+    "emitEntryPoint": true
+  }
 }
