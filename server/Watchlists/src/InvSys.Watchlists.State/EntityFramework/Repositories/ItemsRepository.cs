@@ -13,15 +13,5 @@ namespace InvSys.Watchlists.State.EntityFramework.Repositories
         {
             _watchlistsContext = dbContext;
         }
-
-        public override Item Add(Item entity)
-        {
-            return base.Add(entity);
-        }
-
-        public override void Delete(Guid id)
-        {
-            base.Delete(id);
-        }
     }
 }
