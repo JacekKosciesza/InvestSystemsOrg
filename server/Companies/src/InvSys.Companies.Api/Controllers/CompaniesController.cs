@@ -8,8 +8,6 @@ using AutoMapper;
 using InvSys.Companies.Api.Models;
 using Swashbuckle.SwaggerGen.Annotations;
 using Microsoft.Extensions.Localization;
-using System.Globalization;
-using InvSys.Shared.Core.Model;
 using Microsoft.AspNetCore.Authorization;
 
 namespace InvSys.Companies.Api.Controllers
