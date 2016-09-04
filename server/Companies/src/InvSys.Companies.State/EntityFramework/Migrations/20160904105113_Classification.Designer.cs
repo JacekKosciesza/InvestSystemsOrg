@@ -8,9 +8,10 @@ using InvSys.Companies.State.EntityFramework;
 namespace InvSys.Companies.State.EntityFramework.Migrations
 {
     [DbContext(typeof(CompaniesContext))]
-    partial class CompaniesContextModelSnapshot : ModelSnapshot
+    [Migration("20160904105113_Classification")]
+    partial class Classification
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
