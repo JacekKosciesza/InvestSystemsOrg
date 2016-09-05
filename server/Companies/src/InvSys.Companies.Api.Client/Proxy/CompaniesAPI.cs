@@ -113,7 +113,7 @@ namespace InvSys.Companies.Api.Client.Proxy
         /// </summary>
         private void Initialize()
         {
-            this.BaseUri = new Uri("http://localhost:5000/");
+            this.BaseUri = new Uri("http://localhost:5001/");
             SerializationSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,

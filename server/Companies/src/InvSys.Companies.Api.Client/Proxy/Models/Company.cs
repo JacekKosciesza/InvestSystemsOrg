@@ -21,13 +21,23 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// <summary>
         /// Initializes a new instance of the Company class.
         /// </summary>
-        public Company(string symbol, string name, string description, Guid? id = default(Guid?), string culture = default(string))
+        public Company(string symbol, string name, string description, Guid? id = default(Guid?), string culture = default(string), string exchange = default(string), Logo logo = default(Logo), string phone = default(string), string fax = default(string), string email = default(string), string address = default(string), string website = default(string), Industry industry = default(Industry), Sector sector = default(Sector), Subsector subsector = default(Subsector))
         {
             Id = id;
             Culture = culture;
+            Exchange = exchange;
             Symbol = symbol;
             Name = name;
+            Logo = logo;
+            Phone = phone;
+            Fax = fax;
+            Email = email;
             Description = description;
+            Address = address;
+            Website = website;
+            Industry = industry;
+            Sector = sector;
+            Subsector = subsector;
         }
 
         /// <summary>
@@ -42,6 +52,11 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "exchange")]
+        public string Exchange { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "symbol")]
         public string Symbol { get; set; }
 
@@ -52,8 +67,53 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "logo")]
+        public Logo Logo { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "phone")]
+        public string Phone { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "fax")]
+        public string Fax { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "email")]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "address")]
+        public string Address { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "website")]
+        public string Website { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "industry")]
+        public Industry Industry { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "sector")]
+        public Sector Sector { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "subsector")]
+        public Subsector Subsector { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ValidationException if validation fails.
