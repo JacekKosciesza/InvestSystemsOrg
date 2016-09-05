@@ -39,6 +39,9 @@ namespace InvSys.Companies.Api
             services.AddTransient<CompaniesContextSeedData>();
             services.AddScoped<ICompaniesService, CompaniesService>();
             services.AddScoped<ICompaniesRepository, CompaniesRepository>();
+            services.AddScoped<IIndustriesRepository, IndustriesRepository>();
+            services.AddScoped<ISectorsRepository, SectorsRepository>();
+            services.AddScoped<ISubsectorsRepository, SubsectorsRepository>();
             services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 
@@ -48,7 +51,7 @@ namespace InvSys.Companies.Api
 
             app.UseInvSys(Configuration, loggerFactory);
 
-            seeder.EnsureSeedData().Wait();
+            //seeder.EnsureSeedData().Wait();
         }
     }
 }

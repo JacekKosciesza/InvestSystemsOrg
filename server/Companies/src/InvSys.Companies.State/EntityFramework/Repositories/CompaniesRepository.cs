@@ -20,12 +20,22 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
 
         public override Task<Company> Get(Guid id)
         {
-            return _companiesContext.Companies.Include(c => c.Translations).SingleOrDefaultAsync(c => c.Id == id);
+            return _companiesContext.Companies
+                .Include(c => c.Translations)
+                .Include(c => c.Industry).Include(c => c.Industry.Translations)
+                .Include(c => c.Sector).Include(c => c.Sector.Translations)
+                .Include(c => c.Subsector).Include(c => c.Subsector.Translations)
+                .SingleOrDefaultAsync(c => c.Id == id);
         }
 
         public override Task<List<Company>> GetAll()
         {
-            return _companiesContext.Companies.Include(c => c.Translations).ToListAsync();
+            return _companiesContext.Companies
+                .Include(c => c.Translations)
+                .Include(c => c.Industry).Include(c => c.Industry.Translations)
+                .Include(c => c.Sector).Include(c => c.Sector.Translations)
+                .Include(c => c.Subsector).Include(c => c.Subsector.Translations)
+                .ToListAsync();
         }
 
         public override void Update(Company company)

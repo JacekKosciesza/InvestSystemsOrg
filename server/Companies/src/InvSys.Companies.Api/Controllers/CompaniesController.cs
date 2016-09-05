@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace InvSys.Companies.Api.Controllers
 {
-    [Authorize(Policy = "Admin")]
+    //[Authorize(Policy = "Admin")]
     [Route("api/[controller]")]
     public class CompaniesController : Controller
     {
