@@ -16,6 +16,7 @@ namespace InvSys.Companies.Core.Models
         public Logo Logo { get; set;}
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string Fax { get; set; }
 
         public Industry Industry { get; set; }
         public Sector Sector { get; set; }

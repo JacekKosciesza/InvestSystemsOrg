@@ -6,3 +6,7 @@ dotnet ef migrations add EFConfiguration -o .\EntityFramework\Migrations
 dotnet ef database update
 dotnet ef migrations add Classification -o .\EntityFramework\Migrations
 dotnet ef database update
+dotnet ef migrations add Fax -o .\EntityFramework\Migrations
+dotnet ef database update
+dotnet ef migrations add IndustrySectorSubsector_Required -o .\EntityFramework\Migrations
+dotnet ef database update

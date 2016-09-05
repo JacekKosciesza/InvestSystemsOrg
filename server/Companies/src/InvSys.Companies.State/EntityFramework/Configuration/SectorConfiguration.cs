@@ -14,7 +14,7 @@ namespace InvSys.Companies.State.EntityFramework.Configuration
             builder.HasMany(c => c.Subsectors).WithOne(t => t.Sector).HasForeignKey(t => t.SectorId)
                 .IsRequired().OnDelete(DeleteBehavior.Cascade);
             builder.Property(c => c.Timestamp).ValueGeneratedOnAddOrUpdate().IsConcurrencyToken();
-            builder.Property(c => c.Source).IsRequired().HasMaxLength(300);
+            builder.Property(c => c.Source).HasMaxLength(300);
         }
 
         public static void SectorTranslationModelBuilder(EntityTypeBuilder<SectorTranslation> builder)
@@ -22,7 +22,7 @@ namespace InvSys.Companies.State.EntityFramework.Configuration
             builder.ToTable("SectorTranslations");
             builder.HasKey(t => new { t.SectorId, t.Culture });
             builder.Property(c => c.Timestamp).ValueGeneratedOnAddOrUpdate().IsConcurrencyToken();
-            builder.Property(c => c.Description).IsRequired().HasMaxLength(3000);
+            builder.Property(c => c.Description).HasMaxLength(3000);
         }
     }
 }

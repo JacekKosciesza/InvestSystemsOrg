@@ -18,6 +18,7 @@ namespace InvSys.Companies.Api.Models
         public string Name { get; set; }
         public Logo Logo { get; set; }
         public string Phone { get; set; }
+        public string Fax { get; set; }
         public string Email { get; set; }
 
         [Required]

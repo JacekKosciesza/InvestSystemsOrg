@@ -8,9 +8,10 @@ using InvSys.Companies.State.EntityFramework;
 namespace InvSys.Companies.State.EntityFramework.Migrations
 {
     [DbContext(typeof(CompaniesContext))]
-    partial class CompaniesContextModelSnapshot : ModelSnapshot
+    [Migration("20160905160846_Fax")]
+    partial class Fax
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -98,6 +99,7 @@ namespace InvSys.Companies.State.EntityFramework.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Source")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 300);
 
                     b.Property<byte[]>("Timestamp")
@@ -116,6 +118,7 @@ namespace InvSys.Companies.State.EntityFramework.Migrations
                     b.Property<string>("Culture");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 3000);
 
                     b.Property<string>("Name");
@@ -157,6 +160,7 @@ namespace InvSys.Companies.State.EntityFramework.Migrations
                     b.Property<Guid>("IndustryId");
 
                     b.Property<string>("Source")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 300);
 
                     b.Property<byte[]>("Timestamp")
@@ -177,6 +181,7 @@ namespace InvSys.Companies.State.EntityFramework.Migrations
                     b.Property<string>("Culture");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 3000);
 
                     b.Property<string>("Name");
@@ -200,6 +205,7 @@ namespace InvSys.Companies.State.EntityFramework.Migrations
                     b.Property<Guid>("SectorId");
 
                     b.Property<string>("Source")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 300);
 
                     b.Property<byte[]>("Timestamp")
@@ -220,6 +226,7 @@ namespace InvSys.Companies.State.EntityFramework.Migrations
                     b.Property<string>("Culture");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 3000);
 
                     b.Property<string>("Name");
