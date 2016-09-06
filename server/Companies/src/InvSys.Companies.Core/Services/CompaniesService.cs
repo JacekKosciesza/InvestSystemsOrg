@@ -10,23 +10,24 @@ namespace InvSys.Companies.Core.Services
     public class CompaniesService : ICompaniesService
     {
         private readonly ICompaniesRepository _companiesRepository;
+        private readonly ISubsectorsRepository _subsectorsRepository;
         private readonly IIndustriesRepository _industriesRepository;
         private readonly ISectorsRepository _sectorsRepository;
-        private readonly ISubsectorsRepository _subsectorsRepository;
 
-        public CompaniesService(ICompaniesRepository companiesRepository, IIndustriesRepository industriesRepository, ISectorsRepository sectorsRepository, ISubsectorsRepository subsectorsRepository)
+        public CompaniesService(ICompaniesRepository companiesRepository, ISubsectorsRepository subsectorsRepository, IIndustriesRepository industriesRepository, ISectorsRepository sectorsRepository)
         {
             _companiesRepository = companiesRepository;
+            _subsectorsRepository = subsectorsRepository;
             _industriesRepository = industriesRepository;
             _sectorsRepository = sectorsRepository;
-            _subsectorsRepository = subsectorsRepository;
+
         }
 
         public async Task<Company> AddCompany(Company company)
         {
-            company.Industry = await CreateIndustryIfDoesNotExist(company.Industry);
-            company.Sector = await CreateSectorIfDoesNotExist(company.Industry.Id, company.Sector);
-            company.Subsector = await CreateSubsectorIfDoesNotExist(company.Sector.Id, company.Subsector);
+            company.Sector = await CreateSectorIfDoesNotExist(company.Sector);
+            company.Subsector = await CreateSubsectorIfDoesNotExist(company.Sector, company.Subsector);
+            company.Industry = await CreateIndustryIfDoesNotExist(company.Subsector.Id, company.Industry);
 
             var addedCompany = _companiesRepository.Add(company);
             if (await _companiesRepository.SaveChangesAsync())
@@ -67,32 +68,7 @@ namespace InvSys.Companies.Core.Services
             }
         }
 
-        private async Task<Industry> CreateIndustryIfDoesNotExist(Industry companyIndustry)
-        {
-            if (companyIndustry == null)
-            {
-                return null;
-            }
-            Industry industry = null;
-            var industryTranslation = companyIndustry.Translations.FirstOrDefault();
-            if (industryTranslation != null)
-            {
-                industry = await _industriesRepository.GetIndustryByName(industryTranslation.Culture, industryTranslation.Name);
-            }
-            if (industry == null)
-            {
-                companyIndustry.Id = Guid.NewGuid();
-                _industriesRepository.Add(companyIndustry);
-                await _industriesRepository.SaveChangesAsync();
-                return companyIndustry;
-            }
-            else
-            {
-                return industry;
-            }
-        }
-
-        private async Task<Sector> CreateSectorIfDoesNotExist(Guid industryId, Sector companySector)
+        private async Task<Sector> CreateSectorIfDoesNotExist(Sector companySector)
         {
             if (companySector == null)
             {
@@ -107,7 +83,6 @@ namespace InvSys.Companies.Core.Services
             if (sector == null)
             {
                 companySector.Id = Guid.NewGuid();
-                companySector.IndustryId = industryId;
                 _sectorsRepository.Add(companySector);
                 await _sectorsRepository.SaveChangesAsync();
                 return companySector;
@@ -118,29 +93,65 @@ namespace InvSys.Companies.Core.Services
             }
         }
 
-        private async Task<Subsector> CreateSubsectorIfDoesNotExist(Guid sectorId, Subsector companySubsector)
+        private async Task<Subsector> CreateSubsectorIfDoesNotExist(Sector sector, Subsector companySubsector)
         {
             if (companySubsector == null)
             {
-                return null;
+                companySubsector = new Subsector
+                {
+                    Translations = new List<SubsectorTranslation>
+                    {
+                        new SubsectorTranslation
+                        {
+                            Culture = sector.Translations.FirstOrDefault().Culture,
+                            Name = sector.Translations.FirstOrDefault().Name,
+                        }
+                    }
+                };
             }
-            Subsector sector = null;
-            var subsectorTranslation = companySubsector.Translations.FirstOrDefault();
-            if (subsectorTranslation != null)
+            Subsector subsector = null;
+            var sectorTranslation = companySubsector.Translations.FirstOrDefault();
+            if (sectorTranslation != null)
             {
-                sector = await _subsectorsRepository.GetSubsectorByName(subsectorTranslation.Culture, subsectorTranslation.Name);
+                subsector = await _subsectorsRepository.GetSubsectorByName(sectorTranslation.Culture, sectorTranslation.Name);
             }
-            if (sector == null)
+            if (subsector == null)
             {
                 companySubsector.Id = Guid.NewGuid();
-                companySubsector.SectorId = sectorId;
+                companySubsector.SectorId = sector.Id;
                 _subsectorsRepository.Add(companySubsector);
                 await _subsectorsRepository.SaveChangesAsync();
                 return companySubsector;
             }
             else
             {
-                return sector;
+                return subsector;
+            }
+        }
+
+        private async Task<Industry> CreateIndustryIfDoesNotExist(Guid subsectorId, Industry companyIndustry)
+        {
+            if (companyIndustry == null)
+            {
+                return null;
+            }
+            Industry industry = null;
+            var industryTranslation = companyIndustry.Translations.FirstOrDefault();
+            if (industryTranslation != null)
+            {
+                industry = await _industriesRepository.GetIndustryByName(industryTranslation.Culture, industryTranslation.Name);
+            }
+            if (industry == null)
+            {
+                companyIndustry.Id = Guid.NewGuid();
+                companyIndustry.SubsectorId = subsectorId;
+                _industriesRepository.Add(companyIndustry);
+                await _industriesRepository.SaveChangesAsync();
+                return companyIndustry;
+            }
+            else
+            {
+                return industry;
             }
         }
     }

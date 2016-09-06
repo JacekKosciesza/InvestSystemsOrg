@@ -21,7 +21,7 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// <summary>
         /// Initializes a new instance of the Company class.
         /// </summary>
-        public Company(string symbol, string name, string description, Guid? id = default(Guid?), string culture = default(string), string exchange = default(string), Logo logo = default(Logo), string phone = default(string), string fax = default(string), string email = default(string), string address = default(string), string website = default(string), Industry industry = default(Industry), Sector sector = default(Sector), Subsector subsector = default(Subsector))
+        public Company(string symbol, string name, Guid? id = default(Guid?), string culture = default(string), string exchange = default(string), Logo logo = default(Logo), string phone = default(string), string fax = default(string), string email = default(string), string description = default(string), string address = default(string), string website = default(string), Sector sector = default(Sector), Subsector subsector = default(Subsector), Industry industry = default(Industry))
         {
             Id = id;
             Culture = culture;
@@ -35,9 +35,9 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
             Description = description;
             Address = address;
             Website = website;
-            Industry = industry;
             Sector = sector;
             Subsector = subsector;
+            Industry = industry;
         }
 
         /// <summary>
@@ -102,11 +102,6 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "industry")]
-        public Industry Industry { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "sector")]
         public Sector Sector { get; set; }
 
@@ -114,6 +109,11 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// </summary>
         [JsonProperty(PropertyName = "subsector")]
         public Subsector Subsector { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "industry")]
+        public Industry Industry { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ValidationException if validation fails.
@@ -127,43 +127,6 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
             if (Name == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Name");
-            }
-            if (Description == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Description");
-            }
-            if (this.Symbol != null)
-            {
-                if (this.Symbol.Length > 100)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "Symbol", 100);
-                }
-                if (this.Symbol.Length < 2)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Symbol", 2);
-                }
-            }
-            if (this.Name != null)
-            {
-                if (this.Name.Length > 100)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "Name", 100);
-                }
-                if (this.Name.Length < 2)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Name", 2);
-                }
-            }
-            if (this.Description != null)
-            {
-                if (this.Description.Length > 3000)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "Description", 3000);
-                }
-                if (this.Description.Length < 20)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Description", 20);
-                }
             }
         }
     }

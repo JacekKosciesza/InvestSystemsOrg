@@ -21,14 +21,13 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// <summary>
         /// Initializes a new instance of the Industry class.
         /// </summary>
-        public Industry(Guid? id = default(Guid?), string culture = default(string), string source = default(string), string name = default(string), string description = default(string), IList<Sector> sectors = default(IList<Sector>))
+        public Industry(Guid? id = default(Guid?), string culture = default(string), string source = default(string), string name = default(string), string description = default(string))
         {
             Id = id;
             Culture = culture;
             Source = source;
             Name = name;
             Description = description;
-            Sectors = sectors;
         }
 
         /// <summary>
@@ -55,11 +54,6 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "sectors")]
-        public IList<Sector> Sectors { get; set; }
 
     }
 }

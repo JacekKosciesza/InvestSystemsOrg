@@ -21,13 +21,14 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// <summary>
         /// Initializes a new instance of the Subsector class.
         /// </summary>
-        public Subsector(Guid? id = default(Guid?), string culture = default(string), string source = default(string), string name = default(string), string description = default(string))
+        public Subsector(Guid? id = default(Guid?), string culture = default(string), string source = default(string), string name = default(string), string description = default(string), IList<Industry> industries = default(IList<Industry>))
         {
             Id = id;
             Culture = culture;
             Source = source;
             Name = name;
             Description = description;
+            Industries = industries;
         }
 
         /// <summary>
@@ -54,6 +55,11 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "industries")]
+        public IList<Industry> Industries { get; set; }
 
     }
 }

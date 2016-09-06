@@ -8,12 +8,13 @@ namespace InvSys.Companies.Core.Models
     public class Industry : IEntity<Guid>
     {
         public Guid Id { get; set; }
+        public Subsector Subsector { get; set; }
+        public Guid SubsectorId { get; set; }
         public byte[] Timestamp { get; set; }
 
         public string Source { get; set; }
 
         public ICollection<IndustryTranslation> Translations { get; set; }
-        public ICollection<Sector> Sectors { get; set; }
     }
 
     public class IndustryTranslation : Translation

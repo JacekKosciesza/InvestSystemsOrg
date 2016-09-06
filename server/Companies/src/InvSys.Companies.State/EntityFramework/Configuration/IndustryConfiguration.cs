@@ -11,8 +11,6 @@ namespace InvSys.Companies.State.EntityFramework.Configuration
         {
             builder.HasMany(c => c.Translations).WithOne(t => t.Industry).HasForeignKey(t => t.IndustryId)
                 .IsRequired().OnDelete(DeleteBehavior.Cascade);
-            builder.HasMany(c => c.Sectors).WithOne(t => t.Industry).HasForeignKey(t => t.IndustryId)
-                .IsRequired().OnDelete(DeleteBehavior.Cascade);
             builder.Property(c => c.Timestamp).ValueGeneratedOnAddOrUpdate().IsConcurrencyToken();
             builder.Property(c => c.Source).HasMaxLength(300);
         }

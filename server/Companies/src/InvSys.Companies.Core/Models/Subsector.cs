@@ -15,6 +15,7 @@ namespace InvSys.Companies.Core.Models
         public string Source { get; set; }
 
         public ICollection<SubsectorTranslation> Translations { get; set; }
+        public ICollection<Industry> Industries { get; set; }
     }
 
     public class SubsectorTranslation : Translation

@@ -8,8 +8,6 @@ namespace InvSys.Companies.Core.Models
     public class Sector : IEntity<Guid>
     {
         public Guid Id { get; set; }
-        public Industry Industry { get; set; }
-        public Guid IndustryId { get; set; }
         public byte[] Timestamp { get; set; }
 
         public string Source { get; set; }

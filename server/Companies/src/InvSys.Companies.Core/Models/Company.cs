@@ -18,9 +18,9 @@ namespace InvSys.Companies.Core.Models
         public string Email { get; set; }
         public string Fax { get; set; }
 
-        public Industry Industry { get; set; }
         public Sector Sector { get; set; }
         public Subsector Subsector { get; set; }
+        public Industry Industry { get; set; }
 
         public ICollection<CompanyTranslation> Translations { get; set; }
     }

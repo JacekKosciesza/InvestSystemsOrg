@@ -18,9 +18,9 @@ namespace InvSys.Companies.State.EntityFramework
         }
 
         public DbSet<Company> Companies { get; set; }
-        public DbSet<Industry> Industries { get; set; }
         public DbSet<Sector> Sectors { get; set; }
         public DbSet<Subsector> Subsectors { get; set; }
+        public DbSet<Industry> Industries { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,12 +40,12 @@ namespace InvSys.Companies.State.EntityFramework
         {
             modelBuilder.Entity<Company>(CompanyConfiguration.CompanyModelBuilder);
             modelBuilder.Entity<CompanyTranslation>(CompanyConfiguration.CompanyTranslationModelBuilder);
-            modelBuilder.Entity<Industry>(IndustryConfiguration.IndustryModelBuilder);
-            modelBuilder.Entity<IndustryTranslation>(IndustryConfiguration.IndustryTranslationModelBuilder);
             modelBuilder.Entity<Sector>(SectorConfiguration.SectorModelBuilder);
             modelBuilder.Entity<SectorTranslation>(SectorConfiguration.SectorTranslationModelBuilder);
             modelBuilder.Entity<Subsector>(SubsectorConfiguration.SubsectorModelBuilder);
             modelBuilder.Entity<SubsectorTranslation>(SubsectorConfiguration.SubsectorTranslationModelBuilder);
+            modelBuilder.Entity<Industry>(IndustryConfiguration.IndustryModelBuilder);
+            modelBuilder.Entity<IndustryTranslation>(IndustryConfiguration.IndustryTranslationModelBuilder);
         }
     }
 }

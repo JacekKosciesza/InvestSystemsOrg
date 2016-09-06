@@ -11,10 +11,10 @@ namespace InvSys.Companies.State.EntityFramework.Configuration
         {
             builder.HasMany(c => c.Translations).WithOne(t => t.Company).HasForeignKey(t => t.CompanyId)
                 .IsRequired().OnDelete(DeleteBehavior.Cascade);
-            builder.HasAlternateKey(c => c.Symbol);
-            builder.HasIndex(c => c.Symbol).IsUnique();
-            builder.Property(c => c.Timestamp).ValueGeneratedOnAddOrUpdate().IsConcurrencyToken();
+            //builder.HasAlternateKey(c => c.Symbol);
+            //builder.HasIndex(c => c.Symbol).IsUnique();
             builder.Property(c => c.Symbol).IsRequired().HasMaxLength(100);
+            builder.Property(c => c.Timestamp).ValueGeneratedOnAddOrUpdate().IsConcurrencyToken();
             builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
         }
 
@@ -23,7 +23,7 @@ namespace InvSys.Companies.State.EntityFramework.Configuration
             builder.ToTable("CompanyTranslations");
             builder.HasKey(t => new { t.CompanyId, t.Culture });
             builder.Property(c => c.Timestamp).ValueGeneratedOnAddOrUpdate().IsConcurrencyToken();
-            builder.Property(c => c.Description).IsRequired().HasMaxLength(3000);
+            builder.Property(c => c.Description).HasMaxLength(3000);
         }
     }
 }

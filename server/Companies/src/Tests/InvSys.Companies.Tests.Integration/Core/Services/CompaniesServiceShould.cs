@@ -36,9 +36,9 @@ namespace InvSys.Companies.Tests.Integration.Core.Services
             services.AddTransient<CompaniesContextSeedData>();
             services.AddScoped<ICompaniesService, CompaniesService>();
             services.AddScoped<ICompaniesRepository, CompaniesRepository>();
-            services.AddScoped<IIndustriesRepository, IndustriesRepository>();
             services.AddScoped<ISectorsRepository, SectorsRepository>();
             services.AddScoped<ISubsectorsRepository, SubsectorsRepository>();
+            services.AddScoped<IIndustriesRepository, IndustriesRepository>();
             services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 
@@ -80,17 +80,6 @@ namespace InvSys.Companies.Tests.Integration.Core.Services
                         Website = "http://www.newcompany.com",
                     }
                 },
-                Industry = new Industry
-                {
-                    Translations = new List<IndustryTranslation>
-                    {
-                        new IndustryTranslation
-                        {
-                            Culture = "en-US",
-                            Name = "Industry 1"
-                        }
-                    }
-                },
                 Sector = new Sector
                 {
                     Translations = new List<SectorTranslation>
@@ -109,7 +98,18 @@ namespace InvSys.Companies.Tests.Integration.Core.Services
                         new SubsectorTranslation
                         {
                             Culture = "en-US",
-                            Name = "Subsector 1"
+                            Name = "Sector 1"
+                        }
+                    }
+                },
+                Industry = new Industry
+                {
+                    Translations = new List<IndustryTranslation>
+                    {
+                        new IndustryTranslation
+                        {
+                            Culture = "en-US",
+                            Name = "Sector 1"
                         }
                     }
                 }
