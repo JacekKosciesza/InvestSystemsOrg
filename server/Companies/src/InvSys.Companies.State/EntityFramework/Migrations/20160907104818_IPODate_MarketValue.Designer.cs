@@ -8,9 +8,10 @@ using InvSys.Companies.State.EntityFramework;
 namespace InvSys.Companies.State.EntityFramework.Migrations
 {
     [DbContext(typeof(CompaniesContext))]
-    partial class CompaniesContextModelSnapshot : ModelSnapshot
+    [Migration("20160907104818_IPODate_MarketValue")]
+    partial class IPODate_MarketValue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -20,8 +21,6 @@ namespace InvSys.Companies.State.EntityFramework.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Country");
 
                     b.Property<string>("Email");
 

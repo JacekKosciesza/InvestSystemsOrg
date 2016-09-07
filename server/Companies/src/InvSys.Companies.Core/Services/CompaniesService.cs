@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using InvSys.Companies.Core.State;
 using System.Threading.Tasks;
@@ -72,7 +73,17 @@ namespace InvSys.Companies.Core.Services
         {
             if (companySector == null)
             {
-                return null;
+                companySector = new Sector
+                {
+                    Translations = new List<SectorTranslation>
+                    {
+                        new SectorTranslation
+                        {
+                            Culture = CultureInfo.CurrentCulture.Name,
+                            Name = "Other"
+                        }
+                    }
+                };
             }
             Sector sector = null;
             var sectorTranslation = companySector.Translations.FirstOrDefault();

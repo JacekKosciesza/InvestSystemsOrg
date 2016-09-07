@@ -21,7 +21,7 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// <summary>
         /// Initializes a new instance of the Company class.
         /// </summary>
-        public Company(string symbol, string name, Guid? id = default(Guid?), string culture = default(string), string exchange = default(string), Logo logo = default(Logo), string phone = default(string), string fax = default(string), string email = default(string), string description = default(string), string address = default(string), string website = default(string), Sector sector = default(Sector), Subsector subsector = default(Subsector), Industry industry = default(Industry))
+        public Company(string symbol, string name, Guid? id = default(Guid?), string culture = default(string), string exchange = default(string), Logo logo = default(Logo), string phone = default(string), string fax = default(string), string email = default(string), string description = default(string), string address = default(string), string website = default(string), Sector sector = default(Sector), Subsector subsector = default(Subsector), Industry industry = default(Industry), DateTime? ipoDate = default(DateTime?), string marketValue = default(string), string country = default(string))
         {
             Id = id;
             Culture = culture;
@@ -38,6 +38,9 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
             Sector = sector;
             Subsector = subsector;
             Industry = industry;
+            IpoDate = ipoDate;
+            MarketValue = marketValue;
+            Country = country;
         }
 
         /// <summary>
@@ -114,6 +117,21 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// </summary>
         [JsonProperty(PropertyName = "industry")]
         public Industry Industry { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "ipoDate")]
+        public DateTime? IpoDate { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "marketValue")]
+        public string MarketValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "country")]
+        public string Country { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ValidationException if validation fails.

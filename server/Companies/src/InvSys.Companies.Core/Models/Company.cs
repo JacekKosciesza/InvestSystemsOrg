@@ -11,7 +11,7 @@ namespace InvSys.Companies.Core.Models
         public byte[] Timestamp { get; set; }
 
         public string Exchange { get; set; }  
-        public string Symbol { get; set; } // Ticker
+        public string Symbol { get; set; } // Ticker or Code
         public string Name { get; set; }
         public Logo Logo { get; set;}
         public string Phone { get; set; }
@@ -21,6 +21,10 @@ namespace InvSys.Companies.Core.Models
         public Sector Sector { get; set; }
         public Subsector Subsector { get; set; }
         public Industry Industry { get; set; }
+
+        public DateTime? IPODate { get; set; }
+        public string MarketValue { get; set; } // Market Capitalization
+        public string Country { get; set; }
 
         public ICollection<CompanyTranslation> Translations { get; set; }
     }
