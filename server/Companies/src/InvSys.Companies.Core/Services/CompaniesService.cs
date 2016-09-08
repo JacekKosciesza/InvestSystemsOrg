@@ -5,6 +5,8 @@ using System.Linq;
 using InvSys.Companies.Core.State;
 using System.Threading.Tasks;
 using InvSys.Companies.Core.Models;
+using InvSys.Shared.Core.Model;
+using Microsoft.Extensions.Configuration;
 
 namespace InvSys.Companies.Core.Services
 {
@@ -14,14 +16,15 @@ namespace InvSys.Companies.Core.Services
         private readonly ISubsectorsRepository _subsectorsRepository;
         private readonly IIndustriesRepository _industriesRepository;
         private readonly ISectorsRepository _sectorsRepository;
+        private readonly IConfigurationRoot _config;
 
-        public CompaniesService(ICompaniesRepository companiesRepository, ISubsectorsRepository subsectorsRepository, IIndustriesRepository industriesRepository, ISectorsRepository sectorsRepository)
+        public CompaniesService(ICompaniesRepository companiesRepository, ISubsectorsRepository subsectorsRepository, IIndustriesRepository industriesRepository, ISectorsRepository sectorsRepository, IConfigurationRoot config)
         {
             _companiesRepository = companiesRepository;
             _subsectorsRepository = subsectorsRepository;
             _industriesRepository = industriesRepository;
             _sectorsRepository = sectorsRepository;
-
+            _config = config;
         }
 
         public async Task<Company> AddCompany(Company company)
@@ -49,6 +52,12 @@ namespace InvSys.Companies.Core.Services
         public async Task<ICollection<Company>> GetCompanies()
         {
             return await _companiesRepository.GetAll();
+        }
+
+        public async Task<Page<Company>> GetPageOfCompanies(Filter filter)
+        {
+            filter.ItemsPerPage = filter.ItemsPerPage ?? int.Parse(_config["ItemsPerPage"]);
+            return await _companiesRepository.GetPage(filter);
         }
 
         public async Task<Company> GetCompany(Guid id)

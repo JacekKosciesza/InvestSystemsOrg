@@ -2,12 +2,14 @@
 using System;
 using System.Threading.Tasks;
 using InvSys.Companies.Core.Models;
+using InvSys.Shared.Core.Model;
 
 namespace InvSys.Companies.Core.Services
 {
     public interface ICompaniesService
     {
         Task<ICollection<Company>> GetCompanies();
+        Task<Page<Company>> GetPageOfCompanies(Filter filter);
         Task<Company> GetCompany(Guid id);
         Task<Company> AddCompany(Company company);
         Task<Company> UpdateCompany(Company company);

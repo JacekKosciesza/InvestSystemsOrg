@@ -2,7 +2,10 @@
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using InvSys.Shared.Core.Model;
 using InvSys.Shared.Core.State;
+using Microsoft.Extensions.Configuration;
 
 namespace InvSys.Shared.State.EntityFramework.Repositories
 {
@@ -10,7 +13,6 @@ namespace InvSys.Shared.State.EntityFramework.Repositories
         where TEntity : class, IEntity<TKey>, new()
     {
         protected DbContext DbContext;
-
 
         protected BaseRepository(DbContext dbContext)
         {
@@ -20,6 +22,19 @@ namespace InvSys.Shared.State.EntityFramework.Repositories
         public virtual Task<List<TEntity>> GetAll()
         {
             return DbContext.Set<TEntity>().ToListAsync();
+        }
+
+        public virtual async Task<Page<TEntity>> GetPage(Filter filter)
+        {
+            var itemsPerPage = filter.ItemsPerPage ?? 20;
+            var itemsCount = await DbContext.Set<TEntity>().CountAsync();
+            var itemsToSkip = (filter.PageNumber - 1) * itemsPerPage;
+
+            var page = new Page<TEntity> {CurrentPage = filter.PageNumber, ItemsPerPage = itemsPerPage};
+            page.TotalPages = (int) Math.Ceiling((double)itemsCount/page.ItemsPerPage);
+            page.Items = await DbContext.Set<TEntity>().Skip(itemsToSkip).Take(itemsPerPage).ToListAsync();
+
+            return page;
         }
 
         public virtual Task<TEntity> Get(TKey id)

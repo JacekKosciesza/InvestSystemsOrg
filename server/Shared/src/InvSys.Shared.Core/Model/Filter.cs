@@ -2,7 +2,7 @@
 {
     public class Filter
     {
-        public uint PageNumber { get; set; }
-        public uint ItemsPerPage { get; set; }
+        public int PageNumber { get; set; }
+        public int? ItemsPerPage { get; set; }
     }
 }

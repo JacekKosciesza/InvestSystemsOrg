@@ -6,6 +6,7 @@ using InvSys.Shared.State.EntityFramework.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using InvSys.Companies.Core.Models;
+using InvSys.Shared.Core.Model;
 
 namespace InvSys.Companies.State.EntityFramework.Repositories
 {
@@ -36,6 +37,27 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
                 .Include(c => c.Subsector).Include(c => c.Subsector.Translations)
                 .Include(c => c.Industry).Include(c => c.Industry.Translations)
                 .ToListAsync();
+        }
+
+        public override async Task<Page<Company>> GetPage(Filter filter)
+        {
+            var itemsPerPage = filter.ItemsPerPage ?? 20;
+            var itemsCount = await _companiesContext.Companies.CountAsync();
+            var itemsToSkip = (filter.PageNumber - 1) * itemsPerPage;
+
+            var page = new Page<Company> { CurrentPage = filter.PageNumber, ItemsPerPage = itemsPerPage };
+            page.TotalPages = (int)Math.Ceiling((double)itemsCount / page.ItemsPerPage);
+            page.Items = await _companiesContext.Companies
+                .Skip(itemsToSkip)
+                .Take(itemsPerPage)
+                .OrderBy(c => c.Name)
+                .Include(c => c.Translations)
+                .Include(c => c.Sector).Include(c => c.Sector.Translations)
+                .Include(c => c.Subsector).Include(c => c.Subsector.Translations)
+                .Include(c => c.Industry).Include(c => c.Industry.Translations)
+                .ToListAsync();
+
+            return page;
         }
 
         public override void Update(Company company)

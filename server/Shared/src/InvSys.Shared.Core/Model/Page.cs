@@ -5,8 +5,8 @@ namespace InvSys.Shared.Core.Model
     public class Page<T> where T: class
     {
         public ICollection<T> Items { get; set; }
-        public uint TotalPages { get; set; }
-        public uint CurrentPage { get; set; }
-        public uint ItemsPerPage { get; set; }
+        public int TotalPages { get; set; }
+        public int CurrentPage { get; set; }
+        public int ItemsPerPage { get; set; }
     }
 }

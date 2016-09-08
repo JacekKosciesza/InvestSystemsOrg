@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using InvSys.Shared.Api.Startup;
+using InvSys.Shared.Core.Model;
 
 namespace InvSys.Companies.Api
 {
@@ -35,6 +36,7 @@ namespace InvSys.Companies.Api
         {
             services.AddInvSys(Configuration);
 
+            services.AddScoped<Filter>();
             services.AddDbContext<CompaniesContext>();
             services.AddTransient<CompaniesContextSeedData>();
             services.AddScoped<ICompaniesService, CompaniesService>();

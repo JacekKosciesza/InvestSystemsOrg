@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
 using InvSys.Companies.Api.Models;
+using InvSys.Shared.Core.Model;
 using Swashbuckle.SwaggerGen.Annotations;
 using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Authorization;
@@ -31,22 +32,46 @@ namespace InvSys.Companies.Api.Controllers
 
         // GET api/companies        
         [HttpGet]
+        [Route("all")]
         [AllowAnonymous]
-        [SwaggerOperation("get-companies")]
+        [SwaggerOperation("get-all-companies")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<Company>))]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get all companies")]
         [Produces("application/json", Type = typeof(ICollection<Company>))]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
             _logger.LogInformation("Getting all companies");
             try
             {
                 var companies = await _companiesService.GetCompanies();
                 return Ok(_mapper.Map<ICollection<Company>>(companies));
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 _logger.LogError($"{_localizer["Failed to get all companies"]}", ex);
+                return BadRequest();
+            }
+        }
+
+        // GET api/companies        
+        [HttpGet]
+        [AllowAnonymous]
+        [SwaggerOperation("get-companies")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Page<Company>))]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get companies")]
+        [Produces("application/json", Type = typeof(Page<Company>))]
+        public async Task<IActionResult> Get(Filter filter = null)
+        {
+            _logger.LogInformation("Getting companies");
+            try
+            {
+                var pageOfCompanies = await _companiesService.GetPageOfCompanies(filter);
+                return Ok(_mapper.Map<Page<Company>>(pageOfCompanies));
+            } catch (Exception ex)
+            {
+                _logger.LogError($"{_localizer["Failed to get companies"]}", ex);
                 return BadRequest();
             }
         }
