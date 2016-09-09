@@ -9,7 +9,7 @@ namespace InvSys.Companies.Core.Services
     public interface ICompaniesService
     {
         Task<ICollection<Company>> GetCompanies();
-        Task<Page<Company>> GetPageOfCompanies(Filter filter);
+        Task<Page<Company>> GetPageOfCompanies(Query query);
         Task<Company> GetCompany(Guid id);
         Task<Company> AddCompany(Company company);
         Task<Company> UpdateCompany(Company company);

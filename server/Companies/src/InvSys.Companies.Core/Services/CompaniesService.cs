@@ -54,10 +54,10 @@ namespace InvSys.Companies.Core.Services
             return await _companiesRepository.GetAll();
         }
 
-        public async Task<Page<Company>> GetPageOfCompanies(Filter filter)
+        public async Task<Page<Company>> GetPageOfCompanies(Query query)
         {
-            filter.ItemsPerPage = filter.ItemsPerPage ?? int.Parse(_config["ItemsPerPage"]);
-            return await _companiesRepository.GetPage(filter);
+            query.Filter.ItemsPerPage = query.Filter.ItemsPerPage ?? int.Parse(_config["ItemsPerPage"]);
+            return await _companiesRepository.GetPage(query);
         }
 
         public async Task<Company> GetCompany(Guid id)

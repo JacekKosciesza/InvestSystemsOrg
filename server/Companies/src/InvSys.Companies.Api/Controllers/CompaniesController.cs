@@ -62,16 +62,16 @@ namespace InvSys.Companies.Api.Controllers
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Page<Company>))]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get companies")]
         [Produces("application/json", Type = typeof(Page<Company>))]
-        public async Task<IActionResult> Get(Filter filter = null)
+        public async Task<IActionResult> Get(Query query = null)
         {
             _logger.LogInformation("Getting companies");
             try
             {
-                var pageOfCompanies = await _companiesService.GetPageOfCompanies(filter);
+                var pageOfCompanies = await _companiesService.GetPageOfCompanies(query);
                 return Ok(_mapper.Map<Page<Company>>(pageOfCompanies));
             } catch (Exception ex)
             {
-                _logger.LogError($"{_localizer["Failed to get companies"]}", ex);
+                _logger.LogError($"{_localizer["Failed to get companies"]}" + ex);
                 return BadRequest();
             }
         }

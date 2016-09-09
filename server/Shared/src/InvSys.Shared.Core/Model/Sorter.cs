@@ -9,6 +9,6 @@
     public class Sorter
     {
         public string SortBy { get; set; }
-        public SortOrder SortOrder { get; set; }
+        public SortOrder SortOrder { get; set; } = SortOrder.Ascending;
     }
 }

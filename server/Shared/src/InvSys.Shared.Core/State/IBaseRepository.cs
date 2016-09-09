@@ -8,7 +8,7 @@ namespace InvSys.Shared.Core.State
         where TEntity : class
     {
         Task<List<TEntity>> GetAll();
-        Task<Page<TEntity>> GetPage(Filter filter);
+        Task<Page<TEntity>> GetPage(Query query);
         Task<TEntity> Get(TKey id);
         TEntity Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);

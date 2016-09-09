@@ -24,13 +24,13 @@ namespace InvSys.Shared.State.EntityFramework.Repositories
             return DbContext.Set<TEntity>().ToListAsync();
         }
 
-        public virtual async Task<Page<TEntity>> GetPage(Filter filter)
+        public virtual async Task<Page<TEntity>> GetPage(Query query)
         {
-            var itemsPerPage = filter.ItemsPerPage ?? 20;
+            var itemsPerPage = query.Filter.ItemsPerPage ?? 20;
             var itemsCount = await DbContext.Set<TEntity>().CountAsync();
-            var itemsToSkip = (filter.PageNumber - 1) * itemsPerPage;
+            var itemsToSkip = (query.Filter.PageNumber - 1) * itemsPerPage;
 
-            var page = new Page<TEntity> {CurrentPage = filter.PageNumber, ItemsPerPage = itemsPerPage};
+            var page = new Page<TEntity> {CurrentPage = query.Filter.PageNumber, ItemsPerPage = itemsPerPage};
             page.TotalPages = (int) Math.Ceiling((double)itemsCount/page.ItemsPerPage);
             page.Items = await DbContext.Set<TEntity>().Skip(itemsToSkip).Take(itemsPerPage).ToListAsync();
 
