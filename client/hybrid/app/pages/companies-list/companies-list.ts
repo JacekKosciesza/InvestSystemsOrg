@@ -1,115 +1,57 @@
-import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {NavController, NavParams, InfiniteScroll} from 'ionic-angular';
 import { CompanyDetailsPage } from '../company-details/company-details';
 import { SignInPage } from '../sign-in/sign-in'
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
+import { CompaniesService } from '../../services/companies.service'
 
 @Component({
     templateUrl: 'build/pages/companies-list/companies-list.html',
-    pipes: [TranslatePipe]
+    pipes: [TranslatePipe],
+    providers: [CompaniesService]
 })
-export class CompaniesListPage {
+export class CompaniesListPage implements OnInit {
     selectedItem: any;
-    companies: any;
+    companies: any[];
+    page: number;
+    q: string;
+    @ViewChild(InfiniteScroll) private infiniteScrollControl: InfiniteScroll;
 
-    constructor(public navCtrl: NavController, navParams: NavParams) {
+    constructor(public navCtrl: NavController, navParams: NavParams, private companiesServcie: CompaniesService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
-
-        this.initializeCompanies();
+        this.page = 1;
+        //this.initializeCompanies();
     }
 
-    initializeCompanies() {
-        this.companies = [
-            {
-                logo: 'img/MENT.png',
-                name: 'Mentor Graphics Corp',
-                symbol: 'MENT'
-            },
-            {
-                logo: 'img/EPAM.png',
-                name: 'EPAM Systems Inc',
-                symbol: 'EPAM'
-            },
-            {
-                logo: 'img/MENT.png',
-                name: 'Mentor Graphics Corp',
-                symbol: 'MENT'
-            },
-            {
-                logo: 'img/EPAM.png',
-                name: 'EPAM Systems Inc',
-                symbol: 'EPAM'
-            },
-            {
-                logo: 'img/MENT.png',
-                name: 'Mentor Graphics Corp',
-                symbol: 'MENT'
-            },
-            {
-                logo: 'img/EPAM.png',
-                name: 'EPAM Systems Inc',
-                symbol: 'EPAM'
-            },
-            {
-                logo: 'img/MENT.png',
-                name: 'Mentor Graphics Corp',
-                symbol: 'MENT'
-            },
-            {
-                logo: 'img/EPAM.png',
-                name: 'EPAM Systems Inc',
-                symbol: 'EPAM'
-            },
-            {
-                logo: 'img/MENT.png',
-                name: 'Mentor Graphics Corp',
-                symbol: 'MENT'
-            },
-            {
-                logo: 'img/EPAM.png',
-                name: 'EPAM Systems Inc',
-                symbol: 'EPAM'
-            },
-            {
-                logo: 'img/MENT.png',
-                name: 'Mentor Graphics Corp',
-                symbol: 'MENT'
-            },
-            {
-                logo: 'img/EPAM.png',
-                name: 'EPAM Systems Inc',
-                symbol: 'EPAM'
-            },
-        ]
+    ngOnInit() {
+        console.log('ngOnInit');
+        this.companiesServcie.getCompanies(this.page).then(page => {
+            this.companies = page.items;
+        });
     }
 
     getCompanies(ev: any) {
-        // Reset items back to all of the items
-        this.initializeCompanies();
-
-        // set val to the value of the searchbar
-        let val = ev.target.value;
-
-        // if the value is an empty string don't filter the items
-        if (val && val.trim() != '') {
-            this.companies = this.companies.filter((company) => {
-                return (company.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-            })
-        }
+        this.infiniteScrollControl.enable(true);
+        this.companies = [];
+        let val = ev.target.value || '';
+        this.page = 1;
+        this.q = val.trim();
+        this.companiesServcie.getCompanies(this.page, this.q).then(page => {
+            this.companies = page.items;
+        });
     }
 
     doInfinite(infiniteScroll) {
         console.log('Begin async operation');
-
-        setTimeout(() => {
-            for (var i = 0; i < 30; i++) {
-                this.companies.push({ name: `Company ${i}` });
-            }
-
-            console.log('Async operation has ended');
+        this.page++;
+        this.companiesServcie.getCompanies(this.page, this.q).then(page => {
+            this.companies = this.companies.concat(page.items);
             infiniteScroll.complete();
-        }, 500);
+            if (!page.items.length) {
+                infiniteScroll.enable(false);
+            }
+        });
     }
 
     itemTapped(event, item) {

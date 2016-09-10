@@ -18,7 +18,8 @@
     "InvSys.Companies.Core": "1.0.0-*",
     "InvSys.Companies.State": "1.0.0-*",
     "AspNet.Security.OAuth.Introspection": "1.0.0-alpha3-0181",
-    "InvSys.Shared.Api": "1.0.0-*"
+    "InvSys.Shared.Api": "1.0.0-*",
+    "Microsoft.AspNetCore.Cors": "1.0.0"
   },
 
   "tools": {

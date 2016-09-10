@@ -56,17 +56,10 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
                     select company;
             }
 
-            // count
-            var itemsCount = await q.CountAsync();
             
-            // page
-            var itemsPerPage = query.Display ?? 20;
-            var itemsToSkip = (query.Page - 1) * itemsPerPage;
-            var page = new Page<Company> { CurrentPage = query.Page, ItemsPerPage = itemsPerPage };
-            page.TotalPages = (int)Math.Ceiling((double)itemsCount / page.ItemsPerPage);
-            page.TotalItemsCount = itemsCount;
 
-            // page & order
+
+            // order
             bool asc = true;
             string prop = "Name";
             if (!string.IsNullOrWhiteSpace(query.OrderBy))
@@ -75,7 +68,8 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
                 if (orderBy.Count() == 1)
                 {
                     prop = orderBy.First();
-                } else if (orderBy.Last().ToLower().Contains("desc"))
+                }
+                else if (orderBy.Last().ToLower().Contains("desc"))
                 {
                     asc = false;
                 }
@@ -83,20 +77,31 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
             switch (prop)
             {
                 case "Symbol":
-                    q = asc ? q.Skip(itemsToSkip).Take(itemsPerPage).OrderBy(c => c.Symbol) : q.Skip(itemsToSkip).Take(itemsPerPage).OrderByDescending(c => c.Symbol);
+                    q = asc ? q.OrderBy(c => c.Symbol) : q.OrderByDescending(c => c.Symbol);
                     break;
                 default:
-                    q = asc ? q.Skip(itemsToSkip).Take(itemsPerPage).OrderBy(c => c.Name) : q.Skip(itemsToSkip).Take(itemsPerPage).OrderByDescending(c => c.Name);
+                    q = asc ? q.OrderBy(c => c.Name) : q.OrderByDescending(c => c.Name);
                     break;
             }
 
+            // count
+            var itemsCount = await q.CountAsync();
+
+            // page
+            
+            var itemsPerPage = query.Display ?? 20;
+            var itemsToSkip = (query.Page - 1) * itemsPerPage;
+            var page = new Page<Company> { CurrentPage = query.Page, ItemsPerPage = itemsPerPage };
+            page.TotalPages = (int)Math.Ceiling((double)itemsCount / page.ItemsPerPage);
+            page.TotalItemsCount = itemsCount;
+            q = q.Skip(itemsToSkip).Take(itemsPerPage);
             page.ItemsCount = await q.CountAsync();
 
             page.Items = await q
                 .Include(c => c.Translations)
-                .Include(c => c.Sector).Include(c => c.Sector.Translations)
-                .Include(c => c.Subsector).Include(c => c.Subsector.Translations)
-                .Include(c => c.Industry).Include(c => c.Industry.Translations)
+                //.Include(c => c.Sector).Include(c => c.Sector.Translations)
+                //.Include(c => c.Subsector).Include(c => c.Subsector.Translations)
+                //.Include(c => c.Industry).Include(c => c.Industry.Translations)
                 .ToListAsync();
 
             return page;
