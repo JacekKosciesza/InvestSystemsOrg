@@ -24,19 +24,6 @@ namespace InvSys.Shared.State.EntityFramework.Repositories
             return DbContext.Set<TEntity>().ToListAsync();
         }
 
-        public virtual async Task<Page<TEntity>> GetPage(Query query)
-        {
-            var itemsPerPage = query.Filter.ItemsPerPage ?? 20;
-            var itemsCount = await DbContext.Set<TEntity>().CountAsync();
-            var itemsToSkip = (query.Filter.PageNumber - 1) * itemsPerPage;
-
-            var page = new Page<TEntity> {CurrentPage = query.Filter.PageNumber, ItemsPerPage = itemsPerPage};
-            page.TotalPages = (int) Math.Ceiling((double)itemsCount/page.ItemsPerPage);
-            page.Items = await DbContext.Set<TEntity>().Skip(itemsToSkip).Take(itemsPerPage).ToListAsync();
-
-            return page;
-        }
-
         public virtual Task<TEntity> Get(TKey id)
         {
             return DbContext.Set<TEntity>().SingleOrDefaultAsync(c => c.Id.Equals(id));

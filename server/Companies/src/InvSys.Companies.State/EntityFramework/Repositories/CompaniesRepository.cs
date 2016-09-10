@@ -41,70 +41,56 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
                 .ToListAsync();
         }
 
-        public override async Task<Page<Company>> GetPage(Query query)
+        public async Task<Page<Company>> GetPage(Query query)
         {
-            var culture = CultureInfo.CurrentCulture.Name;
-
             // all
             var q = _companiesContext.Companies.AsQueryable();
 
-            // searcher
-            if (query.Searcher != null && !string.IsNullOrWhiteSpace(query.Searcher.Query))
+            // search
+            if (!string.IsNullOrWhiteSpace(query.Q))
             {
-                var searchFields = ((CompanyFields)Enum.Parse(typeof(CompanyFields), query.Searcher.SearchIn)).ToList<CompanyFields>();
-                foreach (var searchField in searchFields)
-                {
-                    // TODO: use reflection or something?
-                    switch (searchField)
-                    {
-                        case CompanyFields.Symbol:
-                            q = q.Where(c => c.Symbol.ToLower().Contains(query.Searcher.Query.ToLower()));
-                            break;
-                        case CompanyFields.Name:
-                            q = q.Where(c => c.Name.ToLower().Contains(query.Searcher.Query.ToLower()));
-                            break;
-                        case CompanyFields.Description:
-
-                            q = q.Where(i => i.Translations.Any(t => t.Culture == culture && t.Description.ToLower().Contains(query.Searcher.Query.ToLower())));
-                            break;
-                    }
-                }
+                q = from company in q
+                    where
+                        company.Symbol.ToLower().Contains(query.Q.ToLower()) ||
+                        company.Name.ToLower().Contains(query.Q.ToLower())
+                    select company;
             }
 
             // count
             var itemsCount = await q.CountAsync();
-
+            
             // page
-            var itemsPerPage = query.Filter.ItemsPerPage ?? 20;
-            var itemsToSkip = (query.Filter.PageNumber - 1) * itemsPerPage;
-            var page = new Page<Company> { CurrentPage = query.Filter.PageNumber, ItemsPerPage = itemsPerPage };
+            var itemsPerPage = query.Display ?? 20;
+            var itemsToSkip = (query.Page - 1) * itemsPerPage;
+            var page = new Page<Company> { CurrentPage = query.Page, ItemsPerPage = itemsPerPage };
             page.TotalPages = (int)Math.Ceiling((double)itemsCount / page.ItemsPerPage);
-            q = q.Skip(itemsToSkip).Take(itemsPerPage);
+            page.TotalItemsCount = itemsCount;
 
-            // sorter
-            var sortBy = (CompanyFields)Enum.Parse(typeof(CompanyFields), query.Sorter.SortBy);
-            switch (sortBy)
+            // page & order
+            bool asc = true;
+            string prop = "Name";
+            if (!string.IsNullOrWhiteSpace(query.OrderBy))
             {
-                case CompanyFields.Symbol:
-                    if (query.Sorter.SortOrder == SortOrder.Ascending)
-                    {
-                        q = q.OrderBy(c => c.Symbol);
-                    } else
-                    {
-                        q = q.OrderByDescending(c => c.Symbol);
-                    }
+                var orderBy = query.OrderBy.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                if (orderBy.Count() == 1)
+                {
+                    prop = orderBy.First();
+                } else if (orderBy.Last().ToLower().Contains("desc"))
+                {
+                    asc = false;
+                }
+            }
+            switch (prop)
+            {
+                case "Symbol":
+                    q = asc ? q.Skip(itemsToSkip).Take(itemsPerPage).OrderBy(c => c.Symbol) : q.Skip(itemsToSkip).Take(itemsPerPage).OrderByDescending(c => c.Symbol);
                     break;
-                case CompanyFields.Name:
-                    if (query.Sorter.SortOrder == SortOrder.Ascending)
-                    {
-                        q = q.OrderBy(c => c.Name);
-                    }
-                    else
-                    {
-                        q = q.OrderByDescending(c => c.Name);
-                    }
+                default:
+                    q = asc ? q.Skip(itemsToSkip).Take(itemsPerPage).OrderBy(c => c.Name) : q.Skip(itemsToSkip).Take(itemsPerPage).OrderByDescending(c => c.Name);
                     break;
             }
+
+            page.ItemsCount = await q.CountAsync();
 
             page.Items = await q
                 .Include(c => c.Translations)

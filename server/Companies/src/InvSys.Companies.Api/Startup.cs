@@ -36,7 +36,6 @@ namespace InvSys.Companies.Api
         {
             services.AddInvSys(Configuration);
 
-            services.AddScoped<Filter>();
             services.AddDbContext<CompaniesContext>();
             services.AddTransient<CompaniesContextSeedData>();
             services.AddScoped<ICompaniesService, CompaniesService>();

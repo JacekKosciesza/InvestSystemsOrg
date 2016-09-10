@@ -56,7 +56,7 @@ namespace InvSys.Companies.Core.Services
 
         public async Task<Page<Company>> GetPageOfCompanies(Query query)
         {
-            query.Filter.ItemsPerPage = query.Filter.ItemsPerPage ?? int.Parse(_config["ItemsPerPage"]);
+            query.Display = query.Display ?? int.Parse(_config["ItemsPerPage"]);
             return await _companiesRepository.GetPage(query);
         }
 
