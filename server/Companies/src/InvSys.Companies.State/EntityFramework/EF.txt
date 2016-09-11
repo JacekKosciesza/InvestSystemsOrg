@@ -18,3 +18,5 @@ dotnet ef migrations add IPODate_MarketValue -o .\EntityFramework\Migrations
 dotnet ef database update
 dotnet ef migrations add Country -o .\EntityFramework\Migrations
 dotnet ef database update
+dotnet ef migrations add WebsitesAndOfficers -o .\EntityFramework\Migrations
+dotnet ef database update

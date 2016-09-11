@@ -68,7 +68,7 @@ namespace InvSys.Companies.Tests.Integration.Core.Services
                 Email = "new@company.com",
                 Exchange = "NYSE",
                 Symbol = "NEW",
-                Logo = new Logo {Default = "http://urltoimage.com/path"},
+                Logo = "http://urltoimage.com/path",
                 Phone = "666-123-666",
                 Translations = new List<CompanyTranslation>
                 {

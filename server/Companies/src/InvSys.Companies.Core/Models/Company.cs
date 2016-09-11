@@ -13,7 +13,7 @@ namespace InvSys.Companies.Core.Models
         public string Exchange { get; set; }  
         public string Symbol { get; set; } // Ticker or Code
         public string Name { get; set; }
-        public Logo Logo { get; set;}
+        public string Logo { get; set;}
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Fax { get; set; }
@@ -27,6 +27,8 @@ namespace InvSys.Companies.Core.Models
         public string Country { get; set; }
 
         public ICollection<CompanyTranslation> Translations { get; set; }
+        public ICollection<Website> Websites { get; set; }
+        public ICollection<Officer> Officers { get; set; }
     }
 
     public class CompanyTranslation : Translation

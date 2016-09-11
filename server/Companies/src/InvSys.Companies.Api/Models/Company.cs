@@ -1,5 +1,6 @@
 ﻿using InvSys.Companies.Core.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace InvSys.Companies.Api.Models
@@ -14,7 +15,7 @@ namespace InvSys.Companies.Api.Models
         public string Symbol { get; set; }
         [Required]
         public string Name { get; set; }
-        public Logo Logo { get; set; }
+        public string Logo { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
@@ -29,5 +30,7 @@ namespace InvSys.Companies.Api.Models
         public DateTime? IPODate { get; set; }
         public string MarketValue { get; set; }
         public string Country { get; set; }
+        public ICollection<Website> Websites { get; set; }
+        public ICollection<Officer> Officers { get; set; }
     }
 }
