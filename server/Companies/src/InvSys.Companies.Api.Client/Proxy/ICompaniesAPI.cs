@@ -40,7 +40,23 @@ namespace InvSys.Companies.Api.Client.Proxy
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IList<Company>>> GetCompaniesWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<IList<Company>>> GetAllCompaniesWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name='page'>
+        /// </param>
+        /// <param name='display'>
+        /// </param>
+        /// <param name='orderBy'>
+        /// </param>
+        /// <param name='q'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<PageCompany>> GetCompaniesWithHttpMessagesAsync(int? page = default(int?), int? display = default(int?), string orderBy = default(string), string q = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='company'>
         /// </param>

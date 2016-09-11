@@ -20,9 +20,9 @@ namespace InvSys.Companies.Api.Client.Proxy
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IList<Company> GetCompanies(this ICompaniesAPI operations)
+            public static IList<Company> GetAllCompanies(this ICompaniesAPI operations)
             {
-                return Task.Factory.StartNew(s => ((ICompaniesAPI)s).GetCompaniesAsync(), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((ICompaniesAPI)s).GetAllCompaniesAsync(), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -31,9 +31,47 @@ namespace InvSys.Companies.Api.Client.Proxy
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<Company>> GetCompaniesAsync(this ICompaniesAPI operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<Company>> GetAllCompaniesAsync(this ICompaniesAPI operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetCompaniesWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAllCompaniesWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='page'>
+            /// </param>
+            /// <param name='display'>
+            /// </param>
+            /// <param name='orderBy'>
+            /// </param>
+            /// <param name='q'>
+            /// </param>
+            public static PageCompany GetCompanies(this ICompaniesAPI operations, int? page = default(int?), int? display = default(int?), string orderBy = default(string), string q = default(string))
+            {
+                return Task.Factory.StartNew(s => ((ICompaniesAPI)s).GetCompaniesAsync(page, display, orderBy, q), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='page'>
+            /// </param>
+            /// <param name='display'>
+            /// </param>
+            /// <param name='orderBy'>
+            /// </param>
+            /// <param name='q'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PageCompany> GetCompaniesAsync(this ICompaniesAPI operations, int? page = default(int?), int? display = default(int?), string orderBy = default(string), string q = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCompaniesWithHttpMessagesAsync(page, display, orderBy, q, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

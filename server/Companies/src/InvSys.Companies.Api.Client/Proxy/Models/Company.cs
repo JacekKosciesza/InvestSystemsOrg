@@ -21,7 +21,7 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// <summary>
         /// Initializes a new instance of the Company class.
         /// </summary>
-        public Company(string symbol, string name, Guid? id = default(Guid?), string culture = default(string), string exchange = default(string), Logo logo = default(Logo), string phone = default(string), string fax = default(string), string email = default(string), string description = default(string), string address = default(string), string website = default(string), Sector sector = default(Sector), Subsector subsector = default(Subsector), Industry industry = default(Industry), DateTime? ipoDate = default(DateTime?), string marketValue = default(string), string country = default(string))
+        public Company(string symbol, string name, Guid? id = default(Guid?), string culture = default(string), string exchange = default(string), string logo = default(string), string phone = default(string), string fax = default(string), string email = default(string), string description = default(string), string address = default(string), string website = default(string), Sector sector = default(Sector), Subsector subsector = default(Subsector), Industry industry = default(Industry), DateTime? ipoDate = default(DateTime?), string marketValue = default(string), string country = default(string), IList<Website> websites = default(IList<Website>), IList<Officer> officers = default(IList<Officer>))
         {
             Id = id;
             Culture = culture;
@@ -41,6 +41,8 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
             IpoDate = ipoDate;
             MarketValue = marketValue;
             Country = country;
+            Websites = websites;
+            Officers = officers;
         }
 
         /// <summary>
@@ -71,7 +73,7 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "logo")]
-        public Logo Logo { get; set; }
+        public string Logo { get; set; }
 
         /// <summary>
         /// </summary>
@@ -132,6 +134,16 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "websites")]
+        public IList<Website> Websites { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "officers")]
+        public IList<Officer> Officers { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ValidationException if validation fails.

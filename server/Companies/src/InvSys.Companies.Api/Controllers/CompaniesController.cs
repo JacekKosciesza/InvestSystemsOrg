@@ -62,7 +62,7 @@ namespace InvSys.Companies.Api.Controllers
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Page<Company>))]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get companies")]
         [Produces("application/json", Type = typeof(Page<Company>))]
-        public async Task<IActionResult> Get(Query query = null)
+        public async Task<IActionResult> Get([FromQuery] Query query = null)
         {
             _logger.LogInformation("Getting companies");
             try

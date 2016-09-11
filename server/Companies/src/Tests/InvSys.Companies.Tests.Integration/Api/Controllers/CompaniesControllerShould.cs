@@ -30,11 +30,12 @@ namespace InvSys.Companies.Tests.Integration.Api.Controllers
             await client.CreateCompanyAsync(newCompany);
 
             // When
-            var companies = await client.GetCompaniesAsync();
+            var page = await client.GetCompaniesAsync();
 
             // Then
-            Assert.NotNull(companies);
-            Assert.NotNull(companies.Any());
+            Assert.NotNull(page);
+            Assert.NotNull(page.Items);
+            Assert.NotNull(page.Items.Any());
         }
 
         [Fact]
