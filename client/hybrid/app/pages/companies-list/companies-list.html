@@ -20,8 +20,10 @@
             <ion-thumbnail item-left>
                 <img src="{{company.logo}}">
             </ion-thumbnail>
-            <h2>{{company.name}}</h2>
-            <p>{{company.symbol}}</p>
+            <h2>{{company.symbol}}</h2>
+            <h3>{{company.name}}</h3>
+            <p>{{company.industry}}</p>
+            <!--<h3><ion-icon name="arrow-round-down"></ion-icon> 23.51 -0.59 (-2.45%)</h3>-->
             <button (click)="itemTapped($event, company)" clear item-right>{{ 'View' | translate }}</button>
         </ion-item>
     </ion-list>

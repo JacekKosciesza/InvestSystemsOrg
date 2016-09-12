@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {NavController, NavParams, InfiniteScroll} from 'ionic-angular';
+import {NavController, NavParams, InfiniteScroll, LoadingController, Loading} from 'ionic-angular';
 import { CompanyDetailsPage } from '../company-details/company-details';
 import { SignInPage } from '../sign-in/sign-in'
-import {TranslatePipe} from 'ng2-translate/ng2-translate';
+import {TranslatePipe, TranslateService} from 'ng2-translate/ng2-translate';
 import { CompaniesService } from '../../services/companies.service'
 
 @Component({
@@ -16,18 +16,27 @@ export class CompaniesListPage implements OnInit {
     page: number;
     q: string;
     @ViewChild(InfiniteScroll) private infiniteScrollControl: InfiniteScroll;
+    loader: Loading;
 
-    constructor(public navCtrl: NavController, navParams: NavParams, private companiesServcie: CompaniesService) {
+    constructor(public navCtrl: NavController, navParams: NavParams, private companiesServcie: CompaniesService, public loadingCtrl: LoadingController, translate: TranslateService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         this.page = 1;
         //this.initializeCompanies();
+        translate.get('Please wait...').subscribe((t: string) => {
+            this.loader = this.loadingCtrl.create({
+                content: t,
+                duration: 3000
+            });
+        });
     }
 
     ngOnInit() {
         console.log('ngOnInit');
+        this.presentLoading();
         this.companiesServcie.getCompanies(this.page).then(page => {
             this.companies = page.items;
+            this.dismissLoading();
         });
     }
 
@@ -62,5 +71,13 @@ export class CompaniesListPage implements OnInit {
 
     signIn() {
         this.navCtrl.push(SignInPage);
+    }
+
+    presentLoading() {
+        this.loader.present();
+    }
+
+    dismissLoading() {
+        this.loader.dismiss();
     }
 }

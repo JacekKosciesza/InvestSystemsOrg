@@ -9,6 +9,8 @@
 
 <ion-content>
  <div *ngIf="selectedItem" class="selection">
+    <img src="{{selectedItem.logo}}">
     <b>{{selectedItem.name}}</b>
+    {{selectedItem.description}}
   </div>
 </ion-content>
