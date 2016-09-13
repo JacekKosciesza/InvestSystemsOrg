@@ -20,8 +20,8 @@
             <ion-thumbnail item-left>
                 <img src="{{company.logo}}">
             </ion-thumbnail>
-            <h2>{{company.symbol}}</h2>
-            <h3>{{company.name}}</h3>
+            <h3>{{company.symbol}}</h3>
+            <h2>{{company.name}}</h2>
             <p>{{company.industry}}</p>
             <!--<h3><ion-icon name="arrow-round-down"></ion-icon> 23.51 -0.59 (-2.45%)</h3>-->
             <button (click)="itemTapped($event, company)" clear item-right>{{ 'View' | translate }}</button>
@@ -31,3 +31,8 @@
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 </ion-content>
+<ion-footer>
+    <button fab fab-bottom fab-right fab-fixed>
+        <ion-icon name="add"></ion-icon>
+    </button>
+</ion-footer>

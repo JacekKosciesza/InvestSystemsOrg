@@ -8,9 +8,13 @@
 </ion-header>
 
 <ion-content>
- <div *ngIf="selectedItem" class="selection">
+  <div *ngIf="selectedItem" class="selection">
     <img src="{{selectedItem.logo}}">
-    <b>{{selectedItem.name}}</b>
-    {{selectedItem.description}}
+    <b>{{selectedItem.name}}</b> {{selectedItem.description}}
   </div>
 </ion-content>
+<ion-footer>
+  <button fab fab-bottom fab-right fab-fixed>
+        <ion-icon name="create"></ion-icon>
+    </button>
+</ion-footer>
