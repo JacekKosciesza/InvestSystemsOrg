@@ -41,9 +41,6 @@ namespace InvSys.Companies.Api
             services.AddTransient<CompaniesContextSeedData>();
             services.AddScoped<ICompaniesService, CompaniesService>();
             services.AddScoped<ICompaniesRepository, CompaniesRepository>();
-            services.AddScoped<ISectorsRepository, SectorsRepository>();
-            services.AddScoped<ISubsectorsRepository, SubsectorsRepository>();
-            services.AddScoped<IIndustriesRepository, IndustriesRepository>();
             services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 

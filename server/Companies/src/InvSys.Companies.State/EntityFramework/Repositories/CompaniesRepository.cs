@@ -7,8 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using InvSys.Companies.Core.Models;
 using InvSys.Shared.Core.Model;
-using InvSys.Shared.Core.Extensions;
-using System.Globalization;
 
 namespace InvSys.Companies.State.EntityFramework.Repositories
 {
@@ -25,9 +23,6 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
         {
             return _companiesContext.Companies
                 .Include(c => c.Translations)
-                .Include(c => c.Sector).Include(c => c.Sector.Translations)
-                .Include(c => c.Subsector).Include(c => c.Subsector.Translations)
-                .Include(c => c.Industry).Include(c => c.Industry.Translations)
                 .SingleOrDefaultAsync(c => c.Id == id);
         }
 
@@ -35,9 +30,6 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
         {
             return _companiesContext.Companies
                 .Include(c => c.Translations)
-                .Include(c => c.Sector).Include(c => c.Sector.Translations)
-                .Include(c => c.Subsector).Include(c => c.Subsector.Translations)
-                .Include(c => c.Industry).Include(c => c.Industry.Translations)
                 .ToListAsync();
         }
 
@@ -99,9 +91,6 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
 
             page.Items = await q
                 .Include(c => c.Translations)
-                //.Include(c => c.Sector).Include(c => c.Sector.Translations)
-                //.Include(c => c.Subsector).Include(c => c.Subsector.Translations)
-                //.Include(c => c.Industry).Include(c => c.Industry.Translations)
                 .ToListAsync();
 
             return page;

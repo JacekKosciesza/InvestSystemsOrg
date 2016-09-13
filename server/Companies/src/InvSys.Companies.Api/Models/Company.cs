@@ -23,9 +23,9 @@ namespace InvSys.Companies.Api.Models
         public string Address { get; set; }
         public string Website { get; set; }
 
-        public Sector Sector { get; set; }
-        public Subsector Subsector { get; set; }
-        public Industry Industry { get; set; }
+        public string Sector { get; set; }
+        public string Subsector { get; set; }
+        public string Industry { get; set; }
 
         public DateTime? IPODate { get; set; }
         public string MarketValue { get; set; }

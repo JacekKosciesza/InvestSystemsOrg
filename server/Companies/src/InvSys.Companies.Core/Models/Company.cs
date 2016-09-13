@@ -17,11 +17,6 @@ namespace InvSys.Companies.Core.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Fax { get; set; }
-
-        public Sector Sector { get; set; }
-        public Subsector Subsector { get; set; }
-        public Industry Industry { get; set; }
-
         public DateTime? IPODate { get; set; }
         public string MarketValue { get; set; } // Market Capitalization
         public string Country { get; set; }
@@ -40,5 +35,9 @@ namespace InvSys.Companies.Core.Models
         public string Description { get; set; }
         public string Address { get; set; }
         public string Website { get; set; }
+
+        public string Sector { get; set; }
+        public string Subsector { get; set; }
+        public string Industry { get; set; }
     }
 }

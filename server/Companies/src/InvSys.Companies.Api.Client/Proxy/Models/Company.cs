@@ -21,7 +21,7 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// <summary>
         /// Initializes a new instance of the Company class.
         /// </summary>
-        public Company(string symbol, string name, Guid? id = default(Guid?), string culture = default(string), string exchange = default(string), string logo = default(string), string phone = default(string), string fax = default(string), string email = default(string), string description = default(string), string address = default(string), string website = default(string), Sector sector = default(Sector), Subsector subsector = default(Subsector), Industry industry = default(Industry), DateTime? ipoDate = default(DateTime?), string marketValue = default(string), string country = default(string), IList<Website> websites = default(IList<Website>), IList<Officer> officers = default(IList<Officer>))
+        public Company(string symbol, string name, Guid? id = default(Guid?), string culture = default(string), string exchange = default(string), string logo = default(string), string phone = default(string), string fax = default(string), string email = default(string), string description = default(string), string address = default(string), string website = default(string), string sector = default(string), string subsector = default(string), string industry = default(string), DateTime? ipoDate = default(DateTime?), string marketValue = default(string), string country = default(string), IList<Website> websites = default(IList<Website>), IList<Officer> officers = default(IList<Officer>))
         {
             Id = id;
             Culture = culture;
@@ -108,17 +108,17 @@ namespace InvSys.Companies.Api.Client.Proxy.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "sector")]
-        public Sector Sector { get; set; }
+        public string Sector { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "subsector")]
-        public Subsector Subsector { get; set; }
+        public string Subsector { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "industry")]
-        public Industry Industry { get; set; }
+        public string Industry { get; set; }
 
         /// <summary>
         /// </summary>

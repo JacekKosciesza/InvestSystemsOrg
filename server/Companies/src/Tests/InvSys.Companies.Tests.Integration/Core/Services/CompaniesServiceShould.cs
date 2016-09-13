@@ -36,9 +36,6 @@ namespace InvSys.Companies.Tests.Integration.Core.Services
             services.AddTransient<CompaniesContextSeedData>();
             services.AddScoped<ICompaniesService, CompaniesService>();
             services.AddScoped<ICompaniesRepository, CompaniesRepository>();
-            services.AddScoped<ISectorsRepository, SectorsRepository>();
-            services.AddScoped<ISubsectorsRepository, SubsectorsRepository>();
-            services.AddScoped<IIndustriesRepository, IndustriesRepository>();
             services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 
@@ -78,41 +75,11 @@ namespace InvSys.Companies.Tests.Integration.Core.Services
                         Address = "Address 12/b",
                         Description = "Some description",
                         Website = "http://www.newcompany.com",
+                        Sector = "Sector 1",
+                        Subsector = "Subsector 1",
+                        Industry = "Industry 1"
                     }
                 },
-                Sector = new Sector
-                {
-                    Translations = new List<SectorTranslation>
-                    {
-                        new SectorTranslation
-                        {
-                            Culture = "en-US",
-                            Name = "Sector 1"
-                        }
-                    }
-                },
-                Subsector = new Subsector
-                {
-                    Translations = new List<SubsectorTranslation>
-                    {
-                        new SubsectorTranslation
-                        {
-                            Culture = "en-US",
-                            Name = "Sector 1"
-                        }
-                    }
-                },
-                Industry = new Industry
-                {
-                    Translations = new List<IndustryTranslation>
-                    {
-                        new IndustryTranslation
-                        {
-                            Culture = "en-US",
-                            Name = "Sector 1"
-                        }
-                    }
-                }
             };
 
             // When            
