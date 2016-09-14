@@ -16,15 +16,18 @@
 <ion-content>
     <ion-searchbar (ionInput)="getCompanies($event)" placeholder="{{ 'Search' | translate }}"></ion-searchbar>
     <ion-list>
-        <ion-item *ngFor="let company of companies">
+        <ion-item *ngFor="let company of companies" (click)="itemTapped($event, company)">
             <ion-thumbnail item-left>
                 <img src="{{company.logo}}">
             </ion-thumbnail>
-            <h3>{{company.symbol}}</h3>
+            <h3>
+                {{company.symbol}}
+                <!--<ion-badge style="float:right;">75%</ion-badge>-->
+                <ion-icon *ngIf="company.isWonderful" style="float:right; color:green;" name="thumbs-up"></ion-icon>
+                <ion-icon *ngIf="!company.isWonderful" style="float:right; color:red;" name="thumbs-down"></ion-icon>
+            </h3>
             <h2>{{company.name}}</h2>
             <p>{{company.industry}}</p>
-            <!--<h3><ion-icon name="arrow-round-down"></ion-icon> 23.51 -0.59 (-2.45%)</h3>-->
-            <button (click)="itemTapped($event, company)" clear item-right>{{ 'View' | translate }}</button>
         </ion-item>
     </ion-list>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
@@ -32,7 +35,7 @@
     </ion-infinite-scroll>
 </ion-content>
 <ion-footer>
-    <button fab fab-bottom fab-right fab-fixed>
+    <button fab fab-bottom fab-right fab-fixed (click)="create()">
         <ion-icon name="add"></ion-icon>
     </button>
 </ion-footer>

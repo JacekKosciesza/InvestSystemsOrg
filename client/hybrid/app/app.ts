@@ -14,7 +14,7 @@ class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage: any = DashboardPage;
+  rootPage: any = CompaniesListPage; // TODO: DashboardPage;
   pages: Array<{ title: string, component: any }>;
 
   constructor(

@@ -1,9 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {NavController, NavParams, InfiniteScroll, LoadingController, Loading} from 'ionic-angular';
+import {ModalController, NavController, NavParams, InfiniteScroll, LoadingController, Loading} from 'ionic-angular';
 import { CompanyDetailsPage } from '../company-details/company-details';
 import { SignInPage } from '../sign-in/sign-in'
 import {TranslatePipe, TranslateService} from 'ng2-translate/ng2-translate';
-import { CompaniesService } from '../../services/companies.service'
+import { CompaniesService } from '../../services/companies.service';
+import {CompanyEditPage} from '../company-details/company-edit';
+
 
 @Component({
     templateUrl: 'build/pages/companies-list/companies-list.html',
@@ -18,7 +20,7 @@ export class CompaniesListPage implements OnInit {
     @ViewChild(InfiniteScroll) private infiniteScrollControl: InfiniteScroll;
     loader: Loading;
 
-    constructor(public navCtrl: NavController, navParams: NavParams, private companiesServcie: CompaniesService, public loadingCtrl: LoadingController, translate: TranslateService) {
+    constructor(public navCtrl: NavController, navParams: NavParams, private companiesServcie: CompaniesService, public loadingCtrl: LoadingController, translate: TranslateService, public modalCtrl: ModalController) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         this.page = 1;
@@ -35,6 +37,7 @@ export class CompaniesListPage implements OnInit {
         console.log('ngOnInit');
         this.presentLoading();
         this.companiesServcie.getCompanies(this.page).then(page => {
+            (<any[]>page.items).forEach(item => item.isWonderful = Math.random() >= 0.5);
             this.companies = page.items;
             this.dismissLoading();
         });
@@ -79,5 +82,10 @@ export class CompaniesListPage implements OnInit {
 
     dismissLoading() {
         this.loader.dismiss();
+    }
+
+    create() {
+        let modal = this.modalCtrl.create(CompanyEditPage, { company: {} });
+        modal.present();
     }
 }

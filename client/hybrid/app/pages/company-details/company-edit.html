@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            {{company.id ? 'Edit' : 'Create'}}
+        </ion-title>
+        <ion-buttons start>
+            <button (click)="dismiss()">
+        <span primary showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Symbol</ion-label>
+            <ion-input type="text" [(ngModel)]="company.symbol"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text" [(ngModel)]="company.name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Sector</ion-label>
+            <ion-input type="text" [(ngModel)]="company.sector"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Subsector</ion-label>
+            <ion-input type="text" [(ngModel)]="company.subsector"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Industry</ion-label>
+            <ion-input type="text" [(ngModel)]="company.industry"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Description</ion-label>
+            <ion-textarea [(ngModel)]="company.description"></ion-textarea>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <button fab fab-bottom fab-right fab-fixed>
+        <ion-icon name="checkmark"></ion-icon>
+    </button>
+</ion-footer>
