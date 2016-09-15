@@ -8,5 +8,14 @@
     "Username": "Nazwa użytkownika",
     "Password": "Hasło",
     "Search": "Szukaj",
-    "Please wait...": "Proszę czekać..."
+    "Please wait...": "Proszę czekać...",
+    "Cancel": "Anuluj",
+    "Symbol": "Symbol",
+    "Name": "Nazwa",
+    "Sector": "Sektor",
+    "Subsector": "Podsektor",
+    "Industry": "Przemysł",
+    "Description": "Opis",
+    "Edit": "Edytuj",
+    "Create": "Utwórz"
 }

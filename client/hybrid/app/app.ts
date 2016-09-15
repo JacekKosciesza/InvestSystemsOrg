@@ -2,8 +2,8 @@ import {Component, ViewChild} from '@angular/core';
 import {Http} from '@angular/http';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import { DashboardPage } from './pages/dashboard/dashboard';
-import { CompaniesListPage } from './pages/companies-list/companies-list'
+import { DashboardComponent } from './+dashboard';
+import { CompanyListComponent } from './+companies'
 //import { SignInPage } from './pages/sign-in/sign-in'
 import { TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
@@ -14,7 +14,7 @@ class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage: any = CompaniesListPage; // TODO: DashboardPage;
+  rootPage: any = CompanyListComponent; // TODO: DashboardPage;
   pages: Array<{ title: string, component: any }>;
 
   constructor(
@@ -32,8 +32,8 @@ class MyApp {
     translate.get(['Dashboard', 'Companies']).subscribe((t: string[]) => {
       // set our app's pages
       this.pages = [
-        { title: t['Dashboard'], component: DashboardPage },
-        { title: t['Companies'], component: CompaniesListPage }
+        { title: t['Dashboard'], component: DashboardComponent },
+        { title: t['Companies'], component: CompanyListComponent }
       ];
     });
   }

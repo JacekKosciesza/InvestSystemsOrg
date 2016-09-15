@@ -8,5 +8,14 @@
     "Username": "Username",
     "Password": "Password",
     "Search": "Search",
-    "Please wait...": "Please wait..."
+    "Please wait...": "Please wait...",
+    "Cancel": "Cancel",
+    "Symbol": "Symbol",
+    "Name": "Name",
+    "Sector": "Sector",
+    "Subsector": "Subsector",
+    "Industry": "Industry",
+    "Description": "Description",
+    "Edit": "Edit",
+    "Create": "Create"
 }

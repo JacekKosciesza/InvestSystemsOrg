@@ -1,18 +1,18 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ModalController, NavController, NavParams, InfiniteScroll, LoadingController, Loading} from 'ionic-angular';
-import { CompanyDetailsPage } from '../company-details/company-details';
-import { SignInPage } from '../sign-in/sign-in'
-import {TranslatePipe, TranslateService} from 'ng2-translate/ng2-translate';
-import { CompaniesService } from '../../services/companies.service';
-import {CompanyEditPage} from '../company-details/company-edit';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalController, NavController, NavParams, InfiniteScroll, LoadingController, Loading } from 'ionic-angular';
+import { CompanyDetailComponent } from '../detail';
+import { SignInComponent } from '../../+identity';
+import { TranslatePipe, TranslateService } from 'ng2-translate/ng2-translate';
+import { CompanyService } from '../shared';
+import { CompanyEditComponent } from '../edit';
 
 
 @Component({
-    templateUrl: 'build/pages/companies-list/companies-list.html',
+    templateUrl: 'build/+companies/list/company-list.component.html',
     pipes: [TranslatePipe],
-    providers: [CompaniesService]
+    providers: [CompanyService]
 })
-export class CompaniesListPage implements OnInit {
+export class CompanyListComponent implements OnInit {
     selectedItem: any;
     companies: any[];
     page: number;
@@ -20,7 +20,7 @@ export class CompaniesListPage implements OnInit {
     @ViewChild(InfiniteScroll) private infiniteScrollControl: InfiniteScroll;
     loader: Loading;
 
-    constructor(public navCtrl: NavController, navParams: NavParams, private companiesServcie: CompaniesService, public loadingCtrl: LoadingController, translate: TranslateService, public modalCtrl: ModalController) {
+    constructor(public navCtrl: NavController, navParams: NavParams, private companyService: CompanyService, public loadingCtrl: LoadingController, translate: TranslateService, public modalCtrl: ModalController) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         this.page = 1;
@@ -36,7 +36,7 @@ export class CompaniesListPage implements OnInit {
     ngOnInit() {
         console.log('ngOnInit');
         this.presentLoading();
-        this.companiesServcie.getCompanies(this.page).then(page => {
+        this.companyService.getCompanies(this.page).then(page => {
             (<any[]>page.items).forEach(item => item.isWonderful = Math.random() >= 0.5);
             this.companies = page.items;
             this.dismissLoading();
@@ -49,16 +49,20 @@ export class CompaniesListPage implements OnInit {
         let val = ev.target.value || '';
         this.page = 1;
         this.q = val.trim();
-        this.companiesServcie.getCompanies(this.page, this.q).then(page => {
+        //this.presentLoading();
+        this.companyService.getCompanies(this.page, this.q).then(page => {
             this.companies = page.items;
+            //this.dismissLoading();
         });
     }
 
     doInfinite(infiniteScroll) {
         console.log('Begin async operation');
         this.page++;
-        this.companiesServcie.getCompanies(this.page, this.q).then(page => {
+        //this.presentLoading();
+        this.companyService.getCompanies(this.page, this.q).then(page => {
             this.companies = this.companies.concat(page.items);
+            //this.dismissLoading();            
             infiniteScroll.complete();
             if (!page.items.length) {
                 infiniteScroll.enable(false);
@@ -67,13 +71,13 @@ export class CompaniesListPage implements OnInit {
     }
 
     itemTapped(event, item) {
-        this.navCtrl.push(CompanyDetailsPage, {
+        this.navCtrl.push(CompanyDetailComponent, {
             item: item
         });
     }
 
     signIn() {
-        this.navCtrl.push(SignInPage);
+        this.navCtrl.push(SignInComponent);
     }
 
     presentLoading() {
@@ -85,7 +89,7 @@ export class CompaniesListPage implements OnInit {
     }
 
     create() {
-        let modal = this.modalCtrl.create(CompanyEditPage, { company: {} });
+        let modal = this.modalCtrl.create(CompanyEditComponent, { company: {} });
         modal.present();
     }
 }

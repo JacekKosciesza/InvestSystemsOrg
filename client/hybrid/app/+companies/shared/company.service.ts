@@ -7,7 +7,7 @@ import { Company } from './company.model';
 
 
 @Injectable()
-export class CompaniesService {
+export class CompanyService {
 
     private companiesUrl = 'http://localhost:5001/api/companies';
 
