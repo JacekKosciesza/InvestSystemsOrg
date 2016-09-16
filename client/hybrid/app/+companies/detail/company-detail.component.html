@@ -13,7 +13,7 @@
     <b>{{selectedItem.name}}</b> {{selectedItem.description}}
   </div>
 </ion-content>
-<ion-footer>
+<ion-footer *ngIf="identityService.token">
   <button fab fab-bottom fab-right fab-fixed (click)="edit(selectedItem)">
         <ion-icon name="create"></ion-icon>
     </button>

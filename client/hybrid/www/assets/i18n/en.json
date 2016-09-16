@@ -17,5 +17,7 @@
     "Industry": "Industry",
     "Description": "Description",
     "Edit": "Edit",
-    "Create": "Create"
+    "Create": "Create",
+    "Profile": "Profile",
+    "Logout": "Logout"
 }

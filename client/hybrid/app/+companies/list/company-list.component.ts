@@ -1,11 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalController, NavController, NavParams, InfiniteScroll, LoadingController, Loading } from 'ionic-angular';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ModalController, NavController, NavParams, InfiniteScroll, LoadingController, Loading, PopoverController } from 'ionic-angular';
 import { CompanyDetailComponent } from '../detail';
 import { SignInComponent } from '../../+identity';
 import { TranslatePipe, TranslateService } from 'ng2-translate/ng2-translate';
 import { CompanyService } from '../shared';
 import { CompanyEditComponent } from '../edit';
-import { IdentityService } from '../../+identity';
+import { IdentityService, IdentityPopoverComponent } from '../../+identity';
+
 
 
 @Component({
@@ -19,9 +20,19 @@ export class CompanyListComponent implements OnInit {
     page: number;
     q: string;
     @ViewChild(InfiniteScroll) private infiniteScrollControl: InfiniteScroll;
+    @ViewChild('popoverContent', {read: ElementRef}) content: ElementRef;
+    @ViewChild('popoverText', {read: ElementRef}) text: ElementRef;
     loader: Loading;
 
-    constructor(public navCtrl: NavController, navParams: NavParams, private companyService: CompanyService, public loadingCtrl: LoadingController, translate: TranslateService, public modalCtrl: ModalController, public identityService: IdentityService) {
+    constructor(
+        public navCtrl: NavController,
+        navParams: NavParams,
+        private companyService: CompanyService,
+        public loadingCtrl: LoadingController,
+        translate: TranslateService,
+        public modalCtrl: ModalController,
+        public identityService: IdentityService,
+        private popoverCtrl: PopoverController) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         this.page = 1;
@@ -94,5 +105,18 @@ export class CompanyListComponent implements OnInit {
     create() {
         let modal = this.modalCtrl.create(CompanyEditComponent, { company: {} });
         modal.present();
+    }
+
+    presentPopover(ev) {
+        let popover = this.popoverCtrl.create(IdentityPopoverComponent
+        // , {
+        //     contentEle: this.content.nativeElement,
+        //     textEle: this.text.nativeElement
+        // }
+        );
+
+        popover.present({
+            ev: ev
+        });
     }
 }

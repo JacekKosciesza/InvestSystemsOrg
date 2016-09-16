@@ -17,7 +17,6 @@ export class SignInComponent {
 
     signIn(username: string, password: string) {
         this.identityService.getToken(username, password).then(token => {
-            console.log(token);
             this.dismiss();
         })
     }
