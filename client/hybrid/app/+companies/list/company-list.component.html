@@ -6,8 +6,8 @@
         <ion-title>{{ 'Companies' | translate }}</ion-title>
         <ion-buttons end>
             <button (click)="signIn()">
-                <!--<ion-icon name="contact"></ion-icon>-->
-                {{ 'Sign In' | translate }}
+                <ion-icon *ngIf="identityService.token" name="contact"></ion-icon>    
+                <span *ngIf="!identityService.token">{{ 'Sign In' | translate }}</span>
             </button>
         </ion-buttons>
     </ion-navbar>

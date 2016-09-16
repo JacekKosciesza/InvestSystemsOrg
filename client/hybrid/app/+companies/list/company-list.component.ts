@@ -5,6 +5,7 @@ import { SignInComponent } from '../../+identity';
 import { TranslatePipe, TranslateService } from 'ng2-translate/ng2-translate';
 import { CompanyService } from '../shared';
 import { CompanyEditComponent } from '../edit';
+import { IdentityService } from '../../+identity';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class CompanyListComponent implements OnInit {
     @ViewChild(InfiniteScroll) private infiniteScrollControl: InfiniteScroll;
     loader: Loading;
 
-    constructor(public navCtrl: NavController, navParams: NavParams, private companyService: CompanyService, public loadingCtrl: LoadingController, translate: TranslateService, public modalCtrl: ModalController) {
+    constructor(public navCtrl: NavController, navParams: NavParams, private companyService: CompanyService, public loadingCtrl: LoadingController, translate: TranslateService, public modalCtrl: ModalController, public identityService: IdentityService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         this.page = 1;
@@ -77,7 +78,9 @@ export class CompanyListComponent implements OnInit {
     }
 
     signIn() {
-        this.navCtrl.push(SignInComponent);
+        //this.navCtrl.push(SignInComponent);
+        let modal = this.modalCtrl.create(SignInComponent);
+        modal.present();
     }
 
     presentLoading() {

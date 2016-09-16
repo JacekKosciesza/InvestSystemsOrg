@@ -17,7 +17,8 @@
     "OpenIddict": "1.0.0-alpha2-0408",
     "AspNet.Security.OAuth.Validation": "1.0.0-alpha3-0181",
     "InvSys.Identity.Core": "1.0.0-*",
-    "InvSys.Identity.State": "1.0.0-*"
+    "InvSys.Identity.State": "1.0.0-*",
+    "Microsoft.AspNetCore.Cors": "1.0.0"
   },
 
   "tools": {

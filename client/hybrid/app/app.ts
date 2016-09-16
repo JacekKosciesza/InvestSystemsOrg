@@ -6,6 +6,8 @@ import { DashboardComponent } from './+dashboard';
 import { CompanyListComponent } from './+companies'
 //import { SignInPage } from './pages/sign-in/sign-in'
 import { TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+import { IdentityService } from './+identity'
+
 
 @Component({
   templateUrl: 'build/app.html'
@@ -60,5 +62,6 @@ ionicBootstrap(MyApp, [
     useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
     deps: [Http]
   },
-  TranslateService
+  TranslateService,
+  IdentityService
 ]);

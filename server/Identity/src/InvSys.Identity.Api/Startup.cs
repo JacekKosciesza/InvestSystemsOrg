@@ -39,6 +39,7 @@ namespace InvSys.Identity.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             // Add framework services.
             services.AddMvc()
                 .AddDataAnnotationsLocalization();
@@ -50,7 +51,7 @@ namespace InvSys.Identity.Api
 
             services.AddOpenIddict<User, IdentityContext>()
                 .EnableTokenEndpoint("/connect/token")
-                .EnableUserinfoEndpoint("/user/info")
+                .EnableUserinfoEndpoint("/connect/userinfo")
                 .EnableIntrospectionEndpoint("/introspective")
                 .AllowPasswordFlow()
                 .DisableHttpsRequirement()
@@ -83,6 +84,9 @@ namespace InvSys.Identity.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IdentityContextSeedData seeder)
         {
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+            );
             var supportedCultures = Configuration["Globalization:SupportedCultures"].Split(';').Select(c => new CultureInfo(c.Trim())).ToList();
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
