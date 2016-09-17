@@ -19,6 +19,7 @@ namespace InvSys.Financials.State.EntityFramework
         public DbSet<BalanceSheet> BalanceSheets { get; set; }
         public DbSet<CashFlow> CashFlows { get; set; }
         public DbSet<IncomeStatement> IncomeStatements { get; set; }
+        public DbSet<RatioCalculation> RatioCalculations { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

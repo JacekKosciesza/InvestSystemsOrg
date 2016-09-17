@@ -11,7 +11,7 @@ namespace InvSys.Financials.Core.Models
         public string CompanySymbol { get; set; }
         public DateTime Year { get; set; }
 
-        public decimal Sales { get; set; }
+        public decimal Revenue { get; set; } // Sales
         public double EPS { get; set; }
     }
 }

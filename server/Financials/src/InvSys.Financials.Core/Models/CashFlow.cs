@@ -11,7 +11,7 @@ namespace InvSys.Financials.Core.Models
         public string CompanySymbol { get; set; }
         public DateTime Year { get; set; }
 
-        public decimal Cash { get; set; } // Free Cash Flow
+        public decimal FreeCashFlow { get; set; } // Cash
         public decimal Dividends { get; set; }
     }
 }

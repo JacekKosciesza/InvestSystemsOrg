@@ -3,7 +3,7 @@ using InvSys.Shared.Core.State;
 
 namespace InvSys.Financials.Core.Models
 {
-    public class BalanceSheet : IEntity<Guid>
+    public class RatioCalculation : IEntity<Guid>
     {
         public Guid Id { get; set; }
 
@@ -11,7 +11,6 @@ namespace InvSys.Financials.Core.Models
         public string CompanySymbol { get; set; }
         public DateTime Year { get; set; }
 
-        public decimal Equity { get; set; } // Book value or Net worth
-        public decimal Debt { get; set; }
+        public double ReturnOnCapital { get; set; } // ROIC
     }
 }
