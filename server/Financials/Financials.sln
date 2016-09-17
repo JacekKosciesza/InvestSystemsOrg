@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Financials.Api", "src\InvSys.Financials.Api\InvSys.Financials.Api.xproj", "{DBB24D33-A373-4F65-A2F7-FCC0078BBAEB}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Financials.Core", "src\InvSys.Financials.Core\InvSys.Financials.Core.xproj", "{421B6C40-8F6A-4ACE-8BA0-44BDC033346D}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Financials.State", "src\InvSys.Financials.State\InvSys.Financials.State.xproj", "{302C1A44-128F-4019-983B-3FA4CF7E5010}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.Core", "..\Shared\src\InvSys.Shared.Core\InvSys.Shared.Core.xproj", "{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.Api", "..\Shared\src\InvSys.Shared.Api\InvSys.Shared.Api.xproj", "{6164DF67-4B0F-42ED-BCA7-12B407FF954C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.State", "..\Shared\src\InvSys.Shared.State\InvSys.Shared.State.xproj", "{C5A41CCF-6887-4786-AA86-6D832387349F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{B1FC5086-34C4-4041-9C19-AC082ADBE5C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4A655FAA-E56C-46EF-8958-28A7FCCE40B0}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Financials.Tests.Integration", "src\Tests\InvSys.Financials.Tests.Integration\InvSys.Financials.Tests.Integration.xproj", "{FCF8DF79-06A3-4989-8843-35B50662865A}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.Tests", "..\Shared\src\InvSys.Shared.Tests\InvSys.Shared.Tests.xproj", "{529252BE-2602-46F1-A332-69ECABA2EE62}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Financials.Tests.Unit", "src\Tests\InvSys.Financials.Tests.Unit\InvSys.Financials.Tests.Unit.xproj", "{7EC515D9-7F52-478F-A338-413055192BB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBB24D33-A373-4F65-A2F7-FCC0078BBAEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBB24D33-A373-4F65-A2F7-FCC0078BBAEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBB24D33-A373-4F65-A2F7-FCC0078BBAEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBB24D33-A373-4F65-A2F7-FCC0078BBAEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{421B6C40-8F6A-4ACE-8BA0-44BDC033346D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{421B6C40-8F6A-4ACE-8BA0-44BDC033346D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{421B6C40-8F6A-4ACE-8BA0-44BDC033346D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{421B6C40-8F6A-4ACE-8BA0-44BDC033346D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{302C1A44-128F-4019-983B-3FA4CF7E5010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{302C1A44-128F-4019-983B-3FA4CF7E5010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{302C1A44-128F-4019-983B-3FA4CF7E5010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{302C1A44-128F-4019-983B-3FA4CF7E5010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A41CCF-6887-4786-AA86-6D832387349F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF8DF79-06A3-4989-8843-35B50662865A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF8DF79-06A3-4989-8843-35B50662865A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF8DF79-06A3-4989-8843-35B50662865A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF8DF79-06A3-4989-8843-35B50662865A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529252BE-2602-46F1-A332-69ECABA2EE62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC515D9-7F52-478F-A338-413055192BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC515D9-7F52-478F-A338-413055192BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC515D9-7F52-478F-A338-413055192BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC515D9-7F52-478F-A338-413055192BB4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1D50BC0-AFAB-4645-AD15-7E590E7E3109} = {B1FC5086-34C4-4041-9C19-AC082ADBE5C5}
+		{6164DF67-4B0F-42ED-BCA7-12B407FF954C} = {B1FC5086-34C4-4041-9C19-AC082ADBE5C5}
+		{C5A41CCF-6887-4786-AA86-6D832387349F} = {B1FC5086-34C4-4041-9C19-AC082ADBE5C5}
+		{FCF8DF79-06A3-4989-8843-35B50662865A} = {4A655FAA-E56C-46EF-8958-28A7FCCE40B0}
+		{529252BE-2602-46F1-A332-69ECABA2EE62} = {B1FC5086-34C4-4041-9C19-AC082ADBE5C5}
+		{7EC515D9-7F52-478F-A338-413055192BB4} = {4A655FAA-E56C-46EF-8958-28A7FCCE40B0}
+	EndGlobalSection
+EndGlobal
