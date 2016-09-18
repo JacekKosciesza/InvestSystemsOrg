@@ -17,11 +17,18 @@ namespace InvSys.Financials.State.EntityFramework.Repositories
             _db = dbContext;
         }
 
-        public Task<List<FinancialData>> GetFinancialData(string companySymbol, int? startYear, int? endYear)
+        public Task<List<FinancialData>> GetFinancialData(string companySymbol, int? year, int? startYear, int? endYear)
         {
             var data = from fd in _db.Data.AsQueryable()
                 where fd.CompanySymbol == companySymbol
                 select fd;
+
+            if (year.HasValue)
+            {
+                data = from fd in data
+                       where fd.Year == year.Value
+                       select fd;
+            }
 
             if (startYear.HasValue)
             {

@@ -15,9 +15,9 @@ namespace InvSys.Financials.Core.Services
             _repository = repository;
         }
 
-        public async Task<ICollection<FinancialData>> GetFinancialData(string companySymbol, int? startYear, int? endYear)
+        public async Task<ICollection<FinancialData>> GetFinancialData(string companySymbol, int? year, int? startYear, int? endYear)
         {
-            return await _repository.GetFinancialData(companySymbol, startYear, endYear);
+            return await _repository.GetFinancialData(companySymbol, year, startYear, endYear);
         }
 
         public async Task<FinancialData> GetFinancialData(int id)
