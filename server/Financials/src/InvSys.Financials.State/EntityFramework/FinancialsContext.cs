@@ -16,11 +16,7 @@ namespace InvSys.Financials.State.EntityFramework
             _config = config;
         }
 
-        public DbSet<BalanceSheet> BalanceSheets { get; set; }
-        public DbSet<CashFlow> CashFlows { get; set; }
-        public DbSet<IncomeStatement> IncomeStatements { get; set; }
-        public DbSet<RatioCalculation> RatioCalculations { get; set; }
-
+        public DbSet<FinancialData> Data { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

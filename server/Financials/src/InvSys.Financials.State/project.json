@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
@@ -10,7 +10,8 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0"
+    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
+    "System.Linq": "4.1.0"
   },
 
   "frameworks": {

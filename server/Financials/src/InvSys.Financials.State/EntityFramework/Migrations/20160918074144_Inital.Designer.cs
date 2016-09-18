@@ -8,9 +8,10 @@ using InvSys.Financials.State.EntityFramework;
 namespace InvSys.Financials.State.EntityFramework.Migrations
 {
     [DbContext(typeof(FinancialsContext))]
-    partial class FinancialsContextModelSnapshot : ModelSnapshot
+    [Migration("20160918074144_Inital")]
+    partial class Inital
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
