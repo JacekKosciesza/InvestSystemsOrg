@@ -63,7 +63,7 @@ namespace InvSys.Financials.Api.Controllers
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Invalid arguments")]
         [Consumes("application/json")]
         [Produces("application/json", Type = typeof(FinancialData))]
-        public async Task<IActionResult> Post(FinancialData financialData)
+        public async Task<IActionResult> Post([FromBody]FinancialData financialData)
         {
             if (ModelState.IsValid)
             {
@@ -85,8 +85,8 @@ namespace InvSys.Financials.Api.Controllers
             }
         }
 
-        // PUT api/financials/MENT?year=2015
-        [Route("api/financials/{companySymbol}")]
+        // PUT api/financials/MENT/2015
+        [Route("api/financials/{companySymbol}/{year:int}")]
         [HttpPut]
         [SwaggerOperation("update-financial-data")]
         [SwaggerResponseRemoveDefaults]
@@ -94,7 +94,7 @@ namespace InvSys.Financials.Api.Controllers
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Invalid arguments")]
         [Consumes("application/json")]
         [Produces("application/json", Type = typeof(FinancialData))]
-        public async Task<IActionResult> Put(string companySymbol, [FromQuery]int year, [FromBody]FinancialData financialData)
+        public async Task<IActionResult> Put(string companySymbol, int year, [FromBody]FinancialData financialData)
         {
             if (financialData.CompanySymbol != companySymbol || financialData.Year != year)
             {
@@ -123,12 +123,12 @@ namespace InvSys.Financials.Api.Controllers
 
         // DELETE api/financials/MENT?year=2015
         [HttpDelete()]
-        [Route("api/financials/{companySymbol}")]
+        [Route("api/financials/{companySymbol}/{year:int}")]
         [SwaggerOperation("delete-financial-data")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.NoContent)]
         [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Financial data not found")]
-        public async Task<IActionResult> Delete(string companySymbol, [FromQuery]int year)
+        public async Task<IActionResult> Delete(string companySymbol, int year)
         {
             if (await _financialsService.DeleteFinancialData(companySymbol, year))
             {

@@ -9,6 +9,6 @@ namespace InvSys.Financials.Core.State
     {
         Task<List<FinancialData>> GetFinancialData(string companySymbol, int? year, int? startYear, int? endYear);
         Task<FinancialData> GetFinancialData(string companySymbol, int year);
-        void Delete(string companySymbol, int year);
+        Task Delete(string companySymbol, int year);
     }
 }

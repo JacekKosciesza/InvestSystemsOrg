@@ -40,7 +40,7 @@ namespace InvSys.Financials.State.EntityFramework.Repositories
             if (endYear.HasValue)
             {
                 data = from fd in data
-                       where fd.Year >= endYear.Value
+                       where fd.Year <= endYear.Value
                        select fd;
             }
 
@@ -54,12 +54,12 @@ namespace InvSys.Financials.State.EntityFramework.Repositories
                 .SingleOrDefaultAsync();
         }
 
-        public void Delete(string companySymbol, int year)
+        public async Task Delete(string companySymbol, int year)
         {
-            var fd = GetFinancialData(companySymbol, year);
+            var fd = await GetFinancialData(companySymbol, year);
             if (fd != null)
             {
-                Delete(fd.Id);
+                _db.Data.Remove(fd);
             }
         }
     }

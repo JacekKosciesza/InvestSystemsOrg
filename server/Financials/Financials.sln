@@ -25,6 +25,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Shared.Tests", "..\S
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Financials.Tests.Unit", "src\Tests\InvSys.Financials.Tests.Unit\InvSys.Financials.Tests.Unit.xproj", "{7EC515D9-7F52-478F-A338-413055192BB4}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Financials.Api.Client", "src\InvSys.Financials.Api.Client\InvSys.Financials.Api.Client.xproj", "{09431217-A2C3-4182-8996-88A06AC024FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{7EC515D9-7F52-478F-A338-413055192BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EC515D9-7F52-478F-A338-413055192BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EC515D9-7F52-478F-A338-413055192BB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09431217-A2C3-4182-8996-88A06AC024FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09431217-A2C3-4182-8996-88A06AC024FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09431217-A2C3-4182-8996-88A06AC024FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09431217-A2C3-4182-8996-88A06AC024FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

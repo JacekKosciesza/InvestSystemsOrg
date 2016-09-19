@@ -64,7 +64,7 @@ namespace InvSys.Financials.Core.Services
 
         public async Task<bool> DeleteFinancialData(string companySymbol, int year)
         {
-            _repository.Delete(companySymbol, year);
+            await _repository.Delete(companySymbol, year);
             return await _repository.SaveChangesAsync();
         }
     }

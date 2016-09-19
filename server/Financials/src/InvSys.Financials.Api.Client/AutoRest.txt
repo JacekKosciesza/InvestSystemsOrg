@@ -1,0 +1,5 @@
+﻿Run:
+AutoRest.exe -Input http://localhost:5005/swagger/v1/swagger.json -Namespace InvSys.Financials.Api.Client.Proxy -PackageName Financials.Proxy -OutputDirectory .\Proxy -CodeGenerator CSharp -Modeler Swagger
+
+Install NuGet:
+Microsoft.Rest.ClientRuntime
