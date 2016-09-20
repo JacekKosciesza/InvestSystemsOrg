@@ -24,7 +24,7 @@ namespace InvSys.RuleOne.Api
                    .UseContentRoot(Directory.GetCurrentDirectory())
                    .UseIISIntegration()
                    .UseStartup<Startup>()
-                   .UseUrls("http://localhost:5002")
+                   .UseUrls("http://localhost:5006")
                    .Build();
 
             host.Run();

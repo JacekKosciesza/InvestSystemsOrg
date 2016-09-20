@@ -22,13 +22,11 @@ namespace InvSys.Companies.State.EntityFramework
         {
             base.OnConfiguring(optionsBuilder);
 
-            if (_config != null)
+            if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(_config["ConnectionStrings:CompaniesContextConnection"]);
-            }
-            else
-            {
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Companies;Integrated Security=SSPI;integrated security=true;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer(_config != null
+                    ? _config["ConnectionStrings:CompaniesContextConnection"]
+                    : "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Companies;Integrated Security=SSPI;integrated security=true;MultipleActiveResultSets=True;");
             }
         }
 
