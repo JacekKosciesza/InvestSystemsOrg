@@ -58,7 +58,7 @@ namespace InvSys.RuleOne.Api.Controllers
         // GET api/ratings        
         [HttpGet]
         [AllowAnonymous]
-        [SwaggerOperation("get-ratings")]
+        [SwaggerOperation("get-page-of-ratings")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Page<Rating>))]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get companies")]

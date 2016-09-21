@@ -1,0 +1,5 @@
+﻿Run:
+AutoRest.exe -Input http://localhost:5006/swagger/v1/swagger.json -Namespace InvSys.RuleOne.Api.Client.Proxy -PackageName RuleOne.Proxy -OutputDirectory .\Proxy -CodeGenerator CSharp -Modeler Swagger
+
+Install NuGet:
+Microsoft.Rest.ClientRuntime
