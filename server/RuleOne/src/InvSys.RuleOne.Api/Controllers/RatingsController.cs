@@ -79,23 +79,24 @@ namespace InvSys.RuleOne.Api.Controllers
         }
 
         // GET api/ratings/MENT
-        [HttpGet("{companySymbol}")]
+        [HttpGet("{companySymbols}")]
         [AllowAnonymous]
-        [SwaggerOperation("get-rating")]
+        [SwaggerOperation("get-ratings")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Rating))]
-        [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Rating not found")]
-        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get rating")]
+        [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Ratings not found")]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get ratings")]
         [Produces("application/json", Type = typeof(Rating))]
-        public async Task<IActionResult> Get(string companySymbol)
+        public async Task<IActionResult> Get(string companySymbols)
         {
-            _logger.LogInformation($"Getting rating from company = {companySymbol}");
+            _logger.LogInformation($"Getting rating from companies = {companySymbols}");
+            var companySymbolsArray = companySymbols.Split(',');
             try
             {
-                var rating = await _ruleOneService.GetRating(companySymbol);
-                if (rating != null)
+                var ratings = await _ruleOneService.GetRatings(companySymbolsArray);
+                if (ratings != null)
                 {
-                    return Ok(rating);
+                    return Ok(ratings);
                 }
                 else
                 {
@@ -104,7 +105,7 @@ namespace InvSys.RuleOne.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get rating for company = {companySymbol}", ex);
+                _logger.LogError($"Failed to get rating for companies = {companySymbols}", ex);
                 return BadRequest();
             }
         }

@@ -11,6 +11,6 @@ namespace InvSys.RuleOne.Core.Services
     {
         Task<List<Rating>> GetRatings();
         Task<Page<Rating>> GetPageOfRatings(Query query);
-        Task<Rating> GetRating(string companySymbol);
+        Task<List<Rating>> GetRatings(IEnumerable<string> companySymbols);
     }
 }

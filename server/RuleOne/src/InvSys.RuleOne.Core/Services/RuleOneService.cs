@@ -2,51 +2,38 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using InvSys.RuleOne.Core.Models;
+using InvSys.RuleOne.Core.State;
 using InvSys.Shared.Core.Model;
 
 namespace InvSys.RuleOne.Core.Services
 {
     public class RuleOneService : IRuleOneService
     {
-        // fake data
-        readonly List<Rating> _ratings = new List<Rating>
-        {
-            new Rating { CompanySymbol = "MENT", IsAwsome = false },
-            new Rating { CompanySymbol = "EPAM", IsAwsome = true }
+        private readonly IRatingsRepository _repo;
 
-        };
+        public RuleOneService(IRatingsRepository repo)
+        {
+            _repo = repo;
+        }
 
         public Task<List<Rating>> GetRatings()
         {
-            return Task.FromResult(_ratings);
+            return _repo.GetAll();
         }
 
         public Task<Page<Rating>> GetPageOfRatings(Query query)
         {
-            
-            var page = new Page<Rating>
-            {
-                Items = _ratings,
-                CurrentPage = 1,
-                ItemsPerPage = 10,
-                ItemsCount = 2,
-                TotalItemsCount = 2,
-                TotalPages = 1
-            };
-            return Task.FromResult(page);
+            return _repo.GetPage(query);
+        }
+
+        public Task<List<Rating>> GetRatings(IEnumerable<string> companySymbols)
+        {
+            return _repo.Get(companySymbols);
         }
 
         public Task<Rating> GetRating(string companySymbol)
         {
-            switch (companySymbol)
-            {
-                case "MENT":
-                    return Task.FromResult(_ratings[0]);
-                case "EPAM":
-                    return Task.FromResult(_ratings[1]);
-                default:
-                    return null;
-            }
+            return _repo.Get(companySymbol);
         }
     }
 }
