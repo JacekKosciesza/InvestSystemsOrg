@@ -83,10 +83,10 @@ namespace InvSys.RuleOne.Api.Controllers
         [AllowAnonymous]
         [SwaggerOperation("get-ratings")]
         [SwaggerResponseRemoveDefaults]
-        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Rating))]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<Rating>))]
         [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Ratings not found")]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get ratings")]
-        [Produces("application/json", Type = typeof(Rating))]
+        [Produces("application/json", Type = typeof(ICollection<Rating>))]
         public async Task<IActionResult> Get(string companySymbols)
         {
             _logger.LogInformation($"Getting rating from companies = {companySymbols}");

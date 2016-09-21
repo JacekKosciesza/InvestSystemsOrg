@@ -393,7 +393,7 @@ namespace InvSys.RuleOne.Api.Client.Proxy
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<Rating>> GetRatingsWithHttpMessagesAsync(string companySymbols, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<IList<Rating>>> GetRatingsWithHttpMessagesAsync(string companySymbols, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (companySymbols == null)
             {
@@ -466,7 +466,7 @@ namespace InvSys.RuleOne.Api.Client.Proxy
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<Rating>();
+            var _result = new HttpOperationResponse<IList<Rating>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -475,7 +475,7 @@ namespace InvSys.RuleOne.Api.Client.Proxy
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = SafeJsonConvert.DeserializeObject<Rating>(_responseContent, this.DeserializationSettings);
+                    _result.Body = SafeJsonConvert.DeserializeObject<IList<Rating>>(_responseContent, this.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

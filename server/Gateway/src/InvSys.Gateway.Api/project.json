@@ -13,6 +13,7 @@
     "Microsoft.ServiceFabric": "5.1.163",
     "Microsoft.ServiceFabric.Data": "2.1.163",
     "Microsoft.ServiceFabric.Services": "2.1.163",
+    "AutoMapper": "5.0.2",
     "AspNet.Security.OAuth.Introspection": "1.0.0-alpha3-0181",
     "InvSys.Shared.Api": "1.0.0-*",
     "InvSys.Gateway.Core": "1.0.0-*"

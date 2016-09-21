@@ -66,7 +66,7 @@ namespace InvSys.RuleOne.Api.Client.Proxy
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Rating>> GetRatingsWithHttpMessagesAsync(string companySymbols, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<IList<Rating>>> GetRatingsWithHttpMessagesAsync(string companySymbols, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

@@ -82,7 +82,7 @@ namespace InvSys.RuleOne.Api.Client.Proxy
             /// </param>
             /// <param name='companySymbols'>
             /// </param>
-            public static Rating GetRatings(this IRuleOneAPI operations, string companySymbols)
+            public static IList<Rating> GetRatings(this IRuleOneAPI operations, string companySymbols)
             {
                 return Task.Factory.StartNew(s => ((IRuleOneAPI)s).GetRatingsAsync(companySymbols), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
@@ -95,7 +95,7 @@ namespace InvSys.RuleOne.Api.Client.Proxy
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Rating> GetRatingsAsync(this IRuleOneAPI operations, string companySymbols, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<Rating>> GetRatingsAsync(this IRuleOneAPI operations, string companySymbols, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetRatingsWithHttpMessagesAsync(companySymbols, null, cancellationToken).ConfigureAwait(false))
                 {

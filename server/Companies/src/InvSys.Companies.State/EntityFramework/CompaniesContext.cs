@@ -22,12 +22,12 @@ namespace InvSys.Companies.State.EntityFramework
         {
             base.OnConfiguring(optionsBuilder);
 
-            if (!optionsBuilder.IsConfigured)
-            {
+            //if (!optionsBuilder.IsConfigured)
+            //{
                 optionsBuilder.UseSqlServer(_config != null
                     ? _config["ConnectionStrings:CompaniesContextConnection"]
                     : "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Companies;Integrated Security=SSPI;integrated security=true;MultipleActiveResultSets=True;");
-            }
+            //}
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

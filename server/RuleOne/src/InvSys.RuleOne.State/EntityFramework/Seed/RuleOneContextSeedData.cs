@@ -45,6 +45,19 @@ namespace InvSys.RuleOne.State.EntityFramework.Seed
                         Date = DateTime.Now,
                         IsAwesome = true
                     },
+                    //
+                    new Rating
+                    {
+                        CompanySymbol = "XXII",
+                        Date = DateTime.Now,
+                        IsAwesome = true
+                    },
+                    new Rating
+                    {
+                        CompanySymbol = "DDD",
+                        Date = DateTime.Now,
+                        IsAwesome = false
+                    }
                 };
                     
                 _db.Ratings.AddRange(ratings);

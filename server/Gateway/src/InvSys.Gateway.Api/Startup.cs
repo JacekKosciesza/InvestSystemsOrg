@@ -1,4 +1,8 @@
-﻿using InvSys.Gateway.Core.GraphQLTest;
+﻿using AutoMapper;
+using InvSys.Companies.Api.Client.Proxy;
+using InvSys.Gateway.Core.GraphQLTest;
+using InvSys.Gateway.Core.Services;
+using InvSys.RuleOne.Api.Client.Proxy;
 using InvSys.Shared.Api.Startup;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,9 +22,13 @@ namespace InvSys.Gateway.Api
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            _mapperConfiguration = new MapperConfiguration(Mapper.Configure);
         }
 
         public IConfigurationRoot Configuration { get; }
+        private readonly MapperConfiguration _mapperConfiguration;
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -31,6 +39,10 @@ namespace InvSys.Gateway.Api
             services.AddInvSysAuthorization();
 
             services.AddTransient<IStarWarsGraphQL, StarWarsGraphQL>();
+            services.AddTransient<IDashboardService, DashboardService>();
+            //services.AddTransient<ICompaniesAPI, CompaniesAPI>();
+            //services.AddTransient<IRuleOneAPI, RuleOneAPI
+            services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
