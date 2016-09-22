@@ -25,38 +25,38 @@ namespace InvSys.RuleOne.State.EntityFramework.Seed
                     {
                         CompanySymbol = "MENT",
                         Date = DateTime.Now.AddDays(-1),
-                        IsAwesome = true
+                        IsWonderful = true
                     },
                     new Rating
                     {
                         CompanySymbol = "MENT",
                         Date = DateTime.Now,
-                        IsAwesome = false
+                        IsWonderful = false
                     },
                     new Rating
                     {
                         CompanySymbol = "EPAM",
                         Date = DateTime.Now.AddDays(-1),
-                        IsAwesome = false
+                        IsWonderful = false
                     },
                     new Rating
                     {
                         CompanySymbol = "EPAM",
                         Date = DateTime.Now,
-                        IsAwesome = true
+                        IsWonderful = true
                     },
                     //
                     new Rating
                     {
                         CompanySymbol = "XXII",
                         Date = DateTime.Now,
-                        IsAwesome = true
+                        IsWonderful = true
                     },
                     new Rating
                     {
                         CompanySymbol = "DDD",
                         Date = DateTime.Now,
-                        IsAwesome = false
+                        IsWonderful = false
                     }
                 };
                     

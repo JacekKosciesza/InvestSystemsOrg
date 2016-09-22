@@ -15,7 +15,7 @@ namespace InvSys.RuleOne.State.EntityFramework.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     CompanySymbol = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
-                    IsAwesome = table.Column<bool>(nullable: false)
+                    IsWonderful = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -8,7 +8,7 @@ using InvSys.RuleOne.State.EntityFramework;
 namespace InvSys.RuleOne.State.EntityFramework.Migrations
 {
     [DbContext(typeof(RuleOneContext))]
-    [Migration("20160921055729_Inital")]
+    [Migration("20160922171902_Inital")]
     partial class Inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace InvSys.RuleOne.State.EntityFramework.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<bool>("IsAwesome");
+                    b.Property<bool>("IsWonderful");
 
                     b.HasKey("Id");
 

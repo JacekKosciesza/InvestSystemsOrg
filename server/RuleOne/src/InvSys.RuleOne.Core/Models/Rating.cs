@@ -9,6 +9,6 @@ namespace InvSys.RuleOne.Core.Models
         public string CompanySymbol { get; set; }
         public DateTime Date { get; set; }
 
-        public bool IsAwesome { get; set; }
+        public bool IsWonderful { get; set; }
     }
 }

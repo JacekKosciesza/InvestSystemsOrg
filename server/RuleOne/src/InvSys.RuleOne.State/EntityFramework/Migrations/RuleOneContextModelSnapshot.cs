@@ -25,7 +25,7 @@ namespace InvSys.RuleOne.State.EntityFramework.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<bool>("IsAwesome");
+                    b.Property<bool>("IsWonderful");
 
                     b.HasKey("Id");
 

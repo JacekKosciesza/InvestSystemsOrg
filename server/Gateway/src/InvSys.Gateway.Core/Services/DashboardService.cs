@@ -43,7 +43,7 @@ namespace InvSys.Gateway.Core.Services
                     var company = pageOfDashboardCompanies.Items.SingleOrDefault(c => c.Symbol == rating.CompanySymbol);
                     if (company != null)
                     {
-                        company.IsAwesome = rating.IsAwesome;
+                        company.IsWonderful = rating.IsWonderful;
                     }
                 }
             }

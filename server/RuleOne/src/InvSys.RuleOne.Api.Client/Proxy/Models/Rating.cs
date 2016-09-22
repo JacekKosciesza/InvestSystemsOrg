@@ -21,12 +21,12 @@ namespace InvSys.RuleOne.Api.Client.Proxy.Models
         /// <summary>
         /// Initializes a new instance of the Rating class.
         /// </summary>
-        public Rating(Guid? id = default(Guid?), string companySymbol = default(string), DateTime? date = default(DateTime?), bool? isAwesome = default(bool?))
+        public Rating(Guid? id = default(Guid?), string companySymbol = default(string), DateTime? date = default(DateTime?), bool? isWonderful = default(bool?))
         {
             Id = id;
             CompanySymbol = companySymbol;
             Date = date;
-            IsAwesome = isAwesome;
+            IsWonderful = isWonderful;
         }
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace InvSys.RuleOne.Api.Client.Proxy.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "isAwesome")]
-        public bool? IsAwesome { get; set; }
+        [JsonProperty(PropertyName = "isWonderful")]
+        public bool? IsWonderful { get; set; }
 
     }
 }

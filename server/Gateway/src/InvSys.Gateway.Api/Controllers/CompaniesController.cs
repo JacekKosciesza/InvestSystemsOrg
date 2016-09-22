@@ -15,13 +15,13 @@ namespace InvSys.Gateway.Api.Controllers
 {
     //[Authorize(Policy = "Admin")]
     [Route("api/[controller]")]
-    public class DashboardController : Controller
+    public class CompaniesController : Controller
     {
         private readonly IDashboardService _dashboardService;
-        private readonly ILogger<DashboardController> _logger;
-        private readonly IStringLocalizer<DashboardController> _localizer;
+        private readonly ILogger<CompaniesController> _logger;
+        private readonly IStringLocalizer<CompaniesController> _localizer;
 
-        public DashboardController(IDashboardService dashboardService, ILogger<DashboardController> logger, IStringLocalizer<DashboardController> localizer)
+        public CompaniesController(IDashboardService dashboardService, ILogger<CompaniesController> logger, IStringLocalizer<CompaniesController> localizer)
         {
             _dashboardService = dashboardService;
             _logger = logger;
