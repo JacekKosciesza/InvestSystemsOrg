@@ -10,6 +10,7 @@ namespace InvSys.Shared.Api.Startup
     {
         public static void AddInvSys(this IServiceCollection services, IConfigurationRoot configuration)
         {
+            services.AddCors();
             services.AddInvSysLocalization();
             services.AddInvSysConfiguration(configuration);
             services.AddMvc().AddDataAnnotationsLocalization();

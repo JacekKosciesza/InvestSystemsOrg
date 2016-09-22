@@ -24,9 +24,7 @@
             </ion-thumbnail>
             <h3>
                 {{company.symbol}}
-                <!--<ion-badge style="float:right;">75%</ion-badge>-->
-                <ion-icon *ngIf="company.isWonderful" style="float:right; color:green;" name="thumbs-up"></ion-icon>
-                <ion-icon *ngIf="!company.isWonderful" style="float:right; color:red;" name="thumbs-down"></ion-icon>
+                <rule-one-rating [isWonderful]="company.isAwesome" style="float:right;"></rule-one-rating>
             </h3>
             <h2>{{company.name}}</h2>
             <p>{{company.industry}}</p>

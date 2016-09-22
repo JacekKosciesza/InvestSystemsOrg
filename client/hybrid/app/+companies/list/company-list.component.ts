@@ -6,13 +6,19 @@ import { TranslatePipe, TranslateService } from 'ng2-translate/ng2-translate';
 import { CompanyService } from '../shared';
 import { CompanyEditComponent } from '../edit';
 import { IdentityService, IdentityPopoverComponent } from '../../+identity';
-
+import { RuleOneRatingComponent } from '../../+rule-one'
 
 
 @Component({
     templateUrl: 'build/+companies/list/company-list.component.html',
     pipes: [TranslatePipe],
-    providers: [CompanyService]
+    providers: [CompanyService],
+    directives: [RuleOneRatingComponent],
+    styles: [`
+        rule-one-rating: {
+            float:rigth;
+        }
+    `]
 })
 export class CompanyListComponent implements OnInit {
     selectedItem: any;
@@ -49,7 +55,7 @@ export class CompanyListComponent implements OnInit {
         console.log('ngOnInit');
         this.presentLoading();
         this.companyService.getCompanies(this.page).then(page => {
-            (<any[]>page.items).forEach(item => item.isWonderful = Math.random() >= 0.5);
+            //(<any[]>page.items).forEach(item => item.isWonderful = Math.random() >= 0.5);
             this.companies = page.items;
             this.dismissLoading();
         });

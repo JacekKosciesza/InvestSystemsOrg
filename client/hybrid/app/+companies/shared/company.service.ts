@@ -9,7 +9,7 @@ import { Company } from './company.model';
 @Injectable()
 export class CompanyService {
 
-    private companiesUrl = 'http://localhost:5001/api/companies';
+    private companiesUrl = 'http://localhost:5002/api/dashboard';
 
     constructor(private http: Http) { }
 

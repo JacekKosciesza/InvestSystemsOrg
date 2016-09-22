@@ -44,7 +44,6 @@ namespace InvSys.Gateway.Core.Services
                 }
             }
 
-
             return pageOfDashboardCompanies;
         }
     }

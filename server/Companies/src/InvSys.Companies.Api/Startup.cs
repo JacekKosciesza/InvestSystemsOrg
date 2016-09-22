@@ -34,7 +34,6 @@ namespace InvSys.Companies.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
             services.AddInvSys(Configuration);
 
             services.AddDbContext<CompaniesContext>();
@@ -47,12 +46,7 @@ namespace InvSys.Companies.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, CompaniesContextSeedData seeder)
         {
-            app.UseCors(builder =>
-                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-            );
             app.UseInvSys(Configuration, loggerFactory);
-
-            
 
             //seeder.EnsureSeedData().Wait();
         }

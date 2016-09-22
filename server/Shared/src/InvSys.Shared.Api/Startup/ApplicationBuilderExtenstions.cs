@@ -11,6 +11,9 @@ namespace InvSys.Shared.Api.Startup
     {
         public static IApplicationBuilder UseInvSys(this IApplicationBuilder app, IConfigurationRoot configuration, ILoggerFactory loggerFactory)
         {
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader() // TODO: configure it
+            );
             app.UseInvSysLocalization(configuration);
             app.UseInvSysLogger(configuration, loggerFactory);
             app.UseInvSysOAuth(configuration);
