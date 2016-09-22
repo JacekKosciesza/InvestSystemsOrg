@@ -29,18 +29,22 @@ namespace InvSys.Gateway.Core.Services
 
         public async Task<Page<DashboardCompany>> GetCompanies(Query query)
         {
+            // get companies
             var pageOfCompanies = await _companiesApi.GetCompaniesAsync(query.Page, query.Display, query.OrderBy, query.Q);
-            var companySymbols = string.Join(",", pageOfCompanies.Items.Select(c => c.Symbol));
-            var ratings = await _ruleOneApi.GetRatingsAsync(companySymbols);
-
             var pageOfDashboardCompanies = _mapper.Map<Page<DashboardCompany>>(pageOfCompanies);
 
-            foreach (var rating in ratings)
+            // get rule #1 ratings for the companies
+            var companySymbols = string.Join(",", pageOfCompanies.Items.Select(c => c.Symbol));
+            if (!string.IsNullOrWhiteSpace(companySymbols))
             {
-                var company = pageOfDashboardCompanies.Items.SingleOrDefault(c => c.Symbol == rating.CompanySymbol);
-                if (company != null)
+                var ratings = await _ruleOneApi.GetRatingsAsync(companySymbols);
+                foreach (var rating in ratings)
                 {
-                    company.IsAwesome = rating.IsAwesome;
+                    var company = pageOfDashboardCompanies.Items.SingleOrDefault(c => c.Symbol == rating.CompanySymbol);
+                    if (company != null)
+                    {
+                        company.IsAwesome = rating.IsAwesome;
+                    }
                 }
             }
 

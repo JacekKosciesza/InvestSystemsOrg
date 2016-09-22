@@ -12,7 +12,7 @@ namespace InvSys.Gateway.Api
         public static void Configure(IMapperConfigurationExpression config)
         {
             // Company
-            config.CreateMap<Company, DashboardCompany>();
+            config.CreateMap<Company, DashboardCompany>(MemberList.Destination);
 
             // Page of Company
             config.CreateMap<PageCompany, Page<DashboardCompany>>();
