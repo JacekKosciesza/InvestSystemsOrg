@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using InvSys.Companies.Core.State;
 using System.Threading.Tasks;
 using InvSys.Companies.Core.Models;
@@ -21,24 +19,6 @@ namespace InvSys.Companies.Core.Services
             _config = config;
         }
 
-        public async Task<Company> AddCompany(Company company)
-        {
-            var addedCompany = _companiesRepository.Add(company);
-            if (await _companiesRepository.SaveChangesAsync())
-            {
-                return addedCompany;
-            } else
-            {
-                return null;
-            }
-        }
-
-        public async Task<bool> DeleteCompany(Guid id)
-        {
-            _companiesRepository.Delete(id);
-            return await _companiesRepository.SaveChangesAsync();
-        }
-
         public async Task<ICollection<Company>> GetCompanies()
         {
             return await _companiesRepository.GetAll();
@@ -55,6 +35,23 @@ namespace InvSys.Companies.Core.Services
             return await _companiesRepository.Get(id);
         }
 
+        public async Task<Company> GetCompany(string symbol)
+        {
+            return await _companiesRepository.Get(symbol);
+        }
+
+        public async Task<Company> AddCompany(Company company)
+        {
+            var addedCompany = _companiesRepository.Add(company);
+            if (await _companiesRepository.SaveChangesAsync())
+            {
+                return addedCompany;
+            } else
+            {
+                return null;
+            }
+        }
+
         public async Task<Company> UpdateCompany(Company company)
         {
             _companiesRepository.Update(company);
@@ -66,6 +63,12 @@ namespace InvSys.Companies.Core.Services
             {
                 return null;
             }
+        }
+
+        public async Task<bool> DeleteCompany(Guid id)
+        {
+            _companiesRepository.Delete(id);
+            return await _companiesRepository.SaveChangesAsync();
         }
     }
 }

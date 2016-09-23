@@ -1,28 +1,28 @@
 <ion-header>
   <ion-navbar>
-    <button menuToggle *ngIf="!selectedItem">
+    <button menuToggle *ngIf="!company">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{selectedItem.name}}</ion-title>
+    <ion-title>{{company.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <div *ngIf="selectedItem" class="selection">
-    <img src="{{selectedItem.logo}}"><br>
-    <b>{{selectedItem.name}}</b><br>
-    {{selectedItem.description}}<br>
+  <div *ngIf="company" class="selection">
+    <img src="{{company.logo}}"><br>
+    <b>{{company.name}}</b><br>
+    {{company.description}}<br>
     <section>
-      <h1>Rule #1 Analysis</h1>
-      <h2>Meaning</h2>
-      <h2>Moat</h2>
-      <h2>Management</h2>
-      <h2>Margin <small>of Safety</small></h2>
+      <h1>Rule #1</h1>
+      <h2>{{ 'Meaning' | translate }}</h2>
+      <h2>{{ 'Moat' | translate }}</h2>
+      <h2>{{ 'Management' | translate }}</h2>
+      <h2>{{ 'Margin' | translate }}</h2>
     </section>
   </div>
 </ion-content>
 <ion-footer *ngIf="identityService.token">
-  <button fab fab-bottom fab-right fab-fixed (click)="edit(selectedItem)">
+  <button fab fab-bottom fab-right fab-fixed (click)="edit(company)">
         <ion-icon name="create"></ion-icon>
     </button>
 </ion-footer>

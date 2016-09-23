@@ -1,13 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Runtime.InteropServices;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using InvSys.Companies.Api.Client.Proxy;
 using InvSys.Gateway.Core.Models;
 using InvSys.RuleOne.Api.Client.Proxy;
 using InvSys.Shared.Core.Model;
-using Microsoft.Extensions.Configuration;
 
 namespace InvSys.Gateway.Core.Services
 {
@@ -16,22 +13,20 @@ namespace InvSys.Gateway.Core.Services
         private readonly ICompaniesAPI _companiesApi;
         private readonly IRuleOneAPI _ruleOneApi;
         private readonly IMapper _mapper;
-        IConfigurationRoot _configuration;
 
 
-        public DashboardService(/*ICompaniesAPI companiesApi, IRuleOneAPI ruleOneApi, */IMapper mapper, IConfigurationRoot configuration)
+        public DashboardService(ICompaniesAPI companiesApi, IRuleOneAPI ruleOneApi, IMapper mapper)
         {            
+            _companiesApi = companiesApi;
+            _ruleOneApi = ruleOneApi;
             _mapper = mapper;
-            _configuration = configuration;
-            _companiesApi = new CompaniesAPI(new Uri(_configuration["APIs:Companies:Url"], UriKind.Absolute));
-            _ruleOneApi = new RuleOneAPI(new Uri(_configuration["APIs:RuleOne:Url"], UriKind.Absolute));
         }
 
-        public async Task<Page<DashboardCompany>> GetCompanies(Query query)
+        public async Task<Page<CompanySummary>> GetCompanies(Query query)
         {
             // get companies
             var pageOfCompanies = await _companiesApi.GetCompaniesAsync(query.Page, query.Display, query.OrderBy, query.Q);
-            var pageOfDashboardCompanies = _mapper.Map<Page<DashboardCompany>>(pageOfCompanies);
+            var pageOfDashboardCompanies = _mapper.Map<Page<CompanySummary>>(pageOfCompanies);
 
             // get rule #1 ratings for the companies
             var companySymbols = string.Join(",", pageOfCompanies.Items.Select(c => c.Symbol));
@@ -49,6 +44,21 @@ namespace InvSys.Gateway.Core.Services
             }
 
             return pageOfDashboardCompanies;
+        }
+
+        public async Task<CompanyDetails> GetCompany(string symbol)
+        {
+            var getCompanyAsync = _companiesApi.GetCompanyAsync(symbol);
+            var getRatingAsync = _ruleOneApi.GetRatingsAsync(symbol);
+
+            await Task.WhenAll(getCompanyAsync, getRatingAsync);
+
+            var company = _mapper.Map<CompanyDetails>(getCompanyAsync.Result);
+            var rating = getRatingAsync.Result.FirstOrDefault();
+
+            company.IsWonderful = rating?.IsWonderful;
+
+            return company;
         }
     }
 }

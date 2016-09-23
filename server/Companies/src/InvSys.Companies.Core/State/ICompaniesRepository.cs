@@ -9,5 +9,6 @@ namespace InvSys.Companies.Core.State
     public interface ICompaniesRepository : IBaseRepository<Company, Guid>
     {
         Task<Page<Company>> GetPage(Query query);
+        Task<Company> Get(string symbol);
     }
 }

@@ -6,6 +6,7 @@ namespace InvSys.Gateway.Core.Services
 {
     public interface IDashboardService
     {
-        Task<Page<DashboardCompany>> GetCompanies(Query query);
+        Task<Page<CompanySummary>> GetCompanies(Query query);
+        Task<CompanyDetails> GetCompany(string symbol);
     }
 }

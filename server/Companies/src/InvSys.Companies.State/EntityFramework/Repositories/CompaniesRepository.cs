@@ -96,6 +96,14 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
             return page;
         }
 
+        public Task<Company> Get(string symbol)
+        {
+            return _companiesContext.Companies
+                .Include(c => c.Translations)
+                .Where(c => c.Symbol == symbol)
+                .SingleOrDefaultAsync();
+        }
+
         public override void Update(Company company)
         {
             var translation = company.Translations.First();

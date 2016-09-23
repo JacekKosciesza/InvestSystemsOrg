@@ -7,6 +7,7 @@ import { CompanyListComponent } from './+companies'
 //import { SignInPage } from './pages/sign-in/sign-in'
 import { TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 import { IdentityService } from './+identity'
+import { CompanyService } from './+companies';
 
 
 @Component({
@@ -63,5 +64,6 @@ ionicBootstrap(MyApp, [
     deps: [Http]
   },
   TranslateService,
-  IdentityService
+  IdentityService,
+  CompanyService
 ]);

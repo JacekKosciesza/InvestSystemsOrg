@@ -17,7 +17,8 @@
     "AspNet.Security.OAuth.Introspection": "1.0.0-alpha3-0181",
     "InvSys.Shared.Api": "1.0.0-*",
     "InvSys.Gateway.Core": "1.0.0-*",
-    "Microsoft.AspNetCore.Cors": "1.0.0"
+    "Microsoft.AspNetCore.Cors": "1.0.0",
+    "InvSys.Watchlists.Api.Client": "1.0.0-*"
   },
 
   "tools": {

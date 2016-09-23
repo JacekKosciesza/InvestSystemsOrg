@@ -108,9 +108,9 @@ namespace InvSys.Companies.Api.Client.Proxy
             /// </param>
             /// <param name='id'>
             /// </param>
-            public static Company GetCompany(this ICompaniesAPI operations, Guid id)
+            public static Company GetCompanyById(this ICompaniesAPI operations, Guid id)
             {
-                return Task.Factory.StartNew(s => ((ICompaniesAPI)s).GetCompanyAsync(id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((ICompaniesAPI)s).GetCompanyByIdAsync(id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -121,9 +121,9 @@ namespace InvSys.Companies.Api.Client.Proxy
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Company> GetCompanyAsync(this ICompaniesAPI operations, Guid id, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Company> GetCompanyByIdAsync(this ICompaniesAPI operations, Guid id, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetCompanyWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetCompanyByIdWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -180,6 +180,32 @@ namespace InvSys.Companies.Api.Client.Proxy
             public static async Task DeleteCompanyAsync(this ICompaniesAPI operations, Guid id, CancellationToken cancellationToken = default(CancellationToken))
             {
                 await operations.DeleteCompanyWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false);
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='symbol'>
+            /// </param>
+            public static Company GetCompany(this ICompaniesAPI operations, string symbol)
+            {
+                return Task.Factory.StartNew(s => ((ICompaniesAPI)s).GetCompanyAsync(symbol), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='symbol'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Company> GetCompanyAsync(this ICompaniesAPI operations, string symbol, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCompanyWithHttpMessagesAsync(symbol, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
     }

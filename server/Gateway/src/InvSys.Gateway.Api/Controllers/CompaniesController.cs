@@ -33,9 +33,9 @@ namespace InvSys.Gateway.Api.Controllers
         [AllowAnonymous]
         [SwaggerOperation("get-companies")]
         [SwaggerResponseRemoveDefaults]
-        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Page<DashboardCompany>))]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Page<CompanySummary>))]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get companies")]
-        [Produces("application/json", Type = typeof(Page<DashboardCompany>))]
+        [Produces("application/json", Type = typeof(Page<CompanySummary>))]
         public async Task<IActionResult> Get([FromQuery] Query query = null)
         {
             _logger.LogInformation("Getting companies");
@@ -47,6 +47,29 @@ namespace InvSys.Gateway.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"{_localizer["Failed to get companies"]}" + ex);
+                return BadRequest();
+            }
+        }
+
+        // GET api/companies/MENT
+        [HttpGet("{symbol}")]
+        [AllowAnonymous]
+        [SwaggerOperation("get-company")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(CompanyDetails))]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get company")]
+        [Produces("application/json", Type = typeof(CompanyDetails))]
+        public async Task<IActionResult> Get(string symbol)
+        {
+            _logger.LogInformation($"Getting company {symbol}");
+            try
+            {
+                var company = await _dashboardService.GetCompany(symbol);
+                return Ok(company);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get company {symbol}" + ex);
                 return BadRequest();
             }
         }

@@ -11,6 +11,7 @@ namespace InvSys.Companies.Core.Services
         Task<ICollection<Company>> GetCompanies();
         Task<Page<Company>> GetPageOfCompanies(Query query);
         Task<Company> GetCompany(Guid id);
+        Task<Company> GetCompany(string symbol);
         Task<Company> AddCompany(Company company);
         Task<Company> UpdateCompany(Company company);
         Task<bool> DeleteCompany(Guid id);

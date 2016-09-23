@@ -46,7 +46,7 @@ namespace InvSys.Companies.Tests.Integration.Api.Controllers
             await client.CreateCompanyAsync(newCompany);
 
             // When
-            var company = await client.GetCompanyAsync(newCompany.Id.Value);
+            var company = await client.GetCompanyByIdAsync(newCompany.Id.Value);
 
             // Then
             Assert.NotNull(company);
@@ -93,7 +93,7 @@ namespace InvSys.Companies.Tests.Integration.Api.Controllers
             await client.DeleteCompanyAsync(companyToDelete.Id.Value);
 
             // Then
-            var company = await client.GetCompanyAsync(newCompany.Id.Value);
+            var company = await client.GetCompanyByIdAsync(newCompany.Id.Value);
             Assert.Null(company);
         }
     }

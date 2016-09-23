@@ -79,7 +79,7 @@ namespace InvSys.Companies.Api.Controllers
         // GET api/companies/38d05660-8ea1-4b12-a14d-10d916c07e9c
         [HttpGet("{id:guid}")]
         [AllowAnonymous]
-        [SwaggerOperation("get-company")]
+        [SwaggerOperation("get-company-by-id")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Company))]
         [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Company not found")]
@@ -102,6 +102,37 @@ namespace InvSys.Companies.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Failed to get company with Id = {id}", ex);
+                return BadRequest();
+            }
+        }
+
+        // GET api/companies/MENT
+        [HttpGet("{symbol}")]
+        [AllowAnonymous]
+        [SwaggerOperation("get-company")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Company))]
+        [SwaggerResponse(System.Net.HttpStatusCode.NotFound, Description = "Company not found")]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get company")]
+        [Produces("application/json", Type = typeof(Company))]
+        public async Task<IActionResult> Get(string symbol)
+        {
+            _logger.LogInformation($"Getting company by symbol = {symbol}");
+            try
+            {
+                var company = await _companiesService.GetCompany(symbol);
+                if (company != null)
+                {
+                    return Ok(_mapper.Map<Company>(company));
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get company with symbol = {symbol}", ex);
                 return BadRequest();
             }
         }

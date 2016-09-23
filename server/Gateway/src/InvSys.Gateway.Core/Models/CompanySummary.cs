@@ -1,6 +1,6 @@
 ﻿namespace InvSys.Gateway.Core.Models
 {
-    public class DashboardCompany
+    public class CompanySummary
     {
         // Summary
         public string Symbol { get; set; }

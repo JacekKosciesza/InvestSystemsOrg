@@ -12,10 +12,11 @@ namespace InvSys.Gateway.Api
         public static void Configure(IMapperConfigurationExpression config)
         {
             // Company
-            config.CreateMap<Company, DashboardCompany>(MemberList.Destination);
+            config.CreateMap<Company, CompanySummary>(MemberList.Destination);
+            config.CreateMap<Company, CompanyDetails>(MemberList.Destination);
 
             // Page of Company
-            config.CreateMap<PageCompany, Page<DashboardCompany>>();
+            config.CreateMap<PageCompany, Page<CompanySummary>>();
 
             // Generic configuration
             config.AllowNullCollections = true;

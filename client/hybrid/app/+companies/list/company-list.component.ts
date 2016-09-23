@@ -12,7 +12,6 @@ import { RuleOneRatingComponent } from '../../+rule-one'
 @Component({
     templateUrl: 'build/+companies/list/company-list.component.html',
     pipes: [TranslatePipe],
-    providers: [CompanyService],
     directives: [RuleOneRatingComponent],
     styles: [`
         rule-one-rating: {
