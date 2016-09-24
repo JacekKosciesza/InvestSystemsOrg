@@ -1,11 +1,11 @@
 <h2>{{ 'Portfolio' | translate }}</h2>
-<ion-card>
+<ion-card *ngFor="let company of companies">
     <ion-item>
         <ion-thumbnail item-left>
-            <img src="img/MENT.png" />
+            <img src="{{company.logo}}" />
         </ion-thumbnail>
-        <h2>Mentor Graphics Corporation</h2>
-        <p>MENT</p>
+        <h2>{{company.name}}</h2>
+        <p>{{company.symbol}}</p>
     </ion-item>
     <ion-card-content>
         <!--TODO-->
