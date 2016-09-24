@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
 using AutoMapper;
 using InvSys.Companies.Api.Client.Proxy.Models;
 using InvSys.Gateway.Core.Models;
 using InvSys.Gateway.Core.Services;
 using InvSys.Shared.Core.Model;
+using InvSys.Watchlists.Api.Client.Proxy.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.SwaggerGen.Annotations;
+using System.Collections.Generic;
 
 namespace InvSys.Gateway.Api.Controllers
 {
@@ -28,14 +31,14 @@ namespace InvSys.Gateway.Api.Controllers
             _localizer = localizer;
         }
 
-        // GET api/watchlists        
-        [HttpGet]
+        // GET http://localhost:5002/api/watchlists/6E274718-69D8-4F7A-8F08-2F868182C758
+        [HttpGet("{userId:guid}")]
         [AllowAnonymous]
         [SwaggerOperation("get-watchlist")]
         [SwaggerResponseRemoveDefaults]
-        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Watchlist))]
-        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get companies")]
-        [Produces("application/json", Type = typeof(Watchlist))]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<CompanySummary>))]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get watchlist")]
+        [Produces("application/json", Type = typeof(ICollection<CompanySummary>))]
         public async Task<IActionResult> Get(Guid userId)
         {
             _logger.LogInformation($"Getting watchlist for user {userId}");

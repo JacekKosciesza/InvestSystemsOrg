@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using InvSys.Gateway.Core.Models;
 using InvSys.Watchlists.Api.Client.Proxy;
@@ -24,7 +25,7 @@ namespace InvSys.Gateway.Core.Services
             _mapper = mapper;
         }
 
-        public async Task<Watchlist> GetWatchlist(Guid userId)
+        public async Task<ICollection<CompanySummary>> GetWatchlist(Guid userId)
         {
             // get watchlist
             var userWatchlist = await _watchlistsApi.GetWatchlistAsync(userId);
@@ -32,12 +33,22 @@ namespace InvSys.Gateway.Core.Services
 
 
             // get companies & rule #1 ratings
-            var getCompaniesAsync = _companiesApi.GetCompanyAsync(companySymbols);
+            var getCompaniesAsync = _companiesApi.GetCompaniesAsync($"[{companySymbols}]");
             var getRatingsAsync = _ruleOneApi.GetRatingsAsync(companySymbols);
             await Task.WhenAll(getCompaniesAsync, getRatingsAsync);
 
-            var watchlist = _mapper.Map<Watchlist>(userWatchlist);
-            return watchlist;
+            var companies = _mapper.Map<ICollection<CompanySummary>>(getCompaniesAsync.Result);
+            var ratings = getRatingsAsync.Result;            
+            foreach (var rating in ratings)
+            {
+                var company = companies.SingleOrDefault(c => c.Symbol == rating.CompanySymbol);
+                if (company != null)
+                {
+                    company.IsWonderful = rating.IsWonderful;
+                }
+            }
+
+            return companies;
         }
     }
 }

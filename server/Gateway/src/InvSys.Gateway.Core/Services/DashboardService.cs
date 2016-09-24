@@ -25,7 +25,7 @@ namespace InvSys.Gateway.Core.Services
         public async Task<Page<CompanySummary>> GetCompanies(Query query)
         {
             // get companies
-            var pageOfCompanies = await _companiesApi.GetCompaniesAsync(query.Page, query.Display, query.OrderBy, query.Q);
+            var pageOfCompanies = await _companiesApi.GetPageOfCompaniesAsync(query.Page, query.Display, query.OrderBy, query.Q);
             var pageOfDashboardCompanies = _mapper.Map<Page<CompanySummary>>(pageOfCompanies);
 
             // get rule #1 ratings for the companies
