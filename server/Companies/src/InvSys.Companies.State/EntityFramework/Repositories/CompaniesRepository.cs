@@ -96,6 +96,14 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
             return page;
         }
 
+        public Task<List<Company>> Get(IEnumerable<string> companySymbols)
+        {
+            return _companiesContext.Companies
+                .Include(c => c.Translations)
+                .Where(r => companySymbols.Contains(r.Symbol))
+                .ToListAsync();
+        }
+
         public Task<Company> Get(string symbol)
         {
             return _companiesContext.Companies
@@ -113,6 +121,6 @@ namespace InvSys.Companies.State.EntityFramework.Repositories
 
             _companiesContext.Companies.Attach(company);
             _companiesContext.Entry(company).State = EntityState.Modified;
-        }
+        }        
     }
 }

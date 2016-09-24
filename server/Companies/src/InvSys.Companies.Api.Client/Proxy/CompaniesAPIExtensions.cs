@@ -50,9 +50,9 @@ namespace InvSys.Companies.Api.Client.Proxy
             /// </param>
             /// <param name='q'>
             /// </param>
-            public static PageCompany GetCompanies(this ICompaniesAPI operations, int? page = default(int?), int? display = default(int?), string orderBy = default(string), string q = default(string))
+            public static PageCompany GetPageOfCompanies(this ICompaniesAPI operations, int? page = default(int?), int? display = default(int?), string orderBy = default(string), string q = default(string))
             {
-                return Task.Factory.StartNew(s => ((ICompaniesAPI)s).GetCompaniesAsync(page, display, orderBy, q), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((ICompaniesAPI)s).GetPageOfCompaniesAsync(page, display, orderBy, q), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -69,9 +69,9 @@ namespace InvSys.Companies.Api.Client.Proxy
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PageCompany> GetCompaniesAsync(this ICompaniesAPI operations, int? page = default(int?), int? display = default(int?), string orderBy = default(string), string q = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PageCompany> GetPageOfCompaniesAsync(this ICompaniesAPI operations, int? page = default(int?), int? display = default(int?), string orderBy = default(string), string q = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetCompaniesWithHttpMessagesAsync(page, display, orderBy, q, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetPageOfCompaniesWithHttpMessagesAsync(page, display, orderBy, q, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -98,6 +98,32 @@ namespace InvSys.Companies.Api.Client.Proxy
             public static async Task<Company> CreateCompanyAsync(this ICompaniesAPI operations, Company company = default(Company), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateCompanyWithHttpMessagesAsync(company, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='companySymbols'>
+            /// </param>
+            public static IList<Company> GetCompanies(this ICompaniesAPI operations, string companySymbols)
+            {
+                return Task.Factory.StartNew(s => ((ICompaniesAPI)s).GetCompaniesAsync(companySymbols), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='companySymbols'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IList<Company>> GetCompaniesAsync(this ICompaniesAPI operations, string companySymbols, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCompaniesWithHttpMessagesAsync(companySymbols, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

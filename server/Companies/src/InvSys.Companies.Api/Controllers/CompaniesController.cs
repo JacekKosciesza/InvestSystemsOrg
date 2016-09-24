@@ -57,19 +57,43 @@ namespace InvSys.Companies.Api.Controllers
         // GET api/companies        
         [HttpGet]
         [AllowAnonymous]
-        [SwaggerOperation("get-companies")]
+        [SwaggerOperation("get-page-of-companies")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(Page<Company>))]
-        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get companies")]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get page of companies")]
         [Produces("application/json", Type = typeof(Page<Company>))]
         public async Task<IActionResult> Get([FromQuery] Query query = null)
         {
-            _logger.LogInformation("Getting companies");
+            _logger.LogInformation("Getting page of companies");
             try
             {
                 var pageOfCompanies = await _companiesService.GetPageOfCompanies(query);
                 return Ok(_mapper.Map<Page<Company>>(pageOfCompanies));
             } catch (Exception ex)
+            {
+                _logger.LogError($"{_localizer["Failed to get page of companies"]}" + ex);
+                return BadRequest();
+            }
+        }
+
+        // GET api/companies/[MENT,EPAM]
+        [HttpGet("{companySymbols:regex(.*]])}")] // TODO: should be regex([[.*]]) but it is treated as replacement token :(
+        [AllowAnonymous]
+        [SwaggerOperation("get-companies")]
+        [SwaggerResponseRemoveDefaults]
+        [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<Company>))]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get companies")]
+        [Produces("application/json", Type = typeof(ICollection<Company>))]
+        public async Task<IActionResult> GetBySymbols(string companySymbols)
+        {
+            _logger.LogInformation($"Getting companies = {companySymbols}");
+            var companySymbolsArray = companySymbols.Trim(new char[]{'[', ']'}).Split(',');
+            try
+            {
+                var pageOfCompanies = await _companiesService.GetCompanies(companySymbolsArray);
+                return Ok(_mapper.Map<ICollection<Company>>(pageOfCompanies));
+            }
+            catch (Exception ex)
             {
                 _logger.LogError($"{_localizer["Failed to get companies"]}" + ex);
                 return BadRequest();

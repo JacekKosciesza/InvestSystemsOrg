@@ -24,6 +24,11 @@ namespace InvSys.Companies.Core.Services
             return await _companiesRepository.GetAll();
         }
 
+        public async Task<ICollection<Company>> GetCompanies(IEnumerable<string> companySymbols)
+        {
+            return await _companiesRepository.Get(companySymbols);
+        }
+
         public async Task<Page<Company>> GetPageOfCompanies(Query query)
         {
             query.Display = query.Display ?? int.Parse(_config["ItemsPerPage"]);
@@ -69,6 +74,6 @@ namespace InvSys.Companies.Core.Services
         {
             _companiesRepository.Delete(id);
             return await _companiesRepository.SaveChangesAsync();
-        }
+        }        
     }
 }

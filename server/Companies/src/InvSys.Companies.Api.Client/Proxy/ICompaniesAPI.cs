@@ -56,7 +56,7 @@ namespace InvSys.Companies.Api.Client.Proxy
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<PageCompany>> GetCompaniesWithHttpMessagesAsync(int? page = default(int?), int? display = default(int?), string orderBy = default(string), string q = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<PageCompany>> GetPageOfCompaniesWithHttpMessagesAsync(int? page = default(int?), int? display = default(int?), string orderBy = default(string), string q = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='company'>
         /// </param>
@@ -67,6 +67,16 @@ namespace InvSys.Companies.Api.Client.Proxy
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<Company>> CreateCompanyWithHttpMessagesAsync(Company company = default(Company), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name='companySymbols'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<IList<Company>>> GetCompaniesWithHttpMessagesAsync(string companySymbols, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='id'>
         /// </param>
