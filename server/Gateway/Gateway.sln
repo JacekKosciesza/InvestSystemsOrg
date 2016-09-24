@@ -33,6 +33,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Watchlists", "Watchlists", 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Watchlists.Api.Client", "..\Watchlists\src\InvSys.Watchlists.Api.Client\InvSys.Watchlists.Api.Client.xproj", "{60EE7CB9-8294-4FF6-BA60-8BEC9A3ADBCB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portfolios", "Portfolios", "{9914C574-69AA-4DFE-91D9-6A96C9A51B2D}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "InvSys.Portfolios.Api.Client", "..\Portfolios\src\InvSys.Portfolios.Api.Client\InvSys.Portfolios.Api.Client.xproj", "{EDE5D8BC-0965-4AC7-A5D3-4A542DC7EECA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +83,10 @@ Global
 		{60EE7CB9-8294-4FF6-BA60-8BEC9A3ADBCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60EE7CB9-8294-4FF6-BA60-8BEC9A3ADBCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60EE7CB9-8294-4FF6-BA60-8BEC9A3ADBCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE5D8BC-0965-4AC7-A5D3-4A542DC7EECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE5D8BC-0965-4AC7-A5D3-4A542DC7EECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE5D8BC-0965-4AC7-A5D3-4A542DC7EECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE5D8BC-0965-4AC7-A5D3-4A542DC7EECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +100,6 @@ Global
 		{56D2D2B2-EF3B-44BD-A532-6D67AAA1A9EF} = {6BCFF258-C2B5-4CCD-A92E-06A937CD357F}
 		{F063C6F3-9FB1-447A-9D29-BE7389F23611} = {B1AB5303-D648-475B-87DF-9A86BE5B63E5}
 		{60EE7CB9-8294-4FF6-BA60-8BEC9A3ADBCB} = {B6443B0A-3441-43FA-8B30-E193E477BA2C}
+		{EDE5D8BC-0965-4AC7-A5D3-4A542DC7EECA} = {9914C574-69AA-4DFE-91D9-6A96C9A51B2D}
 	EndGlobalSection
 EndGlobal

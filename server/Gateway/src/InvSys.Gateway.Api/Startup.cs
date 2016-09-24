@@ -3,6 +3,7 @@ using AutoMapper;
 using InvSys.Companies.Api.Client.Proxy;
 using InvSys.Gateway.Core.GraphQLTest;
 using InvSys.Gateway.Core.Services;
+using InvSys.Portfolios.Api.Client.Proxy;
 using InvSys.RuleOne.Api.Client.Proxy;
 using InvSys.Shared.Api.Startup;
 using Microsoft.AspNetCore.Builder;
@@ -40,9 +41,11 @@ namespace InvSys.Gateway.Api
             services.AddTransient<IStarWarsGraphQL, StarWarsGraphQL>();
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IWatchlistsService, WatchlistsService>();
+            services.AddTransient<IPortfoliosService, PortfoliosService>();
             services.AddTransient<ICompaniesAPI, CompaniesAPI>(x => new CompaniesAPI(new Uri(Configuration["APIs:Companies:Url"], UriKind.Absolute)));
             services.AddTransient<IRuleOneAPI, RuleOneAPI>(x => new RuleOneAPI(new Uri(Configuration["APIs:RuleOne:Url"], UriKind.Absolute)));
             services.AddTransient<IWatchlistsAPI, WatchlistsAPI>(x => new WatchlistsAPI(new Uri(Configuration["APIs:Watchlists:Url"], UriKind.Absolute)));
+            services.AddTransient<IPortfoliosAPI, PortfoliosAPI>(x => new PortfoliosAPI(new Uri(Configuration["APIs:Portfolios:Url"], UriKind.Absolute)));
             services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 

@@ -24,7 +24,7 @@ namespace InvSys.Portfolios.Api
                    .UseContentRoot(Directory.GetCurrentDirectory())
                    .UseIISIntegration()
                    .UseStartup<Startup>()
-                   .UseUrls("http://localhost:5006")
+                   .UseUrls("http://localhost:5005")
                    .Build();
 
             host.Run();

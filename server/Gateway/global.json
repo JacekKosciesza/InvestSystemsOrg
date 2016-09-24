@@ -1,5 +1,5 @@
 {
-  "projects": [ "src", "test", "../Shared/src", "../Companies/src", "../RuleOne/src", "../Watchlists/src" ],
+  "projects": [ "src", "test", "../Shared/src", "../Companies/src", "../RuleOne/src", "../Watchlists/src", "../Portfolios/src" ],
   "sdk": {
     "version": "1.0.0-preview2-003121"
   }

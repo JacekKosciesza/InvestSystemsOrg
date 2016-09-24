@@ -1,0 +1,5 @@
+﻿Run:
+AutoRest.exe -Input http://localhost:5005/swagger/v1/swagger.json -Namespace InvSys.Portfolios.Api.Client.Proxy -PackageName Portfolios.Proxy -OutputDirectory .\Proxy -CodeGenerator CSharp -Modeler Swagger
+
+Install NuGet:
+Microsoft.Rest.ClientRuntime

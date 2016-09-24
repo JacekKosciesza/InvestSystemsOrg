@@ -13,38 +13,38 @@ namespace InvSys.Gateway.Api.Controllers
 {
     //[Authorize(Policy = "Admin")]
     [Route("api/[controller]")]
-    public class WatchlistsController : Controller
+    public class PortfoliosController : Controller
     {
-        private readonly IWatchlistsService _watchlistsService;
+        private readonly IPortfoliosService _portfoliosService;
         private readonly ILogger<CompaniesController> _logger;
         private readonly IStringLocalizer<CompaniesController> _localizer;
 
-        public WatchlistsController(IWatchlistsService watchlistsService, ILogger<CompaniesController> logger, IStringLocalizer<CompaniesController> localizer)
+        public PortfoliosController(IPortfoliosService portfoliosService, ILogger<CompaniesController> logger, IStringLocalizer<CompaniesController> localizer)
         {
-            _watchlistsService = watchlistsService;
+            _portfoliosService = portfoliosService;
             _logger = logger;
             _localizer = localizer;
         }
 
-        // GET http://localhost:5002/api/watchlists/6E274718-69D8-4F7A-8F08-2F868182C758
+        // GET http://localhost:5002/api/portfolios/79A75268-CB36-4E7A-918B-FE3A76C7BB82
         [HttpGet("{userId:guid}")]
         [AllowAnonymous]
-        [SwaggerOperation("get-watchlist")]
+        [SwaggerOperation("get-portfolio")]
         [SwaggerResponseRemoveDefaults]
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<CompanySummary>))]
-        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get watchlist")]
+        [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get portfolio")]
         [Produces("application/json", Type = typeof(ICollection<CompanySummary>))]
         public async Task<IActionResult> Get(Guid userId)
         {
-            _logger.LogInformation($"Getting watchlist for user {userId}");
+            _logger.LogInformation($"Getting portfolio for user {userId}");
             try
             {
-                var watchlist = await _watchlistsService.GetWatchlist(userId);
+                var watchlist = await _portfoliosService.GetPortfolio(userId);
                 return Ok(watchlist);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get watchlist for user {userId}" + ex);
+                _logger.LogError($"Failed to get portfolio for user {userId}" + ex);
                 return BadRequest();
             }
         }

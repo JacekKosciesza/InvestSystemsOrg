@@ -5,6 +5,7 @@
     "AutoMapper": "5.0.2",
     "GraphQL": "0.10.2.436",
     "InvSys.Companies.Api.Client": "1.0.0-*",
+    "InvSys.Portfolios.Api.Client": "1.0.0-*",
     "InvSys.RuleOne.Api.Client": "1.0.0-*",
     "InvSys.Shared.Core": "1.0.0-*",
     "InvSys.Watchlists.Api.Client": "1.0.0-*"
