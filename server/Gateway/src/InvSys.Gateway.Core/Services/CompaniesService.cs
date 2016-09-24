@@ -8,14 +8,14 @@ using InvSys.Shared.Core.Model;
 
 namespace InvSys.Gateway.Core.Services
 {
-    public class DashboardService : IDashboardService
+    public class CompaniesService : ICompaniesService
     {
         private readonly ICompaniesAPI _companiesApi;
         private readonly IRuleOneAPI _ruleOneApi;
         private readonly IMapper _mapper;
 
 
-        public DashboardService(ICompaniesAPI companiesApi, IRuleOneAPI ruleOneApi, IMapper mapper)
+        public CompaniesService(ICompaniesAPI companiesApi, IRuleOneAPI ruleOneApi, IMapper mapper)
         {            
             _companiesApi = companiesApi;
             _ruleOneApi = ruleOneApi;

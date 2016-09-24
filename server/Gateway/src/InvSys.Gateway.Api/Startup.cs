@@ -38,7 +38,7 @@ namespace InvSys.Gateway.Api
             services.AddInvSys(Configuration);
 
             services.AddTransient<IStarWarsGraphQL, StarWarsGraphQL>();
-            services.AddTransient<IDashboardService, DashboardService>();
+            services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IWatchlistsService, WatchlistsService>();
             services.AddTransient<ICompaniesAPI, CompaniesAPI>(x => new CompaniesAPI(new Uri(Configuration["APIs:Companies:Url"], UriKind.Absolute)));
             services.AddTransient<IRuleOneAPI, RuleOneAPI>(x => new RuleOneAPI(new Uri(Configuration["APIs:RuleOne:Url"], UriKind.Absolute)));

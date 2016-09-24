@@ -17,11 +17,11 @@ namespace InvSys.Gateway.Api.Controllers
     [Route("api/[controller]")]
     public class CompaniesController : Controller
     {
-        private readonly IDashboardService _dashboardService;
+        private readonly ICompaniesService _dashboardService;
         private readonly ILogger<CompaniesController> _logger;
         private readonly IStringLocalizer<CompaniesController> _localizer;
 
-        public CompaniesController(IDashboardService dashboardService, ILogger<CompaniesController> logger, IStringLocalizer<CompaniesController> localizer)
+        public CompaniesController(ICompaniesService dashboardService, ILogger<CompaniesController> logger, IStringLocalizer<CompaniesController> localizer)
         {
             _dashboardService = dashboardService;
             _logger = logger;

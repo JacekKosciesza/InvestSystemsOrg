@@ -4,7 +4,7 @@ using InvSys.Shared.Core.Model;
 
 namespace InvSys.Gateway.Core.Services
 {
-    public interface IDashboardService
+    public interface ICompaniesService
     {
         Task<Page<CompanySummary>> GetCompanies(Query query);
         Task<CompanyDetails> GetCompany(string symbol);
