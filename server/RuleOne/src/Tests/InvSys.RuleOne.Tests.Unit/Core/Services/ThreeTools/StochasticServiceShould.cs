@@ -246,11 +246,10 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
             #endregion
             var expectedLast = expected.Last();
             var calculatedLast = calculated.Last();
-            Assert.Equal(expectedLast.HighestHigh, calculatedLast.HighestHigh);
-            Assert.Equal(expectedLast.LowestLow, calculatedLast.LowestLow);
-            Assert.Equal(expectedLast.PercentK, calculatedLast.PercentK);
-            Assert.Equal(expectedLast.PercentD, calculatedLast.PercentD);
-
+            Assert.Equal(expectedLast.HighestHigh, decimal.Round(calculatedLast.HighestHigh, 2));
+            Assert.Equal(expectedLast.LowestLow, decimal.Round(calculatedLast.LowestLow, 2));
+            Assert.Equal(expectedLast.PercentK, decimal.Round(calculatedLast.PercentK, 8));
+            Assert.Equal(expectedLast.PercentD, decimal.Round(calculatedLast.PercentD, 8));
         }
     }
 }

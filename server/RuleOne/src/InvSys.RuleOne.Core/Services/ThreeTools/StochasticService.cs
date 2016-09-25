@@ -13,7 +13,6 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
             entries.Insert(0, new StochasticData());
             for (var i = 1; i < entries.Count; i++)
             {
-                var previousValue = entries[i - 1];
                 var currentValue = entries[i];
                 var index = i + 1;
 
