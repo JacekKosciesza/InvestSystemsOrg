@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using InvSys.RuleOne.Core.Models.ThreeTools;
 using InvSys.RuleOne.Core.Services;
 using InvSys.RuleOne.Core.Services.ThreeTools;
@@ -281,7 +282,7 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
             IEMAService emaService = new EMAService();
 
             // Act
-            var ema = emaService.Calculate(prices, 10);
+            var calculated = emaService.Calculate(prices, 10);
 
             // Assert
             #region Expected output
@@ -548,6 +549,9 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
                 new EMAData {Date =  new DateTime(2014, 1 , 10), EMA = 36.77123081m},
             };
             #endregion
+            var expectedLast = expected.Last();
+            var calculatedLast = calculated.Last();
+            Assert.Equal(expectedLast.EMA, calculatedLast.EMA);
         }
     }
 }

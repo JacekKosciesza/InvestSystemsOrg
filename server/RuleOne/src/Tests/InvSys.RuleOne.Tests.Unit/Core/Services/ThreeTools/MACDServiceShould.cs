@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using InvSys.RuleOne.Core.Models.ThreeTools;
 using InvSys.RuleOne.Core.Services.ThreeTools;
 using InvSys.StockQuotes.Api.Client.Proxy.Models;
@@ -87,7 +88,7 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
             IMACDService macdService = new MACDService();
 
             // Act
-            var output = macdService.Calculate(prices, 12, 26, 9);
+            var calculated = macdService.Calculate(prices, 12, 26, 9);
 
             // Assert
             #region Expected output
@@ -162,6 +163,13 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
             };
 
             #endregion
+            var expectedLast = expected.Last();
+            var calculatedLast = calculated.Last();
+            Assert.Equal(expectedLast.EMA12Day, calculatedLast.EMA12Day);
+            Assert.Equal(expectedLast.EMA26Day, calculatedLast.EMA26Day);
+            Assert.Equal(expectedLast.MACD, calculatedLast.MACD);
+            Assert.Equal(expectedLast.Signal, calculatedLast.Signal);
+            Assert.Equal(expectedLast.Histogram, calculatedLast.Histogram);
         }
     }
 }

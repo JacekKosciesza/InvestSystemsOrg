@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using InvSys.RuleOne.Core.Models.ThreeTools;
-using InvSys.RuleOne.Core.Services;
 using InvSys.RuleOne.Core.Services.ThreeTools;
 using InvSys.StockQuotes.Api.Client.Proxy.Models;
 using Xunit;
@@ -129,7 +129,7 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
             IStochasticService stochasticService = new StochasticService();
 
             // Act
-            var stochastic = stochasticService.Calculate(prices, 14, 3); // 14, 3 not 14, 5 because test data is for 14, 3
+            var calculated = stochasticService.Calculate(prices, 14, 3); // 14, 3 not 14, 5 because test data is for 14, 3
 
             // Assert
             #region Expected output
@@ -244,6 +244,13 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
                 new StochasticData{ Date = new DateTime(2013, 9, 20), HighestHigh = 1729.86m, LowestLow = 1633.41m, PercentK = 79.31570762m, PercentD =  89.35438026m}
             };
             #endregion
+            var expectedLast = expected.Last();
+            var calculatedLast = calculated.Last();
+            Assert.Equal(expectedLast.HighestHigh, calculatedLast.HighestHigh);
+            Assert.Equal(expectedLast.LowestLow, calculatedLast.LowestLow);
+            Assert.Equal(expectedLast.PercentK, calculatedLast.PercentK);
+            Assert.Equal(expectedLast.PercentD, calculatedLast.PercentD);
+
         }
     }
 }
