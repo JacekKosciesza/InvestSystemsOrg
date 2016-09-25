@@ -1,9 +1,8 @@
-{
+﻿{
   "version": "1.0.0-*",
 
   "dependencies": {
-    "InvSys.Shared.Core": "1.0.0-*",
-    "InvSys.StockQuotes.Api.Client": "1.0.0-*"
+    "Microsoft.Rest.ClientRuntime": "2.3.2"
   },
 
   "frameworks": {

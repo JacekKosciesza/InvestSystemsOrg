@@ -1,4 +1,5 @@
 ﻿using InvSys.RuleOne.Core.Models;
+using InvSys.RuleOne.Core.Models.ThreeTools;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -17,6 +18,9 @@ namespace InvSys.RuleOne.State.EntityFramework
         }
 
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<EMAData> EMA { get; set; }
+        public DbSet<MACDData> MACD { get; set; }
+        public DbSet<StochasticData> Stochastic { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

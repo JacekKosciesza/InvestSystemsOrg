@@ -27,7 +27,7 @@ namespace InvSys.StockQuotes.Api.Controllers
             _localizer = localizer;
         }
 
-        // GET api/watchlists        
+        // GET api/historicalprices        
         [HttpGet]
         [AllowAnonymous]
         [SwaggerOperation("get-historical-prices")]
@@ -35,7 +35,7 @@ namespace InvSys.StockQuotes.Api.Controllers
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<HistoricalQuote>))]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get all historical prices")]
         [Produces("application/json", Type = typeof(ICollection<HistoricalQuote>))]
-        public async Task<IActionResult> Get(string stockExchange, string companySymbol, DateTime? startDate, DateTime? endDate)
+        public async Task<IActionResult> Get([FromQuery]string stockExchange, [FromQuery]string companySymbol, [FromQuery]DateTime? startDate, [FromQuery]DateTime? endDate)
         {
             _logger.LogInformation("Getting all historical prices");
             try
