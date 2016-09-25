@@ -14,11 +14,10 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
         {
             var entries = prices.Select(p => new EMAData { Date = p.Date.Value, Price = (decimal)p.Close.Value }).ToList(); // TODO: swagger and decimal (https://github.com/Azure/autorest/issues/83)
             entries.Insert(0, new EMAData { Date = new DateTime(1900, 1, 1), Price = 0 });
-            for (var i = 1; i < entries.Count; i++)
+            for (var index = 1; index < entries.Count; index++)
             {
-                var previousValue = entries[i - 1];
-                var currentValue = entries[i];
-                var index = i + 1;
+                var previousValue = entries[index - 1];
+                var currentValue = entries[index];
 
                 currentValue.PriceSum = previousValue.PriceSum + currentValue.Price;
                 currentValue.PriceAverage = currentValue.PriceSum / index;
@@ -30,7 +29,7 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
                 }
                 else if (index > days)
                 {
-                    currentValue.EMA = currentValue.Price * ((decimal)2 / (days + 1)) + previousValue.EMA * (1 - 2 / (days + 1));
+                    currentValue.EMA = currentValue.Price * ((decimal)2 / (days + 1)) + previousValue.EMA * (1 - (decimal)2 / (days + 1));
                 }
             }
 

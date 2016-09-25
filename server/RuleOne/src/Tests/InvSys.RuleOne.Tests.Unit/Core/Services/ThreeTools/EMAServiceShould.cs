@@ -282,7 +282,7 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
             IEMAService emaService = new EMAService();
 
             // Act
-            var calculated = emaService.Calculate(prices, 10);
+            var calculated = emaService.Calculate(prices, 26); // not 10, but 26 because test data is for 26
 
             // Assert
             #region Expected output
@@ -551,7 +551,7 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
             #endregion
             var expectedLast = expected.Last();
             var calculatedLast = calculated.Last();
-            Assert.Equal(expectedLast.EMA, calculatedLast.EMA);
+            Assert.Equal(expectedLast.EMA, decimal.Round(calculatedLast.EMA, 8)); // TODO: check if this is correct way of caomparing decimals
         }
     }
 }
