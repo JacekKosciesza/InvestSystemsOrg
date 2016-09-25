@@ -165,11 +165,11 @@ namespace InvSys.RuleOne.Tests.Unit.Core.Services.ThreeTools
             #endregion
             var expectedLast = expected.Last();
             var calculatedLast = calculated.Last();
-            Assert.Equal(expectedLast.EMA12Day, calculatedLast.EMA12Day);
-            Assert.Equal(expectedLast.EMA26Day, calculatedLast.EMA26Day);
-            Assert.Equal(expectedLast.MACD, calculatedLast.MACD);
-            Assert.Equal(expectedLast.Signal, calculatedLast.Signal);
-            Assert.Equal(expectedLast.Histogram, calculatedLast.Histogram);
+            Assert.Equal(expectedLast.EMA12Day, decimal.Round(calculatedLast.EMA12Day, 7));
+            Assert.Equal(expectedLast.EMA26Day, decimal.Round(calculatedLast.EMA26Day, 7));
+            Assert.Equal(expectedLast.MACD, decimal.Round(calculatedLast.MACD, 9));
+            Assert.Equal(expectedLast.Signal, decimal.Round(calculatedLast.Signal, 9));
+            Assert.Equal(expectedLast.Histogram, decimal.Round(calculatedLast.Histogram, 9));
         }
     }
 }

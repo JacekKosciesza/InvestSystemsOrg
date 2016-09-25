@@ -14,11 +14,10 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
         {
             var entries = prices.Select(p => new MACDData { Date = p.Date.Value, Price = (decimal)p.Close.Value }).ToList(); // TODO: swagger and decimal (https://github.com/Azure/autorest/issues/83)
             entries.Insert(0, new MACDData { Date = new DateTime(1900, 1, 1), Price = 0 });
-            for (var i = 1; i < entries.Count; i++)
+            for (var index = 1; index < entries.Count; index++)
             {
-                var previousValue = entries[i - 1];
-                var currentValue = entries[i];
-                var index = i + 1;
+                var previousValue = entries[index - 1];
+                var currentValue = entries[index];
 
                 currentValue.PriceSum = previousValue.PriceSum + currentValue.Price;
                 currentValue.PriceAverage = currentValue.PriceSum / index;
@@ -30,7 +29,7 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
                 }
                 else if (index > param1)
                 {
-                    currentValue.EMA12Day = currentValue.Price * ((decimal)2 / (param1 + 1)) + previousValue.EMA12Day * (1 - 2 / (param1 + 1));
+                    currentValue.EMA12Day = currentValue.Price * ((decimal)2 / (param1 + 1)) + previousValue.EMA12Day * (1 - (decimal)2 / (param1 + 1));
                 }
 
                 // 26 Day EMA
@@ -40,7 +39,7 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
                 }
                 else if (index > param2)
                 {
-                    currentValue.EMA26Day = currentValue.Price * ((decimal)2 / (param2 + 1)) + previousValue.EMA26Day * (1 - 2 / (param2 + 1));
+                    currentValue.EMA26Day = currentValue.Price * ((decimal)2 / (param2 + 1)) + previousValue.EMA26Day * (1 - (decimal)2 / (param2 + 1));
                 }
 
                 // MCDA
@@ -58,7 +57,7 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
                 }
                 else if (index > (param2 + param3 - 1))
                 {
-                    currentValue.Signal = currentValue.MACD * ((decimal)2 / (param3 + 1)) + previousValue.Signal * (1 - 2 / (param3 + 1));
+                    currentValue.Signal = currentValue.MACD * ((decimal)2 / (param3 + 1)) + previousValue.Signal * (1 - (decimal)2 / (param3 + 1));
                 }
 
                 // Histogram
