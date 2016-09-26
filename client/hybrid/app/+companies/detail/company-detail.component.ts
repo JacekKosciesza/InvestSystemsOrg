@@ -4,10 +4,12 @@ import { TranslatePipe } from 'ng2-translate/ng2-translate';
 import { CompanyEditComponent } from '../edit';
 import { IdentityService } from '../../+identity';
 import { CompanyService } from '../shared';
+import { ThreeToolsComponent } from '../../+rule-one';
 
 @Component({
   templateUrl: 'build/+companies/detail/company-detail.component.html',
   pipes: [TranslatePipe],
+  directives: [ThreeToolsComponent]
 })
 export class CompanyDetailComponent implements OnInit {
   company: any;

@@ -39,7 +39,8 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
                 }
             }
 
-            return entries;
+            return entries.Where(e => e.PercentK != 0 && e.PercentD != 0).OrderBy(e => e.Date).ToList();
+
         }
     }
 }

@@ -30,9 +30,12 @@ namespace InvSys.RuleOne.Api
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            _mapperConfiguration = new MapperConfiguration(Mapper.Configure);
         }
 
         public IConfigurationRoot Configuration { get; }
+        private readonly MapperConfiguration _mapperConfiguration;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -47,7 +50,7 @@ namespace InvSys.RuleOne.Api
             services.AddScoped<IStochasticService, StochasticService>(); 
             services.AddScoped<IRatingsRepository, RatingsRepository>();
             services.AddScoped<IStockQuotesAPI, StockQuotesAPI>(x => new StockQuotesAPI(new Uri(Configuration["APIs:StockQuotes:Url"], UriKind.Absolute)));
-            //services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
+            services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

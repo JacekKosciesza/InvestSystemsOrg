@@ -33,7 +33,7 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
                 }
             }
 
-            return entries;
+            return entries.Where(e => e.EMA != 0).OrderBy(e => e.Date).ToList();
         }
     }
 }

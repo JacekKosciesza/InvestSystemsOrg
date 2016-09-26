@@ -49,7 +49,7 @@ namespace InvSys.RuleOne.Core.Services
         public async Task<ICollection<EMAData>> GetEMA(string companySymbol)
         {
             // get historical stock prices
-            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("NYSE", companySymbol); // TODO: stock exchange
+            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol); // TODO: stock exchange
 
             // calculate 10 days EMA (Exponential Moving Average)
             var ema = _emaService.Calculate(prices, 10);
@@ -60,7 +60,7 @@ namespace InvSys.RuleOne.Core.Services
         public async Task<ICollection<MACDData>> GetMACD(string companySymbol)
         {
             // get historical stock prices
-            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("NYSE", companySymbol); // TODO: stock exchange
+            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol); // TODO: stock exchange
 
             // calculate 12 days, 26 days, 9 days MACD (Moving Average Convergence Divergence)
             var macd = _macdService.Calculate(prices, 12, 26, 9);
@@ -71,7 +71,7 @@ namespace InvSys.RuleOne.Core.Services
         public async Task<ICollection<StochasticData>> GetStochastic(string companySymbol)
         {
             // get historical stock prices
-            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("NYSE", companySymbol); // TODO: stock exchange
+            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol); // TODO: stock exchange
 
             // calculate 14 days, 5 days Stochastic Oscillator
             var stochastic = _stochasticService.Calculate(prices, 14, 5);

@@ -67,7 +67,7 @@ namespace InvSys.RuleOne.Core.Services.ThreeTools
                 }
             }
 
-            return entries;
+            return entries.Where(e => e.MACD != 0 && e.Signal != 0).OrderBy(e => e.Date).ToList();
         }
     }
 }

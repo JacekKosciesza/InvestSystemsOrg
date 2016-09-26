@@ -19,7 +19,7 @@
     "InvSys.StockQuotes.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5005/api/historicalprices?stockExchange=ASX&companySymbol=AFI",
+      "launchUrl": "http://localhost:5007/api/historicalprices?stockExchange=ASX&companySymbol=AFI",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

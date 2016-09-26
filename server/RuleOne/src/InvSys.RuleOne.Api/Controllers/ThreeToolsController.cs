@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using InvSys.RuleOne.Core.Models;
-using InvSys.RuleOne.Core.Models.ThreeTools;
+using AutoMapper;
+using InvSys.RuleOne.Api.Models;
 using InvSys.RuleOne.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,22 +13,25 @@ using Swashbuckle.SwaggerGen.Annotations;
 namespace InvSys.RuleOne.Api.Controllers
 {
     //[Authorize(Policy = "Admin")]
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     public class ThreeToolsController : Controller
     {
         private readonly IRuleOneService _ruleOneService;
         private readonly ILogger<RatingsController> _logger;
+        private readonly IMapper _mapper;
         private readonly IStringLocalizer<RatingsController> _localizer;
 
-        public ThreeToolsController(IRuleOneService ruleOneService, ILogger<RatingsController> logger, IStringLocalizer<RatingsController> localizer)
+        public ThreeToolsController(IRuleOneService ruleOneService, ILogger<RatingsController> logger, IMapper mapper, IStringLocalizer<RatingsController> localizer)
         {
             _ruleOneService = ruleOneService;
             _logger = logger;
+            _mapper = mapper;
             _localizer = localizer;
         }
 
-        // GET api/treetools/ema
+        // GET api/treetools/ema/EPAM
         [HttpGet("{companySymbol}")]
+        [Route("api/[controller]/ema/{companySymbol}")]
         [AllowAnonymous]
         [SwaggerOperation("get-ema")]
         [SwaggerResponseRemoveDefaults]
@@ -42,7 +44,7 @@ namespace InvSys.RuleOne.Api.Controllers
             try
             {
                 var ema = await _ruleOneService.GetEMA(companySymbol);
-                return Ok(ema);
+                return Ok(_mapper.Map<ICollection<EMAData>>(ema));
             }
             catch (Exception ex)
             {
@@ -51,8 +53,9 @@ namespace InvSys.RuleOne.Api.Controllers
             }
         }
 
-        // GET api/treetools/macd
+        // GET api/treetools/macd/EPAM
         [HttpGet("{companySymbol}")]
+        [Route("api/[controller]/macd/{companySymbol}")]
         [AllowAnonymous]
         [SwaggerOperation("get-macd")]
         [SwaggerResponseRemoveDefaults]
@@ -65,7 +68,7 @@ namespace InvSys.RuleOne.Api.Controllers
             try
             {
                 var macd = await _ruleOneService.GetMACD(companySymbol);
-                return Ok(macd);
+                return Ok(_mapper.Map<ICollection<MACDData>>(macd));
             }
             catch (Exception ex)
             {
@@ -74,8 +77,9 @@ namespace InvSys.RuleOne.Api.Controllers
             }
         }
 
-        // GET api/treetools/stochastic
+        // GET api/treetools/stochastic/EPAM
         [HttpGet("{companySymbol}")]
+        [Route("api/[controller]/stochastic/{companySymbol}")]
         [AllowAnonymous]
         [SwaggerOperation("get-stochastic")]
         [SwaggerResponseRemoveDefaults]
@@ -88,7 +92,7 @@ namespace InvSys.RuleOne.Api.Controllers
             try
             {
                 var stochastic = await _ruleOneService.GetStochastic(companySymbol);
-                return Ok(stochastic);
+                return Ok(_mapper.Map<ICollection<StochasticData>>(stochastic));
             }
             catch (Exception ex)
             {

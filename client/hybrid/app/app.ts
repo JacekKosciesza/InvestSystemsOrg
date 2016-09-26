@@ -8,7 +8,7 @@ import { CompanyListComponent } from './+companies'
 import { TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 import { IdentityService } from './+identity'
 import { CompanyService } from './+companies';
-
+import { ChartsService } from './+rule-one';
 
 @Component({
   templateUrl: 'build/app.html'
@@ -17,7 +17,7 @@ class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage: any = DashboardComponent; // TODO: CompanyListComponent;
+  rootPage: any = CompanyListComponent; // DashboardComponent or CompanyListComponent
   pages: Array<{ title: string, component: any }>;
 
   constructor(
@@ -65,5 +65,6 @@ ionicBootstrap(MyApp, [
   },
   TranslateService,
   IdentityService,
-  CompanyService
+  CompanyService,
+  ChartsService
 ]);
