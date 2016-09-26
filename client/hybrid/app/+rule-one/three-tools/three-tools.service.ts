@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { EMAData } from '../charts';
+import { EMAData, MACDData, StochasticData } from '../charts';
 
 
 @Injectable()
@@ -16,6 +16,23 @@ export class ThreeToolsService {
     getEMA(companySymbol: string): Promise<EMAData[]> {
         companySymbol = 'AFI'; // TODO: remove it !!!
         let url = `${this.threeToolsUrl}/ema/${companySymbol}`;
+        return this.getData(url);
+    }
+
+    getMACD(companySymbol: string): Promise<MACDData[]> {
+        companySymbol = 'AFI'; // TODO: remove it !!!
+        let url = `${this.threeToolsUrl}/macd/${companySymbol}`;
+        return this.getData(url);
+    }
+
+    getStochastic(companySymbol: string): Promise<StochasticData[]> {
+        companySymbol = 'AFI'; // TODO: remove it !!!
+        let url = `${this.threeToolsUrl}/stochastic/${companySymbol}`;
+        return this.getData(url);
+    }
+
+    private getData(url: string)
+    {
         return this.http.get(url)
             .toPromise()
             .then(response => response.json() as any)

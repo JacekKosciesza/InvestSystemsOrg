@@ -1,17 +1,17 @@
 import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
 
-//import { ChartsService } from './charts.service'
-import { EMAData } from './ema-data.model'
+//import { ChartsService } from './charts.service';
+import { StochasticData } from './stochastic-data.model';
 
 declare var google: any;
 
 @Component({
-    selector: 'ema-chart',
-    template: `<div id="ema-chart"></div>`
+    selector: 'stochastic-chart',
+    template: `<div id="stochastic-chart"></div>`,
 })
-export class EmaChartComponent implements OnInit, OnChanges {
+export class StochasticChartComponent implements OnInit, OnChanges {
     @Input() title: string;
-    @Input() data: EMAData[];
+    @Input() data: StochasticData[];
     //chartsLoaded: boolean = false;
 
     constructor(/*private chartsService: ChartsService*/) {
@@ -19,8 +19,7 @@ export class EmaChartComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        // TODO: use service or make sure other way that charts are loaded (google.charts.load does not trigger callback for some reason)
-        //this.chartsService.load();
+        // this.chartsService.load();
         // this.chartsService.chartsLoaded$.subscribe(loaded => {
         //     this.chartsLoaded = loaded;
         //     this.prepareDataAndDrawChart();
@@ -35,7 +34,7 @@ export class EmaChartComponent implements OnInit, OnChanges {
 
     prepareDataAndDrawChart() {
         if (/*this.chartsLoaded && */this.data && this.data.length) {
-            let rows = this.data.filter(sp => (sp.ema != null && typeof sp.ema !== 'undefined')).map(sp => sp.toRow());
+            let rows = this.data.filter(sp => (sp.percentK != null && typeof sp.percentK !== 'undefined') || (sp.percentD != null && typeof sp.percentD !== 'undefined')).map(sp => sp.toRow());
             this.drawChart(rows);
         }
     }
@@ -43,21 +42,22 @@ export class EmaChartComponent implements OnInit, OnChanges {
     drawChart(rows) {
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Date');
-        data.addColumn('number', 'Price');
-        data.addColumn('number', 'EMA');
+        data.addColumn('number', 'Buy line (%K)');
+        data.addColumn('number', 'Sell line (%D)');
+        //data.addColumn('number', 'Close Price');
 
         data.addRows(rows);
 
         var options = {
             chart: {
                 title: this.title,
-                subtitle: 'EMA & Close Price'
+                subtitle: 'Stochastic Oscillator'
             },
-            //width: 375,
+            //width: 900,
             //height: 500
         };
 
-        var chart = new google.charts.Line(document.getElementById('ema-chart')); // TODO: some unique identifier?
+        var chart = new google.charts.Line(document.getElementById('stochastic-chart')); // TODO: some unique identifier?
 
         chart.draw(data, options);
     }

@@ -11,7 +11,7 @@ namespace InvSys.RuleOne.State.EntityFramework
 
         public RuleOneContext() { }
 
-        public RuleOneContext(IConfigurationRoot config, DbContextOptions options)
+        public RuleOneContext(IConfigurationRoot config, DbContextOptions options) // TODO: check DbContextOptions vs DbContextOptions<RuleOneContext>
             : base(options)
         {
             _config = config;

@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using Swashbuckle.Swagger.Model;
 using InvSys.Shared.Api.Startup;
 using InvSys.StockQuotes.Api.Client.Proxy;
+using Microsoft.EntityFrameworkCore;
 
 namespace InvSys.RuleOne.Api
 {
@@ -42,7 +43,9 @@ namespace InvSys.RuleOne.Api
         {
             services.AddInvSys(Configuration);
 
-            services.AddDbContext<RuleOneContext>();
+            services.AddDbContext<RuleOneContext>(
+                options => options.UseSqlServer(Configuration["ConnectionStrings:CompaniesContextConnection"])
+            );
             services.AddTransient<RuleOneContextSeedData>();
             services.AddScoped<IRuleOneService, RuleOneService>();
             services.AddScoped<IEMAService, EMAService>();

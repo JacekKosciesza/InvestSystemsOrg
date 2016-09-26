@@ -1,17 +1,17 @@
 import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
 
 //import { ChartsService } from './charts.service'
-import { EMAData } from './ema-data.model'
+import { MACDData } from './macd-data.model'
 
 declare var google: any;
 
 @Component({
-    selector: 'ema-chart',
-    template: `<div id="ema-chart"></div>`
+    selector: 'macd-chart',
+    template: `<div id="macd-chart"></div>`
 })
-export class EmaChartComponent implements OnInit, OnChanges {
+export class MacdChartComponent implements OnInit, OnChanges {
     @Input() title: string;
-    @Input() data: EMAData[];
+    @Input() data: MACDData[];
     //chartsLoaded: boolean = false;
 
     constructor(/*private chartsService: ChartsService*/) {
@@ -19,7 +19,6 @@ export class EmaChartComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        // TODO: use service or make sure other way that charts are loaded (google.charts.load does not trigger callback for some reason)
         //this.chartsService.load();
         // this.chartsService.chartsLoaded$.subscribe(loaded => {
         //     this.chartsLoaded = loaded;
@@ -35,7 +34,7 @@ export class EmaChartComponent implements OnInit, OnChanges {
 
     prepareDataAndDrawChart() {
         if (/*this.chartsLoaded && */this.data && this.data.length) {
-            let rows = this.data.filter(sp => (sp.ema != null && typeof sp.ema !== 'undefined')).map(sp => sp.toRow());
+            let rows = this.data.filter(sp => (sp.macd != null && typeof sp.macd !== 'undefined') || (sp.signal != null && typeof sp.signal !== 'undefined')).map(sp => sp.toRow());
             this.drawChart(rows);
         }
     }
@@ -43,21 +42,21 @@ export class EmaChartComponent implements OnInit, OnChanges {
     drawChart(rows) {
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Date');
-        data.addColumn('number', 'Price');
-        data.addColumn('number', 'EMA');
+        data.addColumn('number', 'MACD');
+        data.addColumn('number', 'Signal');
 
         data.addRows(rows);
 
         var options = {
             chart: {
                 title: this.title,
-                subtitle: 'EMA & Close Price'
+                subtitle: 'MACD & Signal'
             },
-            //width: 375,
+            //width: 900,
             //height: 500
         };
 
-        var chart = new google.charts.Line(document.getElementById('ema-chart')); // TODO: some unique identifier?
+        var chart = new google.charts.Line(document.getElementById('macd-chart')); // TODO: some unique identifier?
 
         chart.draw(data, options);
     }
