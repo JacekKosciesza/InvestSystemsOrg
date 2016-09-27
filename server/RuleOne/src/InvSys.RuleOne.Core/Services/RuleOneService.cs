@@ -6,6 +6,7 @@ using InvSys.RuleOne.Core.Services.ThreeTools;
 using InvSys.RuleOne.Core.State;
 using InvSys.Shared.Core.Model;
 using InvSys.StockQuotes.Api.Client.Proxy;
+using System;
 
 namespace InvSys.RuleOne.Core.Services
 {
@@ -46,21 +47,28 @@ namespace InvSys.RuleOne.Core.Services
             return _repo.Get(companySymbols);
         }
 
-        public async Task<ICollection<EMAData>> GetEMA(string companySymbol)
+        public async Task<ICollection<EMAData>> GetEMA(string companySymbol, int? days)
         {
+            const int emaDays = 10;
+            int daysBack = days ?? 30;
+
             // get historical stock prices
-            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol); // TODO: stock exchange
+            var startDate = DateTime.Now.AddDays(-(emaDays + daysBack));
+            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol, startDate); // TODO: stock exchange
 
             // calculate 10 days EMA (Exponential Moving Average)
-            var ema = _emaService.Calculate(prices, 10);
+            var ema = _emaService.Calculate(prices, emaDays);
 
             return ema;
         }
 
-        public async Task<ICollection<MACDData>> GetMACD(string companySymbol)
+        public async Task<ICollection<MACDData>> GetMACD(string companySymbol, int? days)
         {
+            int daysBack = days ?? 30;
+
             // get historical stock prices
-            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol); // TODO: stock exchange
+            var startDate = DateTime.Now.AddDays(-(26 + 9 + daysBack));
+            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol, startDate); // TODO: stock exchange
 
             // calculate 12 days, 26 days, 9 days MACD (Moving Average Convergence Divergence)
             var macd = _macdService.Calculate(prices, 12, 26, 9);
@@ -68,17 +76,18 @@ namespace InvSys.RuleOne.Core.Services
             return macd;
         }
 
-        public async Task<ICollection<StochasticData>> GetStochastic(string companySymbol)
+        public async Task<ICollection<StochasticData>> GetStochastic(string companySymbol, int? days)
         {
+            int daysBack = days ?? 30;
+
             // get historical stock prices
-            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol); // TODO: stock exchange
+            var startDate = DateTime.Now.AddDays(-(14 + daysBack));
+            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol, startDate); // TODO: stock exchange
 
             // calculate 14 days, 5 days Stochastic Oscillator
             var stochastic = _stochasticService.Calculate(prices, 14, 5);
 
             return stochastic;
         }
-
-
     }
 }

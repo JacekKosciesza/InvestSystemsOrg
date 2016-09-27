@@ -28,11 +28,23 @@ namespace InvSys.StockQuotes.Core.Services
                 return dailyPrices;
             }
             
-            var yahooDailyPrices = await _yahooFinanceService.GetDailyHistoricalPriceData(stockExchange, companySymbol, startDate, endDate);
+            // get whole date range of data from Yahoo Finance and save it to database
+            var yahooDailyPrices = await _yahooFinanceService.GetDailyHistoricalPriceData(stockExchange, companySymbol);
             _historicalQuotesRepository.AddRange(yahooDailyPrices);
             await _historicalQuotesRepository.SaveChangesAsync();
 
-            return yahooDailyPrices;
+            // filter by date
+            var q = yahooDailyPrices.AsQueryable();
+            if (startDate != null)
+            {
+                q = q.Where(hq => hq.Date >= startDate.Value);
+            }
+
+            if (endDate != null)
+            {
+                q = q.Where(hq => hq.Date <= endDate.Value);
+            }
+            return q.OrderBy(p => p.Date).ToList();
         }
     }
 }

@@ -20,7 +20,21 @@ namespace InvSys.StockQuotes.State.EntityFramework.Repositories
 
         public async Task<ICollection<HistoricalQuote>> GetDailyPrices(string symbol, DateTime? startDate, DateTime? endDate)
         {
-            return await _stockQuotesContext.HistoricalQuotes.Where(x => x.Symbol == symbol).ToListAsync(); // TODO: date range
+            var q = from hq in _stockQuotesContext.HistoricalQuotes
+                where hq.Symbol == symbol
+                select hq;
+
+            if (startDate != null)
+            {
+                q = q.Where(hq => hq.Date >= startDate.Value);
+            }
+
+            if (endDate != null)
+            {
+                q = q.Where(hq => hq.Date <= endDate.Value);
+            }
+
+            return await q.ToListAsync();
         }
     }
 }

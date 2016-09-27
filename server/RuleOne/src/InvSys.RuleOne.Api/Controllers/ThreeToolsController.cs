@@ -38,12 +38,12 @@ namespace InvSys.RuleOne.Api.Controllers
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<EMAData>))]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get EMA")]
         [Produces("application/json", Type = typeof(ICollection<EMAData>))]
-        public async Task<IActionResult> EMA(string companySymbol)
+        public async Task<IActionResult> EMA(string companySymbol, [FromQuery] int? days)
         {
             _logger.LogInformation("Getting EMA");
             try
             {
-                var ema = await _ruleOneService.GetEMA(companySymbol);
+                var ema = await _ruleOneService.GetEMA(companySymbol, days);
                 return Ok(_mapper.Map<ICollection<EMAData>>(ema));
             }
             catch (Exception ex)
@@ -62,12 +62,12 @@ namespace InvSys.RuleOne.Api.Controllers
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<MACDData>))]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get MACD")]
         [Produces("application/json", Type = typeof(ICollection<MACDData>))]
-        public async Task<IActionResult> MACD(string companySymbol)
+        public async Task<IActionResult> MACD(string companySymbol, [FromQuery] int? days)
         {
             _logger.LogInformation("Getting MACD");
             try
             {
-                var macd = await _ruleOneService.GetMACD(companySymbol);
+                var macd = await _ruleOneService.GetMACD(companySymbol, days);
                 return Ok(_mapper.Map<ICollection<MACDData>>(macd));
             }
             catch (Exception ex)
@@ -86,12 +86,12 @@ namespace InvSys.RuleOne.Api.Controllers
         [SwaggerResponse(System.Net.HttpStatusCode.OK, Type = typeof(ICollection<StochasticData>))]
         [SwaggerResponse(System.Net.HttpStatusCode.BadRequest, Description = "Failed to get Stochastic")]
         [Produces("application/json", Type = typeof(ICollection<StochasticData>))]
-        public async Task<IActionResult> Stochastic(string companySymbol)
+        public async Task<IActionResult> Stochastic(string companySymbol, [FromQuery] int? days)
         {
             _logger.LogInformation("Getting Stochastic");
             try
             {
-                var stochastic = await _ruleOneService.GetStochastic(companySymbol);
+                var stochastic = await _ruleOneService.GetStochastic(companySymbol, days);
                 return Ok(_mapper.Map<ICollection<StochasticData>>(stochastic));
             }
             catch (Exception ex)

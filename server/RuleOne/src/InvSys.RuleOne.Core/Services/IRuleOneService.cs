@@ -14,8 +14,8 @@ namespace InvSys.RuleOne.Core.Services
         Task<List<Rating>> GetRatings(IEnumerable<string> companySymbols);
 
         // Three Tools
-        Task<ICollection<EMAData>> GetEMA(string companySymbol);
-        Task<ICollection<MACDData>> GetMACD(string companySymbol);
-        Task<ICollection<StochasticData>> GetStochastic(string companySymbol);
+        Task<ICollection<EMAData>> GetEMA(string companySymbol, int? days);
+        Task<ICollection<MACDData>> GetMACD(string companySymbol, int? days);
+        Task<ICollection<StochasticData>> GetStochastic(string companySymbol, int? days);
     }
 }
