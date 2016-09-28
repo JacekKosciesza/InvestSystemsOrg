@@ -12,39 +12,46 @@ namespace InvSys.RuleOne.Core.Services
 {
     public class RuleOneService : IRuleOneService
     {
-        private readonly IRatingsRepository _repo;
+        private readonly IRatingsRepository _ratingsRepository;
         private readonly IStockQuotesAPI _stockQuotesApi;
         private readonly IEMAService _emaService;
         private readonly IMACDService _macdService;
         private readonly IStochasticService _stochasticService;
+        private readonly IMoatsRepository _moatsRepository;
 
-        public RuleOneService(IRatingsRepository repo, IStockQuotesAPI stockQuotesApi, IEMAService emaService, IMACDService macdService, IStochasticService stochasticService)
+        public RuleOneService(IRatingsRepository ratingsRepository, IStockQuotesAPI stockQuotesApi, IEMAService emaService, IMACDService macdService, IStochasticService stochasticService, IMoatsRepository moatsRepository)
         {
-            _repo = repo;
+            _ratingsRepository = ratingsRepository;
             _stockQuotesApi = stockQuotesApi;
             _emaService = emaService;
             _macdService = macdService;
             _stochasticService = stochasticService;
+            _moatsRepository = moatsRepository;
         }
 
         public Task<List<Rating>> GetRatings()
         {
-            return _repo.GetAll();
+            return _ratingsRepository.GetAll();
         }
 
         public Task<Rating> GetRating(string companySymbol)
         {
-            return _repo.Get(companySymbol);
+            return _ratingsRepository.Get(companySymbol);
         }
 
         public Task<Page<Rating>> GetPageOfRatings(Query query)
         {
-            return _repo.GetPage(query);
+            return _ratingsRepository.GetPage(query);
         }
 
         public Task<List<Rating>> GetRatings(IEnumerable<string> companySymbols)
         {
-            return _repo.Get(companySymbols);
+            return _ratingsRepository.Get(companySymbols);
+        }
+
+        public Task<Moat> GetMoat(string companySymbol)
+        {
+            return _moatsRepository.Get(companySymbol);
         }
 
         public async Task<ICollection<EMAData>> GetEMA(string companySymbol, int? days)

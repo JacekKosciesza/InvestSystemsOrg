@@ -21,6 +21,8 @@ namespace InvSys.RuleOne.State.EntityFramework
         public DbSet<EMAData> EMA { get; set; }
         public DbSet<MACDData> MACD { get; set; }
         public DbSet<StochasticData> Stochastic { get; set; }
+        public DbSet<Moat> Moats { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

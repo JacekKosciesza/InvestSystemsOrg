@@ -1,3 +1,5 @@
 ﻿dotnet ef migrations add Inital -o .\EntityFramework\Migrations
 dotnet ef migrations script
 dotnet ef database update
+dotnet ef migrations add Moat -o .\EntityFramework\Migrations
+dotnet ef database update

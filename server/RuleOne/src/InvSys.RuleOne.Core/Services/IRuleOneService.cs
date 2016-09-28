@@ -13,6 +13,9 @@ namespace InvSys.RuleOne.Core.Services
         Task<Page<Rating>> GetPageOfRatings(Query query);
         Task<List<Rating>> GetRatings(IEnumerable<string> companySymbols);
 
+        // Moat
+        Task<Moat> GetMoat(string companySymbol);
+
         // Three Tools
         Task<ICollection<EMAData>> GetEMA(string companySymbol, int? days);
         Task<ICollection<MACDData>> GetMACD(string companySymbol, int? days);

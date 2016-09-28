@@ -1,0 +1,1 @@
+export * from './five-moats.component';

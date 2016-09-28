@@ -59,8 +59,28 @@ namespace InvSys.RuleOne.State.EntityFramework.Seed
                         IsWonderful = false
                     }
                 };
-                    
+
                 _db.Ratings.AddRange(ratings);
+                await _db.SaveChangesAsync();
+            }
+            if (!_db.Moats.Any())
+            {
+                var moats = new List<Moat>
+                {
+                    new Moat
+                    {
+                        CompanySymbol = "XXII",
+                        Brand = true,
+                        Secret = true
+                    },
+                    new Moat
+                    {
+                        CompanySymbol = "DDD",
+                        Switching = true
+                    }
+                };
+
+                _db.Moats.AddRange(moats);
                 await _db.SaveChangesAsync();
             }
         }

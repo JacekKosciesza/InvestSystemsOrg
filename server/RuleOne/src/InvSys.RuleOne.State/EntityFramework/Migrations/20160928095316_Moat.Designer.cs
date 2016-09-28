@@ -8,9 +8,10 @@ using InvSys.RuleOne.State.EntityFramework;
 namespace InvSys.RuleOne.State.EntityFramework.Migrations
 {
     [DbContext(typeof(RuleOneContext))]
-    partial class RuleOneContextModelSnapshot : ModelSnapshot
+    [Migration("20160928095316_Moat")]
+    partial class Moat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")

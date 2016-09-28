@@ -12,14 +12,7 @@
     <img src="{{company.logo}}"><br>
     <b>{{company.name}}</b><br>
     {{company.description}}<br>
-    <section>
-      <h1>Rule #1</h1>
-      <h2>{{ 'Meaning' | translate }}</h2>
-      <h2>{{ 'Moat' | translate }}</h2>
-      <h2>{{ 'Management' | translate }}</h2>
-      <h2>{{ 'Margin' | translate }}</h2>
-      <three-tools [companySymbol]='company.symbol'></three-tools>
-    </section>
+    <rule-one [companySymbol]='company.symbol'></rule-one>
   </div>
 </ion-content>
 <ion-footer *ngIf="identityService.token">
