@@ -1,4 +1,5 @@
 ﻿using InvSys.RuleOne.Core.Models;
+using InvSys.RuleOne.Core.Models.Management;
 using InvSys.RuleOne.Core.Models.ThreeTools;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ namespace InvSys.RuleOne.State.EntityFramework
         public DbSet<MACDData> MACD { get; set; }
         public DbSet<StochasticData> Stochastic { get; set; }
         public DbSet<Moat> Moats { get; set; }
+        public DbSet<Leader> Leaders { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

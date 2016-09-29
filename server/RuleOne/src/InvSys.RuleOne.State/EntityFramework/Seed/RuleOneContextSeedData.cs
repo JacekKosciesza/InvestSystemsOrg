@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using InvSys.RuleOne.Core.Models;
+using InvSys.RuleOne.Core.Models.Management;
 
 namespace InvSys.RuleOne.State.EntityFramework.Seed
 {
@@ -81,6 +82,38 @@ namespace InvSys.RuleOne.State.EntityFramework.Seed
                 };
 
                 _db.Moats.AddRange(moats);
+                await _db.SaveChangesAsync();
+            }
+            if (!_db.Leaders.Any())
+            {
+                var leaders = new List<Leader>
+                {
+                    new Leader
+                    {
+                        CompanySymbol = "XXII",
+                        Name = "Bill Gates",
+                        Avatar = "https://pbs.twimg.com/profile_images/558109954561679360/j1f9DiJi.jpeg",
+                        Position = "CEO",
+                        IsLevelFiveLeader = true,
+                        LeadershipExamples = new List<LeadershipExample>
+                        {
+                            new LeadershipExample
+                            {
+                                Content = "He said something that confirms that he is a level five leader.",
+                                IsPositive = true,
+                                Reference = @"Quote source, <a href=""http:\\www.google.com"">Quote Source<a>, Where, 2015"
+                            },
+                            new LeadershipExample
+                            {
+                                Content = "He said something that bad. Something that...bla bla bla",
+                                IsPositive = false,
+                                Reference = @"Something, <a href=""http:\\www.google.com"">Quote Source<a>, Lorem, 2000"
+                            }
+                        }
+                    },
+                };
+
+                _db.Leaders.AddRange(leaders);
                 await _db.SaveChangesAsync();
             }
         }

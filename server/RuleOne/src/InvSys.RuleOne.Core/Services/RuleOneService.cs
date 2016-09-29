@@ -7,6 +7,7 @@ using InvSys.RuleOne.Core.State;
 using InvSys.Shared.Core.Model;
 using InvSys.StockQuotes.Api.Client.Proxy;
 using System;
+using InvSys.RuleOne.Core.Models.Management;
 
 namespace InvSys.RuleOne.Core.Services
 {
@@ -18,8 +19,9 @@ namespace InvSys.RuleOne.Core.Services
         private readonly IMACDService _macdService;
         private readonly IStochasticService _stochasticService;
         private readonly IMoatsRepository _moatsRepository;
+        private readonly ILeadersRepository _leadersRepository;
 
-        public RuleOneService(IRatingsRepository ratingsRepository, IStockQuotesAPI stockQuotesApi, IEMAService emaService, IMACDService macdService, IStochasticService stochasticService, IMoatsRepository moatsRepository)
+        public RuleOneService(IRatingsRepository ratingsRepository, IStockQuotesAPI stockQuotesApi, IEMAService emaService, IMACDService macdService, IStochasticService stochasticService, IMoatsRepository moatsRepository, ILeadersRepository leadersRepository)
         {
             _ratingsRepository = ratingsRepository;
             _stockQuotesApi = stockQuotesApi;
@@ -27,6 +29,7 @@ namespace InvSys.RuleOne.Core.Services
             _macdService = macdService;
             _stochasticService = stochasticService;
             _moatsRepository = moatsRepository;
+            _leadersRepository = leadersRepository;
         }
 
         public Task<List<Rating>> GetRatings()
@@ -52,6 +55,11 @@ namespace InvSys.RuleOne.Core.Services
         public Task<Moat> GetMoat(string companySymbol)
         {
             return _moatsRepository.Get(companySymbol);
+        }
+
+        public Task<List<Leader>> GetManagement(string companySymbol)
+        {
+            return _leadersRepository.Get(companySymbol);
         }
 
         public async Task<ICollection<EMAData>> GetEMA(string companySymbol, int? days)

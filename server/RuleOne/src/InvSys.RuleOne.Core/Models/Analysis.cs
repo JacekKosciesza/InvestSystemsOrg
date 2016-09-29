@@ -4,7 +4,6 @@
     {
         public Meaning Meaning { get; set; }
         public Moat Moat { get; set; }
-        public Management Management { get; set; }
         public Margin Margin { get; set; }
     }
 }
