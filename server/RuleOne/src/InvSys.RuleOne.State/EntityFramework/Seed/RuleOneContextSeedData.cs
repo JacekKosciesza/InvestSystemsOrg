@@ -116,6 +116,25 @@ namespace InvSys.RuleOne.State.EntityFramework.Seed
                 _db.Leaders.AddRange(leaders);
                 await _db.SaveChangesAsync();
             }
+            if (!_db.Meanings.Any())
+            {
+                var meanings = new List<Meaning>
+                {
+                    new Meaning
+                    {
+                        CompanySymbol = "XXII",
+                        UserId = new Guid("c6c746fd-e2da-4f3b-8417-6b7716421133"),
+                        Whole = true,
+                        Understand = true,
+                        Passion = true,
+                        Talent = false,
+                        Money = true
+                    }
+                };
+
+                _db.Meanings.AddRange(meanings);
+                await _db.SaveChangesAsync();
+            }
         }
     }
 }

@@ -17,11 +17,11 @@ namespace InvSys.RuleOne.Api.Controllers
     public class ThreeToolsController : Controller
     {
         private readonly IRuleOneService _ruleOneService;
-        private readonly ILogger<RatingsController> _logger;
+        private readonly ILogger<ThreeToolsController> _logger;
         private readonly IMapper _mapper;
-        private readonly IStringLocalizer<RatingsController> _localizer;
+        private readonly IStringLocalizer<ThreeToolsController> _localizer;
 
-        public ThreeToolsController(IRuleOneService ruleOneService, ILogger<RatingsController> logger, IMapper mapper, IStringLocalizer<RatingsController> localizer)
+        public ThreeToolsController(IRuleOneService ruleOneService, ILogger<ThreeToolsController> logger, IMapper mapper, IStringLocalizer<ThreeToolsController> localizer)
         {
             _ruleOneService = ruleOneService;
             _logger = logger;

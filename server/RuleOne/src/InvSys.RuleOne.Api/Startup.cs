@@ -54,6 +54,7 @@ namespace InvSys.RuleOne.Api
             services.AddScoped<IRatingsRepository, RatingsRepository>();
             services.AddScoped<IMoatsRepository, MoatsRepository>();
             services.AddScoped<ILeadersRepository, LeadersRepository>();
+            services.AddScoped<IMeaningsRepository, MeaningsRepository>();
             services.AddScoped<IStockQuotesAPI, StockQuotesAPI>(x => new StockQuotesAPI(new Uri(Configuration["APIs:StockQuotes:Url"], UriKind.Absolute)));
             services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }

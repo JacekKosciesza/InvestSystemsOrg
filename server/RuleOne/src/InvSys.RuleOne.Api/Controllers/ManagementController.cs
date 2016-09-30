@@ -20,11 +20,11 @@ namespace InvSys.RuleOne.Api.Controllers
     public class ManagementController : Controller
     {
         private readonly IRuleOneService _ruleOneService;
-        private readonly ILogger<RatingsController> _logger;
+        private readonly ILogger<ManagementController> _logger;
         //private readonly IMapper _mapper;
-        private readonly IStringLocalizer<RatingsController> _localizer;
+        private readonly IStringLocalizer<ManagementController> _localizer;
 
-        public ManagementController(IRuleOneService ruleOneService, ILogger<RatingsController> logger, /*IMapper mapper,*/ IStringLocalizer<RatingsController> localizer)
+        public ManagementController(IRuleOneService ruleOneService, ILogger<ManagementController> logger, /*IMapper mapper,*/ IStringLocalizer<ManagementController> localizer)
         {
             _ruleOneService = ruleOneService;
             _logger = logger;

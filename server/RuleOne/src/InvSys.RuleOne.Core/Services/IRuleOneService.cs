@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using InvSys.RuleOne.Core.Models;
 using InvSys.RuleOne.Core.Models.Management;
@@ -13,6 +14,9 @@ namespace InvSys.RuleOne.Core.Services
         Task<List<Rating>> GetRatings();
         Task<Page<Rating>> GetPageOfRatings(Query query);
         Task<List<Rating>> GetRatings(IEnumerable<string> companySymbols);
+
+        // Meaning
+        Task<Meaning> GetMeaning(string companySymbol, Guid userId);
 
         // Moat
         Task<Moat> GetMoat(string companySymbol);

@@ -24,7 +24,7 @@ namespace InvSys.RuleOne.State.EntityFramework
         public DbSet<StochasticData> Stochastic { get; set; }
         public DbSet<Moat> Moats { get; set; }
         public DbSet<Leader> Leaders { get; set; }
-
+        public DbSet<Meaning> Meanings { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

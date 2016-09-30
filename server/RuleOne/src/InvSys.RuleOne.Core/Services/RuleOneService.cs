@@ -20,8 +20,9 @@ namespace InvSys.RuleOne.Core.Services
         private readonly IStochasticService _stochasticService;
         private readonly IMoatsRepository _moatsRepository;
         private readonly ILeadersRepository _leadersRepository;
+        private readonly IMeaningsRepository _meaningsRepository;
 
-        public RuleOneService(IRatingsRepository ratingsRepository, IStockQuotesAPI stockQuotesApi, IEMAService emaService, IMACDService macdService, IStochasticService stochasticService, IMoatsRepository moatsRepository, ILeadersRepository leadersRepository)
+        public RuleOneService(IRatingsRepository ratingsRepository, IStockQuotesAPI stockQuotesApi, IEMAService emaService, IMACDService macdService, IStochasticService stochasticService, IMoatsRepository moatsRepository, ILeadersRepository leadersRepository, IMeaningsRepository meaningsRepository)
         {
             _ratingsRepository = ratingsRepository;
             _stockQuotesApi = stockQuotesApi;
@@ -30,6 +31,7 @@ namespace InvSys.RuleOne.Core.Services
             _stochasticService = stochasticService;
             _moatsRepository = moatsRepository;
             _leadersRepository = leadersRepository;
+            _meaningsRepository = meaningsRepository;
         }
 
         public Task<List<Rating>> GetRatings()
@@ -50,6 +52,11 @@ namespace InvSys.RuleOne.Core.Services
         public Task<List<Rating>> GetRatings(IEnumerable<string> companySymbols)
         {
             return _ratingsRepository.Get(companySymbols);
+        }
+
+        public Task<Meaning> GetMeaning(string companySymbol, Guid userId)
+        {
+            return _meaningsRepository.Get(companySymbol, userId);
         }
 
         public Task<Moat> GetMoat(string companySymbol)
