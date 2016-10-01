@@ -24,7 +24,7 @@ namespace InvSys.Financials.Api
                    .UseContentRoot(Directory.GetCurrentDirectory())
                    .UseIISIntegration()
                    .UseStartup<Startup>()
-                   .UseUrls("http://localhost:5005")
+                   .UseUrls("http://localhost:5008")
                    .Build();
 
             host.Run();

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TranslatePipe } from 'ng2-translate/ng2-translate';
 
-import { FiveMoatsComponent, BigFiveNumbersComponent } from './moat';
+import { MoatComponent } from './moat';
 import { MeaningComponent } from './meaning';
 import { LevelFiveLeadersComponent } from './management';
 import { ThreeToolsComponent } from './three-tools';
@@ -10,7 +10,7 @@ import { ThreeToolsComponent } from './three-tools';
     selector: 'rule-one',
     templateUrl: 'build/+rule-one/rule-one.component.html',
     pipes: [TranslatePipe],
-    directives: [FiveMoatsComponent, BigFiveNumbersComponent, MeaningComponent, LevelFiveLeadersComponent, ThreeToolsComponent]
+    directives: [MoatComponent, MeaningComponent, LevelFiveLeadersComponent, ThreeToolsComponent]
 })
 export class RuleOneComponent implements OnInit {
     @Input() companySymbol: string;

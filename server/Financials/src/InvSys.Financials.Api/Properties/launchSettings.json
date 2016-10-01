@@ -19,7 +19,7 @@
     "InvSys.Financials.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5005/api/financials/GRMN",
+      "launchUrl": "http://localhost:5008/api/financials/GRMN",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
