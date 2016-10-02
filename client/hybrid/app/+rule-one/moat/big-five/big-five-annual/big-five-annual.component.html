@@ -1,4 +1,4 @@
-<h4>Big five numbers <small>and debt</small></h4>
+<h4>Big five annual</h4>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -8,18 +8,16 @@
             <th>Equity</th>
             <th>Cash</th>
             <th>ROIC</th>
-            <th>Debt</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let entry of financialData">
+        <tr *ngFor="let entry of bigFiveAnnual">
             <td>{{entry.year}}</td>
-            <td>{{entry.revenue}}</td>
+            <td>{{entry.sales}}</td>
             <td>{{entry.eps}}</td>
             <td>{{entry.equity}}</td>
             <td>{{entry.cash}}</td>
-            <td>{{entry.roic}}</td>
-            <td>{{entry.debt}}</td>
+            <td>{{entry.roic * 100 | number : '1.1-1'}}%</td>
         </tr>        
     </tbody>
 </table>

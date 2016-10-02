@@ -1,0 +1,27 @@
+<h4>Big five growth rates</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Period</th>
+            <th>Sales</th>
+            <th>EPS</th>
+            <th>Equity</th>
+            <th>Cash</th>
+            <th>ROIC</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let growthRate of bigFiveGrowthRates">
+            <td>
+                {{growthRate.endYear - growthRate.startYear}} years<br>
+                <small>{{growthRate.startYear}} - {{growthRate.endYear}}</small>
+            </td>
+            <td>{{growthRate.sales | number : '1.1-1'}}%</td>
+            <td>{{growthRate.eps | number : '1.1-1'}}%</td>
+            <td>{{growthRate.equity | number : '1.1-1'}}%</td>
+            <td>{{growthRate.cash | number : '1.1-1'}}%</td>
+            <td>{{growthRate.roic | number : '1.1-1'}}%</td>
+        </tr>
+    </tbody>
+</table>
+<!--{{growthRate(936, 136, 6)}}%-->

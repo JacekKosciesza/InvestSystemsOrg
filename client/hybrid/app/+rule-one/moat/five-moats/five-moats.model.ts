@@ -1,4 +1,4 @@
-export class Moat {
+export class FiveMoats {
     public brand: boolean;
     public secret: boolean;
     public toll: boolean;

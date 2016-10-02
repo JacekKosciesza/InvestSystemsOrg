@@ -1,12 +1,13 @@
-export class FinancialData {
-    public year: number;
+export class BigFiveGrowthRate {
+    public startYear: number;
+    public endYear: number;
+
     public currency: string;
-    public revenue: number;
+
+    public sales: number;
     public eps: number;
     public equity: number;
-    public debt: number;
     public cash: number;
-    public dividends: number;
     public roic: number;
 
     constructor() {

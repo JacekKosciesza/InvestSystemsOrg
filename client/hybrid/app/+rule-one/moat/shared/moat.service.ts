@@ -4,27 +4,16 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Moat } from './moat.model';
-import { FinancialData } from './financial-data.model';
 
 @Injectable()
 export class MoatService {
 
     private fiveMoatsUrl = 'http://localhost:5006/api/moats';
-    private financialsUrl = 'http://localhost:5008/api/financials';
 
     constructor(private http: Http) { }
 
     getMoat(companySymbol: string): Promise<Moat> {
         let url = `${this.fiveMoatsUrl}/${companySymbol}`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response => response.json() as any)
-            .catch(this.handleError);
-    }
-
-    getFinancials(companySymbol: string): Promise<FinancialData[]> {
-        companySymbol = 'GRMN'; // TOOD: remove it
-        let url = `${this.financialsUrl}/${companySymbol}`;
         return this.http.get(url)
             .toPromise()
             .then(response => response.json() as any)

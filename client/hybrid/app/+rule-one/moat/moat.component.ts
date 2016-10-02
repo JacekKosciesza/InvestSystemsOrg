@@ -1,19 +1,31 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { FiveMoatsComponent } from './five-moats.component';
-import { BigFiveNumbersComponent } from './big-five-numbers.component';
-import { MoatService } from './moat.service';
+import { FiveMoatsComponent } from './five-moats/five-moats.component';
+import { BigFiveComponent } from './big-five/big-five.component';
+import { MoatService } from './shared/moat.service';
+import { Moat } from './shared/moat.model';
 
 @Component({
     selector: 'moat',
-    templateUrl: 'build/+rule-one/moat/moat.component.html',
+    template: 
+    `
+        <five-moats [fiveMoats]="moat.fiveMoats"></five-moats>
+        <big-five [bigFive]="moat.bigFive"></big-five>
+    `,
     providers: [MoatService],
-    directives: [FiveMoatsComponent, BigFiveNumbersComponent]
+    directives: [FiveMoatsComponent, BigFiveComponent]
 })
 export class MoatComponent implements OnInit {
     @Input() companySymbol: string;
+    moat: Moat;
 
-    constructor() { }
+    constructor(public moatService: MoatService) {
+        this.moat = new Moat();
+    }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.moatService.getMoat(this.companySymbol).then(moat => {
+            this.moat = moat;
+        });
+    }
 }
