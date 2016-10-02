@@ -35,7 +35,7 @@ namespace InvSys.RuleOne.Core.Services.Moats
         }
 
         // http://pages.uoregon.edu/rgp/PPPM613/class8a.htm
-        private double? GrowthRate(double? future, double? past, int years)
+        public double? GrowthRate(double? future, double? past, int years)
         {
             if (!future.HasValue || !past.HasValue) { return null; }
             var growthRate = Math.Pow(future.Value/past.Value, (double) 1/years) - 1;
