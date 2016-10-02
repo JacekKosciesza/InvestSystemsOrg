@@ -81,8 +81,11 @@ namespace InvSys.RuleOne.Core.Services
             var moat = new Moat
             {
                 FiveMoats = getFiveMoats.Result,
-                BigFiveNumbers = _mapper.Map<ICollection<BigFive>>(getFinancialData.Result),
-                BigFiveGrowthRates = bigFiveGrowthRates
+                BigFive = new BigFive
+                {
+                    BigFiveAnnual = _mapper.Map<ICollection<BigFiveAnnual>>(getFinancialData.Result),
+                    BigFiveGrowthRates = bigFiveGrowthRates
+                }
             };
 
             return moat;

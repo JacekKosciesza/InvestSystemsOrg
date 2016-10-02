@@ -34,6 +34,7 @@ namespace InvSys.RuleOne.Core.Services.Moats
             return Task.FromResult(bigFiveGrowthRates);
         }
 
+        // http://pages.uoregon.edu/rgp/PPPM613/class8a.htm
         private double? GrowthRate(double? future, double? past, int years)
         {
             if (!future.HasValue || !past.HasValue) { return null; }

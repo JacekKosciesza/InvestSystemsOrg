@@ -10,7 +10,8 @@ namespace InvSys.RuleOne.Api
         public static void Configure(IMapperConfigurationExpression config)
         {
             // Moat
-            config.CreateMap<FinancialData, BigFive>(MemberList.Destination);
+            config.CreateMap<FinancialData, BigFiveAnnual>(MemberList.Destination)
+                .ForMember(d => d.Sales, opt => opt.MapFrom(s => s.Revenue));
 
             // Three Tools
             config.CreateMap<Core.Models.ThreeTools.EMAData, EMAData>(MemberList.Destination);
