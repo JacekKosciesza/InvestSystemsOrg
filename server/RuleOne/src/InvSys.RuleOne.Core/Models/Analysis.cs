@@ -1,4 +1,6 @@
-﻿namespace InvSys.RuleOne.Core.Models
+﻿using InvSys.RuleOne.Core.Models.Moats;
+
+namespace InvSys.RuleOne.Core.Models
 {
     public class Analysis : Rating
     {

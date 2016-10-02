@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using InvSys.RuleOne.Core.Models;
 using InvSys.RuleOne.Core.Models.Management;
+using InvSys.RuleOne.Core.Models.Moats;
 using InvSys.RuleOne.Core.Models.ThreeTools;
 using InvSys.Shared.Core.Model;
 

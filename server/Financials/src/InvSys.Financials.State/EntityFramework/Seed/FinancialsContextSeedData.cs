@@ -129,6 +129,17 @@ namespace InvSys.Financials.State.EntityFramework.Seed
                         Equity = 1557.9M,
                         Cash = 125.2M,
                         ROIC = 0.2550
+                    },
+                    new FinancialData
+                    {
+                        CompanySymbol = "GRMN",
+                        Year = 2005,
+                        Currency = "USD",
+                        Revenue = 1027.8M,
+                        EPS = 1.44,
+                        Equity = 1157.3M,
+                        Cash = 132.3M,
+                        ROIC = 0.2020
                     }
                 };
                     

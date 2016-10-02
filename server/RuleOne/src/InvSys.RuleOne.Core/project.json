@@ -2,6 +2,8 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "AutoMapper": "5.0.2",
+    "InvSys.Financials.Api.Client": "1.0.0-*",
     "InvSys.Shared.Core": "1.0.0-*",
     "InvSys.StockQuotes.Api.Client": "1.0.0-*"
   },

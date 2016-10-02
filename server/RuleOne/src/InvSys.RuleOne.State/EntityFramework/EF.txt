@@ -7,3 +7,5 @@ dotnet ef migrations add Management -o .\EntityFramework\Migrations
 dotnet ef database update
 dotnet ef migrations add Meaning -o .\EntityFramework\Migrations
 dotnet ef database update
+dotnet ef migrations add FiveMoats -o .\EntityFramework\Migrations
+dotnet ef database update

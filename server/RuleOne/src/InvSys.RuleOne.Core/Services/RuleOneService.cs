@@ -7,7 +7,11 @@ using InvSys.RuleOne.Core.State;
 using InvSys.Shared.Core.Model;
 using InvSys.StockQuotes.Api.Client.Proxy;
 using System;
+using AutoMapper;
+using InvSys.Financials.Api.Client.Proxy;
 using InvSys.RuleOne.Core.Models.Management;
+using InvSys.RuleOne.Core.Models.Moats;
+using InvSys.RuleOne.Core.Services.Moats;
 
 namespace InvSys.RuleOne.Core.Services
 {
@@ -18,20 +22,26 @@ namespace InvSys.RuleOne.Core.Services
         private readonly IEMAService _emaService;
         private readonly IMACDService _macdService;
         private readonly IStochasticService _stochasticService;
-        private readonly IMoatsRepository _moatsRepository;
+        private readonly IFiveMoatsRepository _fiveMoatsRepository;
         private readonly ILeadersRepository _leadersRepository;
         private readonly IMeaningsRepository _meaningsRepository;
+        private readonly IFinancialsAPI _financialsApi;
+        private readonly IMapper _mapper;
+        private readonly IBigFiveGrowthRateService _bigFiveGrowthRateService;
 
-        public RuleOneService(IRatingsRepository ratingsRepository, IStockQuotesAPI stockQuotesApi, IEMAService emaService, IMACDService macdService, IStochasticService stochasticService, IMoatsRepository moatsRepository, ILeadersRepository leadersRepository, IMeaningsRepository meaningsRepository)
+        public RuleOneService(IRatingsRepository ratingsRepository, IStockQuotesAPI stockQuotesApi, IEMAService emaService, IMACDService macdService, IStochasticService stochasticService, IFiveMoatsRepository fiveMoatsRepository, ILeadersRepository leadersRepository, IMeaningsRepository meaningsRepository, IFinancialsAPI financialsApi, IMapper mapper, IBigFiveGrowthRateService bigFiveGrowthRateService)
         {
             _ratingsRepository = ratingsRepository;
             _stockQuotesApi = stockQuotesApi;
             _emaService = emaService;
             _macdService = macdService;
             _stochasticService = stochasticService;
-            _moatsRepository = moatsRepository;
+            _fiveMoatsRepository = fiveMoatsRepository;
             _leadersRepository = leadersRepository;
             _meaningsRepository = meaningsRepository;
+            _financialsApi = financialsApi;
+            _mapper = mapper;
+            _bigFiveGrowthRateService = bigFiveGrowthRateService;
         }
 
         public Task<List<Rating>> GetRatings()
@@ -59,9 +69,23 @@ namespace InvSys.RuleOne.Core.Services
             return _meaningsRepository.Get(companySymbol, userId);
         }
 
-        public Task<Moat> GetMoat(string companySymbol)
+        public async Task<Moat> GetMoat(string companySymbol)
         {
-            return _moatsRepository.Get(companySymbol);
+            var getFiveMoats = _fiveMoatsRepository.Get(companySymbol);
+            var getFinancialData = _financialsApi.GetFinancialDataAsync("GRMN" /*TODO: companySymbol*/, startYear: DateTime.Now.Year - 11);
+
+            await Task.WhenAll(getFiveMoats, getFinancialData);
+
+            var bigFiveGrowthRates = await _bigFiveGrowthRateService.Calculate(getFinancialData.Result, years: new[] {1, 5, 10});
+
+            var moat = new Moat
+            {
+                FiveMoats = getFiveMoats.Result,
+                BigFiveNumbers = _mapper.Map<ICollection<BigFive>>(getFinancialData.Result),
+                BigFiveGrowthRates = bigFiveGrowthRates
+            };
+
+            return moat;
         }
 
         public Task<List<Leader>> GetManagement(string companySymbol)

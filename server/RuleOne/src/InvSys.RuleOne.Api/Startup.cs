@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using InvSys.Financials.Api.Client.Proxy;
 using InvSys.RuleOne.Core.Services;
+using InvSys.RuleOne.Core.Services.Moats;
 using InvSys.RuleOne.Core.Services.ThreeTools;
 using InvSys.RuleOne.Core.State;
 using InvSys.RuleOne.State.EntityFramework;
@@ -52,10 +54,12 @@ namespace InvSys.RuleOne.Api
             services.AddScoped<IMACDService, MACDService>();
             services.AddScoped<IStochasticService, StochasticService>(); 
             services.AddScoped<IRatingsRepository, RatingsRepository>();
-            services.AddScoped<IMoatsRepository, MoatsRepository>();
+            services.AddScoped<IFiveMoatsRepository, FiveMoatsRepository>();
             services.AddScoped<ILeadersRepository, LeadersRepository>();
             services.AddScoped<IMeaningsRepository, MeaningsRepository>();
+            services.AddScoped<IBigFiveGrowthRateService, BigFiveGrowthRateService>();
             services.AddScoped<IStockQuotesAPI, StockQuotesAPI>(x => new StockQuotesAPI(new Uri(Configuration["APIs:StockQuotes:Url"], UriKind.Absolute)));
+            services.AddScoped<IFinancialsAPI, FinancialsAPI>(x => new FinancialsAPI(new Uri(Configuration["APIs:Financials:Url"], UriKind.Absolute)));
             services.AddSingleton<IMapper>(x => _mapperConfiguration.CreateMapper());
         }
 

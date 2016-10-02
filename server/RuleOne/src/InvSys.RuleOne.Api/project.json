@@ -19,7 +19,8 @@
     "InvSys.Shared.Api": "1.0.0-*",
     "InvSys.RuleOne.Core": "1.0.0-*",
     "InvSys.RuleOne.State": "1.0.0-*",
-    "InvSys.StockQuotes.Api.Client": "1.0.0-*"
+    "InvSys.StockQuotes.Api.Client": "1.0.0-*",
+    "InvSys.Financials.Api.Client": "1.0.0-*"
   },
 
   "tools": {

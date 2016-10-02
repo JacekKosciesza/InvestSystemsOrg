@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using InvSys.RuleOne.Core.Models;
+using InvSys.RuleOne.Core.Models.Moats;
 using InvSys.RuleOne.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

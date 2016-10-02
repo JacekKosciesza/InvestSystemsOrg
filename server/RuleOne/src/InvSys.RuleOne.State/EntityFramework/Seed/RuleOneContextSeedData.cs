@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using InvSys.RuleOne.Core.Models;
 using InvSys.RuleOne.Core.Models.Management;
+using InvSys.RuleOne.Core.Models.Moats;
 
 namespace InvSys.RuleOne.State.EntityFramework.Seed
 {
@@ -64,24 +65,24 @@ namespace InvSys.RuleOne.State.EntityFramework.Seed
                 _db.Ratings.AddRange(ratings);
                 await _db.SaveChangesAsync();
             }
-            if (!_db.Moats.Any())
+            if (!_db.FiveMoats.Any())
             {
-                var moats = new List<Moat>
+                var fiveMoats = new List<FiveMoats>
                 {
-                    new Moat
+                    new FiveMoats
                     {
                         CompanySymbol = "XXII",
                         Brand = true,
                         Secret = true
                     },
-                    new Moat
+                    new FiveMoats
                     {
                         CompanySymbol = "DDD",
                         Switching = true
                     }
                 };
 
-                _db.Moats.AddRange(moats);
+                _db.FiveMoats.AddRange(fiveMoats);
                 await _db.SaveChangesAsync();
             }
             if (!_db.Leaders.Any())
