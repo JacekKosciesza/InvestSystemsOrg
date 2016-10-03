@@ -15,7 +15,7 @@
     "Microsoft.ServiceFabric.Services": "2.1.163",
     "AutoMapper": "5.0.2",
     "Swashbuckle": "6.0.0-beta901",
-    "AspNet.Security.OAuth.Introspection": "1.0.0-alpha3-0181",
+    "AspNet.Security.OAuth.Introspection": "1.0.0-alpha2-final",
     "InvSys.Shared.Api": "1.0.0-*",
     "InvSys.Financials.Core": "1.0.0-*",
     "InvSys.Financials.State": "1.0.0-*"

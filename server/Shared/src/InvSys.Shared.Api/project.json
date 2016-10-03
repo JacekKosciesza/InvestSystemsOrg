@@ -6,7 +6,7 @@
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Microsoft.Extensions.Localization": "1.0.0",
     "Microsoft.AspNetCore.Cors": "1.0.0",
-    "AspNet.Security.OAuth.Introspection": "1.0.0-alpha3-0181",
+    "AspNet.Security.OAuth.Introspection": "1.0.0-alpha2-final",
     "Swashbuckle": "6.0.0-beta901",
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0"

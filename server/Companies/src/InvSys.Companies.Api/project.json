@@ -17,7 +17,7 @@
     "Swashbuckle": "6.0.0-beta901",
     "InvSys.Companies.Core": "1.0.0-*",
     "InvSys.Companies.State": "1.0.0-*",
-    "AspNet.Security.OAuth.Introspection": "1.0.0-alpha3-0181",
+    "AspNet.Security.OAuth.Introspection": "1.0.0-alpha2-final",
     "InvSys.Shared.Api": "1.0.0-*",
     "Microsoft.AspNetCore.Cors": "1.0.0"
   },
