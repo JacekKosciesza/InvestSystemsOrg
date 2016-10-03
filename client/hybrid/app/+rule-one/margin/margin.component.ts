@@ -10,4 +10,12 @@ export class MarginComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
+
+    futureValue(initialValue: number, rate: number, years: number): number {
+        return initialValue * Math.pow(1 + rate, years);
+    }
+
+    initialValue(futureValue: number, rate: number, years: number): number {
+        return futureValue / Math.pow(1 + rate, years);
+    }
 }
