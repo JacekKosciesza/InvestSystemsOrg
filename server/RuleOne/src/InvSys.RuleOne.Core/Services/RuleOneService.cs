@@ -7,6 +7,7 @@ using InvSys.RuleOne.Core.State;
 using InvSys.Shared.Core.Model;
 using InvSys.StockQuotes.Api.Client.Proxy;
 using System;
+using System.Linq;
 using AutoMapper;
 using InvSys.Financials.Api.Client.Proxy;
 using InvSys.RuleOne.Core.Models.Management;
@@ -98,32 +99,25 @@ namespace InvSys.RuleOne.Core.Services
 
         public async Task<Margin> GetMargin(string companySymbol)
         {
-            var currentQuote = await _stockQuotesApi.GetCurrentAsync(companySymbol);
+            var getFinancialData = _financialsApi.GetFinancialDataAsync("GRMN" /*TODO: companySymbol*/, startYear: DateTime.Now.Year - 11);
+            var getCurrentQuote = _stockQuotesApi.GetCurrentAsync(companySymbol);
 
+            await Task.WhenAll(getFinancialData, getCurrentQuote);
+            var bigFiveGrowthRates = await _bigFiveGrowthRateService.Calculate(getFinancialData.Result, years: new[] { 10 });
+
+            var currentQuote = getCurrentQuote.Result;
             var margin = new Margin
             {
-                // margin
-                StickerPrice = null, // TODO: calculate it
-                MarginOfSafety = null, // TODO: calculate it
+                CurrentPrice = currentQuote.LatestTradePrice,
 
-                // calculations
-                EPSFuture = null, // TODO: calculate it
-                FutureMarketPrice = null, // TODO: calculate it
-
-                // pre-calculated data
                 EPSCurrent = currentQuote.Eps,
-                EPSGrowthRate = null, // EPSGrowthRateRuleOne
-                PEFutureEstimated = null, // TODO: calculate it (data)
                 RateOfReturn = 0.15,
                 Years = 10,
 
-                // data
-                EPSGrowthRateAnalysts = null,
-                EPSGrowthRateHistorical = null,
-                EPSGrowthRateRuleOne = null, //Math.Min(EPSGrowthRateAnalysts, EPSGrowthRateHistorical);
-                PEFutureEstimatedDefault = null,
-                PEFutureEstimatedHistorical = null,
-                PEFutureEstimatedRuleOne = null //Math.Min(PEFutureEstimatedDefault, PEFutureEstimatedHistorical);
+                //EPSGrowthRateAnalysts = (currentQuote.EpsEstimateNextYear - currentQuote.EpsEstimateCurrentYear)/100,
+                EPSGrowthRateHistorical = bigFiveGrowthRates.First().Equity,
+                PEFutureEstimatedDefault = bigFiveGrowthRates.First().Equity * 2,
+                PEFutureEstimatedHistorical = currentQuote.PeRatio, // ??
             };
 
             return margin;
