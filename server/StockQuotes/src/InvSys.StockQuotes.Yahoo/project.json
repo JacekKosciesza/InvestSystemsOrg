@@ -5,7 +5,8 @@
     "AutoMapper": "5.0.2",
     "InvSys.StockQuotes.Core": "1.0.0-*",
     "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
-    "YahooFinance.NET": "3.0.0"
+    "YahooFinance.NET": "3.0.0",
+    "YahooStockQuotes": "1.0.6"
   },
 
   "frameworks": {

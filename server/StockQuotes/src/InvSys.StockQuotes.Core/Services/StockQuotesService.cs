@@ -46,5 +46,12 @@ namespace InvSys.StockQuotes.Core.Services
             }
             return q.OrderBy(p => p.Date).ToList();
         }
+
+        public async Task<CurrentQuote> GetCurrentQuote(string companySymbol)
+        {
+            var current = await _yahooFinanceService.GetQuote(companySymbol);
+
+            return current;
+        }
     }
 }

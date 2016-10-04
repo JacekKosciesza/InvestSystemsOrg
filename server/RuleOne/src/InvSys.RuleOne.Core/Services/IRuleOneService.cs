@@ -25,6 +25,9 @@ namespace InvSys.RuleOne.Core.Services
         // Management
         Task<List<Leader>> GetManagement(string companySymbol);
 
+        // Margin
+        Task<Margin> GetMargin(string companySymbol);
+
         // Three Tools
         Task<ICollection<EMAData>> GetEMA(string companySymbol, int? days);
         Task<ICollection<MACDData>> GetMACD(string companySymbol, int? days);

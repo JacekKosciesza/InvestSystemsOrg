@@ -96,6 +96,39 @@ namespace InvSys.RuleOne.Core.Services
             return _leadersRepository.Get(companySymbol);
         }
 
+        public async Task<Margin> GetMargin(string companySymbol)
+        {
+            var currentQuote = await _stockQuotesApi.GetCurrentAsync(companySymbol);
+
+            var margin = new Margin
+            {
+                // margin
+                StickerPrice = null, // TODO: calculate it
+                MarginOfSafety = null, // TODO: calculate it
+
+                // calculations
+                EPSFuture = null, // TODO: calculate it
+                FutureMarketPrice = null, // TODO: calculate it
+
+                // pre-calculated data
+                EPSCurrent = currentQuote.Eps,
+                EPSGrowthRate = null, // EPSGrowthRateRuleOne
+                PEFutureEstimated = null, // TODO: calculate it (data)
+                RateOfReturn = 0.15,
+                Years = 10,
+
+                // data
+                EPSGrowthRateAnalysts = null,
+                EPSGrowthRateHistorical = null,
+                EPSGrowthRateRuleOne = null, //Math.Min(EPSGrowthRateAnalysts, EPSGrowthRateHistorical);
+                PEFutureEstimatedDefault = null,
+                PEFutureEstimatedHistorical = null,
+                PEFutureEstimatedRuleOne = null //Math.Min(PEFutureEstimatedDefault, PEFutureEstimatedHistorical);
+            };
+
+            return margin;
+        }
+
         public async Task<ICollection<EMAData>> GetEMA(string companySymbol, int? days)
         {
             const int emaDays = 10;
@@ -103,7 +136,7 @@ namespace InvSys.RuleOne.Core.Services
 
             // get historical stock prices
             var startDate = DateTime.Now.AddDays(-(emaDays + daysBack));
-            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol, startDate); // TODO: stock exchange
+            var prices = await _stockQuotesApi.GetHistoricalAsync("ASX", companySymbol, startDate); // TODO: stock exchange
 
             // calculate 10 days EMA (Exponential Moving Average)
             var ema = _emaService.Calculate(prices, emaDays);
@@ -117,7 +150,7 @@ namespace InvSys.RuleOne.Core.Services
 
             // get historical stock prices
             var startDate = DateTime.Now.AddDays(-(26 + 9 + daysBack));
-            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol, startDate); // TODO: stock exchange
+            var prices = await _stockQuotesApi.GetHistoricalAsync("ASX", companySymbol, startDate); // TODO: stock exchange
 
             // calculate 12 days, 26 days, 9 days MACD (Moving Average Convergence Divergence)
             var macd = _macdService.Calculate(prices, 12, 26, 9);
@@ -131,7 +164,7 @@ namespace InvSys.RuleOne.Core.Services
 
             // get historical stock prices
             var startDate = DateTime.Now.AddDays(-(14 + daysBack));
-            var prices = await _stockQuotesApi.GetHistoricalPricesAsync("ASX", companySymbol, startDate); // TODO: stock exchange
+            var prices = await _stockQuotesApi.GetHistoricalAsync("ASX", companySymbol, startDate); // TODO: stock exchange
 
             // calculate 14 days, 5 days Stochastic Oscillator
             var stochastic = _stochasticService.Calculate(prices, 14, 5);

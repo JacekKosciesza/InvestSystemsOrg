@@ -20,6 +20,32 @@ namespace InvSys.StockQuotes.Api.Client.Proxy
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='companySymbol'>
+            /// </param>
+            public static CurrentQuote GetCurrent(this IStockQuotesAPI operations, string companySymbol = default(string))
+            {
+                return Task.Factory.StartNew(s => ((IStockQuotesAPI)s).GetCurrentAsync(companySymbol), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='companySymbol'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CurrentQuote> GetCurrentAsync(this IStockQuotesAPI operations, string companySymbol = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCurrentWithHttpMessagesAsync(companySymbol, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
             /// <param name='stockExchange'>
             /// </param>
             /// <param name='companySymbol'>
@@ -28,9 +54,9 @@ namespace InvSys.StockQuotes.Api.Client.Proxy
             /// </param>
             /// <param name='endDate'>
             /// </param>
-            public static IList<HistoricalQuote> GetHistoricalPrices(this IStockQuotesAPI operations, string stockExchange = default(string), string companySymbol = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?))
+            public static IList<HistoricalQuote> GetHistorical(this IStockQuotesAPI operations, string stockExchange = default(string), string companySymbol = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?))
             {
-                return Task.Factory.StartNew(s => ((IStockQuotesAPI)s).GetHistoricalPricesAsync(stockExchange, companySymbol, startDate, endDate), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IStockQuotesAPI)s).GetHistoricalAsync(stockExchange, companySymbol, startDate, endDate), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -47,9 +73,9 @@ namespace InvSys.StockQuotes.Api.Client.Proxy
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<HistoricalQuote>> GetHistoricalPricesAsync(this IStockQuotesAPI operations, string stockExchange = default(string), string companySymbol = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<HistoricalQuote>> GetHistoricalAsync(this IStockQuotesAPI operations, string stockExchange = default(string), string companySymbol = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetHistoricalPricesWithHttpMessagesAsync(stockExchange, companySymbol, startDate, endDate, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetHistoricalWithHttpMessagesAsync(stockExchange, companySymbol, startDate, endDate, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

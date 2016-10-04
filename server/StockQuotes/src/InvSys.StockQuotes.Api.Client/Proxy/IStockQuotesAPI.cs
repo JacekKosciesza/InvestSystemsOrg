@@ -34,7 +34,17 @@ namespace InvSys.StockQuotes.Api.Client.Proxy
         JsonSerializerSettings DeserializationSettings { get; }
 
 
-            /// <param name='stockExchange'>
+            /// <param name='companySymbol'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<CurrentQuote>> GetCurrentWithHttpMessagesAsync(string companySymbol = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name='stockExchange'>
         /// </param>
         /// <param name='companySymbol'>
         /// </param>
@@ -48,7 +58,7 @@ namespace InvSys.StockQuotes.Api.Client.Proxy
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IList<HistoricalQuote>>> GetHistoricalPricesWithHttpMessagesAsync(string stockExchange = default(string), string companySymbol = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<IList<HistoricalQuote>>> GetHistoricalWithHttpMessagesAsync(string stockExchange = default(string), string companySymbol = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

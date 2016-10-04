@@ -5,14 +5,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using InvSys.Shared.Api.Startup;
-using InvSys.StockQuotes.Core.Models;
 using InvSys.StockQuotes.Core.Services;
 using InvSys.StockQuotes.Core.State;
 using InvSys.StockQuotes.Core.Yahoo.Finance;
 using InvSys.StockQuotes.State.EntityFramework;
 using InvSys.StockQuotes.State.EntityFramework.Repositories;
 using InvSys.StockQuotes.Yahoo.Finance;
-using YahooFinance.NET;
 
 namespace InvSys.StockQuotes.Api
 {
@@ -27,11 +25,7 @@ namespace InvSys.StockQuotes.Api
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
 
-            _mapperConfiguration = new MapperConfiguration(config =>
-            {
-                config.CreateMap<YahooHistoricalPriceData, HistoricalQuote>(MemberList.Source);
-                config.AllowNullCollections = true;
-            });
+            _mapperConfiguration = new MapperConfiguration(Mapper.Configure);
         }
 
         public IConfigurationRoot Configuration { get; }
