@@ -9,9 +9,9 @@ namespace InvSys.RuleOne.Core.Models
         {
             get
             {
-                if (FutureMarketPrice.HasValue && EPSGrowthRate.HasValue && Years.HasValue)
+                if (FutureMarketPrice.HasValue && RateOfReturn.HasValue && Years.HasValue)
                 {
-                    return FutureMarketPrice.Value / Math.Pow(1 + EPSGrowthRate.Value, Years.Value);
+                    return FutureMarketPrice.Value / Math.Pow(1 + RateOfReturn.Value, Years.Value);
                 }
 
                 return null;
