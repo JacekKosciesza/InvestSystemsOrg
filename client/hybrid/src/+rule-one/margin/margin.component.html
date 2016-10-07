@@ -1,18 +1,8 @@
-<h4 style="color: red;"><ion-icon name="pulse"></ion-icon> Current Price: $72</h4>
-<h4><ion-icon name="pricetag"></ion-icon> Sticker Price: $45</h4>
-<h4><ion-icon name="cash"></ion-icon> Margin Of Safety: $22</h4>
-
-<hr>
-
-<h4><ion-icon name="pricetag"></ion-icon> Sticker Price: $45</h4>
-<h4 style="color: orange;"><ion-icon name="pulse"></ion-icon> Current Price: $34</h4>
-<h4><ion-icon name="cash"></ion-icon> Margin Of Safety: $22</h4>
-
-<hr>
-
-<h4><ion-icon name="pricetag"></ion-icon> Sticker Price: $45</h4>
-<h4><ion-icon name="cash"></ion-icon> Margin Of Safety: $22</h4>
-<h4 style="color: green;"><ion-icon name="pulse"></ion-icon> Current Price: $21</h4>
+<h4 *ngIf="margin.currentPrice > margin.stickerPrice" style="color: red;"><ion-icon name="pulse"></ion-icon> Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}</h4>
+<h4><ion-icon name="pricetag"></ion-icon> Sticker Price: {{margin.stickerPrice | currency:'USD':true:'1.0-0'}}</h4>
+<h4 *ngIf="margin.currentPrice > margin.marginOfSafety && margin.currentPrice < margin.stickerPrice" style="color: orange;"><ion-icon name="pulse"></ion-icon> Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}</h4>
+<h4><ion-icon name="cash"></ion-icon> Margin Of Safety: {{margin.marginOfSafety | currency:'USD':true:'1.0-0'}}</h4>
+<h4 *ngIf="margin.currentPrice <= margin.marginOfSafety" style="color: green;"><ion-icon name="pulse"></ion-icon> Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}</h4>
 
 <table class="table table-bordered">
     <thead>

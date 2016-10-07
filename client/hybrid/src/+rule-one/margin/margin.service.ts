@@ -3,26 +3,31 @@ import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-// import { Leader } from './leader.model';
+import { Margin } from './margin.model';
 
 @Injectable()
 export class MarginService {
 
-    private managementUrl = 'http://localhost:5006/api/management';
+    private marginUrl = 'http://localhost:5006/api/margin'; //'app/margins';
 
     constructor(private http: Http) { }
 
-    getLeaders(companySymbol: string): Promise<Leader[]> {
-        let url = `${this.managementUrl}/${companySymbol}`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response => response.json() as any)
-            .catch(this.handleError);
+    getMargin(companySymbol: string): Promise<Margin> {
+        let margin = new Margin();
+        margin.stickerPrice = 45;
+        margin.marginOfSafety = 22;
+        margin.currentPrice = 51;
+        return Promise.resolve(margin);
+
+        // let url = `${this.marginUrl}/${companySymbol}`;
+        // return this.http.get(url)
+        //     .toPromise()
+        //     .then(response => response.json() as any)
+        //     .catch(this.handleError);
     }
 
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    }
-
+    // private handleError(error: any): Promise<any> {
+    //     console.error('An error occurred', error); // for demo purposes only
+    //     return Promise.reject(error.message || error);
+    // }
 }

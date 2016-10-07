@@ -32,13 +32,17 @@ import {
   MeaningComponent,
   LevelFiveLeadersComponent,
   MarginComponent,
-  ThreeToolsComponent
+  ThreeToolsComponent,
+  //MarginData
  } from '../+rule-one'
 
 
 // Services
 import { PortfolioService, WatchlistService } from '../+dashboard';
-import { ManagementService, MeaningService, MoatService, ThreeToolsService } from '../+rule-one'
+import { ManagementService, MarginService, MeaningService, MoatService, ThreeToolsService } from '../+rule-one'
+
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+
 
 @NgModule({
   declarations: [
@@ -73,7 +77,8 @@ import { ManagementService, MeaningService, MoatService, ThreeToolsService } fro
     TranslatePipe
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    //InMemoryWebApiModule.forRoot(MarginData)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -94,6 +99,7 @@ import { ManagementService, MeaningService, MoatService, ThreeToolsService } fro
     MeaningService,
     CompanyService,
     MoatService,
+    MarginService,
     ThreeToolsService,
     {
       provide: TranslateLoader,
