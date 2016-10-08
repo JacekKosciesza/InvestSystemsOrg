@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav} from 'ionic-angular';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { Platform, MenuController, Nav, ToastController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
@@ -7,15 +7,17 @@ import { DashboardComponent } from '../+dashboard';
 import { CompanyListComponent } from '../+companies';
 import { AboutPage } from '../pages';
 
+import { ToastService, Toast } from '../services';
+
 @Component({
-    templateUrl: 'app.html'
+  templateUrl: 'app.html'
 })
-export class MyApp {
+export class MyApp implements OnInit {
   @ViewChild(Nav) nav: Nav;
   rootPage = CompanyListComponent;
   pages: Array<{ title: string, component: any }>;
 
-  constructor(platform: Platform, public menu: MenuController, translate: TranslateService) {
+  constructor(platform: Platform, public menu: MenuController, translate: TranslateService, private toastService: ToastService, public toastCtrl: ToastController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -34,6 +36,13 @@ export class MyApp {
         { title: t['Companies'], component: CompanyListComponent },
         { title: t['About'], component: AboutPage }
       ];
+    });
+  }
+
+  ngOnInit() {
+    this.toastService.toasts$.subscribe(toast => {
+      let ionicToast = this.toastCtrl.create(toast);
+      ionicToast.present();
     });
   }
 

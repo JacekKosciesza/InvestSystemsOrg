@@ -42,6 +42,7 @@ import { ManagementService, MarginService, MeaningService, MoatService, ThreeToo
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AboutPage, AboutTab, TeamTab, ContactTab } from '../pages/about'
+import { ToastService } from '../services'
 
 @NgModule({
   declarations: [
@@ -108,6 +109,7 @@ import { AboutPage, AboutTab, TeamTab, ContactTab } from '../pages/about'
     MoatService,
     MarginService,
     ThreeToolsService,
+    ToastService,
     {
       provide: TranslateLoader,
       useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
