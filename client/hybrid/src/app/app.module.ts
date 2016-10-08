@@ -41,7 +41,7 @@ import { ManagementService, MarginService, MeaningService, MoatService, ThreeToo
 
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { AboutPage, AboutTab, TeamTab } from '../pages/about'
+import { AboutPage, AboutTab, TeamTab, ContactTab } from '../pages/about'
 
 @NgModule({
   declarations: [
@@ -55,6 +55,7 @@ import { AboutPage, AboutTab, TeamTab } from '../pages/about'
     // Components
     AboutTab,
     TeamTab,
+    ContactTab,
     SignInComponent,
     UserPortfolioComponent,
     UserWatchlistComponent,
@@ -92,7 +93,8 @@ import { AboutPage, AboutTab, TeamTab } from '../pages/about'
     CompanyDetailComponent,
     CompanyEditComponent,
     AboutTab,
-    TeamTab
+    TeamTab,
+    ContactTab
   ],
   providers: [
     // Services

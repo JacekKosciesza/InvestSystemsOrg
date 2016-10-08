@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { SignInComponent } from '../../+identity';
 import { AboutTab } from './about.tab';
 import { TeamTab } from './team.tab';
+import { ContactTab } from './contact.tab';
 
 @Component({
     selector: 'about-page',
@@ -12,10 +13,12 @@ import { TeamTab } from './team.tab';
 export class AboutPage implements OnInit {
     public aboutTab: any;
     public teamTab: any;
+    public contactTab: any;
 
     constructor(public navCtrl: NavController) {
         this.aboutTab = AboutTab;
         this.teamTab = TeamTab;
+        this.contactTab = ContactTab;
     }
 
     ngOnInit() { }
