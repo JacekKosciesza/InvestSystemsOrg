@@ -12,8 +12,6 @@ import { RuleOneRatingComponent } from '../+rule-one'
 import { DashboardComponent } from '../+dashboard';
 import { CompanyListComponent, CompanyDetailComponent, CompanyEditComponent, CompanyService } from '../+companies';
 
-
-
 // Components
 import { SignInComponent, IdentityPopoverComponent, IdentityService } from '../+identity'
 import { UserPortfolioComponent, UserWatchlistComponent } from '../+dashboard';
@@ -43,6 +41,7 @@ import { ManagementService, MarginService, MeaningService, MoatService, ThreeToo
 
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
+import { AboutPage, AboutTab, TeamTab } from '../pages/about'
 
 @NgModule({
   declarations: [
@@ -52,7 +51,10 @@ import { ManagementService, MarginService, MeaningService, MoatService, ThreeToo
     CompanyListComponent,
     CompanyDetailComponent,
     CompanyEditComponent,
+    AboutPage,
     // Components
+    AboutTab,
+    TeamTab,
     SignInComponent,
     UserPortfolioComponent,
     UserWatchlistComponent,
@@ -83,11 +85,14 @@ import { ManagementService, MarginService, MeaningService, MoatService, ThreeToo
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    AboutPage,
     SignInComponent,
     DashboardComponent,
     CompanyListComponent,
     CompanyDetailComponent,
-    CompanyEditComponent
+    CompanyEditComponent,
+    AboutTab,
+    TeamTab
   ],
   providers: [
     // Services

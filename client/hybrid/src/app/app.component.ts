@@ -5,6 +5,7 @@ import { StatusBar } from 'ionic-native';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 import { DashboardComponent } from '../+dashboard';
 import { CompanyListComponent } from '../+companies';
+import { AboutPage } from '../pages';
 
 @Component({
     templateUrl: 'app.html'
@@ -14,7 +15,7 @@ export class MyApp {
   rootPage = CompanyListComponent;
   pages: Array<{ title: string, component: any }>;
 
-  constructor(platform: Platform, menu: MenuController, translate: TranslateService) {
+  constructor(platform: Platform, public menu: MenuController, translate: TranslateService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -26,11 +27,12 @@ export class MyApp {
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     //translate.use('pl');
 
-    translate.get(['Dashboard', 'Companies']).subscribe((t: string[]) => {
+    translate.get(['Dashboard', 'Companies', 'About']).subscribe((t: string[]) => {
       // set our app's pages
       this.pages = [
         { title: t['Dashboard'], component: DashboardComponent },
-        { title: t['Companies'], component: CompanyListComponent }
+        { title: t['Companies'], component: CompanyListComponent },
+        { title: t['About'], component: AboutPage }
       ];
     });
   }

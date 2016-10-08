@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'About' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="signIn()">
+                {{ 'Sign In' | translate }}
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-tabs class="tabs-basic">
+      <ion-tab tabTitle="About" [root]="aboutTab"></ion-tab>
+      <ion-tab tabTitle="Team" [root]="teamTab"></ion-tab>
+    </ion-tabs>
+</ion-content>
