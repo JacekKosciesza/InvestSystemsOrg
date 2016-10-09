@@ -8,7 +8,7 @@ import { Margin } from './margin.model';
 @Injectable()
 export class MarginService {
 
-    private marginUrl = 'http://localhost:5006/api/margin'; //'app/margins';
+    //private marginUrl = 'http://localhost:5006/api/margin'; //'app/margins';
 
     constructor(private http: Http) { }
 

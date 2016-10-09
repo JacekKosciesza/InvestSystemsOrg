@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'Settings' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="signIn()">
+                <!--<ion-icon name="contact"></ion-icon>-->
+                {{ 'Sign In' | translate }}
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h1>Settings</h1>
+    <ion-item>
+        <ion-label>Theme</ion-label>
+        <ion-select [(ngModel)]="settings.theme">
+            <ion-option value="light">Light</ion-option>
+            <ion-option value="dark">Dark</ion-option>
+        </ion-select>
+    </ion-item>
+</ion-content>

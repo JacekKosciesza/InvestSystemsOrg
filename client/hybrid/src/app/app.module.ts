@@ -41,7 +41,8 @@ import { ManagementService, MarginService, MeaningService, MoatService, ThreeToo
 
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { AboutPage, AboutTab, TeamTab, ContactTab } from '../pages/about'
+import { AboutPage, AboutTab, TeamTab, ContactTab } from '../pages/about';
+import { SettingsPage } from '../pages/settings';
 import { ToastService } from '../services'
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ToastService } from '../services'
     CompanyEditComponent,
     AboutPage,
     // Components
+    SettingsPage,
     AboutTab,
     TeamTab,
     ContactTab,
@@ -87,6 +89,7 @@ import { ToastService } from '../services'
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    SettingsPage,
     AboutPage,
     SignInComponent,
     DashboardComponent,

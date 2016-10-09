@@ -5,7 +5,7 @@ import { StatusBar } from 'ionic-native';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 import { DashboardComponent } from '../+dashboard';
 import { CompanyListComponent } from '../+companies';
-import { AboutPage } from '../pages';
+import { AboutPage, SettingsPage } from '../pages';
 
 import { ToastService, Toast } from '../services';
 
@@ -29,11 +29,12 @@ export class MyApp implements OnInit {
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     //translate.use('pl');
 
-    translate.get(['Dashboard', 'Companies', 'About']).subscribe((t: string[]) => {
+    translate.get(['Dashboard', 'Companies', 'About', 'Settings']).subscribe((t: string[]) => {
       // set our app's pages
       this.pages = [
         { title: t['Dashboard'], component: DashboardComponent },
-        { title: t['Companies'], component: CompanyListComponent },
+        { title: t['Companies'], component: CompanyListComponent },        
+        { title: t['Settings'], component: SettingsPage },
         { title: t['About'], component: AboutPage }
       ];
     });

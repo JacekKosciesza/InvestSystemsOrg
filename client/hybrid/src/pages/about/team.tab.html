@@ -1,1 +1,17 @@
-<h1>Team</h1>
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'Team' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="signIn()">
+                {{ 'Sign In' | translate }}
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h1>Team</h1>
+</ion-content>
