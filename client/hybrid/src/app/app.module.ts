@@ -47,6 +47,8 @@ import { ToastService } from '../services'
 
 import { Settings, setConfig, DEFAULT_APP_CONFIG } from '../shared';
 
+import { TutorialPage } from '../pages';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -56,6 +58,7 @@ import { Settings, setConfig, DEFAULT_APP_CONFIG } from '../shared';
     CompanyDetailComponent,
     CompanyEditComponent,
     AboutPage,
+    TutorialPage,
     // Components
     SettingsPage,
     AboutTab,
@@ -92,6 +95,7 @@ import { Settings, setConfig, DEFAULT_APP_CONFIG } from '../shared';
   entryComponents: [
     MyApp,
     SettingsPage,
+    TutorialPage,
     AboutPage,
     SignInComponent,
     DashboardComponent,
