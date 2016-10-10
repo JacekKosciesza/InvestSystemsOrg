@@ -45,6 +45,8 @@ import { AboutPage, AboutTab, TeamTab, ContactTab } from '../pages/about';
 import { SettingsPage } from '../pages/settings';
 import { ToastService } from '../services'
 
+import { Settings, setConfig, DEFAULT_APP_CONFIG } from '../shared';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -102,6 +104,8 @@ import { ToastService } from '../services'
   ],
   providers: [
     // Services
+    Settings,
+    setConfig(DEFAULT_APP_CONFIG),
     IdentityService,
     TranslateService,
     PortfolioService,

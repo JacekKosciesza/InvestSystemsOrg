@@ -7,7 +7,8 @@ import { DashboardComponent } from '../+dashboard';
 import { CompanyListComponent } from '../+companies';
 import { AboutPage, SettingsPage } from '../pages';
 
-import { ToastService, Toast } from '../services';
+import { ToastService } from '../services';
+import { Settings } from '../shared';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,8 +17,9 @@ export class MyApp implements OnInit {
   @ViewChild(Nav) nav: Nav;
   rootPage = CompanyListComponent;
   pages: Array<{ title: string, component: any }>;
+  theme: string;
 
-  constructor(platform: Platform, public menu: MenuController, translate: TranslateService, private toastService: ToastService, public toastCtrl: ToastController) {
+  constructor(platform: Platform, public menu: MenuController, translate: TranslateService, private toastService: ToastService, public toastCtrl: ToastController, public settings: Settings) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

@@ -14,3 +14,47 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+$red-background: #fff6f6;
+$red-light: #ffa99c;
+$red-dark: #74000e;
+
+$blue-background: #f6f6ff;
+$blue-light: #53e1ff;
+$blue-dark: #0034a7;
+
+.light {
+  h1, h2, h3, h4, h5, h6,
+  .toolbar-title {
+    color: $blue-dark;
+  }
+  .toolbar-background {
+    background-color: $blue-light;
+  }
+  ion-content {
+    background-color: $blue-background;
+  }
+  ion-list {
+    .item {
+      background-color: darken($blue-background, 1.5%);
+    }
+  }
+}
+
+.dark {
+  h1, h2, h3, h4, h5, h6,
+  .toolbar-title {
+    color: $red-dark;
+  }
+  .toolbar-background {
+    background-color: $red-light;
+  }
+  ion-content {
+    background-color: $red-background;
+  }
+  ion-list {
+    .item {
+      background-color: darken($red-background, 1.5%);
+    }
+  }
+}

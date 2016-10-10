@@ -16,10 +16,21 @@
 <ion-content>
     <h1>Settings</h1>
     <ion-item>
+        <ion-label>Language</ion-label>
+        <ion-select [(ngModel)]="settings.culture">
+            <ion-option value="en">English</ion-option>
+            <ion-option value="pl">Polski</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
         <ion-label>Theme</ion-label>
         <ion-select [(ngModel)]="settings.theme">
             <ion-option value="light">Light</ion-option>
             <ion-option value="dark">Dark</ion-option>
         </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Tutorial</ion-label>
+        <ion-toggle [(ngModel)]="settings.tutorial"></ion-toggle>
     </ion-item>
 </ion-content>
