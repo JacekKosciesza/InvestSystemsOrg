@@ -13,5 +13,26 @@
 </ion-header>
 
 <ion-content>
-    <h1>Team</h1>
+    <ion-card>
+        <img src="http://www.ronbrauner.com/i/copywriter-multiple-personality.jpg" />
+        <ion-card-content>
+            <ion-card-title>
+                Jacek Kościesza
+            </ion-card-title>
+            <p>
+                OMA (One-Man Army)
+            </p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-list>
+        <ion-list-header>Team</ion-list-header>
+        <ion-item *ngFor="let member of members">
+            <ion-thumbnail  item-left>
+                <img src="{{member.photo}}">
+            </ion-thumbnail>
+            <h2>{{member.position}}</h2>
+            <p>{{member.name}}</p>
+        </ion-item>
+    </ion-list>
 </ion-content>
