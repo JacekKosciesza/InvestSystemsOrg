@@ -34,6 +34,7 @@ import {
   //MarginData
  } from '../+rule-one'
 
+import { ColorizedDirective } from '../directives';
 
 // Services
 import { PortfolioService, WatchlistService } from '../+dashboard';
@@ -85,7 +86,9 @@ import { TutorialPage, ContactService } from '../pages';
     ThreeToolsComponent,
     IdentityPopoverComponent,
     // Pipes
-    TranslatePipe
+    TranslatePipe,
+    // Directives
+    ColorizedDirective
   ],
   imports: [
     IonicModule.forRoot(InvestSystems),
