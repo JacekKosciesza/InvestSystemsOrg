@@ -13,7 +13,7 @@ import { Settings } from '../shared';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp implements OnInit {
+export class InvestSystems implements OnInit {
   @ViewChild(Nav) nav: Nav;
   rootPage = CompanyListComponent;
   pages: Array<{ title: string, component: any }>;

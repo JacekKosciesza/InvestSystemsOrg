@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import {Http} from '@angular/http';
 
-import { MyApp } from './app.component';
+import { InvestSystems } from './app.component';
 
 import { TranslatePipe, TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
@@ -51,7 +51,7 @@ import { TutorialPage } from '../pages';
 
 @NgModule({
   declarations: [
-    MyApp,
+    InvestSystems,
     // Pages
     DashboardComponent,
     CompanyListComponent,
@@ -88,12 +88,12 @@ import { TutorialPage } from '../pages';
     TranslatePipe
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(InvestSystems),
     //InMemoryWebApiModule.forRoot(MarginData)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    InvestSystems,
     SettingsPage,
     TutorialPage,
     AboutPage,
