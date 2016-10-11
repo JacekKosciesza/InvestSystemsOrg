@@ -1,0 +1,16 @@
+<!--Is this wonderful company accroding to Rule #1?-->
+<ion-icon *ngIf="isWonderful" style="color:green;" name="thumbs-up"></ion-icon>
+<ion-icon *ngIf="isWonderful === false" style="color:red;" name="thumbs-down"></ion-icon>
+
+<!--Current price vs Margin Of Safety vs Sticker Price-->
+<span [hidden]="isWonderful === null" [ngSwitch]="currentPriceGood"> 
+    <ion-icon *ngSwitchCase="1" name="pulse" style="color:red;"></ion-icon>
+    <ion-icon *ngSwitchCase="2" name="pulse" style="color:orange;"></ion-icon>
+    <ion-icon *ngSwitchCase="3" name="pulse" style="color:green;"></ion-icon>
+</span>
+
+<!--What is the trend of the current price according to the Three Tools?-->
+<span [hidden]="isWonderful === null" [ngSwitch]="currentPriceTrend"> 
+    <ion-icon *ngSwitchCase="1" name="trending-up" style="color:green;"></ion-icon>
+    <ion-icon *ngSwitchCase="2" name="trending-down" style="color:red;"></ion-icon>
+</span>

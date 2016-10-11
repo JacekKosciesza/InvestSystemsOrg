@@ -1,6 +1,7 @@
 rule-one-rating {
-    ion-badge {
-        color:white;
-        font-size:0.7em;
+    display:inline-block;
+
+    ion-icon {
+        margin-right: 5px;
     }
 }
