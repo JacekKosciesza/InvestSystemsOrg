@@ -47,7 +47,7 @@ import { ToastService } from '../services'
 
 import { Settings, setConfig, DEFAULT_APP_CONFIG } from '../shared';
 
-import { TutorialPage } from '../pages';
+import { TutorialPage, ContactService } from '../pages';
 
 @NgModule({
   declarations: [
@@ -121,6 +121,7 @@ import { TutorialPage } from '../pages';
     MarginService,
     ThreeToolsService,
     ToastService,
+    ContactService,
     {
       provide: TranslateLoader,
       useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),

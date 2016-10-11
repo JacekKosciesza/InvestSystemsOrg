@@ -1,0 +1,51 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+		<ion-title>{{ 'Contact' | translate }}</ion-title>
+		<ion-buttons end>
+			<button ion-button (click)="signIn()">
+                {{ 'Sign In' | translate }}
+            </button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<form *ngIf="active" (ngSubmit)="onSubmit()" #messageForm="ngForm">
+		<ion-list inset>
+			<h2>Contact Form</h2>
+			<input type="hidden" value="{{message.id}}">
+			<ion-item>
+				<ion-label floating>Subject</ion-label>
+				<ion-input type="text" [(ngModel)]="message.subject" name="subject" id="subject" required #subject="ngModel" #spy></ion-input>
+				<!--{{spy.className}}-->
+				<div [hidden]="subject.valid || subject.pristine">Subject is required</div>
+			</ion-item>
+
+			<ion-item>
+				<ion-label floating>Message</ion-label>
+				<ion-textarea rows="4" [(ngModel)]="message.body" name="body" id="body" required #body="ngModel"></ion-textarea>
+				<div [hidden]="body.valid || body.pristine">Message is required</div>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Name</ion-label>
+				<ion-input type="text" [(ngModel)]="message.name" name="name" id="name" required #name="ngModel"></ion-input>
+				<div [hidden]="name.valid || name.pristine">Name is required</div>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Email</ion-label>
+				<ion-input type="text" [(ngModel)]="message.email" name="email" id="email" required #email="ngModel"></ion-input>
+				<div [hidden]="email.valid || email.pristine">Email is required</div>
+			</ion-item>
+			<ion-item>
+				<ion-buttons end>
+					<!--<button ion-button color="light" (click)="newMessage()">Cancel</button>-->
+					<button ion-button type="submit" [disabled]="!messageForm.form.valid">Send</button>
+				</ion-buttons>
+			</ion-item>
+		</ion-list>
+	</form>
+	<!--{{diagnostic}}-->
+</ion-content>

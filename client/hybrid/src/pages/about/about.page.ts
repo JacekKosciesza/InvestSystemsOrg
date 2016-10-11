@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { SignInComponent } from '../../+identity';
-import { AboutTab } from './about.tab';
-import { TeamTab } from './team.tab';
-import { ContactTab } from './contact.tab';
+import { AboutTab, TeamTab, ContactTab } from './tabs';
 
 @Component({
     selector: 'about-page',
