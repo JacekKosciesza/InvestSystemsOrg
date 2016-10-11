@@ -2,14 +2,17 @@
 
 <small>Is this company related to your:</small>
 <ion-item>
-    <ion-label>Passion <small>(things you love to do)</small></ion-label>
-    <ion-checkbox secondary checked="{{meaning.passion}}"></ion-checkbox> <!--TODO: disabled-->
+    <ion-icon name="checkbox" *ngIf="meaning.passion"></ion-icon>
+    <ion-icon name="square-outline" *ngIf="!meaning.passion"></ion-icon>
+    Passion <small>(things you love to do)</small>
 </ion-item>
 <ion-item>
-    <ion-label>Talent <small>(things you are really good at)</small></ion-label>
-    <ion-checkbox secondary checked="{{meaning.talent}}"></ion-checkbox>
+    <ion-icon name="checkbox" *ngIf="meaning.talent"></ion-icon>
+    <ion-icon name="square-outline" *ngIf="!meaning.talent"></ion-icon>
+    Talent <small>(things you are really good at)</small>
 </ion-item>
 <ion-item>
-    <ion-label>Money <small>(make money or spend money on)</small></ion-label>
-    <ion-checkbox secondary checked="{{meaning.money}}"></ion-checkbox>
+    <ion-icon name="checkbox" *ngIf="meaning.money"></ion-icon>
+    <ion-icon name="square-outline" *ngIf="!meaning.money"></ion-icon>
+    Money <small>(make money or spend money on)</small>
 </ion-item>

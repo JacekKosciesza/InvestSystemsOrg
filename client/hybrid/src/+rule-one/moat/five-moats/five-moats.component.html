@@ -1,26 +1,31 @@
 <h4>Five Moats</h4>
 <ion-item>
-    <ion-label>Brand <small>(pay more for because you trust it)</small></ion-label>
-    <ion-checkbox secondary checked="{{fiveMoats.brand}}"></ion-checkbox> <!--TODO: disabled-->
+    <ion-icon name="checkbox" *ngIf="fiveMoats.brand"></ion-icon>
+    <ion-icon name="square-outline" *ngIf="!fiveMoats.brand"></ion-icon>
+    Brand <small>(pay more for because you trust it)</small>
     <p style="display:none;">a product you're willing to pay more for because you trust it e.g. Coke, Gillette, Disney, McDonald's, Pepsi, Nike, Budweiser, Harley-Davidson</p>
 </ion-item>
 <ion-item>
-    <ion-label>Secret <small>(patent or trade secret)</small></ion-label>
-    <ion-checkbox secondary checked="{{fiveMoats.secret}}"></ion-checkbox>
+    <ion-icon name="checkbox" *ngIf="fiveMoats.secret"></ion-icon>
+    <ion-icon name="square-outline" *ngIf="!fiveMoats.secret"></ion-icon>
+    Secret <small>(patent or trade secret)</small>
     <p style="display:none;">a business that has a patent or trade secret that makes direct competition illegal or very difficult e.g. Pfizer, 3M, Intel</p>
 </ion-item>
 <ion-item>
-    <ion-label>Toll <small>(exclusive control of a market)</small></ion-label>
-    <ion-checkbox secondary checked="{{fiveMoats.toll}}"></ion-checkbox>
+    <ion-icon name="checkbox" *ngIf="fiveMoats.toll"></ion-icon>
+    <ion-icon name="square-outline" *ngIf="!fiveMoats.toll"></ion-icon>
+    Toll <small>(exclusive control of a market)</small>
     <p style="display:none;">a business with exclusive control of a market - giving it the ability to collect a "toll" form anyone needing that service or product e.g. media companies, utilites , ad agencies</p>
 </ion-item>
 <ion-item>
-    <ion-label>Switching <small>(so much a part of customer's life)</small></ion-label>
-    <ion-checkbox secondary checked="{{fiveMoats.switching}}"></ion-checkbox>
+    <ion-icon name="checkbox" *ngIf="fiveMoats.switching"></ion-icon>
+    <ion-icon name="square-outline" *ngIf="!fiveMoats.switching"></ion-icon>
+    Switching <small>(so much a part of customer's life)</small>
     <p style="display:none;">a business that's so much a part of your life that switching isn't worth the trouble e.g. ADR Paychex, H&R Block, Microsoft</p>
 </ion-item>
 <ion-item>
-    <ion-label>Price <small>(price so low no one can compete)</small></ion-label>
-    <ion-checkbox secondary checked="{{fiveMoats.price}}"></ion-checkbox>
+    <ion-icon name="checkbox" *ngIf="fiveMoats.price"></ion-icon>
+    <ion-icon name="square-outline" *ngIf="!fiveMoats.price"></ion-icon>
+    Price <small>(price so low no one can compete)</small>
     <p style="display:none;">a business that can price products so low no one can compete e.g. Wall-Mart, Costco, Bed Bath & Beyond, Home Depot, Target</p>
 </ion-item>

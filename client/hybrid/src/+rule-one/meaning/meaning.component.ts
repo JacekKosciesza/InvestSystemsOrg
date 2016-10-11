@@ -5,7 +5,12 @@ import { Meaning } from './meaning.model';
 
 @Component({
     selector: 'meaning-to-you',
-    templateUrl: 'meaning.component.html',
+    template:
+    `
+        <h2>{{ 'Meaning' | translate }}</h2>
+        <meaning-statement [meaning]='meaning'></meaning-statement>
+        <three-circles [meaning]='meaning'></three-circles>
+    `
 })
 export class MeaningComponent implements OnInit {
     @Input() companySymbol: string;

@@ -1,28 +1,29 @@
+<h2>{{ 'Management' | translate }}</h2>
 <ion-card *ngFor="let leader of leaders">
-    <ion-item>
-        <ion-avatar item-left>
-            <img src="{{leader.avatar}}">
-        </ion-avatar>
-        <h2>{{leader.name}}</h2>
-        <p>{{leader.position}}</p>
-        <ion-note item-right>
-            <ion-icon *ngIf="leader.isLevelFiveLeader" style="color:green;" name="thumbs-up"></ion-icon>
-            <ion-icon *ngIf="!leader.isLevelFiveLeader" style="float:right; color:red;" name="thumbs-down"></ion-icon>
-        </ion-note>
-    </ion-item>
+	<ion-item>
+		<ion-avatar item-left>
+			<img src="{{leader.avatar}}">
+		</ion-avatar>
+		<h2>{{leader.name}}</h2>
+		<p>{{leader.position}}</p>
+		<ion-note item-right>
+			<ion-icon *ngIf="leader.isLevelFiveLeader" style="color:green;" name="thumbs-up"></ion-icon>
+			<ion-icon *ngIf="!leader.isLevelFiveLeader" style="float:right; color:red;" name="thumbs-down"></ion-icon>
+		</ion-note>
+	</ion-item>
 
-    <ion-card-content class="leadership-examples">
-        <ul class="examples">
-            <li *ngFor="let example of leader.leadershipExamples; let i = index">
-                <ion-icon *ngIf="example.isPositive" style="color:green;" name="happy"></ion-icon>
-                <ion-icon *ngIf="!example.isPositive" style="color:red;" name="sad"></ion-icon>
-                {{example.content}} <sup><a href="#">[{{i+1}}]</a></sup>
-            </li>
-        </ul>
-        <ul class="references">
-            <li *ngFor="let example of leader.leadershipExamples; let i = index">
-                {{i+1}}. <span [innerHTML]="example.reference"></span>
-            </li>
-        </ul>
-    </ion-card-content>
+	<ion-card-content class="leadership-examples">
+		<ul class="examples">
+			<li *ngFor="let example of leader.leadershipExamples; let i = index">
+				<ion-icon *ngIf="example.isPositive" style="color:green;" name="happy"></ion-icon>
+				<ion-icon *ngIf="!example.isPositive" style="color:red;" name="sad"></ion-icon>
+				{{example.content}} <sup><a href="#">[{{i+1}}]</a></sup>
+			</li>
+		</ul>
+		<ul class="references">
+			<li *ngFor="let example of leader.leadershipExamples; let i = index">
+				{{i+1}}. <span [innerHTML]="example.reference"></span>
+			</li>
+		</ul>
+	</ion-card-content>
 </ion-card>

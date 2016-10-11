@@ -7,6 +7,7 @@ import { Moat } from './shared/moat.model';
     selector: 'moat',
     template: 
     `
+        <h2>{{ 'Moat' | translate }}</h2>
         <five-moats [fiveMoats]="moat.fiveMoats"></five-moats>
         <big-five [bigFive]="moat.bigFive"></big-five>
     `
