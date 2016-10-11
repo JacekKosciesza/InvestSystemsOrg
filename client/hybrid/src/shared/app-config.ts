@@ -6,6 +6,6 @@ export class AppConfig {
 
 export let DEFAULT_APP_CONFIG : AppConfig = {
     culture: 'en',
-    theme: 'light',
+    theme: 'default',
     tutorial: true
 }

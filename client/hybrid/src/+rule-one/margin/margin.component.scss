@@ -1,4 +1,16 @@
 margin-of-safety {
+    .card {
+        width:95vw;
+        box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.2);
+        transition: 0.3s;
+        background-color: white;
+        padding: 5px;
+
+        h2 {
+            margin-top:0;
+        }
+    }
+
     .table-bordered {
         border: 1px solid #ddd;
     }

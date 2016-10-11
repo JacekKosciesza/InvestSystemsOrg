@@ -1,70 +1,83 @@
-<h4 *ngIf="margin.currentPrice > margin.stickerPrice" style="color: red;"><ion-icon name="pulse"></ion-icon> Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}</h4>
-<h4><ion-icon name="pricetag"></ion-icon> Sticker Price: {{margin.stickerPrice | currency:'USD':true:'1.0-0'}}</h4>
-<h4 *ngIf="margin.currentPrice > margin.marginOfSafety && margin.currentPrice < margin.stickerPrice" style="color: orange;"><ion-icon name="pulse"></ion-icon> Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}</h4>
-<h4><ion-icon name="cash"></ion-icon> Margin Of Safety: {{margin.marginOfSafety | currency:'USD':true:'1.0-0'}}</h4>
-<h4 *ngIf="margin.currentPrice <= margin.marginOfSafety" style="color: green;"><ion-icon name="pulse"></ion-icon> Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}</h4>
+<div class="card">
+    <section class="summary">
+        <h2>{{ 'Margin' | translate }}</h2>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th style="text-align:center">EPS<sub>c</sub></th>
-            <th style="text-align:center">EPS<sub>gr</sub></th>
-            <th style="text-align:center">PE<sub>fe</sub></th>
-            <th style="text-align:center">ROR</th>
-            <th style="text-align:center">Y</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>8.53</td>
-            <td>6%</td>
-            <td>12</td>
-            <td>15%</td>
-            <td>10</td>
-        </tr>
-    </tbody>
-</table>
+        <h4 *ngIf="margin.currentPrice > margin.stickerPrice" style="color: red;"><ion-icon name="pulse"></ion-icon> Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}</h4>
+        <h4><ion-icon name="pricetag"></ion-icon> Sticker Price: {{margin.stickerPrice | currency:'USD':true:'1.0-0'}}</h4>
+        <h4 *ngIf="margin.currentPrice > margin.marginOfSafety && margin.currentPrice < margin.stickerPrice" style="color: orange;"><ion-icon name="pulse"></ion-icon> Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}</h4>
+        <h4><ion-icon name="cash"></ion-icon> Margin Of Safety: {{margin.marginOfSafety | currency:'USD':true:'1.0-0'}}</h4>
+        <h4 *ngIf="margin.currentPrice <= margin.marginOfSafety" style="color: green;"><ion-icon name="pulse"></ion-icon> Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}</h4>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th colspan="3" style="text-align:center">EPS<sub>gr</sub></th>
-            <th colspan="3" style="text-align:center">PE<sub>fe</sub></th>
-        </tr>
-        <tr>
-            <th><small>Analysts</small></th> <!-- get it from website -->
-            <th><small>Historical</small></th> <!-- equity growth rate we hava it in big five -->
-            <th><small>Rule #1</small></th> <!-- lower of the 2 numbers above -->
-            <th><small>Default</small></th> <!-- 2 times Rule #1 growth rate -->
-            <th><small>Historical</small></th> <!-- get from website? -->
-            <th><small>Rule #1</small></th> <!-- lower of the 2 numbers above -->
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>7%</td>
-            <td>6%</td>
-            <td>6%</td>
-            <td>12</td>
-            <td>12</td>
-            <td>12</td>
-        </tr>
-    </tbody>
-</table>
+        <button ion-button color="light" small icon-left full (click)="more=!more">
+            <div *ngIf="!more"><ion-icon name="arrow-down"></ion-icon> More</div>
+            <div *ngIf="more"><ion-icon name="arrow-up"></ion-icon> Less</div>
+        </button>
+    </section>
 
-EPS<sub>f</sub> = EPS<sub>c</sub> · (1 + EPS<sub>gr</sub>)<sup>Y</sup> = 8.53 · (1 + 0.06)<sup>10</sup> = {{futureValue(8.53, 0.06, 10) | number : '1.2-2'}}<br> 
-FMP = EPS<sub>f</sub> · PE<sub>fe</sub> = {{futureValue(8.53, 0.06, 10)*12 | number : '1.0-0'}}<br>
-SP = FMP / (1 + ROR)<sup>Y</sup> = {{futureValue(8.53, 0.06, 10)*12 | number : '1.0-0'}} / (1 + 0.15)<sup>10</sup> = {{initialValue(183, 0.15, 10) | number : '1.2-2'}}<br> 
-MOS = SP * 0.5 = {{initialValue(183, 0.15, 10)*0.5 | number : '1.0-0'}}
-<br>
-<br>
+    <section *ngIf="more">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="text-align:center">EPS<sub>c</sub></th>
+                    <th style="text-align:center">EPS<sub>gr</sub></th>
+                    <th style="text-align:center">PE<sub>fe</sub></th>
+                    <th style="text-align:center">ROR</th>
+                    <th style="text-align:center">Y</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>8.53</td>
+                    <td>6%</td>
+                    <td>12</td>
+                    <td>15%</td>
+                    <td>10</td>
+                </tr>
+            </tbody>
+        </table>
 
-<small>SP - sticker price</small><br>
-<small>MOS - margin of safety</small><br>
-<small>FMP - future market price</small><br>
-<small>EPS<sub>f</sub> - future EPS (Y years from now)</small><br>
-<small>EPS<sub>c</sub> - current or TTM (Trailing Twelve Months) EPS</small><br>
-<small>EPS<sub>gr</sub> - EPS growth rate</small><br>
-<small>PE<sub>fe</sub> - future estimated PE</small><br>
-<small>ROR - rate of return</small><br>
-<small>Y - years from now</small><br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="3" style="text-align:center">EPS<sub>gr</sub></th>
+                    <th colspan="3" style="text-align:center">PE<sub>fe</sub></th>
+                </tr>
+                <tr>
+                    <th><small>Analysts</small></th>
+                    <th><small>Historical</small></th>
+                    <th><small>Rule #1</small></th>
+                    <th><small>Default</small></th>
+                    <th><small>Historical</small></th>
+                    <th><small>Rule #1</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7%</td>
+                    <td>6%</td>
+                    <td>6%</td>
+                    <td>12</td>
+                    <td>12</td>
+                    <td>12</td>
+                </tr>
+            </tbody>
+        </table>
+
+        EPS<sub>f</sub> = EPS<sub>c</sub> · (1 + EPS<sub>gr</sub>)<sup>Y</sup> = 8.53 · (1 + 0.06)<sup>10</sup> = {{futureValue(8.53, 0.06, 10) | number : '1.2-2'}}<br> 
+        FMP = EPS<sub>f</sub> · PE<sub>fe</sub> = {{futureValue(8.53, 0.06, 10)*12 | number : '1.0-0'}}<br>
+        SP = FMP / (1 + ROR)<sup>Y</sup> = {{futureValue(8.53, 0.06, 10)*12 | number : '1.0-0'}} / (1 + 0.15)<sup>10</sup> = {{initialValue(183, 0.15, 10) | number : '1.2-2'}}<br> 
+        MOS = SP * 0.5 = {{initialValue(183, 0.15, 10)*0.5 | number : '1.0-0'}}
+        <br>
+        <br>
+
+        <small>SP - sticker price</small><br>
+        <small>MOS - margin of safety</small><br>
+        <small>FMP - future market price</small><br>
+        <small>EPS<sub>f</sub> - future EPS (Y years from now)</small><br>
+        <small>EPS<sub>c</sub> - current or TTM (Trailing Twelve Months) EPS</small><br>
+        <small>EPS<sub>gr</sub> - EPS growth rate</small><br>
+        <small>PE<sub>fe</sub> - future estimated PE</small><br>
+        <small>ROR - rate of return</small><br>
+        <small>Y - years from now</small><br>
+    </section>
+</div>
