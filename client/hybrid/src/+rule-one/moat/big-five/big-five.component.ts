@@ -7,12 +7,7 @@ import { BigFive } from './shared/big-five.model';
 
 @Component({
     selector: 'big-five',
-    template: 
-    `
-        <big-five-annual [bigFiveAnnual]="bigFive.bigFiveAnnual"></big-five-annual>
-        <big-five-growth [bigFiveGrowthRates]="bigFive.bigFiveGrowthRates"></big-five-growth>
-    `,
-    directives: [BigFiveAnnualComponent, BigFiveGrowthComponent]
+    templateUrl: 'big-five.component.html' 
 })
 export class BigFiveComponent implements OnInit {
     @Input() bigFive: BigFive;

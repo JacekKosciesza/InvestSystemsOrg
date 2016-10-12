@@ -1,0 +1,9 @@
+<big-five-growth [bigFiveGrowthRates]="bigFive.bigFiveGrowthRates"></big-five-growth>
+
+<button ion-button color="light" small icon-left full (click)="more=!more">
+    <ion-icon *ngIf="!more" name="arrow-down"></ion-icon>
+    <ion-icon *ngIf="more" name="arrow-up"></ion-icon>
+     Big Five Details
+</button>
+
+<big-five-annual *ngIf="more" [bigFiveAnnual]="bigFive.bigFiveAnnual"></big-five-annual>
