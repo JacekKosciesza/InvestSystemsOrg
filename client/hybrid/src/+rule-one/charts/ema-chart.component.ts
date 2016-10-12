@@ -7,7 +7,14 @@ declare var google: any;
 
 @Component({
     selector: 'ema-chart',
-    template: `<div id="ema-chart"></div>`
+    template: 
+    `
+        <div id="ema-chart"></div>
+        <footer class="legend">
+            <ion-icon name="square"></ion-icon> Price
+            <ion-icon name="square"></ion-icon> EMA
+        </footer>
+    `
 })
 export class EmaChartComponent implements OnInit, OnChanges {
     @Input() title: string;
@@ -50,11 +57,10 @@ export class EmaChartComponent implements OnInit, OnChanges {
 
         var options = {
             chart: {
-                title: this.title,
-                subtitle: 'EMA & Close Price'
+                title: this.title
             },
-            //width: 375,
-            //height: 500
+            legend: {position: 'none'}, // TODO: bottom when it will be supported
+            colors:['#4285F4','#F4B400']
         };
 
         var chart = new google.charts.Line(document.getElementById('ema-chart')); // TODO: some unique identifier?

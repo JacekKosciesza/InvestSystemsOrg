@@ -1,0 +1,31 @@
+three-tools {
+    width: 95vw;
+
+    span.recommendation {
+        font-weight: normal;
+        font-size: 0.7em;
+    }
+
+    small.date {
+        font-weight: normal;
+        font-size: 0.7em;
+        color:grey;
+    }
+
+
+    footer.legend {
+        text-align: center;
+    }
+
+    footer.legend ion-icon[name="square"] {
+        margin-left: 10px;
+    }
+
+    footer.legend ion-icon[name="square"]:nth-child(1) {
+        color:#4285F4;
+    }
+
+    footer.legend ion-icon[name="square"]:nth-child(2) {
+        color:#F4B400;
+    }
+}

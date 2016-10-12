@@ -7,7 +7,14 @@ declare var google: any;
 
 @Component({
     selector: 'macd-chart',
-    template: `<div id="macd-chart"></div>`
+    template: 
+    `
+        <div id="macd-chart"></div>
+        <footer class="legend">
+            <ion-icon name="square"></ion-icon> MACD
+            <ion-icon name="square"></ion-icon> Signal
+        </footer>
+    `
 })
 export class MacdChartComponent implements OnInit, OnChanges {
     @Input() title: string;
@@ -49,11 +56,10 @@ export class MacdChartComponent implements OnInit, OnChanges {
 
         var options = {
             chart: {
-                title: this.title,
-                subtitle: 'MACD & Signal'
+                title: this.title
             },
-            //width: 900,
-            //height: 500
+            legend: {position: 'none'}, // TODO: bottom when it will be supported
+            colors:['#4285F4','#F4B400']
         };
 
         var chart = new google.charts.Line(document.getElementById('macd-chart')); // TODO: some unique identifier?

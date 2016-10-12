@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { BigFiveAnnualComponent } from './big-five-annual/big-five-annual.component';
-import { BigFiveGrowthComponent } from './big-five-growth/big-five-growth.component';
-
 import { BigFive } from './shared/big-five.model';
 
 @Component({

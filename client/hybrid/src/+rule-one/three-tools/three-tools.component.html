@@ -1,9 +1,9 @@
 <h2>Three Tools</h2>
-<section style="width:95%;"> <!--TODO: move it to css file-->
-    <h4>EMA</h4>
+<section>
+    <h5 style="color:green;">EMA - <span class="recommendation">buy</span> <small class="date">(3 days ago)</small></h5>
     <ema-chart [title]='TODO' [data]='emaData'></ema-chart>
-    <h4>MACD</h4>
+    <h5 style="color:red;">MACD - <span class="recommendation">sell</span> <small class="date">(1 days ago)</small></h5>
     <macd-chart [title]='TODO' [data]='macdData'></macd-chart>
-    <h4>Stochastic Oscillator</h4>
+    <h5  style="color:red;">Stochastic Oscillator - <span class="recommendation">sell</span> <small class="date">(10 days ago)</small></h5>
     <stochastic-chart [title]='TODO' [data]='stochasticData'></stochastic-chart>
 </section>
