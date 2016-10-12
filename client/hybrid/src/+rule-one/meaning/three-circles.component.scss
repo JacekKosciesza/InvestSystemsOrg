@@ -1,0 +1,22 @@
+three-circles {
+    svg {
+        width: 60vw;
+        margin: 15px 20vw;
+
+        circle {
+            opacity: 0.3;
+            stroke:black;
+            fill:#aaa;
+        }
+
+        text {
+            fill:black;
+            font-size:4em;
+        }
+
+        circle.checked {
+            opacity: 0.3;
+            fill:green;
+        }
+    }
+}

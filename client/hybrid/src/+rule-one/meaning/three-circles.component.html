@@ -2,17 +2,27 @@
 
 <small>Is this company related to your:</small>
 <ion-item>
-    <ion-icon name="checkbox" *ngIf="meaning.passion"></ion-icon>
-    <ion-icon name="square-outline" *ngIf="!meaning.passion"></ion-icon>
-    Passion <small>(things you love to do)</small>
+	<ion-icon name="checkbox" *ngIf="meaning.passion"></ion-icon>
+	<ion-icon name="square-outline" *ngIf="!meaning.passion"></ion-icon>
+	{{ 'Passion' | translate }} <small>(things you love to do)</small>
 </ion-item>
 <ion-item>
-    <ion-icon name="checkbox" *ngIf="meaning.talent"></ion-icon>
-    <ion-icon name="square-outline" *ngIf="!meaning.talent"></ion-icon>
-    Talent <small>(things you are really good at)</small>
+	<ion-icon name="checkbox" *ngIf="meaning.talent"></ion-icon>
+	<ion-icon name="square-outline" *ngIf="!meaning.talent"></ion-icon>
+	{{ 'Talent' | translate }} <small>(things you are really good at)</small>
 </ion-item>
 <ion-item>
-    <ion-icon name="checkbox" *ngIf="meaning.money"></ion-icon>
-    <ion-icon name="square-outline" *ngIf="!meaning.money"></ion-icon>
-    Money <small>(make money or spend money on)</small>
+	<ion-icon name="checkbox" *ngIf="meaning.money"></ion-icon>
+	<ion-icon name="square-outline" *ngIf="!meaning.money"></ion-icon>
+	{{ 'Money' | translate }} <small>(make money or spend money on)</small>
 </ion-item>
+<svg viewBox="0 0 1000 1000">
+	<text x="300" y="200" class="passion">{{ 'Passion' | translate }}</text>
+	<circle cx="400" cy="350" r="350" [class.checked]="meaning.passion"></circle>
+
+    <text x="100" y="750" class="passion">{{ 'Money' | translate }}</text>
+	<circle cx="350" cy="650" r="350" [class.checked]="meaning.money"></circle>
+
+    <text x="750" y="550" class="passion">{{ 'Talent' | translate }}</text>
+	<circle cx="650" cy="550" r="350" [class.checked]="meaning.talent"></circle>
+</svg>
