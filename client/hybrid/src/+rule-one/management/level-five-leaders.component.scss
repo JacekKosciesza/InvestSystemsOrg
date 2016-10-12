@@ -5,12 +5,14 @@ level-five-leaders {
     }
 
     .leadership-examples ul.examples {
-        padding-bottom: 10px; 
-        border-bottom: 1px solid #bbb;
+        padding-bottom: 10px;
+        font-size: 0.9em; 
     }
 
 
     .leadership-examples ul.references {
-        color: grey;
+        border-bottom: 1px solid #bbb;
+        padding-bottom: 15px;
+        font-size: 0.8em;
     }
 }

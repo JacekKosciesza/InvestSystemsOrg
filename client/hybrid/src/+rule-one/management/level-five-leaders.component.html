@@ -1,22 +1,25 @@
 <h2>{{ 'Management' | translate }}</h2>
-<ion-card *ngFor="let leader of leaders">
+<section *ngFor="let leader of leaders; let i = index">
 	<ion-item>
-		<ion-avatar item-left>
+		<ion-thumbnail item-left>
 			<img src="{{leader.avatar}}">
-		</ion-avatar>
-		<h2>{{leader.name}}</h2>
+		</ion-thumbnail>
+		<h2 *ngIf="leader.isLevelFiveLeader" style="color:green;">{{leader.name}}</h2>
+		<h2 *ngIf="!leader.isLevelFiveLeader" style="color:red;">{{leader.name}}</h2>
 		<p>{{leader.position}}</p>
 		<ion-note item-right>
-			<ion-icon *ngIf="leader.isLevelFiveLeader" style="color:green;" name="thumbs-up"></ion-icon>
-			<ion-icon *ngIf="!leader.isLevelFiveLeader" style="float:right; color:red;" name="thumbs-down"></ion-icon>
+			<button ion-button color="light" small icon-left full (click)="more[i]=!more[i]">
+                <ion-icon *ngIf="!more[i]" name="arrow-down"></ion-icon>
+                <ion-icon *ngIf="more[i]" name="arrow-up"></ion-icon>
+            </button>
 		</ion-note>
 	</ion-item>
 
-	<ion-card-content class="leadership-examples">
+	<div class="leadership-examples" *ngIf="more[i]">
 		<ul class="examples">
 			<li *ngFor="let example of leader.leadershipExamples; let i = index">
-				<ion-icon *ngIf="example.isPositive" style="color:green;" name="happy"></ion-icon>
-				<ion-icon *ngIf="!example.isPositive" style="color:red;" name="sad"></ion-icon>
+				<ion-icon *ngIf="example.isPositive" style="color:green;" name="add-circle"></ion-icon>
+				<ion-icon *ngIf="!example.isPositive" style="color:red;" name="remove-circle"></ion-icon>
 				{{example.content}} <sup><a href="#">[{{i+1}}]</a></sup>
 			</li>
 		</ul>
@@ -25,5 +28,5 @@
 				{{i+1}}. <span [innerHTML]="example.reference"></span>
 			</li>
 		</ul>
-	</ion-card-content>
-</ion-card>
+	</div>
+</section>

@@ -9,9 +9,12 @@ import { Leader } from './leader.model';
 })
 export class LevelFiveLeadersComponent implements OnInit {
     @Input() companySymbol: string;
-    public leaders: Leader[];
+    public leaders: Array<Leader>;
+    public more: Array<boolean>;
 
-    constructor(public managementService: ManagementService) { }
+    constructor(public managementService: ManagementService) {
+        this.more = [];
+    }
 
     ngOnInit() {
         this.managementService.getLeaders(this.companySymbol).then(leaders => {

@@ -112,6 +112,29 @@ namespace InvSys.RuleOne.State.EntityFramework.Seed
                             }
                         }
                     },
+                    new Leader
+                    {
+                        CompanySymbol = "XXII",
+                        Name = "Jeffrey Skilling",
+                        Avatar = "https://upload.wikimedia.org/wikipedia/commons/5/57/Jeffrey_Skilling_mug_shot.jpg",
+                        Position = "CEO",
+                        IsLevelFiveLeader = false,
+                        LeadershipExamples = new List<LeadershipExample>
+                        {
+                            new LeadershipExample
+                            {
+                                Content = "He said something that confirms that he is a level five leader.",
+                                IsPositive = true,
+                                Reference = @"Quote source, <a href=""http:\\www.google.com"">Quote Source<a>, Where, 2015"
+                            },
+                            new LeadershipExample
+                            {
+                                Content = "He said something that bad. Something that...bla bla bla",
+                                IsPositive = false,
+                                Reference = @"Something, <a href=""http:\\www.google.com"">Quote Source<a>, Lorem, 2000"
+                            }
+                        }
+                    },
                 };
 
                 _db.Leaders.AddRange(leaders);
