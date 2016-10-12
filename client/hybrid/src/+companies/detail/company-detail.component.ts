@@ -33,4 +33,10 @@ export class CompanyDetailComponent implements OnInit {
     let modal = this.modalCtrl.create(CompanyEditComponent, { company: company });
     modal.present();
   }
+
+  watch(company) {
+  }
+
+  buy(company) {
+  }
 }
