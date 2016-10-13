@@ -3,7 +3,7 @@
 <ion-icon *ngIf="isWonderful === false" style="color:red;" name="thumbs-down"></ion-icon>
 
 <!--Current price vs Margin Of Safety vs Sticker Price-->
-<span [hidden]="isWonderful === null" [ngSwitch]="currentPriceGood"> 
+<span [hidden]="isWonderful === null" [ngSwitch]="currentPriceGood">
     <ion-icon *ngSwitchCase="1" name="pulse" style="color:red;"></ion-icon>
     <ion-icon *ngSwitchCase="2" name="pulse" style="color:orange;"></ion-icon>
     <ion-icon *ngSwitchCase="3" name="pulse" style="color:green;"></ion-icon>

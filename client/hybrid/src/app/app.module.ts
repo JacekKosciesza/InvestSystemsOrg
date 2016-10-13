@@ -9,7 +9,7 @@ import { TranslatePipe, TranslateService, TranslateLoader, TranslateStaticLoader
 import { RuleOneRatingComponent } from '../+rule-one'
 
 // Pages
-import { DashboardComponent } from '../+dashboard';
+import { DashboardComponent, DashboardHintComponent } from '../+dashboard';
 import { CompanyListComponent, CompanyDetailComponent, CompanyEditComponent, CompanyService } from '../+companies';
 
 // Components
@@ -85,6 +85,7 @@ import { TutorialPage, ContactService } from '../pages';
     MarginComponent,
     ThreeToolsComponent,
     IdentityPopoverComponent,
+    DashboardHintComponent,
     // Pipes
     TranslatePipe,
     // Directives

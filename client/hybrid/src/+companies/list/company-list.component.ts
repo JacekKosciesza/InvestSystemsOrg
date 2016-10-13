@@ -8,12 +8,8 @@ import { CompanyEditComponent } from '../edit';
 import { IdentityService, IdentityPopoverComponent } from '../../+identity';
 
 @Component({
-    templateUrl: 'company-list.component.html',
-    styles: [`
-        rule-one-rating: {
-            float:rigth;
-        }
-    `]
+    selector: 'company-list',
+    templateUrl: 'company-list.component.html'
 })
 export class CompanyListComponent implements OnInit {
     selectedItem: any;
