@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, NavParams } from 'ionic-angular';
+
 import { CompanyEditComponent } from '../edit';
 import { IdentityService } from '../../+identity';
 import { CompanyService } from '../shared';
+import { ToastService, Toast } from '../../services'
 
 @Component({
   selector: 'company-detail',
@@ -16,13 +18,15 @@ export class CompanyDetailComponent implements OnInit {
     navParams: NavParams,
     public modalCtrl: ModalController,
     public identityService: IdentityService,
-    private companyService: CompanyService) {
+    private companyService: CompanyService,
+    private toastService: ToastService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.company = navParams.get('item');
+    this.company.inWatchlist = false;
+    this.company.inPortfolio = false;
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
     var symbol = this.company.symbol;
     this.companyService.getCompany(symbol).then(company => {
       this.company = company;
@@ -34,9 +38,17 @@ export class CompanyDetailComponent implements OnInit {
     modal.present();
   }
 
-  watch(company) {
+  watchlist(company) {
+    if (company.inWatchlist) {
+      this.toastService.show(new Toast(`${company.symbol} - unwatch`, 3000)); // TOOD: better message + translation
+      this.company.inWatchlist = false;
+    } else {
+      this.toastService.show(new Toast(`${company.symbol} - watch`, 3000)); // TOOD: better message + translation
+      this.company.inWatchlist = true;
+    }
   }
 
-  buy(company) {
+  portfolio(company) {
+    this.company.inPortfolio = !this.company.inPortfolio;
   }
 }

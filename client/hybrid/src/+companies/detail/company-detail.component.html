@@ -54,11 +54,19 @@
     </ion-row>
   </ion-grid>
   <ion-fab right bottom> <!--*ngIf="identityService.token"-->
-		<button ion-fab><ion-icon name="arrow-dropleft"></ion-icon></button>
-		<ion-fab-list side="left">
+		<button ion-fab><ion-icon name="arrow-dropup"></ion-icon></button>
+		<ion-fab-list side="top">
 			<button ion-fab color="primary" (click)="edit(company)"><ion-icon name="create"></ion-icon></button>
-			<button ion-fab color="primary" (click)="watch(company)"><ion-icon name="eye"></ion-icon></button>
-      <button ion-fab color="primary" (click)="buy(company)"><ion-icon name="cart"></ion-icon></button>
+
+			<button ion-fab color="secondary" (click)="watchlist(company)">
+        <ion-icon *ngIf="!company.inWatchlist" name="eye"></ion-icon>
+        <ion-icon *ngIf="company.inWatchlist" name="eye-off"></ion-icon>
+      </button>
+
+      <button ion-fab color="danger" (click)="portfolio(company)">
+        <ion-icon *ngIf="!company.inPortfolio" name="cart"></ion-icon>
+        <ion-icon *ngIf="company.inPortfolio" name="cash"></ion-icon>
+      </button>
 		</ion-fab-list>
 	</ion-fab>
 </ion-content>
