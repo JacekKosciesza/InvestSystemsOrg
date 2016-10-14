@@ -6,12 +6,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RuleOneRatingComponent implements OnInit {
     @Input() isWonderful: boolean;
-    public currentPriceGood: number;
-    public currentPriceTrend: number;
+    public margin: number;
+    public threeTools: any;
     
     constructor() {
-        this.currentPriceGood = this.getRandomInt(1,3);
-        this.currentPriceTrend = this.getRandomInt(1,2);
+        this.margin = this.getRandomInt(1,3);
+        this.threeTools = {
+            buy: this.getRandomInt(1,2) === 1,
+            signal: this.getRandomInt(1,3) 
+        }
     }
 
     ngOnInit() { }

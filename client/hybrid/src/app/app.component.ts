@@ -15,7 +15,7 @@ import { Settings } from '../shared';
 })
 export class InvestSystems implements OnInit {
   @ViewChild(Nav) nav: Nav;
-  rootPage = DashboardComponent;
+  rootPage = CompanyListComponent;
   pages: Array<{ title: string, component: any }>;
   theme: string;
 

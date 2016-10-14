@@ -3,14 +3,20 @@
 <ion-icon *ngIf="isWonderful === false" style="color:red;" name="thumbs-down"></ion-icon>
 
 <!--Current price vs Margin Of Safety vs Sticker Price-->
-<span [hidden]="isWonderful === null" [ngSwitch]="currentPriceGood">
+<span [hidden]="isWonderful === null" [ngSwitch]="margin">
     <ion-icon *ngSwitchCase="1" name="pulse" style="color:red;"></ion-icon>
     <ion-icon *ngSwitchCase="2" name="pulse" style="color:orange;"></ion-icon>
     <ion-icon *ngSwitchCase="3" name="pulse" style="color:green;"></ion-icon>
 </span>
 
 <!--What is the trend of the current price according to the Three Tools?-->
-<span [hidden]="isWonderful === null" [ngSwitch]="currentPriceTrend"> 
+<!--<span [hidden]="isWonderful === null" [ngSwitch]="currentPriceTrend"> 
     <ion-icon *ngSwitchCase="1" name="trending-up" style="color:green;"></ion-icon>
     <ion-icon *ngSwitchCase="2" name="trending-down" style="color:red;"></ion-icon>
+</span>-->
+
+<span [hidden]="isWonderful === null" [ngSwitch]="threeTools.signal">
+    <svg *ngSwitchCase="1" [ngClass]="threeTools.buy ? 'buy' : 'sell'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 18"><path fill-opacity=".3" d="M1 16h15V1z"/><path d="M1 16h7V9z"/></svg>
+    <svg *ngSwitchCase="2" [ngClass]="threeTools.buy ? 'buy' : 'sell'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 18"><path fill-opacity=".3" d="M1 16h15V1z"/><path d="M1 16h11V5z"/></svg>
+    <svg *ngSwitchCase="3" [ngClass]="threeTools.buy ? 'buy' : 'sell'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 18"><path d="M1 16h15V1z"/></svg>	
 </span>

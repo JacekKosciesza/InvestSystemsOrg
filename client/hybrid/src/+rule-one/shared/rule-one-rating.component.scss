@@ -4,4 +4,14 @@ rule-one-rating {
     ion-icon {
         margin-right: 5px;
     }
+
+    svg.buy {
+        fill:green;
+    }
+
+    svg.sell {
+        fill:red;
+        transform: rotateX(180deg);
+        transform: rotateY(180deg);
+    }
 }
