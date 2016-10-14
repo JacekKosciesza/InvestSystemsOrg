@@ -13,8 +13,9 @@ export class ColorizedDirective implements AfterViewInit {
 
     ngAfterViewInit() {
         // TODO: make it bullet-proof
+        //debugger;
         let text = this.el.nativeElement.innerText;
-        let num = text.match(/-?\d+\.\d+/);
+        let num = text.match(/-?\d+(?:\.\d+)?/);
         if (num && num.length === 1) {
             let n2 = parseFloat(num[0]);
             if (n2 >= (this.bound || this._defaultbound)) {
