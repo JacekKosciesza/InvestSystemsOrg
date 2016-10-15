@@ -31,14 +31,14 @@ export class InvestSystems implements OnInit {
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use('pl');
 
-    translate.get(['Dashboard', 'Companies', 'Settings', 'Tutorial', 'About']).subscribe((t: string[]) => {
+    translate.get(['_app.Dashboard', '_app.Companies', '_app.Settings', '_app.Tutorial', '_app.About']).subscribe((t: string[]) => {
       // set our app's pages
       this.pages = [
-        { icon: 'home', title: t['Dashboard'], component: DashboardComponent },
-        { icon: 'list-box', title: t['Companies'], component: CompanyListComponent },
-        { icon: 'settings', title: t['Settings'], component: SettingsPage },
-        { icon: 'albums', title: t['Tutorial'], component: TutorialPage },
-        { icon: 'information-circle', title: t['About'], component: AboutPage }
+        { icon: 'home', title: t['_app.Dashboard'], component: DashboardComponent },
+        { icon: 'list-box', title: t['_app.Companies'], component: CompanyListComponent },
+        { icon: 'settings', title: t['_app.Settings'], component: SettingsPage },
+        { icon: 'albums', title: t['_app.Tutorial'], component: TutorialPage },
+        { icon: 'information-circle', title: t['_app.About'], component: AboutPage }
       ];
     });
   }

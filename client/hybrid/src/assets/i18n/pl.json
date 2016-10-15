@@ -1,8 +1,32 @@
 {
-    "Dashboard": "Kokpit",
-    "Portfolio": "Portfolio",
-    "Watchlist": "Obserwowane",
-    "Companies": "Firmy",
+    "_app": {
+        "Dashboard": "Kokpit",
+        "Companies": "Firmy",
+        "Settings": "Ustawienia",
+        "Tutorial": "Poradnik",
+        "About": "O Nas"
+    },
+    "_dashboard": {
+        "Portfolio": "Portfolio",
+        "Watchlist": "Obserwowane"
+    },
+    "_portfolio": {
+        "Date": "Data",
+        "Shares": "Akcji",
+        "Buy": "Zakup",
+        "Profit": "Zysk",
+        "Total": "Łącznie",
+        "More": "Więcej"
+    },
+    "_settings": {
+        "Settings": "Ustawienia",
+        "Language": "Język",
+        "Theme": "Motyw",
+        "Default": "Domyślny",
+        "Light": "Jasny",
+        "Dark": "Ciemny",
+        "Tutorial": "Poradnik"
+    },
     "View": "Zobacz",
     "Sign In": "Zaloguj",
     "Username": "Nazwa użytkownika",

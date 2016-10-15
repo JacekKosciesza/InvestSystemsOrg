@@ -1,8 +1,32 @@
 {
-    "Dashboard": "Dashboard",
-    "Portfolio": "Portfolio",
-    "Watchlist": "Watchlist", 
-    "Companies": "Companies",
+    "_app": {
+        "Dashboard": "Dashboard",
+        "Companies": "Companies",
+        "Settings": "Settings",
+        "Tutorial": "Tutorial",
+        "About": "About"
+    },
+    "_dashboard": {
+        "Portfolio": "Portfolio",
+        "Watchlist": "Watchlist"
+    },
+    "_portfolio": {
+        "Date": "Date",
+        "Shares": "Shares",
+        "Buy": "Buy",
+        "Profit": "Profit",
+        "Total": "Total",
+        "More": "More"
+    },
+    "_settings": {
+        "Settings": "Settings",
+        "Language":"Language",
+        "Theme":"Theme",
+        "Default": "Default",
+        "Light": "Light",
+        "Dark": "Dark",
+        "Tutorial":"Tutorial"
+    },
     "View": "View",
     "Sign In": "Sign In",
     "Username": "Username",

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TranslateService } from 'ng2-translate/ng2-translate';
+
 import { TeamMember } from './team-member';
 
 @Component({
@@ -9,19 +11,23 @@ import { TeamMember } from './team-member';
 export class TeamTab implements OnInit {
     public members: Array<TeamMember>;
 
-    constructor() { }
+    constructor(private translate: TranslateService) { }
 
     ngOnInit() {
-        this.members = [
-            new TeamMember('Jacek Kościesza', 'Founder', 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAbJAAAAJGM3MDMwMTA5LWUzYmQtNGFiYy1hOWJiLTI1MjBjNDE0OWFhNQ.jpg'),
-            new TeamMember('Jacek Kościesza', 'Manager', 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
-            new TeamMember('Jacek Kościesza', 'Analyst', 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
-            new TeamMember('Jacek Kościesza', 'Designer', 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
-            new TeamMember('Jacek Kościesza', 'Marketer', 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
-            new TeamMember('Jacek Kościesza', 'Editor', 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
-            new TeamMember('Jacek Kościesza', 'Developer', 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
-            new TeamMember('Jacek Kościesza', 'Tester', 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
-            new TeamMember('Jacek Kościesza', 'Support', 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg')
-        ]
+        this.translate.get(['_about.OMA', '_about.Founder', '_about.Manager', '_about.Analyst', '_about.Designer', '_about.Marketer', '_about.Editor', '_about.Developer', '_about.Tester', '_about.Support']).subscribe((t: string[]) => {
+            this.members = [
+                new TeamMember('Jacek Kościesza', t['_about.OMA'], 'http://www.ronbrauner.com/i/copywriter-multiple-personality.jpg'),
+                new TeamMember('Jacek Kościesza', t['_about.Founder'], 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAbJAAAAJGM3MDMwMTA5LWUzYmQtNGFiYy1hOWJiLTI1MjBjNDE0OWFhNQ.jpg'),
+                new TeamMember('Jacek Kościesza', t['_about.Manager'], 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
+                new TeamMember('Jacek Kościesza', t['_about.Analyst'], 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
+                new TeamMember('Jacek Kościesza', t['_about.Designer'], 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
+                new TeamMember('Jacek Kościesza', t['_about.Marketer'], 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
+                new TeamMember('Jacek Kościesza', t['_about.Editor'], 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
+                new TeamMember('Jacek Kościesza', t['_about.Developer'], 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
+                new TeamMember('Jacek Kościesza', t['_about.Tester'], 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg'),
+                new TeamMember('Jacek Kościesza', t['_about.Support'], 'https://static.goldenline.pl/user_photo/250/user_1571834_4133dd_huge.jpg')
+            ]
+        });
+
     }
 }

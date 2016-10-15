@@ -3,7 +3,7 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>{{ 'Settings' | translate }}</ion-title>
+        <ion-title>{{ '_app.Settings' | translate }}</ion-title>
         <ion-buttons end>
             <button ion-button (click)="signIn()">
                 <!--<ion-icon name="contact"></ion-icon>-->
@@ -14,24 +14,24 @@
 </ion-header>
 
 <ion-content>
-    <h1>Settings</h1>
+    <h1>{{ '_settings.Settings' | translate }}</h1>
     <ion-item>
-        <ion-label>Language</ion-label>
+        <ion-label>{{ '_settings.Language' | translate }}</ion-label>
         <ion-select [(ngModel)]="settings.culture">
             <ion-option value="en">English</ion-option>
             <ion-option value="pl">Polski</ion-option>
         </ion-select>
     </ion-item>
     <ion-item>
-        <ion-label>Theme</ion-label>
+        <ion-label>{{ '_settings.Theme' | translate }}</ion-label>
         <ion-select [(ngModel)]="settings.theme">
-            <ion-option value="default">Default</ion-option>
-            <ion-option value="light">Light</ion-option>
-            <ion-option value="dark">Dark</ion-option>
+            <ion-option value="default">{{ '_settings.Default' | translate }}</ion-option>
+            <ion-option value="light">{{ '_settings.Light' | translate }}</ion-option>
+            <ion-option value="dark">{{ '_settings.Dark' | translate }}</ion-option>
         </ion-select>
     </ion-item>
     <ion-item>
-        <ion-label>Tutorial</ion-label>
+        <ion-label>{{ '_settings.Tutorial' | translate }}</ion-label>
         <ion-toggle [(ngModel)]="settings.tutorial"></ion-toggle>
     </ion-item>
 </ion-content>

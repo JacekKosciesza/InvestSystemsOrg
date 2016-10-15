@@ -3,7 +3,7 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>{{ 'Team' | translate }}</ion-title>
+        <ion-title>{{ '_about.Team' | translate }}</ion-title>
         <ion-buttons end>
             <button ion-button (click)="signIn()">
                 {{ 'Sign In' | translate }}
@@ -14,20 +14,20 @@
 
 <ion-content>
     <ion-card>
-        <img src="http://www.ronbrauner.com/i/copywriter-multiple-personality.jpg" />
+        <img src="{{members[0].photo}}" />
         <ion-card-content>
             <ion-card-title>
-                Jacek Kościesza
+                {{members[0].name}}
             </ion-card-title>
             <p>
-                OMA (One-Man Army)
+                {{members[0].position}}
             </p>
         </ion-card-content>
     </ion-card>
 
     <ion-list>
-        <ion-list-header>Team</ion-list-header>
-        <ion-item *ngFor="let member of members">
+        <ion-list-header>{{ '_about.Team' | translate }}</ion-list-header>
+        <ion-item *ngFor="let member of members.slice(1)">
             <ion-thumbnail  item-left>
                 <img src="{{member.photo}}">
             </ion-thumbnail>
