@@ -16,7 +16,7 @@ import { Settings } from '../shared';
 export class InvestSystems implements OnInit {
   @ViewChild(Nav) nav: Nav;
   rootPage = CompanyListComponent;
-  pages: Array<{ title: string, component: any }>;
+  pages: Array<{icon: string, title: string, component: any }>;
   theme: string;
 
   constructor(platform: Platform, public menu: MenuController, translate: TranslateService, private toastService: ToastService, public toastCtrl: ToastController, public settings: Settings) {
@@ -34,11 +34,11 @@ export class InvestSystems implements OnInit {
     translate.get(['Dashboard', 'Companies', 'Settings', 'Tutorial', 'About']).subscribe((t: string[]) => {
       // set our app's pages
       this.pages = [
-        { title: t['Dashboard'], component: DashboardComponent },
-        { title: t['Companies'], component: CompanyListComponent },
-        { title: t['Settings'], component: SettingsPage },
-        { title: t['Tutorial'], component: TutorialPage },
-        { title: t['About'], component: AboutPage }
+        { icon: 'home', title: t['Dashboard'], component: DashboardComponent },
+        { icon: 'list-box', title: t['Companies'], component: CompanyListComponent },
+        { icon: 'settings', title: t['Settings'], component: SettingsPage },
+        { icon: 'albums', title: t['Tutorial'], component: TutorialPage },
+        { icon: 'information-circle', title: t['About'], component: AboutPage }
       ];
     });
   }

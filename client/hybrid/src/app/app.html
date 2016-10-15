@@ -2,13 +2,15 @@
   <ion-menu [content]="content">
 
     <ion-toolbar>
-      <ion-title>InvestSystems.org</ion-title>
+      
+      <ion-title><img src="assets/icon/favicon.ico" width="24" height="24"> <span class="title">InvestSystems</span></ion-title>
     </ion-toolbar>
 
     <ion-content>
       <ion-list>
-        <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+        <button ion-item icon-left *ngFor="let p of pages" (click)="openPage(p)">
+          <ion-icon name="{{p.icon}}"></ion-icon>
+          {{p.title}}
       </button>
       </ion-list>
     </ion-content>

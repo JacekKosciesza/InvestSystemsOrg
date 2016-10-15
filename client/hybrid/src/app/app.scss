@@ -15,6 +15,16 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.toolbar-ios ion-title {
+    padding: 0 10px 1px;
+}
+
+ion-title {
+  .title {
+    font-size: 1.1em;
+  }
+}
+
 $red-background: #fff6f6;
 $red-light: #ffa99c;
 $red-dark: #74000e;
