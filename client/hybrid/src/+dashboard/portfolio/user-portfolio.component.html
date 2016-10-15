@@ -6,14 +6,11 @@
 		</ion-thumbnail>
 		<h3>
 			{{company.symbol}}
-			<span style="float:right;"><span style="font-weight:bold;">{{ 36 | currency:'USD':true:'1.2-2' }}</span><span style="color:green;"><ion-icon name="arrow-round-up"></ion-icon> +0.69 (+2.53%)</span></span>
+			<span class="price"><span class="current">{{ 36 | currency:'USD':true:'1.2-2' }}</span> <span class="change">+0.69 (+2.53%)</span></span>
 		</h3>
 		<h2>{{company.name}}</h2>
-		<!--<ion-note item-right>
-		</ion-note>-->
 	</ion-item>
 	<ion-card-content>
-		<h2>Positions</h2>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -46,12 +43,13 @@
 		</table>
 	</ion-card-content>
 	<ion-row>
-        <ion-col>
-			
-        </ion-col>
-        <ion-col>
-        </ion-col>
-        <ion-col>
-        </ion-col>
-    </ion-row>
+		<ion-col>
+			<button ion-button primary clear small>
+        		More
+      		</button>
+		</ion-col>
+		<ion-col>
+			<rule-one-rating [isWonderful]="true"></rule-one-rating>
+		</ion-col>
+	</ion-row>
 </ion-card>

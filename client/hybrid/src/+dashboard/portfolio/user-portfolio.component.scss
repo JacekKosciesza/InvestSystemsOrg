@@ -1,0 +1,22 @@
+user-portfolio {
+    rule-one-rating {
+        float: right;
+        padding-top: 10px;
+        margin-right: 10px;
+    }
+    .label-ios {
+        margin: -10px 8px 13px 0;
+    }
+    .price {
+        float:right;
+        .current {
+            font-weight:bold;
+        }
+        .change {
+            color:green;
+        }
+    }
+    .table {
+        margin-bottom: 0;
+    }
+}
