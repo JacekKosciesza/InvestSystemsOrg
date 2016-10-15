@@ -1,32 +1,22 @@
 <h2>{{ 'Watchlist' | translate }}</h2>
 <ion-card *ngFor="let company of companies">
-    <ion-item>
-        <ion-thumbnail item-left>
-            <img src="{{company.logo}}" />
-        </ion-thumbnail>
-        <h2>{{company.name}}</h2>
-        <p>{{company.symbol}}</p>
-    </ion-item>
-    <ion-card-content>
-        <!--TODO-->
-    </ion-card-content>
-    <ion-row>
-        <ion-col>
-            <button ion-button color="primary" clear small>
-                    <ion-icon name="thumbs-up"></ion-icon>
-                    <div>34 Likes</div>
-                </button>
-        </ion-col>
-        <ion-col>
-            <button ion-button color="primary" clear small>
-                    <ion-icon name="text"></ion-icon>
-                    <div>2 Comments</div>
-                </button>
-        </ion-col>
-        <ion-col center text-center>
-            <ion-note>
-                2 days ago
-            </ion-note>
-        </ion-col>
-    </ion-row>
+	<ion-item>
+		<ion-thumbnail item-left>
+			<img src="{{company.logo}}" />
+		</ion-thumbnail>
+		<h3>
+			{{company.symbol}}
+            <rule-one-rating [isWonderful]="true"></rule-one-rating>			
+		</h3>
+		<h2>{{company.name}}</h2>
+	</ion-item>
+	<ion-card-content>		
+	</ion-card-content>
+	<ion-row>
+		<ion-col>
+		</ion-col>
+		<ion-col>
+			<span class="price"><span class="current">{{ 36 | currency:'USD':true:'1.2-2' }}</span> <span class="change">+0.69 (+2.53%)</span></span>
+		</ion-col>
+	</ion-row>
 </ion-card>
