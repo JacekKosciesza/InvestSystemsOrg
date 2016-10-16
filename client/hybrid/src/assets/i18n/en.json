@@ -52,7 +52,20 @@
         "Secret": "Secret",
         "Toll": "Toll",
         "Switching": "Switching",
-        "Price": "Price"
+        "Price": "Price",
+
+        "Big_Five": "Big Five",
+        "Period": "Period",
+        "years": "years",
+        "year": "year",
+        "Sales": "Sales",
+        "EPS": "EPS",
+        "Equity": "Equity",
+        "Cash": "Cash",
+        "ROIC": "ROIC",
+
+        "Big_Five_Details": "Big Five Details",
+        "Year": "year"
     },
     "_tutorial": {
         "Skip": "Skip"

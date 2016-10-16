@@ -36,12 +36,7 @@
         "Is_this_company_related_to_your": "Czy ta firma jest związana z Twoją",
         "things_you_love_to_do": "rzeczy które uwielbiasz robić",
         "things_you_are_really_good_at": "rzeczy w których jesteś dobry",
-        "make_money_or_spend_money_on": "zarabiasz lub wydajesz pieniądze",
-        "pay_more_for_because_you_trust_it": "gotowy zapłącić więcej dzięki zaufaniu",
-        "patent_or_trade_secret": "patent lub tajemnica handlowa",
-        "exclusive_control_of_a_market": "wyłączna kontrola na rynku",
-        "so_much_a_part_of_customers_life": "część twojego życia",
-        "price_so_low_no_one_can_compete": "niska konkurencyjna cena",
+        "make_money_or_spend_money_on": "zarabiasz lub wydajesz pieniądze",        
         "Passion": "Pasja",
         "Talent": "Talent",
         "Money": "Pieniądze",
@@ -50,9 +45,27 @@
         "Five_Moats": "Pięć rodzajów fosy",
         "Brand": "Marka",
         "Secret": "Tajemnica handlowa",
+        "pay_more_for_because_you_trust_it": "gotowy zapłącić więcej dzięki zaufaniu",
+        "patent_or_trade_secret": "patent lub tajemnica handlowa",
+        "exclusive_control_of_a_market": "wyłączna kontrola na rynku",
+        "so_much_a_part_of_customers_life": "część twojego życia",
+        "price_so_low_no_one_can_compete": "niska konkurencyjna cena",
         "Toll": "Myto",
         "Switching": "Przestawienie się",
-        "Price": "Cena"
+        "Price": "Cena",
+
+        "Big_Five": "Wielka Piątka liczb",
+        "Period": "Okres",
+        "years": "lat",
+        "year": "rok",
+        "Sales": "Obroty",
+        "EPS": "EPS",
+        "Equity": "Kapitał własny",
+        "Cash": "Środki pieniężne",
+        "ROIC": "ROIC",
+
+        "Big_Five_Details": "Szczegóły Wielkiej Piątki liczb",
+        "Year": "Rok"
     },
     "_tutorial": {
         "Skip": "Pomiń"
