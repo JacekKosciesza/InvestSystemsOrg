@@ -1,28 +1,28 @@
-<h4>Three circles</h4>
+<h4>{{ '_rule.Three_Circles' | translate }}</h4>
 
-<small>Is this company related to your:</small>
+<small>{{ '_rule.Is_this_company_related_to_your' | translate }}:</small>
 <ion-item>
 	<ion-icon name="checkbox" *ngIf="meaning.passion"></ion-icon>
 	<ion-icon name="square-outline" *ngIf="!meaning.passion"></ion-icon>
-	{{ 'Passion' | translate }} <small>(things you love to do)</small>
+	{{ '_rule.Passion' | translate }} <small>({{ '_rule.things_you_love_to_do' | translate }})</small>
 </ion-item>
 <ion-item>
 	<ion-icon name="checkbox" *ngIf="meaning.talent"></ion-icon>
 	<ion-icon name="square-outline" *ngIf="!meaning.talent"></ion-icon>
-	{{ 'Talent' | translate }} <small>(things you are really good at)</small>
+	{{ '_rule.Talent' | translate }} <small>({{ '_rule.things_you_are_really_good_at' | translate }})</small>
 </ion-item>
 <ion-item>
 	<ion-icon name="checkbox" *ngIf="meaning.money"></ion-icon>
 	<ion-icon name="square-outline" *ngIf="!meaning.money"></ion-icon>
-	{{ 'Money' | translate }} <small>(make money or spend money on)</small>
+	{{ '_rule.Money' | translate }} <small>({{ '_rule.make_money_or_spend_money_on' | translate }})</small>
 </ion-item>
 <svg viewBox="0 0 1000 1000">
-	<text x="300" y="200" class="passion">{{ 'Passion' | translate }}</text>
+	<text x="300" y="200" class="passion">{{ '_rule.Passion' | translate }}</text>
 	<circle cx="400" cy="350" r="350" [class.checked]="meaning.passion"></circle>
 
-    <text x="100" y="750" class="passion">{{ 'Money' | translate }}</text>
+    <text x="100" y="750" class="passion">{{ '_rule.Money' | translate }}</text>
 	<circle cx="350" cy="650" r="350" [class.checked]="meaning.money"></circle>
 
-    <text x="750" y="550" class="passion">{{ 'Talent' | translate }}</text>
+    <text x="750" y="550" class="passion">{{ '_rule.Talent' | translate }}</text>
 	<circle cx="650" cy="550" r="350" [class.checked]="meaning.talent"></circle>
 </svg>

@@ -1,31 +1,31 @@
-<h4>Five Moats</h4>
+<h4>{{ '_rule.Five_Moats' | translate }}</h4>
 <ion-item>
     <ion-icon name="checkbox" *ngIf="fiveMoats.brand"></ion-icon>
     <ion-icon name="square-outline" *ngIf="!fiveMoats.brand"></ion-icon>
-    Brand <small>(pay more for because you trust it)</small>
+    {{ '_rule.Brand' | translate }} <small>({{ '_rule.pay_more_for_because_you_trust_it' | translate }})</small>
     <p style="display:none;">a product you're willing to pay more for because you trust it e.g. Coke, Gillette, Disney, McDonald's, Pepsi, Nike, Budweiser, Harley-Davidson</p>
 </ion-item>
 <ion-item>
     <ion-icon name="checkbox" *ngIf="fiveMoats.secret"></ion-icon>
     <ion-icon name="square-outline" *ngIf="!fiveMoats.secret"></ion-icon>
-    Secret <small>(patent or trade secret)</small>
+    {{ '_rule.Secret' | translate }} <small>({{ '_rule.patent_or_trade_secret' | translate }})</small>
     <p style="display:none;">a business that has a patent or trade secret that makes direct competition illegal or very difficult e.g. Pfizer, 3M, Intel</p>
 </ion-item>
 <ion-item>
     <ion-icon name="checkbox" *ngIf="fiveMoats.toll"></ion-icon>
     <ion-icon name="square-outline" *ngIf="!fiveMoats.toll"></ion-icon>
-    Toll <small>(exclusive control of a market)</small>
+    {{ '_rule.Toll' | translate }} <small>({{ '_rule.exclusive_control_of_a_market' | translate }})</small>
     <p style="display:none;">a business with exclusive control of a market - giving it the ability to collect a "toll" form anyone needing that service or product e.g. media companies, utilites , ad agencies</p>
 </ion-item>
 <ion-item>
     <ion-icon name="checkbox" *ngIf="fiveMoats.switching"></ion-icon>
     <ion-icon name="square-outline" *ngIf="!fiveMoats.switching"></ion-icon>
-    Switching <small>(so much a part of customer's life)</small>
+    {{ '_rule.Switching' | translate }} <small>({{ '_rule.so_much_a_part_of_customers_life' | translate }})</small>
     <p style="display:none;">a business that's so much a part of your life that switching isn't worth the trouble e.g. ADR Paychex, H&R Block, Microsoft</p>
 </ion-item>
 <ion-item>
     <ion-icon name="checkbox" *ngIf="fiveMoats.price"></ion-icon>
     <ion-icon name="square-outline" *ngIf="!fiveMoats.price"></ion-icon>
-    Price <small>(price so low no one can compete)</small>
+    {{ '_rule.Price' | translate }} <small>({{ '_rule.price_so_low_no_one_can_compete' | translate }})</small>
     <p style="display:none;">a business that can price products so low no one can compete e.g. Wall-Mart, Costco, Bed Bath & Beyond, Home Depot, Target</p>
 </ion-item>

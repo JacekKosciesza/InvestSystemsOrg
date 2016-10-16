@@ -18,6 +18,45 @@
         "Total": "Łącznie",
         "More": "Więcej"
     },
+    "_companies": {
+        "Symbol": "Symbol",
+        "Founded": "Założona",
+        "Industry": "Przemysł",
+        "CEO": "Prezes",
+        "IPO": "IPO",
+        "Price": "Cena",
+        "Rule": "Zasada"
+    },
+    "_rule": {
+        "Rule": "Zasada",
+        "Statement": "Deklaracja",
+        "Do_you_want_to_own_the_whole_business": "Czy chcesz posiadać cały biznes",
+        "Do_you_understand_it_well_enough": "Czy rozumiesz go dostatecznie dobrze",
+        "Three_Circles": "Trzy okręgi",
+        "Is_this_company_related_to_your": "Czy ta firma jest związana z Twoją",
+        "things_you_love_to_do": "rzeczy które uwielbiasz robić",
+        "things_you_are_really_good_at": "rzeczy w których jesteś dobry",
+        "make_money_or_spend_money_on": "zarabiasz lub wydajesz pieniądze",
+        "pay_more_for_because_you_trust_it": "gotowy zapłącić więcej dzięki zaufaniu",
+        "patent_or_trade_secret": "patent lub tajemnica handlowa",
+        "exclusive_control_of_a_market": "wyłączna kontrola na rynku",
+        "so_much_a_part_of_customers_life": "część twojego życia",
+        "price_so_low_no_one_can_compete": "niska konkurencyjna cena",
+        "Passion": "Pasja",
+        "Talent": "Talent",
+        "Money": "Pieniądze",
+
+        "Moat": "Fosa",
+        "Five_Moats": "Pięć rodzajów fosy",
+        "Brand": "Marka",
+        "Secret": "Tajemnica handlowa",
+        "Toll": "Myto",
+        "Switching": "Przestawienie się",
+        "Price": "Cena"
+    },
+    "_tutorial": {
+        "Skip": "Pomiń"
+    },
     "_settings": {
         "Settings": "Ustawienia",
         "Language": "Język",

@@ -1,13 +1,13 @@
-<h4>Statement</h4>
+<h4>{{ '_rule.Statement' | translate }}</h4>
 
 <ion-item>
     <ion-icon name="checkbox" *ngIf="meaning.whole"></ion-icon>
     <ion-icon name="square-outline" *ngIf="!meaning.whole"></ion-icon>
-    Do you want to own the whole business?
+    {{ '_rule.Do_you_want_to_own_the_whole_business' | translate }}?
 </ion-item>
 <ion-item>
     <ion-icon name="checkbox" *ngIf="meaning.whole"></ion-icon>
     <ion-icon name="square-outline" *ngIf="!meaning.understand"></ion-icon>
-    Do you understand it well enough?
+    {{ '_rule.Do_you_understand_it_well_enough' | translate }}?
 </ion-item>
  

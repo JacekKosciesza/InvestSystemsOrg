@@ -17,21 +17,13 @@
         <img src="{{company.logo}}">
       </ion-col>
       <ion-col width-50>
-        <strong>Symbol:</strong> {{company.symbol}}<br>
-        <strong>Founded:</strong> 1975, USA<br>
-        <strong>Industry:</strong> {{company.industry}}<br>
-        <strong>CEO:</strong> Satya Nadella<br> 
-        <strong>IPO:</strong> 1986, NASDAQ<br>
-        <strong>Price:</strong> <span style="color:green;">$22</span><ion-icon style="color:red;" name="trending-down"></ion-icon><br>
-        <strong>Rule #1:</strong> <ion-icon style="color:green;" name="thumbs-up"></ion-icon>
-        <!--
-        <strong>Website:</strong> <a href="http://www.xxiicentury.com/">http://www.xxiicentury.com/</a><br>
-        <strong>Phone:</strong> {{company.phone}}<br>
-        <strong>Email:</strong> {{company.email}}<br>        
-        <strong>Headquarters:</strong> Redmond, Washington, United States<br>
-        <strong>Founders:</strong> <br>
-        <strong>Owners:</strong> <br>
-        -->
+        <strong>{{ '_companies.Symbol' | translate }}:</strong> {{company.symbol}}<br>
+        <strong>{{ '_companies.Founded' | translate }}:</strong> 1975, USA<br>
+        <strong>{{ '_companies.Industry' | translate }}:</strong> {{company.industry}}<br>
+        <strong>{{ '_companies.CEO' | translate }}:</strong> Satya Nadella<br> 
+        <strong>{{ '_companies.IPO' | translate }}:</strong> 1986, NASDAQ<br>
+        <strong>{{ '_companies.Price' | translate }}:</strong> <span style="color:green;">$22</span><ion-icon style="color:red;" name="trending-down"></ion-icon><br>
+        <strong>{{ '_companies.Rule' | translate }} #1:</strong> <ion-icon style="color:green;" name="thumbs-up"></ion-icon>
       </ion-col>
     </ion-row>
     <ion-row class="social-icons">

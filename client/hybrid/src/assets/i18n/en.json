@@ -18,6 +18,45 @@
         "Total": "Total",
         "More": "More"
     },
+    "_companies": {
+        "Symbol": "Symbol",
+        "Founded": "Founded",
+        "Industry": "Industry",
+        "CEO": "CEO",
+        "IPO": "IPO",
+        "Price": "Price",
+        "Rule": "Rule"
+    },
+    "_rule": {
+        "Rule": "Rule",
+        "Statement": "Statement",
+        "Do_you_want_to_own_the_whole_business": "Do you want to own the whole business",
+        "Do_you_understand_it_well_enough": "Do you understand it well enough",
+        "Three_Circles": "Three Circles",
+        "Is_this_company_related_to_your": "Is this company related to your",
+        "things_you_love_to_do": "things you love to do",
+        "things_you_are_really_good_at": "things you are really good at",
+        "make_money_or_spend_money_on": "make money or spend money on",
+        "Passion": "Passion",
+        "Talent": "Talent",
+        "Money": "Money",
+
+        "Moat": "Moat",
+        "Five_Moats": "Five Moats",
+        "Brand": "Brand",
+        "pay_more_for_because_you_trust_it": "pay more for because you trust it",
+        "patent_or_trade_secret": "patent or trade secret",
+        "exclusive_control_of_a_market": "exclusive control of a market",
+        "so_much_a_part_of_customers_life": "so much a part of customer's life",
+        "price_so_low_no_one_can_compete": "price so low no one can compete",
+        "Secret": "Secret",
+        "Toll": "Toll",
+        "Switching": "Switching",
+        "Price": "Price"
+    },
+    "_tutorial": {
+        "Skip": "Skip"
+    },
     "_settings": {
         "Settings": "Settings",
         "Language":"Language",
