@@ -11,8 +11,8 @@ declare var google: any;
     `
         <div id="ema-chart"></div>
         <footer class="legend">
-            <ion-icon name="square"></ion-icon> Price
-            <ion-icon name="square"></ion-icon> EMA
+            <ion-icon name="square"></ion-icon> {{ '_rule.Price' | translate}} 
+            <ion-icon name="square"></ion-icon> {{ '_rule.EMA' | translate}}
         </footer>
     `
 })

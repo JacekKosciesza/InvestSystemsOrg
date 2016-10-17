@@ -65,7 +65,41 @@
         "ROIC": "ROIC",
 
         "Big_Five_Details": "Szczegóły Wielkiej Piątki liczb",
-        "Year": "Rok"
+        "Year": "Rok",
+
+        "Management": "Zarządzający",
+
+        "Three_Tools": "Trójka narzędzia",
+        "Recommendation": "Rekomendacja",
+        "buy": "kup",
+        "sell": "sprzedaj",
+        "EMA": "EMA",
+        "MACD": "MACD",
+        "Stochastic_Oscillator": "Oscylator Stochastyczny",
+
+        "Margin": "Margines",
+        "Current_Price": "Aktualna cena",
+        "Sticker_Price": "Cena katalogowa",
+        "Margin_Of_Safety": "Margines bezpieczeństwa",
+        "Margin_Details": "Szczegóły marginesu bezpieczeństwa",
+
+        "Analysts": "Analitycy",
+        "Historical":"Historyczne",
+        "Default": "Domyślny",
+
+        "SP_def": "cena katalogowa",
+        "MOS_def": "margines bezpieczeństwa",
+        "FMP_def": "future market price",
+        "EPSf_def": "przyszły EPS (zysk na akcję) (Y lat od teraz)",
+        "EPSc_def": "aktualny EPS (zysk na akcję) ",
+        "EPSgr_def": "stopa wzrostu EPS",
+        "PEfe_def": "przyszły szacowany PE",
+        "ROR_def": "stopa zwrotu",
+        "Y_def": "lat (od teraz)",
+
+        "Signal": "Sygnał",
+        "Buy_line": "Linia kupna",
+        "Sell_line": "Linia sprzedaży"
     },
     "_tutorial": {
         "Skip": "Pomiń"
@@ -98,7 +132,5 @@
     "Logout": "Wyloguj",
     "Meaning": "Znaczenie",
     "Moat": "Fosa",
-    "Management": "Zarządzający",
-    "Margin": "Margines",
     "Talent": "Talent"
 }

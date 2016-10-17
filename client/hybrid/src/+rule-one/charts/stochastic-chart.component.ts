@@ -11,8 +11,8 @@ declare var google: any;
     `
         <div id="stochastic-chart"></div>
         <footer class="legend">
-            <ion-icon name="square"></ion-icon> Buy line (%K)
-            <ion-icon name="square"></ion-icon> Sell line (%D)
+            <ion-icon name="square"></ion-icon> {{ '_rule.Buy_line' | translate}} (%K)
+            <ion-icon name="square"></ion-icon> {{ '_rule.Sell_line' | translate}} (%D)
         </footer>
     `,
 })

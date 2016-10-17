@@ -65,7 +65,41 @@
         "ROIC": "ROIC",
 
         "Big_Five_Details": "Big Five Details",
-        "Year": "year"
+        "Year": "year",
+
+        "Management": "Management",
+
+        "Three_Tools": "Three Tools",
+        "Recommendation": "Recommendation",
+        "buy": "buy",
+        "sell": "sell",
+        "EMA": "EMA",
+        "MACD": "MACD",
+        "Stochastic_Oscillator": "Stochastic Oscillator",
+
+        "Margin": "Margin",
+        "Current_Price": "Current Price",
+        "Sticker_Price": "Sticker Price",
+        "Margin_Of_Safety": "Margin Of Safety",
+        "Margin_Details": "Margin Details",
+
+        "Analysts": "Analysts",
+        "Historical":"Historical",
+        "Default": "Default",
+
+        "SP_def": "sticker price",
+        "MOS_def": "margin of safety",
+        "FMP_def": "future market price",
+        "EPSf_def": "future EPS (Y years from now)",
+        "EPSc_def": "current or TTM (Trailing Twelve Months) EPS",
+        "EPSgr_def": "EPS growth rate",
+        "PEfe_def": "future estimated PE",
+        "ROR_def": "rate of return",
+        "Y_def": "years from now",
+
+        "Signal": "Signal",
+        "Buy_line": "Buy line",
+        "Sell_line": "Sell line"
     },
     "_tutorial": {
         "Skip": "Skip"
@@ -98,7 +132,5 @@
     "Logout": "Logout",
     "Meaning": "Meaning",
     "Moat": "Moat",
-    "Management": "Management",
-    "Margin": "Margin",
     "Talent": "Talent"
 }

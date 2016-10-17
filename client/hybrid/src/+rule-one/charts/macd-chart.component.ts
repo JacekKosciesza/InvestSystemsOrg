@@ -11,8 +11,8 @@ declare var google: any;
     `
         <div id="macd-chart"></div>
         <footer class="legend">
-            <ion-icon name="square"></ion-icon> MACD
-            <ion-icon name="square"></ion-icon> Signal
+            <ion-icon name="square"></ion-icon> {{ '_rule.MACD' | translate}}
+            <ion-icon name="square"></ion-icon> {{ '_rule.Signal' | translate}}
         </footer>
     `
 })

@@ -1,31 +1,31 @@
 <section class="summary">
-    <h2>{{ 'Margin' | translate }}</h2>
+    <h2>{{ '_rule.Margin' | translate }}</h2>
 
     <ion-item *ngIf="margin.currentPrice > margin.stickerPrice" style="color: red;">
         <ion-icon name="pulse"></ion-icon>
-        Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}
+        {{ '_rule.Current_Price' | translate }}: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}
     </ion-item>
     <ion-item>
         <ion-icon name="pricetag"></ion-icon>
-        Sticker Price: {{margin.stickerPrice | currency:'USD':true:'1.0-0'}}
+        {{ '_rule.Sticker_Price' | translate }}: {{margin.stickerPrice | currency:'USD':true:'1.0-0'}}
     </ion-item>
     <ion-item *ngIf="margin.currentPrice > margin.marginOfSafety && margin.currentPrice < margin.stickerPrice" style="color: orange;">
         <ion-icon name="pulse"></ion-icon>
-        Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}
+        {{ '_rule.Current_Price' | translate }}: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}
     </ion-item>
     <ion-item>
         <ion-icon name="cash"></ion-icon>
-        Margin Of Safety: {{margin.marginOfSafety | currency:'USD':true:'1.0-0'}}
+        {{ '_rule.Margin_Of_Safety' | translate }}: {{margin.marginOfSafety | currency:'USD':true:'1.0-0'}}
     </ion-item>
     <ion-item *ngIf="margin.currentPrice <= margin.marginOfSafety" style="color: green;">
         <ion-icon name="pulse"></ion-icon>
-        Current Price: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}
+        {{ '_rule.Current_Price' | translate }}: {{margin.currentPrice | currency:'USD':true:'1.0-0'}}
     </ion-item>
 
     <button ion-button color="light" small icon-left full (click)="more=!more">
         <ion-icon *ngIf="!more" name="arrow-down"></ion-icon>
         <ion-icon *ngIf="more" name="arrow-up"></ion-icon>
-        Margin Details
+        {{ '_rule.Margin_Details' | translate }}
     </button>
 </section>
 
@@ -58,12 +58,12 @@
                 <th colspan="3" style="text-align:center">PE<sub>fe</sub></th>
             </tr>
             <tr>
-                <th><small>Analysts</small></th>
-                <th><small>Historical</small></th>
-                <th><small>Rule #1</small></th>
-                <th><small>Default</small></th>
-                <th><small>Historical</small></th>
-                <th><small>Rule #1</small></th>
+                <th><small>{{ '_rule.Analysts' | translate }}</small></th>
+                <th><small>{{ '_rule.Historical' | translate }}</small></th>
+                <th><small>{{ '_rule.Rule' | translate }} #1</small></th>
+                <th><small>{{ '_rule.Default' | translate }}</small></th>
+                <th><small>{{ '_rule.Historical' | translate }}</small></th>
+                <th><small>{{ '_rule.Rule' | translate }} #1</small></th>
             </tr>
         </thead>
         <tbody>
@@ -85,13 +85,13 @@
     <br>
     <br>
 
-    <small>SP - sticker price</small><br>
-    <small>MOS - margin of safety</small><br>
-    <small>FMP - future market price</small><br>
-    <small>EPS<sub>f</sub> - future EPS (Y years from now)</small><br>
-    <small>EPS<sub>c</sub> - current or TTM (Trailing Twelve Months) EPS</small><br>
-    <small>EPS<sub>gr</sub> - EPS growth rate</small><br>
-    <small>PE<sub>fe</sub> - future estimated PE</small><br>
-    <small>ROR - rate of return</small><br>
-    <small>Y - years from now</small><br>
+    <small>SP - {{ '_rule.SP_def' | translate }}</small><br>
+    <small>MOS - {{ '_rule.MOS_def' | translate }}</small><br>
+    <small>FMP - {{ '_rule.FMP_def' | translate }}</small><br>
+    <small>EPS<sub>f</sub> - {{ '_rule.EPSf_def' | translate }}</small><br>
+    <small>EPS<sub>c</sub> - {{ '_rule.EPSc_def' | translate }}</small><br>
+    <small>EPS<sub>gr</sub> - {{ '_rule.EPSgr_def' | translate }}</small><br>
+    <small>PE<sub>fe</sub> - {{ '_rule.PEfe_def' | translate }}</small><br>
+    <small>ROR - {{ '_rule.ROR_def' | translate }}</small><br>
+    <small>Y - {{ '_rule.Y_def' | translate }}</small><br>
 </section>

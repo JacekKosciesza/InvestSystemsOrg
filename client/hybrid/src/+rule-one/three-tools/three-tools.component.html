@@ -1,10 +1,10 @@
-<h2>Three Tools</h2>
-<h4>Recommendation: <span style="color:green;">buy</span> <svg style="fill:green;" width="18" height="18" viewBox="0 0 18 18"><path fill-opacity=".3" d="M1 16h15V1z"/><path d="M1 16h7V9z"/></svg></h4>
+<h2>{{ '_rule.Three_Tools' | translate }}</h2>
+<h4>{{ '_rule.Recommendation' | translate }}: <span style="color:green;">{{ '_rule.buy' | translate }}</span> <svg style="fill:green;" width="18" height="18" viewBox="0 0 18 18"><path fill-opacity=".3" d="M1 16h15V1z"/><path d="M1 16h7V9z"/></svg></h4>
 <section>
-    <h5 style="color:green;">EMA - <span class="recommendation">buy</span> <small class="date">(3 days ago)</small></h5>
+    <h5 style="color:green;">EMA - <span class="recommendation">{{ '_rule.buy' | translate }}</span> <small class="date">(3 days ago)</small></h5>
     <ema-chart [title]='TODO' [data]='emaData'></ema-chart>
-    <h5 style="color:red;">MACD - <span class="recommendation">sell</span> <small class="date">(1 days ago)</small></h5>
+    <h5 style="color:red;">MACD - <span class="recommendation">{{ '_rule.sell' | translate }}</span> <small class="date">(1 days ago)</small></h5>
     <macd-chart [title]='TODO' [data]='macdData'></macd-chart>
-    <h5  style="color:red;">Stochastic Oscillator - <span class="recommendation">sell</span> <small class="date">(10 days ago)</small></h5>
+    <h5  style="color:red;">{{ '_rule.Stochastic_Oscillator' | translate }} - <span class="recommendation">{{ '_rule.sell' | translate }}</span> <small class="date">(10 days ago)</small></h5>
     <stochastic-chart [title]='TODO' [data]='stochasticData'></stochastic-chart>
 </section>
