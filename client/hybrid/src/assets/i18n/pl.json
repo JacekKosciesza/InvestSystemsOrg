@@ -113,6 +113,28 @@
         "Dark": "Ciemny",
         "Tutorial": "Poradnik"
     },
+    "_about":
+    {
+        "About": "O Nas",
+        "Team": "Zespół",
+        "Contact": "Kontakt",
+        "OMA": "CE (Człowiek Orkiestra)",
+        "Founder": "Założyciel",
+        "Manager": "Kierownik",
+        "Analyst": "Analityk",
+        "Designer": "Projektant",
+        "Marketer": "Marketer",
+        "Editor": "Edytor",
+        "Developer": "Programista",
+        "Tester": "Tester",
+        "Support": "Wsparcie",
+        "Contact_Form": "Formularz kontaktowy",
+        "Subject": "Temat",
+        "Message": "Wiadomość",
+        "Name": "Imię",
+        "Email": "Email",
+        "Send": "Wyślij"
+    },
     "View": "Zobacz",
     "Sign In": "Zaloguj",
     "Username": "Nazwa użytkownika",

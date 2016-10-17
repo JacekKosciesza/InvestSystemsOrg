@@ -113,6 +113,28 @@
         "Dark": "Dark",
         "Tutorial":"Tutorial"
     },
+    "_about":
+    {
+        "About": "About",
+        "Team": "Team",
+        "Contact": "Contact",
+        "OMA": "OMA (One Man Army)",
+        "Founder": "Founder",
+        "Manager": "Manager",
+        "Analyst": "Analyst",
+        "Designer": "Designer",
+        "Marketer": "Marketer",
+        "Editor": "Editor",
+        "Developer": "Developer",
+        "Tester": "Tester",
+        "Support": "Support",
+        "Contact_Form": "Contact Form",
+        "Subject": "Subject",
+        "Message": "Message",
+        "Name": "Name",
+        "Email": "Email",
+        "Send": "Send"
+    },
     "View": "View",
     "Sign In": "Sign In",
     "Username": "Username",
