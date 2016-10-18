@@ -19,4 +19,7 @@ export class CompanyEditComponent {
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
+  save() {
+  }
 }

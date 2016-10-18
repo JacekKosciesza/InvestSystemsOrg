@@ -10,7 +10,7 @@ import { RuleOneRatingComponent } from '../+rule-one'
 
 // Pages
 import { DashboardComponent, DashboardHintComponent } from '../+dashboard';
-import { CompanyListComponent, CompanyDetailComponent, CompanyEditComponent, CompanyService } from '../+companies';
+import { CompanyListComponent, CompanyDetailComponent, CompanyEditComponent, CompanyService, SocialNetworkComponent } from '../+companies';
 
 // Components
 import { SignInComponent, IdentityPopoverComponent, IdentityService } from '../+identity'
@@ -61,6 +61,7 @@ import { TutorialPage, ContactService } from '../pages';
     AboutPage,
     TutorialPage,
     // Components
+    SocialNetworkComponent,
     SettingsPage,
     AboutTab,
     TeamTab,

@@ -1,0 +1,33 @@
+social-network {
+    ion-icon {
+        margin-right:15px;
+        font-size:32px;
+    }
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    // why name="home" does not work?
+    ion-icon[aria-label="home"] {
+        color: #707070;
+    }
+
+    ion-icon[aria-label="logo-linkedin"] {
+        color: #0077B5;
+    }
+
+    ion-icon[aria-label="logo-facebook"] {
+        color: #3B5998;
+    }
+    
+    ion-icon[aria-label="logo-twitter"] {
+        color: #1DA1F2;
+    }
+    
+    ion-icon[aria-label="logo-googleplus"] {
+        color: #DB4437;
+    }
+
+    ion-icon[aria-label="logo-youtube"] {
+        color: #D42423;
+    }
+}

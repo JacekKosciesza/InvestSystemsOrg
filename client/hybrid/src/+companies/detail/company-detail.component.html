@@ -26,17 +26,8 @@
         <strong>{{ '_companies.Rule' | translate }} #1:</strong> <ion-icon style="color:green;" name="thumbs-up"></ion-icon>
       </ion-col>
     </ion-row>
-    <ion-row class="social-icons">
-      <a href="http://www.xxiicentury.com/"><ion-icon name="home"></ion-icon></a> 
-      <ion-icon name="logo-linkedin"></ion-icon>
-      <ion-icon name="logo-facebook"></ion-icon>
-      <ion-icon name="logo-twitter"></ion-icon>
-      <ion-icon name="logo-googleplus"></ion-icon>
-      <ion-icon name="logo-youtube"></ion-icon>
-      <!--<ion-icon name="logo-instagram"></ion-icon>
-      <ion-icon name="logo-pinterest"></ion-icon>
-      <ion-icon name="logo-reddit"></ion-icon>
-      <ion-icon name="logo-vimeo"></ion-icon>-->
+    <ion-row>
+      <social-network [websites]="websites"></social-network>
     </ion-row>
     <ion-row>
       {{company.description}}

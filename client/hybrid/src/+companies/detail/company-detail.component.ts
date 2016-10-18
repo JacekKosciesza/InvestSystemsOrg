@@ -6,12 +6,16 @@ import { IdentityService } from '../../+identity';
 import { CompanyService } from '../shared';
 import { ToastService, Toast } from '../../services'
 
+import { Website, WebsiteType } from '../shared';
+
+
 @Component({
   selector: 'company-detail',
   templateUrl: 'company-detail.component.html'
 })
 export class CompanyDetailComponent implements OnInit {
   company: any;
+  websites: Array<Website>;
 
   constructor(
     public navCtrl: NavController,
@@ -30,6 +34,10 @@ export class CompanyDetailComponent implements OnInit {
     var symbol = this.company.symbol;
     this.companyService.getCompany(symbol).then(company => {
       this.company = company;
+      this.websites = [
+        new Website(WebsiteType.Home, this.company.website),
+        new Website(WebsiteType.Facebook, ''),
+      ];
     });
   }
 
