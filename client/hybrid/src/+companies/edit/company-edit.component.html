@@ -33,6 +33,43 @@
 		</ion-item>
 	</ion-list>
 
+	<h2>Websites</h2>
+	<ion-list>
+		<ion-item *ngFor="let website of company.websites; let i = index">
+			<ion-icon name="{{website.icon}}"></ion-icon>
+			{{website.link}}
+			<button ion-button icon-left item-right (click)="remove(website)">
+  				<ion-icon name="remove"></ion-icon>
+				Remove
+			</button>
+		</ion-item>
+		<ion-item>
+			<ion-label>Type</ion-label>
+			<ion-select [(ngModel)]="website.type">
+				<ion-option value="0">Home</ion-option>
+				<ion-option value="1">LinkedIn</ion-option>
+				<ion-option value="2">Facebook</ion-option>
+				<ion-option value="3">Twitter</ion-option>
+				<ion-option value="4">GooglePlus</ion-option>
+				<ion-option value="5">YouTube</ion-option>
+				<ion-option value="6">Instagram</ion-option>
+				<ion-option value="7">Pinterest</ion-option>
+				<ion-option value="8">Reddit</ion-option>
+				<ion-option value="9">Vimeo</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label floating>Link</ion-label>
+			<ion-input type="text" [(ngModel)]="website.link"></ion-input>
+		</ion-item>
+		<ion-item>
+			<button ion-button icon-left item-right (click)="add(website)">
+  				<ion-icon name="add"></ion-icon>
+  				Add
+			</button>
+		</ion-item>
+	</ion-list>
+
 	<h2>Basic</h2>
 	<ion-list>
 		<ion-item>
@@ -49,15 +86,7 @@
 		</ion-item>
 	</ion-list>
 
-	<!--<h2>Websites</h2>
-	<ion-list>
-		<ion-item>
-			<ion-label>Type</ion-label>
-			<ion-select [(ngModel)]="settings.theme">
-				<ion-option value="default">{{ '_settings.Default' | translate }}</ion-option>
-			</ion-select>
-		</ion-item>
-	</ion-list>-->
+
 
 	<ion-fab right bottom>
 		<!--*ngIf="identityService.token"-->
