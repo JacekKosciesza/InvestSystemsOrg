@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform, NavParams, ViewController } from 'ionic-angular';
 
-import { Website, WebsiteType } from '../shared';
+import { Website } from '../shared';
 
 @Component({
   selector: 'company-edit',
