@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "invest-systems",
+  "author": "Jacek Kosciesza",
+  "homepage": "http://InvestSystems.org/",
   "private": true,
   "scripts": {
     "build": "ionic-app-scripts build",
@@ -10,7 +10,8 @@
     "emulate:before": "build",
     "deploy:before": "build",
     "build:before": "build",
-    "run:before": "build"
+    "run:before": "build",
+    "test": "ng test"
   },
   "dependencies": {
     "@angular/common": "2.0.0",
@@ -34,6 +35,18 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "0.0.36",
+    "@types/jasmine": "^2.2.30",
+    "@types/node": "^6.0.45",
+    "angular-cli": "^1.0.0-beta.17",
+    "codelyzer": "^1.0.0-beta.2",
+    "jasmine-core": "^2.5.2",
+    "jasmine-spec-reporter": "^2.7.0",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-mocha-reporter": "^2.2.0",
+    "karma-remap-istanbul": "^0.2.1",
     "typescript": "^2.0.3"
   },
   "description": "hybrid: An Ionic project",
